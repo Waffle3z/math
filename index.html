@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proof notes</title>
+<meta name="description" content="Written proofs found with AI systems, each with a plain statement of what has checked it.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="site"><a href="index.html">Proof notes</a></nav>
+<h1>Proof notes</h1>
+<p class="lede">Written proofs found with AI systems, each with a plain statement of what has checked it.</p>
+<article class="card"><h2><a href="greatly-mahlo-pi3.html">The least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>α</mi><mo>+</mo></msup><annotation encoding="application/x-tex">\alpha^+</annotation></semantics></math>-recursively
+Mahlo ordinal is the least
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Π</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\Pi_3</annotation></semantics></math>-reflecting
+ordinal</a></h2><p>The least α⁺-recursively Mahlo ordinal is the least Π₃-reflecting ordinal. The first α⁺-recursively Mahlo ordinal that is not Π₃-reflecting is the least ordinal that is Π₂-reflecting on the Π₃-reflecting ordinals.</p><ul class="chips"><li class="chip lean">One lemma checked in Lean</li><li class="chip open">No specialist review yet</li></ul><p class="meta">Version of 2026-11-18</p></article><section><h2 id="status-labels">Status labels</h2><dl class="legend"><dt><span class="chip lean">Lean-checked</span></dt><dd>The named statement and its proof compile in Lean 4 with Mathlib and use no extra axioms. The label says which part is covered.</dd><dt><span class="chip human">Specialist-reviewed</span></dt><dd>A person who works in the area has read the proof.</dd><dt><span class="chip open">Not yet reviewed</span></dt><dd>The check named in the label has not happened.</dd></dl></section>
+<footer></footer>
+</div>
+<script>
+(function () {
+  var b = document.getElementById('toggle-proofs');
+  if (!b) return;
+  var proofs = document.querySelectorAll('details.proof');
+  b.hidden = proofs.length === 0;
+  b.addEventListener('click', function () {
+    var open = b.getAttribute('aria-pressed') !== 'true';
+    proofs.forEach(function (d) { d.open = open; });
+    b.setAttribute('aria-pressed', String(open));
+    b.textContent = open ? 'Close all proofs' : 'Open all proofs';
+  });
+})();
+</script>
+</body>
+</html>

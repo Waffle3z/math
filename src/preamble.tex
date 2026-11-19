@@ -1,0 +1,30 @@
+% LaTeX-only set-up (the web build does not read this file).
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[a4paper,margin=1.1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{newunicodechar}
+\usepackage[hidelinks]{hyperref}
+\setlist{itemsep=0.2em,topsep=0.4em}
+% Statements carry their own explicit label through \head, so nothing is numbered automatically.
+\newenvironment{statement}{\par\addvspace{\medskipamount}\noindent\ignorespaces}{\par\addvspace{\medskipamount}}
+\newenvironment{frontnote}{\par\addvspace{\medskipamount}\small\noindent\ignorespaces}{\par\addvspace{\medskipamount}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% Unicode that may appear inside verbatim and \texttt (Lean code)
+\newunicodechar{α}{\ensuremath{\alpha}}\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{μ}{\ensuremath{\mu}}\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{τ}{\ensuremath{\tau}}\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{Π}{\ensuremath{\Pi}}\newunicodechar{Σ}{\ensuremath{\Sigma}}
+\newunicodechar{∀}{\ensuremath{\forall}}\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{∧}{\ensuremath{\wedge}}\newunicodechar{∨}{\ensuremath{\vee}}
+\newunicodechar{¬}{\ensuremath{\neg}}\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{∈}{\ensuremath{\in}}\newunicodechar{⊢}{\ensuremath{\vdash}}
+\newunicodechar{₂}{\ensuremath{_2}}\newunicodechar{₃}{\ensuremath{_3}}\newunicodechar{⁺}{\ensuremath{^+}}
+% Lean listings are wider than the text font allows, so set them smaller.
+\makeatletter\def\verbatim@font{\normalfont\ttfamily\footnotesize}\makeatother
