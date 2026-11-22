@@ -1,0 +1,1269 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\input{macros}
+% Characters of the Lean listings in the appendix not covered by the shared preamble (PDF only).
+\newunicodechar{η}{\ensuremath{\eta}}\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{ξ}{\ensuremath{\xi}}\newunicodechar{ζ}{\ensuremath{\zeta}}
+\newunicodechar{∣}{\ensuremath{\mid}}\newunicodechar{≠}{\ensuremath{\neq}}
+\title{The least ordinal that is $\Pi_n$-reflecting of degree $\delta_\alpha$ is the least $\Pi_{n+1}$-reflecting ordinal}
+% The version date is stated here once; the PDF and the web page both take it from this line.
+\newcommand{\paperversion}{2026-11-22}
+\date{Version of \paperversion}
+\begin{document}
+% Local notation (kept here so that the web build, which reads only the body, sees it too).
+\newcommand{\Ad}{\mathrm{Ad}}
+\newcommand{\RMc}{\Mh(2)}
+\newcommand{\Lim}{\mathrm{Lim}\,}
+\newcommand{\CA}{C_{\mathrm{Ad}}}
+\newcommand{\Lv}{\mathcal{L}}
+\newcommand{\Cert}{\mathrm{Cert}}
+\newcommand{\Tab}{\mathrm{Tab}}
+\maketitle
+
+\begin{frontnote}\head{Abstract} For a $\Sigma_1$ presentation $P$ with parameters, a node $a$ and $n \ge 1$, let an
+ordinal $\mu$ be in the class $C_n(P,a)$ if it is $\Pi_n$-reflecting on the classes of the predecessors of $a$, the
+relation of $P$ being evaluated afresh in $L_\mu$. We show that for every $n \ge 1$ the least limit ordinal $\alpha >
+\omega$ that lies in the class of every node in the externally well-founded part of every such presentation at
+$\alpha$ is the least $\Pi_{n+1}$-reflecting ordinal. The case $n = 2$ is an earlier paper. The step beyond it is the
+lower bound for $n \ge 3$: a search tree whose promises are kept by choosing witnesses, each choice removing two
+quantifier blocks, so that only a bounded number of steps must be unwound. For admissible $\alpha > \omega$ the ranks
+of these nodes are exactly the ordinals below $\delta_\alpha$, the supremum of the order types of $\Delta_1(L_\alpha)$
+well-orderings definable with parameters, and we call the condition $\Pi_n$-reflection of degree $\delta_\alpha$. At
+admissible $\gamma > \omega$ in which every earlier level is
+countable, $\gamma$ is $\Pi_n$-reflecting of degree $\delta_\gamma$ exactly when it is $\Pi_{n+1}$-reflecting or
+$\Pi_n$-reflecting on the $\Pi_{n+1}$-reflecting ordinals ($n \ge 2$). With ``admissible limit of'' in place of
+``$\Pi_n$-reflecting on'', the least ordinal of degree $\delta_\alpha$ is the least recursively Mahlo ordinal.
+\end{frontnote}
+
+\begin{frontnote}\head{Provenance} The proofs were found and written by AI systems. No human specialist has
+reviewed them, and novelty is not established. Section 7 states what has been checked and how.
+\end{frontnote}
+
+\section{Introduction}
+
+\textbf{Main theorem} (Theorems 4.3, 4.8 and 4.18). \emph{For every $n \ge 1$, the least limit ordinal $\alpha >
+\omega$ such that
+$\alpha \in C_n(P, a)$ for every $\Sigma_1$ presentation $P$ with parameter in $L_\alpha$ and every node $a \in L_\alpha$
+in the well-founded part of $P$ at $\alpha$ is the least $\Pi_{n+1}$-reflecting ordinal $K_n$.} Here a presentation is
+a formula with a parameter, read as a predecessor relation on $L_\mu$ at each level $\mu$; well-foundedness is taken in
+the universe; and $\mu \in C_n(P,a)$ when $\mu$ is $\Pi_n$-reflecting on $C_n(P,c)$ for every predecessor $c$ of $a$
+in $L_\mu$, the relation being evaluated afresh at each level (Definition 2.1). For $n = 2$ this is the main theorem of
+the earlier paper $[E]$, \emph{The least $\alpha^+$-recursively Mahlo ordinal is the least $\Pi_3$-reflecting
+ordinal}, version of 2026-11-22, cited as [E, Theorem B]; we use its conventions and cite its items as [E, Lemma 4.1].
+That $K_n$ has the property is the known upper-bound argument (Theorem 4.3). The step beyond $[E]$ is the lower bound
+for $n \ge 3$ (Section 4.3): the search tree of $[E]$ must now keep promises with more than two quantifier blocks, and does so by
+nesting them. For $n = 1$ the lower bound is elementary (Section 4.2).
+
+For admissible $\alpha > \omega$ the ranks of the nodes in the condition are exactly the ordinals below
+$\delta_\alpha$, the supremum of the order types of $\Delta_1(L_\alpha)$ well-orderings (Theorem 3.1), and we call the
+condition \emph{$\Pi_n$-reflection of degree $\delta_\alpha$}. The name records only which ranks are available at
+$\alpha$: the class of a node is not determined by its rank at $\alpha$, because it depends on how the relation is
+interpreted at the smaller levels (Examples 4.7 and 5.10). When $\alpha$ is countable, locally countable and below the
+least $\Sigma^1_1$-reflecting ordinal, $\delta_\alpha = \alpha^+$ (Theorem 3.2), which is why $[E]$ calls the case $n =
+2$ ``$\alpha^+$-recursively Mahlo''.
+
+\textbf{Characterisation} (Theorem 4.21). \emph{Let $n \ge 2$, and let $\gamma > \omega$ be admissible with every
+$L_\eta$, $\eta < \gamma$, countable in $L_\gamma$. Then $\gamma$ is $\Pi_n$-reflecting of degree $\delta_\gamma$ if
+and only if $\gamma$ is $\Pi_{n+1}$-reflecting or $\Pi_n$-reflecting on the $\Pi_{n+1}$-reflecting ordinals.} The
+countability hypothesis holds at every admissible $\gamma$ up to the least ordinal that is $\Pi_m$-reflecting for every
+$m$, and fails at large admissible $\gamma$. For $n = 2$ this is [E, Theorem C].
+
+\textbf{Variants.} Each operation on classes below has a \emph{next level}: for ``limit of'', which is
+$\Pi_1$-reflection on a class, it is $\Pi_2$-reflection, that is, admissibility; for ``$\Pi_n$-reflecting on'' it is
+$\Pi_{n+1}$-reflection, so that for this family the least point advances from $\Pi_n$ to $\Pi_{n+1}$; for ``admissible
+limit of'' it is $\Pi_2$-reflection on the admissible ordinals, that is, recursive Mahloness. In each case the least
+ordinal of degree $\delta_\alpha$ is the least ordinal of the next level. In each stated range the ordinals of that
+degree form the class $B \cup O(B)$, where $B$ is the class of the next level and $O(B)$ is the result of applying the
+operation to $B$; the exceptions, the members not in $B$, are those of $O(B) \setminus B$.
+\begin{itemize}
+\item \emph{Limit of} ($n = 1$). Least element $\omega_1^{CK}$ (Theorem 4.8). For limits $\gamma$ such that $L_\gamma$
+  contains a well-ordering of $\omega$ of type at least the supremum of $\omega$ and the admissible ordinals below
+  $\gamma$: of
+  degree $\delta_\gamma$ if and only if admissible or a limit of admissibles (Theorem 4.9). Among all limits $\gamma$
+  of degree $\delta_\gamma$, the least non-admissible one is $\omega_\omega^{CK}$ (Corollary 4.11).
+\item \emph{$\Pi_n$-reflecting on}, $n \ge 2$. Least element $K_n$ (Theorem 4.18); characterisation above. The least
+  member that is not $\Pi_{n+1}$-reflecting is the least ordinal $\gamma_1(n)$ that is $\Pi_n$-reflecting on the
+  $\Pi_{n+1}$-reflecting ordinals.
+\item \emph{Admissible limit of} (recursive inaccessibility). Least element $M$, the least recursively Mahlo ordinal
+  (Theorem 5.8). For admissible $\gamma$ up to the least ordinal $\Pi_m$-reflecting for every $m$: of degree
+  $\delta_\gamma$ if and only if recursively Mahlo or a limit of recursively Mahlo ordinals (Corollary 5.9). The least
+  member that is not recursively Mahlo is the least admissible limit of recursively Mahlo ordinals.
+\end{itemize}
+At admissible $\alpha$, restricting to $\Sigma_1$ linear orderings gives the same notion of $\Pi_n$-reflection of
+degree $\delta_\alpha$ (Proposition 4.23).
+
+\textbf{How the proofs go.} For the upper bounds, membership in the class of a node is expressed by a sentence, and
+reflecting that sentence gives the class of every predecessor, by induction on rank. Theorem 4.3 reflects the
+$\Pi_{n+1}$ membership formula of Lemma 4.2. Theorem 5.7(a) reflects a $\Pi_2$ membership formula onto the admissible
+ordinals, with a given bound named as a constant. For the lower bounds, a $\Sigma_1$ tree searches for a reflecting
+level, an ordinal of the next level, at or below the level under test, and a descent shows that the level under test is
+not in the class of its root. For $n \ge 2$ the descent passes a $\Pi_n$
+sentence down (Section 4.3); for ``limit of'' a set relation of large rank suffices (Section 4.2); for ``admissible
+limit of'' the descent carries one set down to an admissible target (Section 5). Appendix A lists which result uses
+which.
+
+\textbf{Nearest results.} Arai (Iterating the recursively Mahlo operations, Definition 1.1 and Lemma 1.2) iterates the
+recursively Mahlo operation along a relation evaluated in the current universe, and shows that a $\Pi_3$-reflecting
+universe lies in the class of every $n \in \omega$ up to which transfinite induction along a $\Sigma_1$ relation on $\omega$
+holds; his Theorem 1.3 reduces the theory of $\Pi_3$-reflecting universes proof-theoretically to limits of admissibles
+with such iterations along one $\Sigma_1$ relation. Theorem 4.3 is that argument for every $n$, for presentations with
+parameters and with the well-founded part taken externally; Arai's Lectures (Lemma 3.33 and Remark 3.34) and later
+papers (Conservations, Theorem 2.2; Mahlo classes, Section 1) give inclusions of the same kind, with degrees given by
+ordinals or notation codes. Richter and Aczel (Theorems 1.9--1.11) characterise $\Pi_1$- and $\Pi_2$-reflection on a class and show
+that recursively Mahlo ordinals lie in the iterates of ``admissible limit of''; this is the upper bound of Section 5 in
+another form. Rathjen (Proof theory of reflection, 1993 preprint) shows that every $\Pi_3$-reflecting $\kappa$ is
+recursively $\kappa$-Mahlo (Section 2) and, for a weakly compact cardinal $K$, that the Mahlo classes of degree below
+$\varepsilon_{K+1}$, with degrees evaluated through hulls, are stationary (Theorem 4.12). All of these are upper bounds
+or proof-theoretic counterparts. We did not find in them a lower bound of the kind proved here, the characterisations,
+or the rank statement of Theorem 3.1; Aguilera states without proof that $\delta_\alpha$ is unchanged if
+$\alpha$-recursively enumerable well-orderings are allowed.
+
+\section{Preliminaries}
+
+\subsection{\texorpdfstring{Conventions taken from $[E]$}{Conventions taken from [E]}}
+
+[E, Section 2] is used without change. This section adds only the truth predicates $\Sat_m$ for every $m$, built as
+in [E, (C4)], and the reading of operations on codes from the truth table at $\omega$. In brief:
+
+\begin{itemize}
+\item $L_\alpha$ is the $\alpha$-th constructible level. A set is \emph{countable in} $L_\gamma$ if it is empty or the
+  image of a surjection from $\omega$ that belongs to $L_\gamma$. A sentence is evaluated in $L_\beta$ only if its
+  constants are elements of $L_\beta$.
+\item \emph{Formula classes.} A formula is $\Pi_n$ if it is logically equivalent to one with $n$ alternating blocks
+  of unbounded quantifiers, the first universal, followed by a $\Delta_0$ matrix. In a limit level a block of like
+  quantifiers can be contracted to one quantifier over tuples and a list of constants to one tuple, so at limit levels
+  we write every $\Pi_m$ sentence as $\forall x_1\, \exists x_2 \cdots x_m\, \theta(\vec x, q)$, with one variable per
+  block and one constant, and a $\Pi_j$ sentence with $j < m$ counts as $\Pi_m$ by vacuous quantifiers. Block
+  contraction is used at limit levels.
+\item \emph{Certificates.} $\Cert(W, \xi)$ is a $\Delta_0$ formula; a \emph{certificate through} $\xi$ is a set $W$
+  with $\Cert(W,\xi)$. It consists of syntax data and, for each $\nu \le \xi$, a set $\Lv_\nu$ and a truth table
+  $\mathrm{Tr}_\nu$; $[E]$ writes $M_\nu$ for $\Lv_\nu$, and we keep $M$ for an ordinal. (C1): every certificate is the
+  true one: $\Lv_\nu = L_\nu$ and $\mathrm{Tr}_\nu$ is the satisfaction relation of $L_\nu$. (C2): an admissible
+  $L_\alpha$, $\alpha > \omega$, contains certificates through every $\xi < \alpha$. (C3): $G$ is the $\Pi_2$ sentence
+  ``$\omega$ exists, every ordinal has a successor, and every ordinal has a certificate''; it holds at admissible levels
+  above $\omega$, and a nonempty level satisfying it is a limit level above $\omega$ (parameter-free tests are given the
+  dummy constant $\emptyset$). (C4): $[E]$ gives $\Pi_2$ and $\Pi_3$ truth predicates $\Sat_2$, $\Sat_3$ for levels
+  satisfying $G$; we use $\Sat_m$ for every $m$, defined below. (C5): $\Sigma_1$ sentences persist from a level to every
+  larger one. (C6): condensation.
+\item \emph{Order certificates} [E, Section 8]: the canonical well-ordering $<_L$ is $\Delta_1$ over every admissible
+  level above $\omega$.
+\item \emph{Countability} [E, Lemma 7.2]: if $\gamma > \omega$ is admissible and some $L_\eta$ with $\eta < \gamma$ is
+  not countable in $L_\gamma$, then some ordinal below $\gamma$ is $\Pi_m$-reflecting for every $m$.
+\end{itemize}
+
+\textbf{Operations on codes.} Formula codes are hereditarily finite sets. Every operation on codes used below is
+primitive recursive: recognising the codes of $\Pi_m$ formulas in the form above and their matrices, the operations
+$\mathrm{dual}$ and $\mathrm{tail}$ of Definition 4.13, and the enumerations of tasks in Definitions 4.13 and 5.3. Each
+such relation is defined over $L_\omega$ by a fixed formula, and ``the relation holds of given codes'' is the bounded
+condition that the pair of that formula and the codes lies in $\mathrm{Tr}_\omega$. So these operations are read from
+the truth table at $\omega$ of any certificate through an ordinal $\ge \omega$, exactly as $[E]$ reads its enumeration
+of tasks (end of [E, Section 6.1]); no data are added to certificates.
+
+\textbf{Truth predicates.} For $m \ge 1$, $\Sat_m(\varphi, q)$ is $\forall x_1\, \exists x_2 \cdots x_m\, Q\nu\,
+QW\, B$, where $Q$ is the last of the $m$ quantifiers and $B$ is a bounded condition. With $\vec x = (x_1, \dots,
+x_m)$: if $Q = \exists$,
+\[ B = \Cert(W,\nu) \wedge \omega \le \nu \wedge \vec x, q \in \Lv_\nu \wedge \mathrm{Val}_m, \]
+and if $Q = \forall$,
+\[ B = \neg\Cert(W,\nu) \vee \nu < \omega \vee \neg(\vec x, q \in \Lv_\nu) \vee \mathrm{Val}_m. \]
+Here
+$\mathrm{Val}_m$ says that, according to $\mathrm{Tr}_\omega$, $\varphi$ is the code of a $\Pi_m$ formula in the form
+above with some matrix $\theta \in \Lv_\omega$, and $(\theta, \langle x_1, \dots, x_m, q\rangle) \in \mathrm{Tr}_\nu$.
+The quantifiers $\nu, W$ join the last block, so $\Sat_m$ is $\Pi_m$. As in the proof of [E, (C4)]: if $L_\beta \models
+G$ and $q \in L_\beta$, then $L_\beta \models \Sat_m(\varphi, q)$ if and only if $\varphi$ is a $\Pi_m$ code in the
+form above and $L_\beta \models \varphi(q)$. Indeed, given $x_1, \dots, x_m \in L_\beta$, they and $q$ lie in some
+$L_\nu$ with $\omega \le \nu < \beta$, a certificate through $\nu$ is in $L_\beta$ by (C3), every certificate is the true
+one by (C1), and $\theta(\vec x, q)$ holds in $L_\nu$ if and only if it holds in $L_\beta$.
+
+From a certificate through $\nu$ one also reads off, by a $\Delta_0$ condition, whether $\nu$ is admissible,
+recursively Mahlo or $\Pi_{n+1}$-reflecting, using the truth tables of $L_\nu$ and of smaller levels as in [E, Lemma
+7.5]. For such a class $X$, the sentence ``$X$ is unbounded'' means the $\Pi_2$ sentence ``above every ordinal there is
+a certificate showing that some $\nu$ is in $X$''; at a level satisfying $G$ it means what it says, by (C1) and (C3).
+
+\subsection{Reflection and classes of ordinals}
+
+An ordinal $\alpha$ is \emph{$\Pi_n$-reflecting} if every $\Pi_n$ sentence $\varphi(q)$ with $q \in L_\alpha$ true in
+$L_\alpha$ is true in some $L_\beta$ with $\beta < \alpha$ and $q \in L_\beta$. For a class $X$ of ordinals, $\mu$ is
+\emph{$\Pi_n$-reflecting on $X$} if the same holds with $\beta \in X \cap \mu$. As in $[E]$, ordinals called
+$\Pi_n$-reflecting or $\Pi_n$-reflecting on a class are limit ordinals above $\omega$, and reflection targets need not
+be admissible. A limit $\alpha > \omega$ is $\Pi_2$-reflecting if and only if it is admissible (Richter--Aczel, Theorem
+1.8). For any ordinal $\mu$, $\mu^+$ is the least admissible ordinal above $\mu$. An ordinal $\alpha$ is \emph{locally
+countable} if every element of $L_\alpha$ is countable in $L_\alpha$.
+
+\begin{itemize}
+\item A limit ordinal is nonzero. $\Lim X$ is the class of limit ordinals $\mu$ such that $X \cap \mu$ is unbounded in
+  $\mu$; its members are \emph{limits of $X$}.
+\item $\Ad$ is the class of admissible ordinals above $\omega$. An ordinal is \emph{recursively inaccessible} if it is
+  in $\Ad \cap \Lim \Ad$, that is, an admissible limit of admissible ordinals.
+\item $\Mh(\xi)$ is as in [E, Section 3.1]: $\Mh(0)$ is the class of limits above $\omega$, $\Mh(\xi+1)$ the class of
+  ordinals $\Pi_2$-reflecting on $\Mh(\xi)$, and $\Mh(\lambda) = \bigcap_{\xi<\lambda}\Mh(\xi)$ at limits. So $\Mh(1) =
+  \Ad$, and $\Mh(2)$ is the class of \emph{recursively Mahlo} ordinals, those $\Pi_2$-reflecting on $\Ad$. The members
+  of $\Mh(3)$, the ordinals $\Pi_2$-reflecting on the recursively Mahlo ordinals, are called \emph{recursively
+  1-Mahlo}, just as ``1-inaccessible'' is one step above ``inaccessible''.
+\item $\omega_k^{CK}$, for $1 \le k < \omega$, is the $k$-th admissible ordinal above $\omega$, $\omega_0^{CK} =
+  \omega$, and $\omega_\omega^{CK}$ is the least limit of admissible ordinals.
+\item $A_n$ is the class of $\Pi_{n+1}$-reflecting ordinals, $K_n = \min A_n$, and $\gamma_1(n)$ is the least ordinal
+  that is $\Pi_n$-reflecting on $A_n$. By Richter--Aczel 1.8, $A_1 = \Ad$. $[E]$'s $A$, $K$, $\gamma_1$ are $A_2$,
+  $K_2$, $\gamma_1(2)$.
+\item A \emph{$\Sigma^1_1$ sentence over $L_\alpha$} is a sentence $\exists S\, \varphi(S, q)$ in which $S$ ranges over
+  subsets of $L_\alpha$, $\varphi$ is first-order with a predicate for $S$, and $q \in L_\alpha$; $\alpha$ is
+  \emph{$\Sigma^1_1$-reflecting} if every such sentence true in $L_\alpha$ is true in some $L_\beta$, $\beta < \alpha$,
+  with $q \in L_\beta$ (Richter--Aczel, Definition 1.7). $\sigma^1_1$ denotes Aguilera's least $\Sigma^1_1$-reflecting
+  ordinal, in his countable, locally countable setting (Aguilera, Sections 1--2). It is admissible.
+\end{itemize}
+
+\begin{center}\begin{tabular}{p{0.14\linewidth}p{0.76\linewidth}}
+\toprule
+Ordinal & Definition \\
+\midrule
+$\omega_1^{CK}$ & the least admissible ordinal above $\omega$, that is, $K_1$ \\
+$\omega_\omega^{CK}$ & the least limit of admissible ordinals \\
+$M$ & the least recursively Mahlo ordinal \\
+$N$ & the least recursively 1-Mahlo ordinal \\
+$K_n$, $\gamma_1(n)$ & the least $\Pi_{n+1}$-reflecting ordinal; the least ordinal $\Pi_n$-reflecting on $A_n$ \\
+$\xi^*$ & the least ordinal $\Pi_m$-reflecting for every $m$ (with set parameters), equivalently the least $\alpha$ with $L_\alpha \prec_{\Sigma_1} L_{\alpha+1}$ (Richter--Aczel, Theorem 1.18); it exists by [E, proof of Lemma 7.1] \\
+\bottomrule
+\end{tabular}\\[0.4em]Table 1. Some ordinals used below.\end{center}
+
+By [E, Lemma 7.2], every $L_\eta$ with $\eta < \gamma$ is countable in $L_\gamma$ for every admissible $\gamma \le
+\xi^*$.
+
+\subsection{Presentations and their classes}
+
+Presentations are as in [E, Section 3.2]. A \emph{presentation} is a pair $P = (\rho, p)$ of a formula $\rho(x,y,z)$
+and a set $p$; at a limit $\mu > \omega$ with $p \in L_\mu$, $c$ is a \emph{predecessor} of $a$ at $\mu$ if $L_\mu
+\models \rho(c, a, p)$, and $(c,a)$ is an \emph{edge}. Elements of $L_\mu$ are \emph{nodes}. $P$ is a $\Sigma_1$
+presentation if $\rho$ is $\Sigma_1$. The \emph{well-founded part} at $\mu$ is the set of nodes from which there is no
+infinite descending sequence, taken in the universe, and $\mathrm{rank}_\mu(a)$ is the rank of $a$ in the relation at
+$\mu$. By (C5), an edge of a $\Sigma_1$ presentation at $\mu$ is an edge at every larger level, so a node in the
+well-founded part at $\gamma$ is in the well-founded part at every smaller limit $\mu$ containing it and the parameter,
+with $\mathrm{rank}_\mu(a) \le \mathrm{rank}_\gamma(a)$. If $\lhd$ is a relation that is a set, $P_\lhd$ is the
+$\Delta_0$ presentation ``$(x,y) \in z$'' with parameter $\lhd$; its edges are the same at every level containing
+$\lhd$, and we call it a \emph{set relation}.
+
+For a limit $\alpha > \omega$, $\delta_\alpha$ is the supremum of the order types of well-orderings whose field is a
+subclass of $L_\alpha$ and which are $\Delta_1$-definable over $L_\alpha$ with parameters (the notation of Aguilera,
+Section 2). By Theorem 3.1 below, for admissible $\alpha > \omega$ these order types are exactly the ranks of nodes in
+the well-founded parts of $\Sigma_1$ presentations at $\alpha$; this is why the notions of Definition 2.2 are named
+after $\delta_\alpha$.
+
+\begin{statement}\head{Definition 2.1} Let $P$ be a presentation. By recursion on $\mu$, for all nodes at once:
+\begin{itemize}
+\item for $n \ge 1$, $\mu \in C_n(P, a)$ if and only if $\mu$ is a limit ordinal above $\omega$, $p, a \in L_\mu$,
+  and $\mu$ is $\Pi_n$-reflecting on $C_n(P, c)$ for every predecessor $c$ of $a$ at $\mu$;
+\item $\mu \in \CA(P, a)$ if and only if $\mu \in \Ad$, $p, a \in L_\mu$, and $\mu \in \Lim \CA(P, c)$ for every
+  predecessor $c$ of $a$ at $\mu$.
+\end{itemize}
+\end{statement}
+
+$C_2$ is $[E]$'s class $C$ [E, Definition 3.1]. A node without predecessors at $\mu$ imposes only the first two
+clauses.
+
+\begin{statement}\head{Definition 2.2} Let $\alpha > \omega$ be a limit ordinal. $\alpha$ is \emph{$\Pi_n$-reflecting
+of degree $\delta_\alpha$} if $\alpha \in C_n(P, a)$ for every $\Sigma_1$ presentation $P$ with $p \in L_\alpha$ and
+every node $a \in L_\alpha$ in the well-founded part of the relation defined by $P$ at $\alpha$. It is
+\emph{recursively inaccessible of degree $\delta_\alpha$} if the same holds with $\CA$ in place of $C_n$.
+\end{statement}
+
+For $n = 2$ this is $[E]$'s $\alpha^+$-recursively Mahlo. For a set relation and a node of rank $\xi$ the class $C_2$
+is $\Mh(\xi)$, restricted to the $\mu$ containing the parameter and the node [E, Example 3.2(1)]. Again for a set
+relation, the class $C_n$ of a node of rank 0 is the class of limits above $\omega$ containing the parameter and the
+node, and every member of the
+class of a node of rank 1 is $\Pi_n$-reflecting; the class $\CA$ of a node of rank 0 is $\Ad$, and that of a node of
+rank 1 is $\Ad \cap \Lim \Ad$, the recursively inaccessible ordinals, in both cases restricted to the $\mu$ containing
+the parameter and the node. This is why the iteration of ``admissible limit of'' is called recursive inaccessibility of a degree. For other $\Sigma_1$ presentations the class of a node is not determined by its
+rank (Examples 4.7 and 5.10).
+
+\textbf{Class certificates.} Membership in these classes is computed inside a level by the method of [E, Lemma 5.1,
+Steps 1--2], which we state once in general. Let $\Phi(W, \nu, x, H)$ be a $\Delta_0$ formula, possibly with set
+parameters. For a certificate $W$ through $\mu$ and $\nu \le \mu$, $W{\restriction}(\nu+1)$ is $W$ cut down to its
+rows at indices $\eta \le \nu$; it is a certificate through $\nu$. A \emph{class certificate for $\Phi$ through $\mu$}
+is a pair $(W, \Tab)$ of a certificate $W$ through $\mu$ and a function $\Tab$ on $\mu + 1$ with $\Tab(\nu) \subseteq
+\Lv_\nu$ (written $D$ in [E]), such that for every $\nu \le \mu$ and $x \in \Lv_\nu$: $x \in \Tab(\nu)$ if and only if
+$\Phi(W{\restriction}(\nu+1), \nu, x, \Tab{\restriction}\nu)$. The restrictions are read as bounded views of the given
+graphs, since a transitive set containing a graph need not contain its restriction: a quantifier over a restricted
+graph is relativised to the given graph by its index guard, equality with a set is tested by the two bounded
+inclusions, and membership in a set by bounded search for an equal element. The pair $(W, \Tab)$ has a fixed finite
+tuple shape, and induction on the fixed formula $\Phi$ gives a bounded test on the given data. So being a class certificate
+is $\Delta_0$.
+
+\begin{statement}\head{Lemma 2.3} Let $\Phi$ be as above, and let $J$ be a class of pairs $(\nu, x)$ with $x \in
+L_\nu$; write $J_\nu = \{x : (\nu, x) \in J\}$. Suppose that, for the true certificate $W$ through $\nu$, $x \in J_\nu$
+if and only if $\Phi(W, \nu, x, (J_\eta)_{\eta < \nu})$.
+\begin{itemize}
+\item[(i)] Every class certificate for $\Phi$ through $\mu$ has $\Tab(\nu) = J_\nu$ for all $\nu \le \mu$.
+\item[(ii)] If the parameters of $\Phi$ lie in $L_\alpha$, every admissible $L_\alpha$, $\alpha > \omega$, contains a
+  class certificate for $\Phi$ through every $\mu < \alpha$.
+\item[(iii)] Thus ``there is a class certificate through $\mu$ with $x \in \Tab(\mu)$'' is a $\Sigma_1$ formula. In any
+  transitive set containing its parameters, its truth implies $x \in J_\mu$. Under the hypotheses of (ii), it holds in
+  $L_\alpha$ whenever $\mu < \alpha$ and $x \in J_\mu$.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+(i) By (C1), $W$ is the true certificate, so $W{\restriction}(\nu+1)$ is the true certificate through $\nu$. By
+induction on $\nu \le \mu$: if $\Tab(\eta) = J_\eta$ for $\eta < \nu$, then $x \in \Tab(\nu)$ if and only if
+$\Phi(W{\restriction}(\nu+1), \nu, x, (J_\eta)_{\eta<\nu})$, that is, $x \in J_\nu$. (ii) By (C2) a certificate $W$
+through $\mu$ is in $L_\alpha$, and $\Sigma$-recursion of length $\mu + 1$ gives $\Tab(\nu) = \{x \in \Lv_\nu :
+\Phi(W{\restriction}(\nu+1), \nu, x, \Tab{\restriction}\nu)\}$, by $\Delta_0$-separation. (iii) Being a class
+certificate is $\Delta_0$; use (i), which holds in any transitive set since $\Delta_0$ conditions are absolute, and (ii).
+\end{proof}
+
+For example, the classes $C_n$ use the clause $\Phi_n(W, \nu, x, H)$: $\nu$ is a limit above $\omega$, $p, x \in
+\Lv_\nu$, and for every $c \in \Lv_\nu$ such that $\rho(c, x, p)$ is true according to $\mathrm{Tr}_\nu$, every code
+$\varphi$ of a $\Pi_n$ formula in the form of Section 2.1 and every $q \in \Lv_\nu$ with $(\varphi, \langle q\rangle)
+\in \mathrm{Tr}_\nu$, there is $\eta < \nu$ with $q \in \Lv_\eta$, $c \in H(\eta)$ and $(\varphi, \langle q\rangle) \in
+\mathrm{Tr}_\eta$. It is $\Delta_0$. For the true certificate and $H(\eta) = \{c : \eta \in C_n(P,c)\}$ it holds
+exactly when $\nu \in C_n(P,x)$, because $\nu$ and all members of the classes are limits. Lemma 4.2 uses it.
+
+\section{Ranks}
+
+\begin{statement}\head{Theorem 3.1} Let $\alpha > \omega$ be admissible. The ranks of the nodes in the well-founded
+parts of $\Sigma_1$ presentations at $\alpha$ with parameters in $L_\alpha$ are exactly the ordinals below
+$\delta_\alpha$.
+\end{statement}
+
+\begin{proof}
+Let $P = (\rho, p)$ with $\rho = \exists w\, \theta$, $\theta \in \Delta_0$, and let $a$ be in the well-founded part
+at $\alpha$. A \emph{history} is a finite sequence $\langle (c_1, w_1), \dots, (c_k, w_k)\rangle$ with $\theta(c_i,
+c_{i-1}, p, w_i)$ for each $i$, where $c_0 = a$; its end is $c_k$, and being a history is $\Delta_0$ in $(p, a,
+\omega)$. In the Kleene--Brouwer ordering of the histories, a proper extension precedes the history it extends, and
+otherwise two histories are compared at the first place where they differ, by $<_L$. It is a $\Delta_1(L_\alpha)$
+well-ordering, and the rank of $a$ is at most the order type of the histories before the empty one; this is the remark
+after [E, Definition 3.3], and the well-foundedness and the rank bound are checked in Lean (Appendix B). Conversely, a
+$\Delta_1$ well-ordering is a $\Sigma_1$ presentation in which the rank of a node is the order type of its
+predecessors.
+\end{proof}
+
+Always $\delta_\alpha \le \alpha^+$: a $\Delta_1(L_\alpha)$ well-ordering is an element of $L_{\alpha+1}$, and the
+admissible $L_{\alpha^+}$ computes its rank function by $\Sigma$-recursion, so its order type is below $\alpha^+$. For
+countable, locally countable admissible $\alpha$, $\delta_\alpha$ is Aguilera's supremum of $\alpha$-recursive
+well-orderings, since $<_L$ enumerates $L_\alpha$ in order type $\alpha$ by a $\Delta_1(L_\alpha)$ map [E, Section 8].
+
+\begin{statement}\head{Theorem 3.2 (Gostanian; cited from Aguilera, Sections 1--2)} For every countable, locally
+countable admissible $\alpha < \sigma^1_1$, $\delta_\alpha = \alpha^+$. At $\alpha = \sigma^1_1$, $\delta_\alpha <
+\alpha^+$.
+\end{statement}
+
+So the equality $\delta_\alpha = \alpha^+$, which makes $\delta_\alpha$ the ``degree $\alpha^+$'' of [E] and of
+greatly Mahlo cardinals, holds under the hypotheses of Theorem 3.2 below $\sigma^1_1$ and fails at $\sigma^1_1$.
+Theorem 3.2 says nothing about larger $\alpha$.
+
+\section{\texorpdfstring{$\Pi_n$-reflection of degree $\delta_\alpha$}{Pi\_n-reflection of degree delta\_alpha}}
+
+\subsection{\texorpdfstring{Upper bounds for every $n \ge 1$}{Upper bounds for every n >= 1}}
+
+\begin{statement}\head{Lemma 4.1} Let $\mu$ be a limit ordinal above $\omega$ and $X$ a class of ordinals. Then $\mu$ is
+$\Pi_1$-reflecting on $X$ if and only if $X \cap \mu$ is unbounded in $\mu$.
+\end{statement}
+
+\begin{proof}
+A $\Pi_1$ sentence true in $L_\mu$ is true in every $L_\beta$, $\beta < \mu$, containing its constant, by $\Delta_0$
+absoluteness, and the sentence $\forall x\, (x = x)$ with a constant $\xi < \mu$ reflects only above $\xi$.
+\end{proof}
+
+So $\mu \in C_1(P,a)$ if and only if $\mu$ is a limit above $\omega$, $p, a \in L_\mu$, and $\mu \in \Lim C_1(P,c)$ for
+every predecessor $c$ of $a$ at $\mu$.
+
+\begin{statement}\head{Lemma 4.2} Let $n \ge 1$. For each $\Sigma_1$ formula $\rho$ there is a $\Pi_{n+1}$ formula
+$\Theta_n(p,a)$ such that for every admissible $\alpha > \omega$ with $p, a \in L_\alpha$, $L_\alpha \models
+\Theta_n(p,a)$ if and only if $\alpha \in C_n(P,a)$; and for every $\beta$ with $p, a \in L_\beta$, $L_\beta \models
+\Theta_n(p,a)$ implies $\beta \in C_n(P,a)$.
+\end{statement}
+
+\begin{proof}
+\emph{Class certificates.} Apply Lemma 2.3 to the clause $\Phi_n$ given after it. So $\Mem^n_\rho(\mu, q, \varphi,
+c)$, ``there is a class certificate for $\Phi_n$ through $\mu$ with $c \in \Tab(\mu)$, $q \in \Lv_\mu$ and $(\varphi,
+\langle q\rangle) \in \mathrm{Tr}_\mu$'', is $\Sigma_1$, and when it holds in a transitive set, $\mu \in C_n(P,c)$, $q
+\in L_\mu$ and $L_\mu \models \varphi(q)$.
+
+\emph{The formula.}
+\[ \Theta_n(p,a) = G \wedge \forall c\, \forall\varphi\, \forall q\, [\, \neg\rho(c,a,p) \vee \neg\Sat_n(\varphi,q) \vee
+   \exists \mu\, \Mem^n_\rho(\mu, q, \varphi, c)\,]. \]
+
+\emph{Its complexity.} Write $\rho = \exists i\, \rho_0$ and the last disjunct as $\exists h\, \sigma_0$, with
+$\rho_0, \sigma_0$ bounded, so that $\neg\rho$ is $\forall i\, \neg\rho_0$; $\neg\Sat_n$ has $n$ blocks, the first
+existential. For $n = 1$ the bracket has the prefix $\forall i\, \exists(\cdot, h)$. For $n \ge 2$, $\forall i$ joins the
+second block of $\neg\Sat_n$ and $\exists h$ its first, so the bracket is $\Sigma_n$: for $n = 2$ its prefix is
+$\exists (\cdot, h)\, \forall (\cdot, i)$, and for $n = 3$ it is $\exists (\cdot, h)\, \forall (\cdot, i)\, \exists$. With
+$\forall c, \varphi, q$ in front and the two blocks of $G = \forall\, \exists\, \theta_G$ merged into the first two
+blocks, $\Theta_n$ is $\Pi_{n+1}$.
+
+\emph{Soundness at every $\beta$.} Let $L_\beta \models \Theta_n(p,a)$. By (C3), $\beta$ is a limit above $\omega$. Let
+$c$ be a predecessor of $a$ at $\beta$ and $\varphi(q)$ a $\Pi_n$ sentence true in $L_\beta$, in the form of Section
+2.1. By Section 2.1, $L_\beta \models \Sat_n(\varphi, q)$, so some $\mu < \beta$ has $\Mem^n_\rho(\mu,q,\varphi,c)$ in
+$L_\beta$: $\mu \in C_n(P,c)$, $q \in L_\mu$ and $L_\mu \models \varphi(q)$. So $\beta \in C_n(P,a)$. No
+admissibility of $\beta$ is used.
+
+\emph{The converse at admissible $\alpha$.} Let $\alpha \in C_n(P,a)$. Then $L_\alpha \models G$. Let $c, \varphi, q \in
+L_\alpha$ with $\rho(c,a,p)$ and $\Sat_n(\varphi,q)$ true in $L_\alpha$. Then $\varphi(q)$ is a $\Pi_n$ sentence true
+in $L_\alpha$, so some $\mu < \alpha$ in $C_n(P,c)$ has $q \in L_\mu$ and $L_\mu \models \varphi(q)$, and Lemma 2.3(ii)
+gives the class certificate in $L_\alpha$.
+\end{proof}
+
+\begin{statement}\head{Theorem 4.3 (upper bound)} Let $n \ge 1$. Every $\Pi_{n+1}$-reflecting ordinal $\kappa$ is
+$\Pi_n$-reflecting of degree $\delta_\kappa$. In particular every admissible $\kappa > \omega$ is $\Pi_1$-reflecting of
+degree $\delta_\kappa$.
+\end{statement}
+
+\begin{proof}
+Let $\kappa$ be $\Pi_{n+1}$-reflecting. It is $\Pi_2$-reflecting, hence admissible and above $\omega$. Let $P$ be a
+$\Sigma_1$ presentation with $p \in L_\kappa$; we show $\kappa \in C_n(P,a)$ by induction on the rank of $a$ at
+$\kappa$. Let $c$ be a predecessor of $a$. By induction $\kappa \in C_n(P,c)$, so $L_\kappa \models \Theta_n(p,c)$ by
+Lemma 4.2. For a $\Pi_n$ sentence $\varphi(q)$ true in $L_\kappa$, the $\Pi_{n+1}$ sentence $\varphi(q) \wedge
+\Theta_n(p,c)$ holds in some $L_\beta$, $\beta < \kappa$, with $p, c, q \in L_\beta$, and $\beta \in C_n(P,c)$ by Lemma
+4.2. So $\kappa$ is $\Pi_n$-reflecting on $C_n(P,c)$ for every predecessor $c$, and $\kappa \in C_n(P,a)$. The last
+sentence is the case $n = 1$ (Richter--Aczel 1.8).
+\end{proof}
+
+\begin{statement}\head{Lemma 4.4} Every limit $\gamma$ of admissible ordinals is $\Pi_1$-reflecting of degree
+$\delta_\gamma$.
+\end{statement}
+
+\begin{proof}
+Let $\gamma \in \Lim \Ad$, $a$ in the well-founded part at $\gamma$, and $c$ a predecessor of $a$. For every admissible
+$\lambda < \gamma$ with $p, c \in L_\lambda$, $c$ is in the well-founded part at $\lambda$ by (C5), so $\lambda \in
+C_1(P,c)$ by Theorem 4.3. These $\lambda$ are unbounded in $\gamma$.
+\end{proof}
+
+\subsection{\texorpdfstring{Lower bounds for $n = 1$}{Lower bounds for n = 1}}
+
+Two facts of ordinal arithmetic are used, for $\mu > 0$, both checked in Lean (Appendix B). (O1) If $\omega^{\zeta_i}$
+divides $\mu$ for every $i$, so does $\omega^{\sup_i \zeta_i}$. (O2) If a set of multiples of $\omega^\zeta$ is
+unbounded in $\mu$, then $\omega^{\zeta+1}$ divides $\mu$.
+
+\begin{statement}\head{Lemma 4.5} Let $P$ be a $\Sigma_1$ presentation, $\mu > \omega$ a limit with $p, a \in L_\mu$,
+$a$ in the well-founded part at $\mu$, and suppose $\omega^{1+\mathrm{rank}_\mu(a)}$ divides $\mu$. Then $\mu \in
+C_1(P, a)$.
+\end{statement}
+
+\begin{proof}
+Induction on $\mu$. Let $c$ be a predecessor of $a$ at $\mu$. Since $\mathrm{rank}_\mu(c) < \mathrm{rank}_\mu(a)$,
+$\omega^{1+\mathrm{rank}_\mu(c)+1}$ divides $\mu$, so the positive multiples of $\omega^{1+\mathrm{rank}_\mu(c)}$ are
+unbounded in $\mu$. Take such a multiple $\mu' > \omega$ above any given bound with $p, c \in L_{\mu'}$. By (C5), $c$
+is in the well-founded part at $\mu'$ with $\mathrm{rank}_{\mu'}(c) \le \mathrm{rank}_\mu(c)$, so
+$\omega^{1+\mathrm{rank}_{\mu'}(c)}$ divides $\mu'$ and $\mu' \in C_1(P,c)$ by the induction hypothesis. So $\mu \in
+\Lim C_1(P,c)$ for every predecessor $c$.
+\end{proof}
+
+\begin{statement}\head{Corollary 4.6} Let $\lhd$ be a well-founded relation that is a set, and $a$ a node of rank
+$\xi$ in it. Then $C_1(P_\lhd, a)$ is the class of limits $\mu > \omega$ with $\lhd, a \in L_\mu$ such that
+$\omega^{1+\xi}$ divides $\mu$. In particular no limit $\gamma$ is in $C_1(P_\lhd,a)$ when $\xi \ge \gamma + 1$.
+\end{statement}
+
+\begin{proof}
+The rank of $a$ is $\xi$ at every level containing $\lhd$, so Lemma 4.5 gives one inclusion. For the other, by
+induction on $\xi$: let $\mu \in C_1(P_\lhd,a)$. If $\xi = 0$, $\omega$ divides $\mu$ because $\mu$ is a limit.
+Otherwise, for each predecessor $c$, of rank $\zeta_c$, $C_1(P_\lhd,c) \cap \mu$ is unbounded in $\mu$ and its members
+are divisible by $\omega^{1+\zeta_c}$; by (O2) $\omega^{1+\zeta_c+1}$ divides $\mu$, and by (O1) so does
+$\omega^{1+\xi}$, since $\xi = \sup_c(\zeta_c + 1)$. For the last sentence, $\omega^{1+\xi} \ge \omega^{\gamma+1} >
+\gamma$.
+\end{proof}
+
+\begin{statement}\head{Example 4.7} Lemma 4.5 is not an equivalence. Let $t = \{1\}$ and $t' = \{2\}$, and let the
+predecessors of $t$ be all ordinals, of each ordinal the smaller ordinals, and of $t'$ only $t$ (a $\Delta_0$
+presentation with parameter $(t, t')$). At an $\varepsilon$-number $\mu$, $\mathrm{rank}_\mu(t) = \mu$ and
+$\omega^{1+\mu} = \mu$ divides $\mu$, so $\mu \in C_1(P, t)$ by Lemma 4.5. Hence every limit $\mu$ of
+$\varepsilon$-numbers is in $C_1(P, t')$, although $\mathrm{rank}_\mu(t') = \mu + 1$ and $\omega^{\mu+1}$ does not
+divide $\mu$.
+\end{statement}
+
+\begin{statement}\head{Theorem 4.8 (least element, $n = 1$)} No limit $\gamma$ with $\omega < \gamma <
+\omega_1^{CK}$ is $\Pi_1$-reflecting of degree $\delta_\gamma$. Hence the least $\alpha$ that is $\Pi_1$-reflecting of
+degree $\delta_\alpha$ is $\omega_1^{CK}$, the least $\Pi_2$-reflecting ordinal.
+\end{statement}
+
+\begin{proof}
+Since $\gamma + 2 < \omega_1^{CK}$ there is a recursive well-ordering $\lhd$ of $\omega$ of order type $\gamma + 2$. It
+is arithmetically definable over $L_\omega$, so $\lhd \in L_{\omega+1} \subseteq L_\gamma$. Its last element has rank
+$\gamma+1$, so $\gamma$ is not in its class by Corollary 4.6. The upper bound is Theorem 4.3.
+\end{proof}
+
+\begin{statement}\head{Theorem 4.9 (characterisation, $n = 1$)} Let $\gamma > \omega$ be a limit, and let $\gamma^-$
+be the supremum of $\omega$ and the admissible ordinals below $\gamma$. Suppose that $L_\gamma$ contains a
+well-ordering of $\omega$ of order type at least $\gamma^-$. Then $\gamma$ is $\Pi_1$-reflecting of degree
+$\delta_\gamma$ if and only if $\gamma$ is admissible or a limit of admissible ordinals.
+\end{statement}
+
+\begin{proof}
+If $\gamma$ is admissible or a limit of admissibles, use Theorem 4.3 or Lemma 4.4. Suppose it is neither. Then the
+admissible ordinals below $\gamma$ are bounded below $\gamma$, so $\gamma^- < \gamma$ and no admissible ordinal lies in
+$(\gamma^-, \gamma]$. By Corollary 4.6 it suffices to find in $L_\gamma$ a well-founded set relation with a node of
+rank $\gamma + 1$. Let $x \in L_\gamma$ be the given well-ordering, regarded as a real, and let $\omega_1^x$ be the
+supremum of the order types of $x$-recursive well-orderings of $\omega$. Then $\omega_1^x > \gamma^-$, since $x$ itself
+is one. By the theorem of Kripke and Platek relativised to $x$ ($\omega_1^x$ is the least $\alpha > \omega$ with
+$L_\alpha[x]$ admissible; see Sacks, \emph{Higher Recursion Theory}), $L_{\omega_1^x}[x]$ is admissible, and therefore
+so is $L_{\omega_1^x}$, since $\nu \mapsto L_\nu$ is $\Delta_1$ in $L_{\omega_1^x}[x]$. For $\Delta_0$-collection in
+$L_{\omega_1^x}$: if every element of a set in $L_{\omega_1^x}$ has a witness in $L_{\omega_1^x}$, collection in
+$L_{\omega_1^x}[x]$ gives a set of ordinal stages $\nu$ whose levels $L_\nu$ contain such witnesses, one for each
+element; a single larger stage $\nu_0 < \omega_1^x$ bounds them, and $L_{\nu_0} \in L_{\omega_1^x}$ contains a witness
+for every element. As $\omega_1^x$ exceeds
+$\gamma^-$ and no admissible lies in $(\gamma^-, \gamma]$, $\omega_1^x > \gamma$. So there is an $x$-recursive
+well-ordering $\lhd$ of $\omega$ of type $\gamma + 2$. With $x \in L_\eta$, $\eta < \gamma$, $\lhd$ is definable over
+$L_\eta$, so $\lhd \in L_{\eta+1} \subseteq L_\gamma$.
+\end{proof}
+
+\begin{statement}\head{Lemma 4.10} For each $k \ge 1$, $L_{\omega_k^{CK}+1}$ contains a well-ordering of $\omega$ of
+order type at least $\omega_k^{CK}$.
+\end{statement}
+
+\begin{proof}
+Induction on $k$, starting from the usual ordering of $\omega$, which is in $L_{\omega+1}$ and has type
+$\omega_0^{CK}$. Let $y \in L_{\omega_{k-1}^{CK}+1}$ be a well-ordering of $\omega$ of type at least
+$\omega_{k-1}^{CK}$. As in the proof of Theorem 4.9, $\omega_1^y$ is admissible and above $\omega_{k-1}^{CK}$, so
+$\omega_1^y \ge \omega_k^{CK}$; and every $y$-recursive well-ordering of $\omega$ lies in the admissible
+$L_{\omega_k^{CK}}$ together with its rank function, so $\omega_1^y = \omega_k^{CK}$. Hence a $y$-recursive linear
+ordering of $\omega$ is a well-ordering if and only if $L_{\omega_k^{CK}}$ contains an isomorphism of it onto an
+ordinal, and the ordered sum of all $y$-recursive well-orderings, coded as a relation on $\omega$, is definable over
+$L_{\omega_k^{CK}}$. It belongs to $L_{\omega_k^{CK}+1}$ and has type at least $\omega_k^{CK}$.
+\end{proof}
+
+\begin{statement}\head{Corollary 4.11} $\omega_\omega^{CK}$ is $\Pi_1$-reflecting of degree
+$\delta_{\omega_\omega^{CK}}$ and not admissible, and every smaller $\alpha$ that is $\Pi_1$-reflecting of degree
+$\delta_\alpha$ is admissible. So the least $\alpha$ that is $\Pi_1$-reflecting of degree $\delta_\alpha$ and not
+$\Pi_2$-reflecting is $\omega_\omega^{CK} = \gamma_1(1)$.
+\end{statement}
+
+\begin{proof}
+Lemma 4.4 gives the first statement, and $\omega_\omega^{CK}$ is not admissible because $k \mapsto \omega_k^{CK}$ is
+$\Sigma_1$-definable over $L_{\omega_\omega^{CK}}$ and cofinal in it. Indeed, a certificate through a proposed value
+$\nu$ verifies, by a $\Delta_0$ condition, that $\nu$ is the $k$-th admissible ordinal above $\omega$; for $j > k$ the
+admissible level $L_{\omega_j^{CK}}$ contains these certificates by (C2), and these levels are cofinal in
+$L_{\omega_\omega^{CK}}$. If
+$L_{\omega_\omega^{CK}}$ were admissible, collection on $\omega$ would bound the values $\omega_k^{CK}$ below
+$\omega_\omega^{CK}$. A non-admissible limit $\gamma <
+\omega_\omega^{CK}$ has $\gamma^- = \omega$ or $\gamma^- = \omega_k^{CK}$ with $k \ge 1$, and $\gamma < (\gamma^-)^+$.
+In the first case Theorem 4.8 excludes it. In the second, $L_{\gamma^- + 1} \subseteq L_\gamma$, so the hypothesis of
+Theorem 4.9 holds by Lemma 4.10, and Theorem 4.9 excludes it. By Lemma 4.1, $\gamma_1(1)$, the least ordinal
+$\Pi_1$-reflecting on $\Ad$, is the least limit of admissibles.
+\end{proof}
+
+\subsection{\texorpdfstring{Lower bounds for $n \ge 2$}{Lower bounds for n >= 2}}
+
+Fix $n \ge 2$ in this subsection. We follow [E, Sections 4--7]; what changes for $n \ge 3$ is how promises are kept.
+
+\textbf{The step beyond $[E]$, for $n = 3$.} The tree searches for a $\Pi_4$-reflecting level. Each $\Pi_4$ test $\forall u\,
+\exists v\, \forall w\, \exists x\, \theta$ is either answered positively, by a smaller level where it holds, or
+negatively, by a $u$; a negative answer leaves the $\Pi_3$ obligation $\forall v\, \exists w\, \forall x\, \neg\theta$.
+Choosing a witness $w$ for one instance $v$ leaves the $\Pi_1$ obligation $\forall x\, \neg\theta$, whose instances are
+bounded checks. Each such step removes two quantifier blocks, so for fixed $n$ only a bounded number of steps must be
+unwound to find what a record has promised, and the tree stays $\Sigma_1$. In $[E]$, $n = 2$, a negative answer leaves a
+$\Pi_2$ obligation, and one witness step reaches a bounded check, so promises never nest.
+
+\textbf{What the rest of the subsection proves.} Lemma 4.14: an infinite branch yields a $\Pi_{n+1}$-reflecting level
+satisfying $\varphi_0$. Lemmas 4.15 and 4.16 and Theorem 4.17: if $L_\beta$ satisfies $\varphi_0$ and the
+$\Pi_2$ sentence $\chi$ (certificates, a limit above every ordinal, countable levels), a descent excludes $\beta$ from
+the class of the root; if moreover no such reflecting level exists up to $\beta$, the root is in the well-founded
+part, so it witnesses that $\beta$ is not $\Pi_n$-reflecting of degree $\delta_\beta$. The descent carries the sentence $G$ down, because the smaller level need
+not be admissible and must still contain the certificate that makes an edge true there.
+
+\begin{statement}\head{Lemma 4.12 (descent)} Let $P$ be a presentation and $Z$ a class of pairs $(\beta, c)$ with
+$\beta$ a limit ordinal above $\omega$ and $c \in L_\beta$. Suppose that for every $(\beta, c) \in Z$ there are a
+predecessor $d$ of $c$ at $\beta$ and a $\Pi_n$ sentence $\tau$, with constants in $L_\beta$ and true in $L_\beta$,
+such that $(\beta', d) \in Z$ for every limit $\beta'$ with $\omega < \beta' < \beta$, $d$ and the constants of $\tau$
+in $L_{\beta'}$, and $L_{\beta'} \models \tau$. Then $\beta \notin C_n(P, c)$ for every $(\beta, c) \in Z$.
+\end{statement}
+
+\begin{proof}
+Otherwise let $\beta$ be least such that $(\beta, c) \in Z$ and $\beta \in C_n(P,c)$ for some $c$, and take $d$ and
+$\tau$. Since $d$ is a predecessor of $c$ at $\beta$, $\beta$ is $\Pi_n$-reflecting on $C_n(P,d)$. Applying this to
+$\tau$ with $d$ adjoined as a constant gives $\beta' < \beta$ in $C_n(P,d)$, hence a limit above $\omega$, with $d$ and
+the constants of $\tau$ in $L_{\beta'}$ and $L_{\beta'} \models \tau$. Then $(\beta', d) \in Z$ and $\beta' \in
+C_n(P,d)$, contradicting the minimality of $\beta$.
+\end{proof}
+
+This is [E, Lemma 4.1] with $\Pi_n$ in place of $\Pi_2$.
+
+\begin{statement}\head{Definition 4.13 (the tree $T_n$)} Fix a $\Pi_n$ sentence $\varphi_0(q_0)$ in the form of
+Section 2.1. A \emph{promise} is a pair $(\pi, e)$ of a code $\pi$ of a $\Pi_m$ formula in that form, $1 \le m \le n$,
+and a set $e$; it asserts $\pi(e)$, and $m$ is its \emph{length}. For a $\Pi_{m+1}$ code $\psi = \forall u\, \exists
+v\, \psi_1$, $\mathrm{dual}(\psi)$ is the code of the $\Pi_m$ formula obtained by putting $\forall v\,
+\neg\psi_1(q,u,v)$ into the prenex form of Section 2.1 with the constant $\langle q, u\rangle$; for a $\Pi_m$
+code $\pi = \forall v\, \exists w\, \pi_1$ with $m \ge 2$, $\mathrm{tail}(\pi)$ is the code of $\pi_1$ with $v, w$
+moved into the constant.
+
+\emph{Nodes.} A node of depth $k$ is a sequence of records $0, \dots, k$. Record 0 is a limit $a_0 > \omega$ with
+$q_0 \in L_{a_0}$. Record $j \ge 1$ is a triple $(a_j, f_{j-1}, x_j)$ of a limit $a_j > a_{j-1}$, a surjection
+$f_{j-1}$ from $\omega$ onto $L_{a_{j-1}}$ with $f_{j-1} \in L_{a_j}$, and the answer $x_j \in L_{a_j}$ to task $j-1$.
+The last stage is $a_k$.
+
+\emph{Tasks.} Fix a primitive recursive enumeration of the codes $\mathrm{Refl}(i,l)$ and $\mathrm{Keep}(j,i,l)$, $i, j,
+l \in \omega$, in which each code occurs at some position $k$ with $i < k$ and $j \le k$; the other positions hold
+empty tasks. Task $k$ is the \emph{next task} of a node of depth $k$ and is answered by $x_{k+1}$.
+
+\emph{Promises.} Each record $j$ makes at most one promise $\mathrm{pr}(j)$, by recursion on $j$:
+\begin{itemize}
+\item[(P0)] $\mathrm{pr}(0) = (\varphi_0, q_0)$, of length $n$.
+\item[(P1)] If task $j-1$ is a Refl-task for $(\psi, q)$, as defined under Answers, and $x_j = (-, u)$, then $\mathrm{pr}(j) =
+  (\mathrm{dual}(\psi), \langle q, u\rangle)$, of length $n$.
+\item[(P2)] If task $j-1$ is $\mathrm{Keep}(j', i, l)$, $\mathrm{pr}(j') = (\pi, e)$ has length $m \ge 3$, and $x_j =
+  w$, then $\mathrm{pr}(j) = (\mathrm{tail}(\pi), \langle e, f_i(l), w\rangle)$, of length $m - 2$. Here $j' \le j-1$,
+  because $\mathrm{Keep}(j',i,l)$ occurs only at positions $k \ge j'$.
+\item[(P3)] Otherwise record $j$ makes no promise.
+\end{itemize}
+
+\emph{Answers.} Task $k$ is answered by $x_{k+1}$ as follows.
+\begin{itemize}
+\item $\mathrm{Refl}(i,l)$. If $f_i(l)$ is a pair $(\psi, q)$ with $\psi$ a $\Pi_{n+1}$ code, $\psi(q) = \forall u\,
+  \exists v\, \psi_1(q,u,v)$, the answer is either $(+, b)$ with $b$ a limit, $\omega \le b < a_{k+1}$, $q \in L_b$ and
+  $L_b \models \psi(q)$; or $(-, u)$ for any set $u$. The task is then a \emph{Refl-task for $(\psi,q)$}.
+\item $\mathrm{Keep}(j,i,l)$. If $\mathrm{pr}(j) = (\pi, e)$ is defined, of length $m$, and $v = f_i(l)$: if $m = 1$
+  and $\pi(e) = \forall v'\, \theta(e,v')$, the answer is $\emptyset$, subject to $\theta(e,v)$; if $m = 2$ and $\pi(e) =
+  \forall v'\, \exists w\, \theta(e,v',w)$, the answer is some $w$ with $\theta(e,v,w)$; if $m \ge 3$, the answer is
+  some set $w$, and (P2) gives the new promise.
+\item Otherwise the task is empty and is answered by $\emptyset$.
+\end{itemize}
+
+\emph{Edges.} The predecessors of a node are its \emph{children}, the extensions by one record satisfying these
+conditions; the root $r = \emptyset$ has the nodes of depth 0 as predecessors.
+\end{statement}
+
+\emph{The example in records ($n = 3$).} Suppose task 4 is $\mathrm{Refl}(i,l)$ with $f_i(l) = (\psi, q)$, $\psi(q) = \forall u\,
+\exists v\, \forall w\, \exists x\, \theta$, and $x_5 = (-, u)$. By (P1), record 5 promises $\forall v\, \exists w\,
+\forall x\, \neg\theta(q,u,v,w,x)$, of length 3. Suppose task 7 is $\mathrm{Keep}(5, i', l')$ and $v = f_{i'}(l')$. The
+answer $x_8 = w$ is some set, and by (P2) record 8 promises $\forall x\, \neg\theta(q,u,v,w,x)$, with constant
+$\langle\langle q,u\rangle, v, w\rangle$, of length 1. A later task $\mathrm{Keep}(8, i'', l'')$ with $x = f_{i''}(l'')$
+is answered by $\emptyset$, subject to $\neg\theta(q,u,v,w,x)$. To find $\mathrm{pr}(8)$ one reads task 7, which points
+to record 5, and then task 4 and $x_5$: one step through (P2).
+
+\emph{The tree is $\Sigma_1$.} ``$s$ is a node'' and ``$d$ is a child of $s$'' assert the existence of a certificate
+$W$ through the last stage according to which the conditions hold. Given $W$ they are $\Delta_0$: the levels and truth
+tables are in $W$; the enumeration of tasks, recognition of codes, $\mathrm{dual}$ and $\mathrm{tail}$ are read from
+$\mathrm{Tr}_\omega$ (Section 2.1); each matrix condition is read from the truth table at the last stage. For the
+promises, unwinding (P0)--(P2) gives: $\mathrm{pr}(j) = (\pi, e)$ if and only if for some $t \le \lfloor (n-1)/2
+\rfloor$ there are records $j = j_0 > j_1 > \cdots > j_t$ of the node and pairs $(\pi_r, e_r)$, $r \le t$, with $(\pi_0,
+e_0) = (\pi, e)$, such that $(\pi_t, e_t)$ is given at $j_t$ by (P0) or (P1), and for each $r < t$ task $j_r - 1$ is
+$\mathrm{Keep}(j_{r+1}, i_r, l_r)$, $\pi_{r+1}$ has length at least 3, and $(\pi_r, e_r) = (\mathrm{tail}(\pi_{r+1}),
+\langle e_{r+1}, f_{i_r}(l_r), x_{j_r}\rangle)$. The bound on $t$ holds because each step through (P2) lowers the
+length by 2, starting from $n$ and staying at least 1. Every $e_r$ is built by pairing from elements of $L_{a_k}$, and
+$L_{a_k}$ is closed under pairing because $a_k$ is a limit, so the $e_r$ range over $\Lv_{a_k}$ and the codes over
+$\Lv_\omega$. For fixed $n$ this is a finite disjunction of $\Delta_0$ formulas in the node and $W$. By (C1), $T_n$ is a
+$\Sigma_1$ presentation with parameter $q_0$. At $n = 2$ the tasks $\mathrm{Keep}(0,i,l)$ play the role of the
+$\mathrm{Wit}(i,l)$ tasks of [E, Section 6.1].
+
+\begin{statement}\head{Lemma 4.14 (branches)} If the root is not in the well-founded part of $T_n$ at $\mu$, there is a
+limit $\lambda \le \mu$ with $q_0 \in L_\lambda$ such that $\lambda$ is $\Pi_{n+1}$-reflecting and $L_\lambda \models
+\varphi_0(q_0)$.
+\end{statement}
+
+\begin{proof}
+Take a sequence of nodes of depths $0, 1, 2, \dots$, each a child of the previous one, with stages $a_0 < a_1 <
+\cdots$, and let $\lambda = \sup_j a_j \le \mu$; it is a limit above $\omega$ and $L_\lambda$ is the union of the
+ranges of the $f_j$.
+
+\emph{Every promise made along the branch is true in $L_\lambda$.} By induction on the length $m$. Let $\mathrm{pr}(j)
+= (\pi, e)$ and let $v \in L_\lambda$, so $v = f_i(l)$ for some $i, l$. The code $\mathrm{Keep}(j,i,l)$ occurs at a
+position $k$ with $i < k$ and $j \le k$, and record $k+1$ answered it. If $m = 1$, $\theta(e,v)$ holds in $L_{a_{k+1}}$
+and so in $L_\lambda$. If $m = 2$, $\theta(e,v,w)$ holds for the answer $w \in L_\lambda$. If $m \ge 3$, record $k+1$
+promised $\mathrm{tail}(\pi)(\langle e,v,w\rangle)$, of length $m - 2$, which is true in $L_\lambda$ by induction; so
+$\exists w\, \pi_1(e,v,w)$ holds in $L_\lambda$. As $v$ was arbitrary, $\pi(e)$ holds in $L_\lambda$. In particular
+$L_\lambda \models \varphi_0(q_0)$.
+
+\emph{Reflection.} Let $\psi(q)$ be a $\Pi_{n+1}$ sentence with $q \in L_\lambda$, in the form of Section 2.1. Then
+$(\psi, q) = f_i(l)$ for some $i, l$, and $\mathrm{Refl}(i,l)$ was answered. An answer $(+, b)$ gives a limit $b <
+\lambda$ with $q \in L_b$ and $L_b \models \psi(q)$. An answer $(-, u)$ made a promise $\forall v\, \neg\psi_1(q,u,v)$,
+true in $L_\lambda$, so $\psi(q)$ is false there. So every $\Pi_{n+1}$ sentence true in $L_\lambda$ holds in an
+earlier limit level containing its constant, and $\lambda$ is $\Pi_{n+1}$-reflecting.
+\end{proof}
+
+Let $\beta$ be a limit above $\omega$ and $s \in L_\beta$ a node. $s$ is \emph{correct at $\beta$} if every promise of
+$s$, including $(\varphi_0, q_0)$, is true in $L_\beta$; $\mathrm{corr}(s)$ is the conjunction of these sentences,
+which is $\Pi_n$ after padding with vacuous quantifiers and merging. A Refl-task for $(\psi,q)$ is \emph{bad at
+$\beta$} if $L_\beta \models \psi(q)$ and $L_b \nvDash \psi(q)$ for every limit $b$ with $\omega \le b < \beta$ and $q
+\in L_b$; other tasks are never bad. $\chi$ is the $\Pi_2$ sentence $G \wedge$ ``every ordinal is smaller than some
+limit ordinal'' $\wedge$ ``every $L_\eta$ is countable'', the last conjunct saying, for every ordinal $\eta$ and through a
+certificate for $L_\eta$, that there is a surjection from $\omega$ onto $L_\eta$ when $L_\eta$ is nonempty. Since $n \ge
+2$, $\chi$ is $\Pi_n$. If $L_\beta \models \chi$, then $\beta$ is a limit of limit ordinals above $\omega$; every
+admissible level above $\omega$ satisfies the first two conjuncts.
+
+\begin{statement}\head{Lemma 4.15 (extension)} Suppose $L_\beta \models \chi$, the node $s \in L_\beta$ is correct at
+$\beta$, and its next task is not bad at $\beta$. Then $s$ has a child $d \in L_\beta$ that is correct at $\beta$ and
+is a predecessor of $s$ at $\beta$.
+\end{statement}
+
+\begin{proof}
+Let $k$ be the depth of $s$ and $a_k < \beta$ its last stage. Choose the answer $x$ to task $k$ as follows. An empty
+task is answered by $\emptyset$. For a Refl-task for $(\psi, q)$: if $L_\beta \nvDash \psi(q)$, some $u \in L_\beta$ has
+$L_\beta \models \forall v\, \neg\psi_1(q,u,v)$, and $x = (-, u)$ makes a promise true in $L_\beta$; if $L_\beta \models
+\psi(q)$, the task is not bad, so there is a limit $b$ with $\omega \le b < \beta$, $q \in L_b$ and $L_b \models
+\psi(q)$, and $x = (+, b)$. For $\mathrm{Keep}(j,i,l)$ with a promise $(\pi, e)$ of length $m$, which is true in
+$L_\beta$ because $s$ is correct, and $v = f_i(l) \in L_\beta$: if $m = 1$, $\theta(e,v)$ holds in $L_\beta$ and $x =
+\emptyset$; if $m = 2$, some $w \in L_\beta$ has $\theta(e,v,w)$ and $x = w$; if $m \ge 3$, some $w \in L_\beta$ has
+$L_\beta \models \pi_1(e,v,w)$, $x = w$, and the new promise is true in $L_\beta$.
+
+By the last conjunct of $\chi$ there is a surjection $f \in L_\beta$ from $\omega$ onto $L_{a_k}$. The answer, $f$ and
+$b$ if present are finitely many elements of $L_\beta$; take $\xi$ with $a_k < \xi < \beta$ and all of them in $L_\xi$,
+and, by the second conjunct, a limit $a_{k+1}$ with $\xi < a_{k+1} < \beta$. Let $d$ extend $s$ by the record
+$(a_{k+1}, f, x)$; it is in $L_\beta$. Each matrix condition holds in $L_\beta$, hence in $L_{a_{k+1}}$ by $\Delta_0$
+absoluteness. By $G$ a certificate through $a_{k+1}$ is in $L_\beta$, and it is the true one by (C1), so the $\Sigma_1$
+edge formula holds in $L_\beta$. $d$ is correct: its old promises are those of $s$, and its new promise was chosen
+true.
+\end{proof}
+
+\begin{statement}\head{Lemma 4.16 (bad tasks)} (a) A Refl-task for $(\psi,q)$ that is bad at $\beta$ is not bad at any
+limit $\beta'$ with $\omega < \beta' < \beta$ and $q \in L_{\beta'}$. (b) If a task is not bad at $\beta$, there is a
+$\Pi_n$ sentence $\varsigma$ with constants in $L_\beta$, true in $L_\beta$, such that the task is not bad at any limit
+$\beta' \in (\omega, \beta)$ that contains the constants of $\varsigma$ and satisfies $\varsigma$.
+\end{statement}
+
+\begin{proof}
+(a) By the definition of bad at $\beta$, $\psi(q)$ is false in $L_{\beta'}$, so the task is not bad there. (b) For a
+task that is not a Refl-task, take $\varsigma$ trivial. For a Refl-task for $(\psi, q)$ with $\psi(q)$ false in
+$L_\beta$, take $u$ with $L_\beta \models \forall v\, \neg\psi_1(q,u,v)$ and let $\varsigma$ be this $\Pi_n$ sentence;
+at $\beta'$, $\psi(q)$ is false. For a Refl-task with $\psi(q)$ true in $L_\beta$, take a limit $b < \beta$ with $q \in
+L_b$ and $L_b \models \psi(q)$, and let $\varsigma$ be a trivial sentence with the constant $b$; at $\beta'$, $b <
+\beta'$ shows the task is not bad.
+\end{proof}
+
+\begin{statement}\head{Theorem 4.17 (descent through the tree)} Let $q_0 \in L_\beta$, $L_\beta \models \chi$ and
+$L_\beta \models \varphi_0(q_0)$. Then $\beta \notin C_n(T_n, r)$. If moreover no $\Pi_{n+1}$-reflecting $\lambda \le
+\beta$ has $q_0 \in L_\lambda$ and $L_\lambda \models \varphi_0(q_0)$, then $\beta$ is not $\Pi_n$-reflecting of degree
+$\delta_\beta$.
+\end{statement}
+
+\begin{proof}
+Let $Z$ consist of the pairs $(\beta', r)$ with $q_0 \in L_{\beta'}$, $L_{\beta'} \models \chi \wedge
+\varphi_0(q_0)$, and the pairs $(\beta', s)$ with $q_0 \in L_{\beta'}$, $L_{\beta'} \models \chi$, and $s \in
+L_{\beta'}$ a node correct at $\beta'$ whose next task is not bad at $\beta'$. Every ordinal occurring in $Z$ is a
+limit of limits above $\omega$. We verify the hypothesis of Lemma 4.12 for $(\beta, s) \in Z$.
+
+\emph{The predecessor.} If $s$ is a node, let $d$ be the child given by Lemma 4.15. If $s = r$, take $\xi < \beta$ with
+$q_0 \in L_\xi$ and a limit $a_0$ with $\xi < a_0 < \beta$; $d = (a_0)$ is a node of depth 0 in $L_\beta$, its only
+promise $\varphi_0(q_0)$ is true in $L_\beta$, so it is correct, and its edge to $r$ holds by the certificate through
+$a_0$ that $G$ supplies.
+
+\emph{The sentence.} Let $\varsigma$ be given by Lemma 4.16(b) for the next task of $d$ if that task is not bad at
+$\beta$, and trivial otherwise, and let $\tau = \chi \wedge \mathrm{corr}(d) \wedge \varsigma$, with the constant $d$
+adjoined. It is true in $L_\beta$, and it is $\Pi_n$ because $\chi$ is $\Pi_2$, $n \ge 2$, and $\mathrm{corr}(d)$ and
+$\varsigma$ are $\Pi_n$.
+
+\emph{Passing down.} Let $\beta'$ be a limit with $\omega < \beta' < \beta$, $d$ and the constants of $\tau$ in
+$L_{\beta'}$, and $L_{\beta'} \models \tau$. Then $L_{\beta'} \models \chi$, and $q_0 \in L_{a_0} \subseteq
+L_{\beta'}$ since $d \in L_{\beta'}$. $d$ is a node at $\beta'$: its last stage is below $\beta'$, $G$ gives a
+certificate through it in $L_{\beta'}$, the certificate is the true one by (C1), and the bounded conditions of the
+records are those already true. The certificate comes from the conjunct $G$ of $\tau$; $\beta'$ need not be
+admissible. $d$ is correct at $\beta'$ because $\mathrm{corr}(d)$ holds there. If the next task of $d$ was not bad at
+$\beta$, it is not bad at $\beta'$ by Lemma 4.16(b). If it was bad at $\beta$, it is a Refl-task for a pair $(\psi, q)
+= f_i(l)$ with $f_i$ in $d$; since $d \in L_{\beta'}$, $q \in L_{\beta'}$, and Lemma 4.16(a) applies. So $(\beta', d)
+\in Z$.
+
+Lemma 4.12 gives $\beta \notin C_n(T_n, s)$ for every $(\beta, s) \in Z$, in particular $\beta \notin C_n(T_n, r)$.
+For the second statement: if the root were not in the well-founded part at $\beta$, Lemma 4.14 would give a $\lambda$
+excluded by the hypothesis. So the root, an element of $L_\beta$, is in the well-founded part at $\beta$, the parameter
+$q_0$ is in $L_\beta$, and $\beta \notin C_n(T_n, r)$; by Definition 2.2, $\beta$ is not $\Pi_n$-reflecting of degree
+$\delta_\beta$.
+\end{proof}
+
+For the set relation $\{(0,1)\}$, the class $C_n$ of node 0 is the class of limits above $\omega$ containing the
+parameter, so every member of $C_n(P_{\{(0,1)\}}, 1)$ is $\Pi_n$-reflecting; in particular every $\alpha$ that is
+$\Pi_n$-reflecting of degree $\delta_\alpha$ is $\Pi_n$-reflecting, hence admissible.
+
+\begin{statement}\head{Theorem 4.18 (least element, $n \ge 2$)} No $\alpha$ below $K_n$ is $\Pi_n$-reflecting of
+degree $\delta_\alpha$. With Theorem 4.3: the least $\alpha$ that is $\Pi_n$-reflecting of degree $\delta_\alpha$ is
+$K_n$, the least $\Pi_{n+1}$-reflecting ordinal.
+\end{statement}
+
+\begin{proof}
+Let $\gamma < K_n$ be a limit above $\omega$. If $\gamma$ is not $\Pi_n$-reflecting, the set relation $\{(0,1)\}$
+excludes it. Otherwise $\gamma$ is $\Pi_2$-reflecting, hence admissible. Take for $\varphi_0$ the sentence $\forall x\,
+\exists y\, (y = x)$, padded to $\Pi_n$, and $q_0 = \emptyset$. $G$ and ``every ordinal is below a limit'' hold at the
+admissible $\gamma$, and every $L_\eta$ with $\eta < \gamma$ is countable in $L_\gamma$ by [E, Lemma 7.2], since no
+ordinal below $\gamma$ is $\Pi_{n+1}$-reflecting. So $L_\gamma \models \chi \wedge \varphi_0$, no $\lambda \le \gamma$ is
+$\Pi_{n+1}$-reflecting, and Theorem 4.17 applies.
+\end{proof}
+
+\begin{statement}\head{Lemma 4.19} Every $\Pi_{n+2}$-reflecting ordinal belongs to $A_n$ and is $\Pi_n$-reflecting on
+$A_n$. Such ordinals exist; in particular $\gamma_1(n)$ exists.
+\end{statement}
+
+\begin{proof}
+Let $\Psi_{n+1}$ be $G \wedge \forall\psi\, \forall q\, [\neg\Sat_{n+1}(\psi,q) \vee \exists b\, \exists W\,
+(\Cert(W,b) \wedge b$ is a limit above $\omega \wedge q \in \Lv_b \wedge (\psi, \langle q\rangle) \in \mathrm{Tr}_b)]$.
+The last disjunct is $\Sigma_1$ and joins the first block of $\neg\Sat_{n+1}$, so $\Psi_{n+1}$ is $\Pi_{n+2}$; by (C1)
+and Section 2.1, every level satisfying it is $\Pi_{n+1}$-reflecting. Let $\lambda$ be $\Pi_{n+2}$-reflecting; it is
+$\Pi_{n+1}$-reflecting, so $\lambda \in A_n$, and admissible above $\omega$. For a $\Pi_{n+1}$ sentence $\psi(q)$ true
+in $L_\lambda$, reflecting $\psi(q) \wedge G$ gives a target that is a limit above $\omega$, and a certificate through it
+is in $L_\lambda$; so $L_\lambda \models \Psi_{n+1}$. Given a
+$\Pi_n$ sentence $\varphi(q)$ true in $L_\lambda$, reflecting $\varphi(q) \wedge \Psi_{n+1}$ gives a target in $A_n$.
+For existence, a countable $\alpha$ with $L_\alpha$ an elementary substructure of $L_{\omega_1}$ is $\Pi_m$-reflecting
+for every $m$ [E, proof of Lemma 7.1].
+\end{proof}
+
+\begin{statement}\head{Lemma 4.20}
+\begin{itemize}
+\item[(a)] Let $\gamma > \omega$ be admissible, with every $L_\eta$, $\eta < \gamma$, countable in $L_\gamma$. If
+  $\gamma$ is $\Pi_n$-reflecting of degree $\delta_\gamma$ and $\gamma \notin A_n$, then $\gamma$ is $\Pi_n$-reflecting
+  on $A_n$.
+\item[(b)] Every ordinal $\gamma'$ that is $\Pi_n$-reflecting on $A_n$ is $\Pi_n$-reflecting of degree
+  $\delta_{\gamma'}$.
+\item[(c)] $\gamma_1(n)$ is not $\Pi_{n+1}$-reflecting.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+(a) Otherwise some $\Pi_n$ sentence $\varphi_0(q_0)$ is true in $L_\gamma$ and false in $L_\lambda$ for every $\lambda
+\in A_n \cap \gamma$ with $q_0 \in L_\lambda$. $L_\gamma \models \chi \wedge \varphi_0(q_0)$: $G$ and ``every ordinal is
+below a limit'' hold at the admissible $\gamma$, and countability is assumed. No $\Pi_{n+1}$-reflecting $\lambda \le
+\gamma$ with $q_0 \in L_\lambda$ satisfies $\varphi_0(q_0)$: $\lambda < \gamma$ is excluded by the choice of
+$\varphi_0$, and $\lambda = \gamma$ because $\gamma \notin A_n$. Theorem 4.17 contradicts the hypothesis.
+
+(b) Let $\gamma'$ be $\Pi_n$-reflecting on $A_n$; it is a limit above $\omega$. Let $P$ be a $\Sigma_1$ presentation
+with $p \in L_{\gamma'}$, $a$ in the well-founded part at $\gamma'$, and $c$ a predecessor of $a$. For $\lambda \in A_n
+\cap \gamma'$ with $p, c \in L_\lambda$, a descending sequence from $c$ at $\lambda$ would be one at $\gamma'$ by
+(C5), so $c$ is in the well-founded part at $\lambda$, and $\lambda \in C_n(P, c)$ by Theorem 4.3. Given a $\Pi_n$
+sentence true in $L_{\gamma'}$, adjoin the constants $p$ and $c$ and reflect onto $A_n$: the target lies in $C_n(P,c)$.
+So $\gamma' \in C_n(P,a)$.
+
+(c) Let $\mathrm{Ref}_{n+1}(W,\mu)$ be the bounded condition ``$\mu$ is a limit above $\omega$, and for every
+$\Pi_{n+1}$ code $\psi$ and $q' \in \Lv_\mu$ with $(\psi, \langle q'\rangle) \in \mathrm{Tr}_\mu$ there is a limit $b$
+with $\omega < b < \mu$, $q' \in \Lv_b$ and $(\psi, \langle q' \rangle) \in \mathrm{Tr}_b$''. For a certificate through a
+limit $\mu > \omega$ it holds exactly when $\mu \in A_n$ (for the converse, reflect $\psi(q') \wedge$ ``$\omega$ exists
+and every ordinal has a successor''). Let $S_n = G \wedge \forall\varphi\, \forall q\, [\neg\Sat_n(\varphi,q) \vee
+\exists\mu\, \exists W\, (\Cert(W,\mu) \wedge q \in \Lv_\mu \wedge \mathrm{Ref}_{n+1}(W,\mu) \wedge (\varphi,\langle
+q\rangle) \in \mathrm{Tr}_\mu)]$. As in Lemma 4.2 the bracket is $\Sigma_n$, so $S_n$ is $\Pi_{n+1}$. It holds in
+$L_{\gamma_1(n)}$, since $\gamma_1(n)$ is $\Pi_n$-reflecting on $A_n$ and, being $\Pi_n$-reflecting with $n \ge 2$,
+admissible, so that certificates through every smaller ordinal are present. Every level satisfying $S_n$ is
+$\Pi_n$-reflecting on $A_n$, by (C1) and Section 2.1. If $\gamma_1(n)$ were $\Pi_{n+1}$-reflecting, a smaller ordinal
+would satisfy $S_n$, contradicting minimality.
+\end{proof}
+
+\begin{statement}\head{Theorem 4.21 (characterisation, $n \ge 2$)} Let $\gamma > \omega$ be admissible with every
+$L_\eta$, $\eta < \gamma$, countable in $L_\gamma$; this includes every admissible $\gamma$ with $\omega < \gamma \le
+\gamma_1(n)$. Then $\gamma$ is $\Pi_n$-reflecting of degree $\delta_\gamma$ if and only if $\gamma \in A_n$ or
+$\gamma$ is $\Pi_n$-reflecting on $A_n$. The least $\alpha$ that is $\Pi_n$-reflecting of degree $\delta_\alpha$ and
+not in $A_n$ is $\gamma_1(n)$.
+\end{statement}
+
+\begin{proof}
+The equivalence is Theorem 4.3 and Lemma 4.20(a), (b). For the range: if some $L_\eta$, $\eta < \gamma$, is not
+countable in the admissible $L_\gamma$, then [E, Lemma 7.2] gives an ordinal below $\gamma$ that is $\Pi_m$-reflecting
+for every $m$, which is $\Pi_n$-reflecting on $A_n$ by Lemma 4.19; so $\gamma_1(n) < \gamma$. By Lemma 4.20(b), (c),
+$\gamma_1(n)$ is $\Pi_n$-reflecting of degree $\delta_{\gamma_1(n)}$ and not in $A_n$. If $\gamma < \gamma_1(n)$ were
+such an ordinal, it would be $\Pi_n$-reflecting, hence admissible, the countability hypothesis would hold, and Lemma
+4.20(a) would make it $\Pi_n$-reflecting on $A_n$, contradicting the minimality of $\gamma_1(n)$.
+\end{proof}
+
+\begin{statement}\head{Corollary 4.22} The least element of $A_n$ that is a limit of elements of $A_n$ lies strictly
+between $K_n$ and $\gamma_1(n)$, and $\gamma_1(n)$ is strictly below the least element of $A_n$ that is
+$\Pi_n$-reflecting on $A_n$. Every $\alpha$ below $\gamma_1(n)$ that is $\Pi_n$-reflecting of degree $\delta_\alpha$ is
+$\Pi_{n+1}$-reflecting.
+\end{statement}
+
+\begin{proof}
+For an ordinal $\eta < \gamma_1(n)$, reflecting a trivial sentence with the constant $\eta$ onto $A_n$ gives an element
+of $A_n$ above $\eta$; so the $\Pi_2$ sentence $U = G \wedge \forall \eta\, \exists \mu\, \exists W\, [\eta$ is not an
+ordinal $\vee (\Cert(W,\mu) \wedge \eta < \mu \wedge \mathrm{Ref}_{n+1}(W,\mu))]$ is true in $L_{\gamma_1(n)}$. As $n
+\ge 2$ it is $\Pi_n$; reflecting it onto $A_n$ gives $\beta \in A_n \cap \gamma_1(n)$ in which, by $G$ and (C1), $A_n$
+is unbounded. So the least element of $A_n$ that is a limit of $A_n$ is at most $\beta < \gamma_1(n)$, and it is above
+$K_n$ since nothing in $A_n$ is below $K_n$. The least element of $A_n$ that is $\Pi_n$-reflecting on $A_n$ exists by
+Lemma 4.19, is at least $\gamma_1(n)$ by minimality, and differs from it by Lemma 4.20(c). The last statement is
+Theorem 4.21.
+\end{proof}
+
+\begin{statement}\head{Proposition 4.23 (linear orderings)} Let $n \ge 1$ and let $\alpha > \omega$ be admissible.
+Then $\alpha$ is $\Pi_n$-reflecting of degree $\delta_\alpha$ if and only if $\alpha \in C_n(Q,x)$ for every
+$\Sigma_1$ presentation $Q$ that defines a linear ordering of $L_\alpha$ at $\alpha$ and every node $x$ in the
+well-founded part of that ordering.
+\end{statement}
+
+\begin{proof}
+One direction is a restriction. For the other we follow [E, Proposition D], whose argument uses only that
+$\Pi_n$-reflection onto a class respects inclusion of classes. Let $a$ be in the well-founded part of $P$ at $\alpha$,
+and let $Q$, with parameter $(p, a, \omega)$, order the histories of the proof of Theorem 3.1 by the Kleene--Brouwer
+ordering and put all other sets after them, ordered by $<_L$. $Q$ is $\Sigma_1$ through order certificates, linear at
+the admissible $\alpha$, and the empty history is in its well-founded part. The point is the \emph{extension clause}:
+if $t$ extends a history $s$ by one edge $(c, w)$, then ``$t$ properly extends $s$, and both are histories'' is
+$\Delta_0$, so $t$ precedes $s$ at every level containing $t$, without any order certificate. Hence, by induction on
+$\mu$, $\mu \in C_n(Q,s)$ implies $\mu \in C_n(P, \mathrm{end}(s))$: for a predecessor $c$ of $\mathrm{end}(s)$ at $\mu$
+with witness $w \in L_\mu$, $\mu$ is $\Pi_n$-reflecting on $C_n(Q,t)$; a target $\beta$ contains $t$, so $t$ is a
+history in $L_\beta$ with end $c$, and $\beta \in C_n(P,c)$ by induction. Take $s$ empty and $\mu = \alpha$.
+\end{proof}
+
+\textbf{The case $n = 1$.} Theorem 4.17 needs $n \ge 2$: the sentence $\tau$ passed down contains $\chi$, which says
+that limit levels exist above every ordinal and is $\Pi_2$. A $\Pi_1$ sentence cannot say this, so the target of a
+reflection could be the level $a_0 + \omega$, where the depth-0 node with stage $a_0$ has no child (a child needs a limit
+stage strictly between $a_0$ and $a_0 + \omega$), and the descent stops there. Theorems 4.18, 4.21 and Lemma 4.20 also
+use $n \ge 2$ to infer admissibility from $\Pi_n$-reflection, and Corollary 4.22 uses it to reflect the $\Pi_2$
+sentence $U$. At $n = 1$ the order of these ordinals also changes: $\gamma_1(1) = \omega_\omega^{CK}$ lies below the
+least recursively inaccessible ordinal, which is both the least element of $A_1$ that is a limit of $A_1$ and the
+least element of $A_1$ that is $\Pi_1$-reflecting on $A_1$. The last assertion of Corollary 4.22 still holds at $n = 1$,
+by Corollary 4.11.
+
+\section{Recursive inaccessibility}
+
+This section is a companion to Section 4.3, for the classes $\CA(P,a)$ of Definition 2.1, whose members are
+admissible limits of the classes of the predecessors. Its distinct move is in the descent: a class only asks to be a
+limit of the predecessors' classes, so no sentence is passed down. The descent carries one set $x$ to a smaller target
+(Lemma 5.1), and the target is admissible, being a member of a class $\CA$, so certificates are present there without
+carrying $G$. In the search tree a lower bound $\ell$ on the first stage replaces the sentence $\varphi_0$.
+
+\subsection{Descent and membership}
+
+\begin{statement}\head{Lemma 5.1 (descent for limit classes)} Let $P$ be a presentation and $Y$ a class of pairs
+$(\beta, c)$ with $c \in L_\beta$. Suppose that for every $(\beta, c) \in Y$ there are a predecessor $d$ of $c$ at
+$\beta$ and a set $x \in L_\beta$ such that $(\beta', d) \in Y$ for every $\beta' < \beta$ with $\beta' \in \CA(P,d)$
+and $x \in L_{\beta'}$. Then $\beta \notin \CA(P,c)$ for every $(\beta, c) \in Y$.
+\end{statement}
+
+\begin{proof}
+Otherwise let $\beta$ be least with $(\beta, c) \in Y$ and $\beta \in \CA(P,c)$, and take $d$ and $x$. Then $\beta \in
+\Lim \CA(P,d)$. With $x \in L_\eta$, $\eta < \beta$, there is $\beta' \in (\eta, \beta)$ in $\CA(P,d)$; then $x \in
+L_{\beta'}$, so $(\beta', d) \in Y$, contradicting the minimality of $\beta$.
+\end{proof}
+
+The set $x$ does the work of the sentence $\tau$ in Lemma 4.12; the Lean form of this lemma is in Appendix B.
+
+\begin{statement}\head{Lemma 5.2} For each $\Sigma_1$ formula $\rho$ there is a $\Pi_2$ formula $\Theta(p,a)$ such that
+for every admissible $\mu > \omega$ with $p, a \in L_\mu$, $L_\mu \models \Theta(p,a)$ if and only if $\mu \in
+\CA(P,a)$.
+\end{statement}
+
+\begin{proof}
+Apply Lemma 2.3 with the clause $\Phi(W, \nu, x, H)$, where $W$ is a certificate through $\nu$:
+$\nu \in \Ad$ according to $W$, $p, x \in \Lv_\nu$, and for each $c \in \Lv_\nu$ with $\rho(c,x,p)$ true according to
+$\mathrm{Tr}_\nu$ the set of $\eta < \nu$ with $c \in H(\eta)$ is unbounded in $\nu$. Let $\Mem(\mu, c)$ be ``there is
+a class certificate through $\mu$ with $c \in \Tab(\mu)$'' ($\Sigma_1$), and let $\Theta(p,a)$ be the conjunction of
+$G$ and $\forall c\, \forall y\, [\neg\rho(c,a,p) \vee \exists \mu\, (y \in L_\mu \wedge \Mem(\mu,c))]$. Since
+$\neg\rho$ is $\Pi_1$ and the existential part $\Sigma_1$, $\Theta$ is $\Pi_2$ (prefix $\forall c, y, i\, \exists \mu,
+h$). If $L_\beta \models \Theta$ and $\beta$ is admissible, then for every predecessor $c$ of $a$ the $\mu$ given by
+class certificates are true members of $\CA(P,c)$ (Lemma 2.3(iii)), unbounded in $\beta$ (take $y$ to be each
+ordinal). At admissible $\mu \in \CA(P,a)$ the class certificates through all smaller ordinals are elements of
+$L_\mu$, by (C2) and Lemma 2.3(ii).
+\end{proof}
+
+\subsection{The search tree}
+
+Fix an ordinal $\ell$, a lower bound for the first stage.
+
+\begin{statement}\head{Definition 5.3 (the tree $S_\ell$)} $S_\ell$ has the parameter $\ell$. A node of depth $k$ is a
+sequence of records $0, \dots, k$. Record 0 is an ordinal $a_0 > \max(\ell, \omega)$. Record $j \ge 1$ is $(a_j,
+f_{j-1}, x_j)$: an ordinal $a_j > a_{j-1}$, a surjection $f_{j-1} \in L_{a_j}$ from $\omega$ onto $L_{a_{j-1}}$, and
+the answer $x_j \in L_{a_j}$ to task $j-1$. Tasks are enumerated primitive recursively, every code $\mathrm{Refl}(i,l)$
+occurring at some position $k > i$, task $k$ mentioning only $f_i$ with $i < k$; they are of one kind,
+$\mathrm{Refl}(i,l)$: if $f_i(l)$ is a pair $(\psi, q)$ with $\psi = \forall u\, \exists v\, \theta$, $\theta$
+bounded, the answer is $(+, b)$ with $b \in \Ad$, $b$ below the new stage, $q \in L_b$, $L_b \models \psi(q)$; or $(-,
+u)$, a \emph{promise} that $\forall v\, \neg\theta(q,u,v)$. Other tasks are empty. A further node condition: every
+promise $(-, u)$ of the node satisfies $\neg\theta(q,u,v)$ for all $v \in L_{a_k}$. The predecessors of a node are its
+children, and the root $r = \emptyset$ has the nodes of depth 0 as predecessors.
+\end{statement}
+
+Since $x_j \in L_{a_j}$, a negative answer $(-,u)$ puts $u$ in the branch, and at every later stage the node test reads
+$\neg\theta(q, u, v)$ from the truth table with all arguments present. Unlike $T_n$, this tree needs no Keep-tasks: a
+promise is $\Pi_1$, and the node condition checks it on the whole of the last stage. The bound $\xi^*$ in Lemmas
+5.4--5.6 and Theorem 5.7 is used in one place: in Lemma 5.6, where $L_{a_k}$ must be countable in the admissible
+$L_\beta$, which [E, Lemma 7.2] gives for $\beta \le \xi^*$.
+
+\begin{statement}\head{Lemma 5.4} $S_\ell$ is a $\Sigma_1$ presentation at every level $\mu \le \xi^*$.
+\end{statement}
+
+\begin{proof}
+Given a certificate $W$ through $a_k$, all conditions are bounded, membership of $b$ in $\Ad$ being read from
+$W{\restriction}(b+1)$ and the enumeration of tasks from $\mathrm{Tr}_\omega$. So ``$s$ is a node'' and ``$d$ is a
+child of $s$'' are $\Sigma_1$, and by (C1) they are correct.
+\end{proof}
+
+\begin{statement}\head{Lemma 5.5 (branches)} If the root is not in the well-founded part of $S_\ell$ at $\mu \le
+\xi^*$, then some recursively Mahlo ordinal lies in $(\ell, \mu]$.
+\end{statement}
+
+\begin{proof}
+Take a branch with stages $a_0 < a_1 < \cdots$ and $\lambda = \sup_j a_j$. Then $\ell < \lambda \le \mu$, $\lambda$ is
+a limit above $\omega$, and $L_\lambda$ is the union of the ranges of the $f_j$. For $\psi(q) = \forall u\, \exists v\,
+\theta$ with $q \in L_\lambda$, the pair $(\psi, q)$ is some $f_i(l)$, and its task was answered: $(+, b)$ gives
+$b \in \Ad$, $b < \lambda$, with $L_b \models \psi(q)$, and $(-, u)$ gives $\neg\theta(q,u,v)$ for every $v$ in every
+$L_{a_k}$, so $L_\lambda \nvDash \psi(q)$. By block contraction $\lambda$ is $\Pi_2$-reflecting on $\Ad$, that is,
+recursively Mahlo.
+\end{proof}
+
+For $\beta \in \Ad$ with $\ell < \beta \le \xi^*$ and a node $s \in L_\beta$: $s$ is \emph{correct at $\beta$} if
+each of its promises holds in $L_\beta$ (these are $\Pi_1$ statements). A Refl-task for $(\psi, q)$ is \emph{bad at
+$\beta$} if $L_\beta \models \psi(q)$ and $L_b \nvDash \psi(q)$ for every $b \in \Ad \cap \beta$ with $q \in L_b$.
+
+\begin{statement}\head{Lemma 5.6 (descent through $S_\ell$)} Let $Y$ consist exactly of the pairs $(\beta, r)$ with
+$\beta \in \Ad$ and $\ell < \beta \le \xi^*$, and the pairs $(\beta, s)$ at the same levels where $s \in L_\beta$ is
+a node correct at $\beta$ whose next task is not bad at $\beta$. Then $\beta \notin \CA(S_\ell, r)$ for each $(\beta,
+r) \in Y$.
+\end{statement}
+
+\begin{proof}
+We verify the hypothesis of Lemma 5.1.
+
+\emph{Extension.} Let $(\beta, s) \in Y$ with $s$ of depth $k$. Answer the next task: $\emptyset$ if it is empty; $(-,
+u)$ with $u \in L_\beta$ and $L_\beta \models \forall v\, \neg\theta(q,u,v)$ if $\psi(q)$ is false in $L_\beta$; $(+,
+b)$ with $b \in \Ad \cap \beta$, $q \in L_b$ and $L_b \models \psi(q)$ if $\psi(q)$ is true, which exists because the
+task is not bad. $L_{a_k}$ is countable in $L_\beta$ ($\beta$ is admissible and $\le \xi^*$), which gives the
+surjection $f_k \in L_\beta$, and there is a stage $a_{k+1} < \beta$ with the answer and $f_k$ in $L_{a_{k+1}}$. The
+promises of $s$ and the new one hold in $L_\beta$, hence in $L_{a_{k+1}}$, since $\Pi_1$ sentences pass to transitive
+subsets. The certificate through $a_{k+1}$ is in $L_\beta$, so the child $d$ is a predecessor of $s$ at $\beta$, and
+$d$ is correct at $\beta$. For the root choose $\max(\ell, \omega) < a_0 < \beta$ and put $d = (a_0)$; by (C2) the
+certificate through $a_0$ is in $L_\beta$, so $d$ is a predecessor of the root at $\beta$.
+
+\emph{The set $x$.} Let $x$ be $u$ if the next task of $d$ is a Refl-task false at $\beta$, $b$ if it is true and
+not bad, and $\emptyset$ otherwise.
+
+\emph{Passing down.} Let $\beta' < \beta$ with $\beta' \in \CA(S_\ell, d)$ and $x \in L_{\beta'}$. Then $\beta'$ is
+admissible, $\beta' > a_0 > \ell$, and $d$ is a node at $\beta'$, its certificate being in $L_{\beta'}$. It is correct
+at $\beta'$, since its promises are $\Pi_1$. Its next task is not bad at $\beta'$: if it was bad at $\beta$, $\psi(q)$
+is false in every $L_b$ with $b \in \Ad \cap \beta$ and $q \in L_b$, and $\beta'$ is such a $b$; if it was false at
+$\beta$ with witness $u \in L_{\beta'}$, then $L_{\beta'} \models \forall v\, \neg\theta(q,u,v)$; if it was true with
+$b \in L_{\beta'}$, then $b < \beta'$ shows it is not bad. So $(\beta', d) \in Y$. Lemma 5.1 gives the conclusion.
+\end{proof}
+
+\subsection{The main theorem}
+
+\begin{statement}\head{Theorem 5.7}
+\begin{itemize}
+\item[(a)] Every recursively Mahlo ordinal $\mu \le \xi^*$ is recursively inaccessible of degree $\delta_\mu$.
+\item[(b)] If $\gamma \le \xi^*$ is admissible and recursively inaccessible of degree $\delta_\gamma$, and $\ell <
+  \gamma$, then some recursively Mahlo ordinal lies in $(\ell, \gamma]$.
+\item[(c)] An admissible $\gamma \le \xi^*$ is recursively inaccessible of degree $\delta_\gamma$ if and only if
+  $\gamma$ is recursively Mahlo or a limit of recursively Mahlo ordinals.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+(a) Let $\mu \le \xi^*$ be recursively Mahlo; it is $\Pi_2$-reflecting, hence admissible (Richter--Aczel 1.8). By
+induction on the rank of $a$ at $\mu$: $\mu$ is admissible and $p, a \in L_\mu$. Let $c$ be a predecessor of $a$. By
+induction $\mu \in \CA(P,c)$, so $L_\mu \models \Theta(p,c)$ by Lemma 5.2. Given $y \in L_\mu$, reflect the $\Pi_2$
+sentence $\Theta(p,c) \wedge$ ``$y$ exists'' onto $\Ad$: some admissible $\beta < \mu$ with $p, c, y \in L_\beta$ has
+$L_\beta \models \Theta(p,c)$, so $\beta \in \CA(P,c)$ by Lemma 5.2. Hence $\mu \in \Lim \CA(P,c)$ for every
+predecessor $c$.
+
+(b) Suppose no recursively Mahlo ordinal lies in $(\ell, \gamma]$. The pair $(\gamma, r)$ is in the class $Y$ of Lemma
+5.6, so $\gamma \notin \CA(S_\ell, r)$. By Lemma 5.5 the root is in the well-founded part at $\gamma$, and by Lemma 5.4
+$S_\ell$ is a $\Sigma_1$ presentation, with parameter $\ell \in L_\gamma$. So $\gamma$ is not recursively inaccessible
+of degree $\delta_\gamma$.
+
+(c) If $\gamma$ is recursively inaccessible of degree $\delta_\gamma$, then by (b) every $\ell < \gamma$ has a
+recursively Mahlo ordinal in $(\ell, \gamma]$, so $\gamma$ is recursively Mahlo or a limit of recursively Mahlo
+ordinals. Conversely, if $\gamma$ is recursively Mahlo use (a). If $\gamma$ is admissible and a limit of recursively
+Mahlo ordinals, let $a$ be in the well-founded part at $\gamma$ and $c$ a predecessor of $a$; for recursively Mahlo
+$\lambda < \gamma$ above any bound with $p, c \in L_\lambda$, $c$ is in the well-founded part at $\lambda$ by (C5), and
+$\lambda \in \CA(P,c)$ by (a). So $\gamma \in \CA(P,a)$.
+\end{proof}
+
+\begin{statement}\head{Theorem 5.8} The least $\alpha$ that is recursively inaccessible of degree $\delta_\alpha$ is
+the least recursively Mahlo ordinal $M$.
+\end{statement}
+
+\begin{proof}
+Every member of $\CA(P,a)$ is admissible. Apply Theorem 4.3 at $K_2$ to the set relation $\in$ on the ordinal 4, in
+which the node 3 has rank 3. By [E, Example 3.2(1)], $K_2 \in \Mh(3)$. Reflection of a trivial sentence onto $\Mh(2)$
+gives a recursively Mahlo ordinal below $K_2$. Thus $M$ exists and $M < K_2 \le \xi^*$, so by Theorem 5.7(a) $M$ is
+recursively inaccessible of degree $\delta_M$, and by Theorem 5.7(c) no admissible ordinal below $M$ is.
+\end{proof}
+
+\begin{statement}\head{Corollary 5.9} For admissible $\gamma \le \xi^*$: $\gamma$ is recursively inaccessible of degree
+$\delta_\gamma$ if and only if $\gamma$ is recursively Mahlo or a limit of recursively Mahlo ordinals. The least such
+ordinal that is not recursively Mahlo is the least admissible limit of recursively Mahlo ordinals.
+\end{statement}
+
+\begin{proof}
+The equivalence is Theorem 5.7(c). An element that is not recursively Mahlo is admissible and a limit of $\RMc$. It
+remains to see that the least admissible limit of $\RMc$ exists, is below $\xi^*$ and is not recursively Mahlo. By Theorem 4.3 and [E, Example
+3.2(1)], applied to the set relation $\in$ on the ordinal 5, whose node 4 has rank 4, $K_2 \in \Mh(4)$; reflecting a
+trivial sentence from $K_2$ onto $\Mh(3)$ shows that $N$ exists and $N < K_2 \le \xi^*$. At $N$, reflecting a trivial
+sentence with any ordinal below $N$ as a constant onto $\RMc$ shows that $\RMc$ is cofinal in $N$; with (C2) this
+makes the $\Pi_2$ sentence $G \wedge$ ``$\RMc$ is unbounded'' true in $L_N$. It reflects onto $\RMc$, giving a
+recursively Mahlo limit of $\RMc$ below $N$; at that ordinal the same sentence reflects onto $\Ad$, giving an
+admissible limit of $\RMc$, so the least one exists and is below $N$. If it were recursively Mahlo, the last
+reflection at it would give an admissible limit of $\RMc$ below it.
+\end{proof}
+
+\begin{statement}\head{Example 5.10} A single presentation whose node has rank $\mu$ at every level $\mu$ does not
+give the degree. Let $P$ be the $\Delta_0$ presentation with parameter $t = \{1\}$ in which the predecessors of $t$
+are all ordinals and those of each ordinal are the smaller ordinals. At $\mu$ the node $t$ is in the well-founded part
+with rank $\mu$, and $\mu \in \CA(P,t)$ if and only if $\mu$ is admissible and a limit of the class $\CA(P,\zeta)$ for
+every $\zeta < \mu$: the class of $t$ is the diagonal of the classes of the ordinal nodes. Let $\mu_t$ be the least
+element of $\CA(P,t)$ above $M$. Then $\mu_t$ is not recursively inaccessible of degree $\delta_{\mu_t}$. Indeed,
+$\RMc$ is cofinal in $N$ (proof of Corollary 5.9), so some recursively Mahlo $\kappa$ has $M < \kappa < N$; Theorem
+5.7(a) puts $\kappa$ in $\CA(P,t)$, so $\mu_t \le \kappa < \xi^*$. No recursively Mahlo ordinal lies in $(M, \mu_t)$,
+since it would be in $\CA(P,t)$ by Theorem 5.7(a). Nor is $\mu_t$ recursively Mahlo: it would reflect the sentence
+$\Theta(p,t)$ of Lemma 5.2, with $M$ named, onto $\Ad$, giving a member of $\CA(P,t)$ in $(M, \mu_t)$. So Theorem
+5.7(b) with $\ell = M$ excludes $\mu_t$, although $\mu_t$ is in the class of $t$, whose rank at $\mu_t$ is $\mu_t$.
+\end{statement}
+
+\section{Open questions}
+
+\begin{enumerate}
+\item \textbf{$\Pi_1$, outside Theorem 4.9.} Which limits $\gamma$ that are neither admissible nor limits of
+  admissibles, and for which $L_\gamma$ contains no well-ordering of $\omega$ of type at least $\gamma^-$, are
+  $\Pi_1$-reflecting of degree $\delta_\gamma$?
+\item \textbf{Without countability.} Theorem 4.21 assumes that every earlier level is countable in $L_\gamma$, which
+  fails at large admissible $\gamma$ [E, Question 9.4]. The bound $\gamma \le \xi^*$ in Corollary 5.9 gives this
+  property at each admissible stage used in the descent. What are the classes beyond these ranges? In particular, does
+  the direction from left to right in Corollary 5.9 hold above $\xi^*$?
+\item \textbf{Higher degrees.} Degrees such as $\delta_\alpha + 1$, $\delta_\alpha \cdot k$ and $\delta_\alpha^k$ can
+  be obtained by further operations on these classes; these iterates are defined in a separate draft that is not yet
+  public. What are their least elements, and does the degree
+  $\delta_\alpha^{\delta_\alpha}$ for ``admissible limit of'' give the least $\Pi_3$-reflecting ordinal?
+\item \textbf{Presentations over the next admissible level.} If the predecessor relation at $\mu$ may be $\Sigma_1$ over
+  $L_{\mu^+}$, with $\mu$ as a parameter, what is the least recursively inaccessible ordinal in this sense, and does the
+  rank of the nodes still matter?
+\end{enumerate}
+
+\section{Verification status}
+
+\begin{center}\begin{tabular}{p{0.24\linewidth}p{0.70\linewidth}}
+\toprule
+Part & Status \\
+\midrule
+All numbered results & Written proofs, not checked by a person. The upper bounds (Theorem 4.3 and Theorem 5.7(a))
+are versions of known arguments; the case $n = 2$ is $[E]$. \\
+Lean & No numbered result is formalised as stated. Lean 4 with Mathlib checks abstract facts behind Lemma 5.1,
+  Corollary 4.6 and Theorem 3.1 (Appendix B), with only Lean's standard axioms; Lemma 4.12 is the descent lemma of
+  $[E]$, checked in Lean there. \\
+References & Richter--Aczel is cited from the 1973 Oslo preprint. Theorem 3.2 is cited through Aguilera; Gostanian's
+paper was not consulted. The relativised Kripke--Platek theorem is cited without a checked locator. Results of $[E]$ are used as stated there. \\
+\bottomrule
+\end{tabular}\end{center}
+
+\textbf{Novelty.} Not established; Section 1 compares the nearest results.
+
+No human specialist has reviewed the proofs. The passages a specialist is most likely to question are the class
+certificates of Lemma 2.3 and their use at levels that are not admissible; the nested-promise tree of Section 4.3, in
+particular the bounded check of promises after Definition 4.13; and the search tree of Section 5 with Lemmas 5.2 and
+5.6. Beyond correctness, the open matter is whether quantifying over every $\Sigma_1$ presentation is the notion of
+degree one wants; $[E]$, Question 9.3, asks the same for its notion.
+
+\section*{Appendix A: which result uses which}
+
+\begin{center}\begin{tabular}{p{0.26\linewidth}p{0.68\linewidth}}
+\toprule
+Result & Uses \\
+\midrule
+Lemma 2.3 & [E, (C1), (C2)]; bounded separation; $\Sigma$-recursion \\
+Theorem 3.1 & Kleene--Brouwer ordering; [E, Section 8] at the admissible level; the remark after [E, Definition 3.3] \\
+Lemmas 4.1, 4.2, Theorem 4.3 & Definition 2.1, Lemma 2.3, the truth predicates of Section 2.1; [E, (C1)--(C3)];
+  Richter--Aczel 1.8 \\
+Lemmas 4.4, 4.5, Corollary 4.6 & Theorem 4.3, Lemma 4.1, (O1)--(O2); [E, (C5)] \\
+Theorems 4.8, 4.9, Corollary 4.11 & Theorem 4.3, Lemma 4.4, Corollary 4.6, Lemma 4.10; the relativised Kripke--Platek
+  theorem \\
+Theorem 4.17 & Definition 4.13, Lemmas 4.12, 4.14--4.16; [E, (C1), (C3)] \\
+Theorems 4.18, 4.21, Corollary 4.22 & Theorems 4.3, 4.17; Lemmas 4.19, 4.20; [E, Lemma 7.2 and proof of Lemma 7.1];
+  Corollary 4.22 uses the bounded test of Lemma 4.20(c) and [E, (C2)] \\
+Proposition 4.23 & Theorem 3.1, Definition 2.1; [E, Section 8] \\
+Lemmas 5.1--5.6, Theorem 5.7 & Lemma 2.3; [E, (C1)--(C3), (C5)]; [E, Lemma 7.2] for the countability in Lemma 5.6 \\
+Theorem 5.8, Corollary 5.9 & Theorem 5.7; Theorem 4.3 and [E, Example 3.2(1)] for the existence of $M$ and $N$; [E,
+  (C2)] \\
+\bottomrule
+\end{tabular}\end{center}
+
+\section*{Appendix B: the Lean statements}
+
+The Lean file \texttt{DegreeReflection.lean} formalises three abstract statements. It covers abstract facts
+only: nothing in it mentions constructible levels or definability. Ordinals are either ordinals of
+Mathlib or, for the descent, a type \texttt{Pt} with a well-founded order. The file copies, unchanged, the definitions
+\texttt{Refl} and \texttt{cls} of the Lean file of $[E]$ (see the appendix of $[E]$): \texttt{cls holds pred ok μ a}
+says that \texttt{ok μ a} holds and that \texttt{μ} reflects on the class of every predecessor of \texttt{a} at
+\texttt{μ}, where reflecting on a class means that every test true at \texttt{μ} is true at a smaller member of the
+class.
+
+\textbf{Descent.} Lemma 5.1, for arbitrary tests:
+
+\begin{verbatim}
+theorem not_cls_of_family_rel
+    (hZ : ∀ δ c, Z δ c → ∃ d t, pred δ d c ∧ holds t δ ∧
+      ∀ β, β < δ → cls holds pred ok β d → holds t β → Z β d)
+    {δ : Pt} {c : N} (hc : Z δ c) : ¬ cls holds pred ok δ c
+\end{verbatim}
+
+To apply it, a test is a set $x$, \texttt{holds x β} means $x \in L_\beta$, and \texttt{ok μ a} means that $\mu$ is admissible
+and $p, a \in L_\mu$. At a limit $\mu$, a class $Y$ has a member $\beta < \mu$ with $x \in L_\beta$ for
+every $x \in L_\mu$ exactly when $Y \cap \mu$ is unbounded in $\mu$, so \texttt{cls} is the class $\CA$ of
+Definition 2.1. Lemma 4.12 is [E, Lemma 4.1] with $\Pi_n$ sentences as tests, and the Lean theorem of $[E]$ places no
+condition on the tests.
+
+\textbf{Limits along a set relation.} Here \texttt{r} is a relation on a type \texttt{N} and \texttt{θ} an ordinal.
+\texttt{IsSuccLimit μ} says that $\mu$ is a limit ordinal, and \texttt{IsWellFounded.rank} is Mathlib's rank in a
+well-founded relation.
+
+\begin{verbatim}
+def setCls (μ : Ordinal.{u}) (a : N) : Prop :=
+  cls (fun η β : Ordinal.{u} => η < β) (fun _ => r) (fun μ _ => IsSuccLimit μ ∧ θ < μ) μ a
+
+theorem setCls_iff_rank (a : N) (μ : Ordinal.{u}) :
+    setCls r θ μ a ↔ θ < μ ∧ ω ^ (1 + IsWellFounded.rank r a) ∣ μ
+
+theorem not_setCls_of_succ_le_rank {a : N} {γ : Ordinal.{u}}
+    (hγ : γ + 1 ≤ IsWellFounded.rank r a) : ¬ setCls r θ γ a
+\end{verbatim}
+
+The test \texttt{η} holds at \texttt{β} when $\eta < \beta$, so reflecting on a class says that the class is
+unbounded below $\mu$. For a set relation $\lhd$ and the node $a$ under consideration: if no constructible level
+contains both $\lhd$ and $a$, both classes in the equality of Corollary 4.6 are empty. Otherwise let $\theta$ be the larger of
+$\omega$ and the least $\eta$ with $\lhd, a \in L_{\eta+1}$; then a limit $\mu$ is above $\omega$ with $\lhd, a \in
+L_\mu$ exactly when $\theta < \mu$. The nodes below $a$ lie in the field of $\lhd$, and the bound $\theta < \mu$
+imposed on them changes their classes only below $\theta$ (by induction on rank), which does not affect which $\mu > \theta$ are limits of
+those classes. With Lemma 4.1, $C_1(P_\lhd, a)$ is then the class of the ordinals $\mu$ with \texttt{setCls r θ μ a},
+and the two theorems are Corollary 4.6. Taking the ordinals as nodes gives the iteration of ``limit of'' over the
+limits above $\theta$, with intersections at limit stages:
+
+\begin{verbatim}
+def limIter (θ ξ μ : Ordinal.{u}) : Prop :=
+  setCls (fun a b : Ordinal.{u} => a < b) θ μ ξ
+
+theorem limIter_iff_unfold (θ ξ μ : Ordinal.{u}) :
+    limIter θ ξ μ ↔ IsSuccLimit μ ∧ θ < μ ∧
+      ∀ ζ, ζ < ξ → ∀ η, η < μ → ∃ β, β < μ ∧ limIter θ ζ β ∧ η < β
+
+theorem limIter_iff (θ ξ μ : Ordinal.{u}) :
+    limIter θ ξ μ ↔ θ < μ ∧ ω ^ (1 + ξ) ∣ μ
+\end{verbatim}
+
+Fact (O1), in the form used, is the theorem \texttt{opow\_dvd\_of\_forall\_lt} of the file, and fact (O2) is
+the theorem \texttt{opow\_succ\_dvd\_of\_unbounded}.
+
+\textbf{Kleene--Brouwer.} Finite sequences are lists over a type \texttt{E} of entries, compared by \texttt{lt}:
+
+\begin{verbatim}
+def LeftOf (t u : List E) : Prop :=
+  ∃ p x y v w, u = p ++ x :: v ∧ t = p ++ y :: w ∧ lt y x
+
+def KB (t s : List E) : Prop :=
+  (∃ w, w ≠ [] ∧ t = s ++ w) ∨ LeftOf lt t s
+
+def KBOn (T : Set (List E)) (t s : List E) : Prop :=
+  t ∈ T ∧ s ∈ T ∧ KB lt t s
+
+theorem kbOn_wellFounded (hlt : WellFounded lt)
+    (hT : ∀ s w, s ++ w ∈ T → s ∈ T)
+    (hwf : WellFounded fun t s : List E => t ∈ T ∧ ∃ x, t = s ++ [x]) :
+    WellFounded (KBOn lt T)
+
+theorem rank_le_rank_kb (hlt : WellFounded lt) (hT : ∀ s w, s ++ w ∈ T → s ∈ T)
+    (hstep : ∀ s x, s ++ [x] ∈ T → r (f (s ++ [x])) (f s))
+    (hcover : ∀ s c, s ∈ T → r c (f s) → ∃ x, s ++ [x] ∈ T ∧ f (s ++ [x]) = c) :
+    ∃ hKB : WellFounded (KBOn lt T),
+      ∀ s, s ∈ T → IsWellFounded.rank r (f s) ≤ (hKB.apply s).rank
+\end{verbatim}
+
+In the proof of Theorem 3.1, \texttt{T} is the set of histories, \texttt{f s} the end of the
+history \texttt{s} (so \texttt{f []} is the node $a$), \texttt{lt} the canonical well-ordering $<_L$ of the entries,
+and \texttt{r} the predecessor relation restricted to the well-founded part at $\alpha$, which is well-founded.
+Hypotheses \texttt{hstep} and \texttt{hcover} say that a one-step extension of a history ends at a predecessor of its
+end, and that every predecessor of the end of a history is the end of such an extension; the latter holds because its
+witness is in $L_\alpha$. Every history other than the empty one comes before it. What is not formal is the rest of
+the argument: that the ordering is linear, so that the rank of the empty history is the order type of the histories
+before it, that it is $\Delta_1$, and the bound by $\delta_\alpha$.
+
+\section*{References}
+
+\begin{itemize}
+\item $[E]$ \href{https://waffle3z.github.io/math/greatly-mahlo-pi3.html}{The least α⁺-recursively Mahlo ordinal is the least Π₃-reflecting ordinal}, version of 2026-11-22,
+  waffle3z.github.io/math.
+\item J. P. Aguilera, The order of reflection, arXiv:1906.11769 (Sections 1 and 2).
+\item T. Arai, Iterating the recursively Mahlo operations, arXiv:1005.1987 (Definition 1.1, Lemma 1.2, Theorem 1.3).
+\item T. Arai, Conservations of first-order reflections, \emph{Journal of Symbolic Logic} 79 (2014); arXiv:1204.0205
+  (Theorem 2.2).
+\item T. Arai, Mahlo classes for first-order reflections, arXiv:1910.06520 (Section 1).
+\item T. Arai, Lectures on Ordinal Analysis, arXiv:2304.00246v1 (Lemma 3.33, Remark 3.34).
+\item R. Gostanian, The next admissible ordinal, \emph{Annals of Mathematical Logic} 17 (1979), 171--203.
+\item M. Rathjen, Proof theory of reflection, preprint, 1993 (Section 2, Theorem 4.12); published in
+  \emph{Annals of Pure and Applied Logic} 68 (1994), 181--224.
+\item W. Richter and P. Aczel, Inductive definitions and reflecting properties of admissible ordinals, in
+  \emph{Generalized Recursion Theory}, North-Holland, 1974, 301--381 (Oslo preprint, 1973: Definition 1.7, Theorems 1.8,
+  1.9, 1.10, 1.11).
+\item G. E. Sacks, \emph{Higher Recursion Theory}, Springer, 1990.
+\end{itemize}
+
+\end{document}
