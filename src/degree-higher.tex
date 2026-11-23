@@ -1,0 +1,891 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\input{macros}
+\title{The least ordinal $\alpha$ that is recursively inaccessible of degree $\delta_\alpha^{k+1}$ is the least
+recursively $k$-Mahlo ordinal}
+% The date is stated here once; the PDF and the web page both take it from this line.
+\newcommand{\paperversion}{2026-11-22}
+\date{\paperversion}
+\begin{document}
+% Local notation (kept here so that the web build, which reads only the body, sees it too).
+\newcommand{\Ad}{\mathrm{Ad}}
+\newcommand{\Lim}{\mathrm{Lim}\,}
+\newcommand{\CA}{C_{\mathrm{Ad}}}
+\newcommand{\Lv}{\mathcal{L}}
+\newcommand{\Cert}{\mathrm{Cert}}
+\newcommand{\Tb}{\mathcal{T}}
+\newcommand{\WF}{\mathrm{WF}}
+\newcommand{\In}{\mathrm{In}}
+\newcommand{\up}{{\uparrow}}
+\newcommand{\Adm}{\mathrm{Adm}}
+\maketitle
+
+\begin{frontnote}\head{Abstract} For an admissible ordinal $\alpha$, let $\delta_\alpha$ be Aguilera's supremum of the
+order types of well-orderings $\Delta_1$-definable over $L_\alpha$ with parameters. We define recursive inaccessibility of degree $\delta_\alpha^{k+1}$
+for every $k \ge 0$ and show that the least ordinal $\alpha$ with this property is the least recursively $k$-Mahlo
+ordinal. Here $\alpha$ is recursively inaccessible of degree $\delta_\alpha$ if it lies in every class obtained by
+iterating ``admissible limit of'' along a node in the well-founded part of a $\Sigma_1$ presentation at $\alpha$, whose
+least instance is the least recursively Mahlo ordinal [A]; degree $\delta_\alpha^{k+2}$ iterates the passage to degree
+$\delta_\alpha^{k+1}$ in the same way. The recursively $0$-Mahlo ordinals are the recursively Mahlo ones, and the
+recursively $(k+1)$-Mahlo ordinals are those $\Pi_2$-reflecting on the recursively $k$-Mahlo ordinals. Up to the least
+ordinal that is $\Pi_m$-reflecting for every $m$, the admissible ordinals of degree $\delta_\alpha^{k+1}$ are exactly the
+recursively $k$-Mahlo ordinals and their admissible limits. The correspondence stops at the first limit: the least ordinal of
+degree $\delta_\alpha^\omega$ is the least admissible ordinal that is a limit of the recursively $k$-Mahlo ordinals for
+every finite $k$, which is below the
+least ordinal that is recursively $k$-Mahlo for every $k$. The lower bound is a descent along a $\Sigma_1$ search tree,
+by induction on $k$ for all base classes at once; it rests on a bounded test, one admissible level up, for membership in
+the iterated classes.
+\end{frontnote}
+
+\begin{frontnote}\head{Provenance} The proofs were found and written by AI systems. No human specialist has
+reviewed them, nothing is formalised in Lean, and novelty is not established. Section 9 states what has been checked.
+\end{frontnote}
+
+\section{Introduction}
+
+We build on [A] and [E] (see the references) and use their conventions and numbering, citing their items as [A,
+Theorem 5.7] or [E, (C2)]. [A] shows that the least ordinal $\alpha$ that is recursively inaccessible of degree
+$\delta_\alpha$ is the least recursively Mahlo ordinal, and that up to the least ordinal $\xi^*$ that is
+$\Pi_m$-reflecting for every $m$ the admissible ordinals of that degree are the recursively Mahlo ordinals and their
+admissible limits [A, Corollary 5.9]. Its third open question asks what happens at higher degrees.
+
+\textbf{Degrees above $\delta_\alpha$.} At admissible $\alpha > \omega$, the ranks of nodes of $\Sigma_1$ presentations are exactly
+the ordinals below $\delta_\alpha$ [A, Theorem 3.1], so higher degrees cannot be ranks of such nodes; the names below record
+how a class is built, as in ordinal arithmetic, not a rank. Degree $\delta_\alpha + 1$ is ``admissible and a limit of
+the class of degree $\delta_\alpha$''. Degree $\delta_\alpha \cdot 2$ is $\delta_\alpha$ further steps of ``admissible
+limit of'' over the class of degree $\delta_\alpha$. Degree $\delta_\alpha^{k+2}$ asks, for every well-founded node of
+every $\Sigma_1$ presentation, for membership in the iteration along that node of the passage to degree
+$\delta_\alpha^{k+1}$ (Definitions 3.1--3.4).
+
+\textbf{Main theorem} (Theorem 7.2). \emph{For every $k \ge 0$, an admissible ordinal $\gamma \le \xi^*$ is recursively
+inaccessible of degree $\delta_\gamma^{k+1}$ if and only if $\gamma$ is recursively $k$-Mahlo or a limit of recursively
+$k$-Mahlo ordinals. The least ordinal $\alpha$ that is recursively inaccessible of degree $\delta_\alpha^{k+1}$ is the
+least recursively $k$-Mahlo ordinal.} The recursively $k$-Mahlo ordinals form the class $\Mh(k+2)$ (Section 2.3). For
+$k = 0$ this is [A, Corollary 5.9]; for $k = 1$, degree $\delta_\alpha^2$ gives the least recursively 1-Mahlo ordinal.
+The theorem is the case $X = \Ad$ of Theorem 7.1, which describes the classes $X[k]$ of degree $\delta^k$ over any base
+class $X$ built in Section 3: at admissible $\gamma \le \xi^*$, $X[k]$ is $R \cup \Lim R$ with $R = \Mh(k+1) \cap \Lim
+X$.
+
+\textbf{Further results} (Section 7).
+\begin{itemize}
+\item \emph{Degrees $\delta_\alpha + 1$ and $\delta_\alpha \cdot 2$} (Corollary 7.3). The least ordinal of degree
+  $\delta_\alpha + 1$ is the least admissible limit of recursively Mahlo ordinals. The least ordinal of degree
+  $\delta_\alpha \cdot 2$ is the least recursively Mahlo limit of recursively Mahlo ordinals, which is below the least
+  recursively 1-Mahlo ordinal.
+\item \emph{Degree $\delta_\alpha^\omega$} (Proposition 7.4). For admissible $\gamma \le \xi^*$, degree
+  $\delta_\gamma^\omega$ holds exactly when $\gamma$ is a limit of $\Mh(k)$ for every $k < \omega$. Its least element
+  $\tau_\omega$ is below the least element of $\Mh(\omega)$.
+\end{itemize}
+Section 8 says where the statements fail: at exponent $0$, at degree $\delta_\alpha \cdot 2$, at exponent $\omega$, and
+for step classes tested with a parameter.
+
+\textbf{How the proof goes.} The upper bound (Theorem 5.2) is the argument of [A, Theorem 5.7(a)] one level up: a
+member of $\Mh(k+1)$ that is a limit of $X$ reflects the $\Pi_2$ sentences saying that the classes required of it are
+unbounded, and so lies in $X[k]$. The lower bound (Theorem 6.5) is by induction on $k$ for all base classes at once. If
+no point of $\Mh(k+2) \cap \Lim X$ lies in $(\ell, \gamma]$, a $\Sigma_1$ tree searching for such a point is
+well-founded at $\gamma$. The class $X[k+1]$ asks for membership in the iteration of $Y \mapsto Y[k]$ along this tree;
+applying the induction hypothesis to the base classes of that iteration, a least-counterexample descent excludes
+$\gamma$. This needs membership in every class $X[k]$ to be decided by a bounded test on the constructible levels up to
+the next admissible ordinal (Lemma 4.4), because those base classes must be tested inside the $\Sigma_1$ tree.
+Appendix A lists which result uses which.
+
+\textbf{Nearest results.} Richter and Aczel (Theorems 1.9--1.11) show that recursively Mahlo ordinals lie in the
+iterates of ``admissible limit of'' considered there; [A, Theorem 5.7(a)] gives the upper bound for nodes in the
+externally well-founded part of $\Sigma_1$ presentations, which is the upper inclusion of Theorem 7.2 at $k = 0$, obtained here from Theorem 5.2(A) with $X = \mathrm{Ad}$ and $c = 1$. Iterations of the Mahlo operation
+along orderings, with ordinals or notations as indices, appear in Arai, Lectures on Ordinal Analysis (Section 4, one
+level higher, inside $\Pi_3$-reflection) and Iterating the recursively Mahlo operations (Sections 2--3), and in Rathjen,
+Proof theory of reflection (Remark 4.9, for cardinals); we cite them for comparison only. These works give iterations
+and upper bounds. We did not find in them degrees beyond $\delta_\alpha$ defined through $\Sigma_1$ presentations, a
+lower bound of the kind proved here, or the failure at $\omega$.
+
+\section{Preliminaries}
+
+\subsection{\texorpdfstring{Conventions from [E] and [A]}{Conventions from [E] and [A]}}
+
+We use [A, Section 2] without change; it collects the conventions of [E]. In brief:
+\begin{itemize}
+\item \emph{Reflection.} An ordinal $\mu$ is \emph{$\Pi_n$-reflecting on} a class $Y$ if $\mu$ is a limit above
+  $\omega$ and every $\Pi_n$ sentence $\varphi(q)$ with $q \in L_\mu$ true in $L_\mu$ is true in $L_\beta$ for some
+  $\beta \in Y \cap \mu$ with $q \in L_\beta$; with $Y$ the class of all ordinals, $\mu$ is \emph{$\Pi_n$-reflecting}.
+  A limit $\mu > \omega$ is $\Pi_2$-reflecting if and only if it is admissible (Richter--Aczel, Theorem 1.8). In a limit
+  level a block of like quantifiers can be contracted to one quantifier over tuples (\emph{block contraction}), so there
+  every $\Pi_2$ sentence is equivalent to one of the form $\forall u\, \exists v\, \theta(q,u,v)$ with $\theta$ a
+  $\Delta_0$ formula, and a conjunction of $\Pi_2$ sentences is a $\Pi_2$ sentence. $\mathrm{Ord}(y)$ says that $y$ is
+  an ordinal.
+\item \emph{Classes.} $\Lim Y$ is the class of limit ordinals $\mu$ with $Y \cap \mu$ unbounded in $\mu$. $\Ad$ is the
+  class of admissible ordinals above $\omega$, and $\mu^+$ is the least admissible ordinal above $\mu$. Recursively
+  inaccessible ordinals are those in $\Ad \cap \Lim \Ad$.
+\item \emph{Certificates} [E, Section 2]. $\Cert(W, \xi)$ is a $\Delta_0$ formula saying that $W$ is a
+  \emph{certificate through} $\xi$: a set consisting of [E]'s syntax data and, for each $\nu \le \xi$, a set
+  $\Lv^W_\nu$ and a truth table $\mathrm{Tr}^W_\nu$ (we drop the superscript when the certificate is clear). (C1): every
+  certificate is the true one, $\Lv_\nu = L_\nu$ and $\mathrm{Tr}_\nu$ the satisfaction relation of $L_\nu$; a pair
+  $(\varphi, \langle q\rangle)$ is in $\mathrm{Tr}_\nu$ when $L_\nu \models \varphi(q)$, and a sentence is entered with
+  the dummy constant $\emptyset$. (C2): an admissible $L_\alpha$, $\alpha > \omega$, contains a certificate through
+  every $\xi < \alpha$. (C3): the $\Pi_2$ sentence $G$ (``$\omega$ exists, every ordinal has a successor, every ordinal
+  has a certificate'') holds at admissible levels above $\omega$, and a nonempty level satisfying it is a limit level
+  above $\omega$. (C4): $\Sat_2(\varphi, q)$ is a $\Pi_2$ formula that, at levels satisfying $G$, holds exactly when
+  $\varphi$ is the code of a $\Pi_2$ formula $\forall u\, \exists v\, \theta$ and $\varphi(q)$ is true. (C5): $\Sigma_1$
+  sentences persist upward. For $\nu \le \xi$, $W{\restriction}(\nu+1)$ is $W$ cut down to its rows of index at most
+  $\nu$; it is used only inside bounded conditions, where quantifiers over it are read as quantifiers over $W$ guarded by
+  the index [A, Section 2.3].
+\item \emph{Codes.} Formula codes are hereditarily finite sets. A primitive recursive relation on codes (being the
+  code of a $\Sigma_1$ or $\Pi_2$ formula, the enumeration of tasks in Section 6) is defined over $L_\omega$ by a fixed
+  formula, so it is read from $\mathrm{Tr}_\omega$ of any certificate through at least $\omega$ by a bounded condition [A, Section 2.1].
+\item \emph{Countability} [E, Lemma 7.2]. $\xi^*$ is the least ordinal that is $\Pi_m$-reflecting for every $m$. For
+  every admissible $\gamma \le \xi^*$, every $L_\eta$ with $\eta < \gamma$ is countable in $L_\gamma$ [A, Section 2.2].
+\item \emph{Background.} $\Delta_0$ absoluteness, and $\Sigma$-recursion, $\Delta_0$-separation and
+  $\Delta_0$-collection in admissible levels (Barwise, Corollary I.8.6 and Theorem I.6.4), as in [E, Section 2].
+\end{itemize}
+
+\subsection{\texorpdfstring{Presentations and the degree $\delta_\alpha$}{Presentations and the degree delta alpha}}
+
+Presentations are as in [A, Section 2.3]. A \emph{presentation} is a pair $Q = (\rho_Q, p_Q)$ of a formula
+$\rho_Q(x,y,z)$ and a set $p_Q$, its \emph{parameter}. At a limit $\mu > \omega$ with $p_Q \in L_\mu$, the elements of
+$L_\mu$ are \emph{nodes}, and $e'$ is a \emph{predecessor} of $e$ at $\mu$ if $L_\mu \models \rho_Q(e', e, p_Q)$; the
+pair $(e', e)$ is then an \emph{edge} at $\mu$. $Q$ is a \emph{$\Sigma_1$ presentation} or a \emph{$\Delta_0$
+presentation} if $\rho_Q$ is $\Sigma_1$ or $\Delta_0$. $\WF(Q, \mu)$, the \emph{well-founded part} at $\mu$, is the set
+of nodes from which there is no infinite sequence $e_0, e_1, \dots$ with $e_{i+1}$ a predecessor of $e_i$ at $\mu$,
+taken in the universe, and $\mathrm{rank}_\mu(e)$ is the rank of $e$ there. By (C5) an edge of a $\Sigma_1$ presentation
+at $\mu$ is an edge at every larger level, so if $e \in \WF(Q,\gamma)$ and $\mu < \gamma$ is a limit with $p_Q, e \in
+L_\mu$, then $e \in \WF(Q,\mu)$. A \emph{set relation} is a $\Delta_0$ presentation whose edges are the same at every
+level containing its parameter.
+
+An \emph{eligible pair at $\mu$} is a pair $(Q, e)$ of a $\Sigma_1$ presentation $Q$ with $p_Q \in L_\mu$ and a node $e
+\in \WF(Q, \mu)$.
+
+For a limit $\alpha > \omega$, $\delta_\alpha$ is the supremum of the order types of well-orderings with field a
+subclass of $L_\alpha$ that are $\Delta_1$-definable over $L_\alpha$ with parameters (Aguilera, The order of
+reflection, Section 2); for admissible $\alpha$ these are exactly the ranks of the nodes in $\WF(Q,\alpha)$ for
+eligible pairs $(Q, e)$ at $\alpha$ [A, Theorem 3.1]. By [A, Definition 2.1], $\mu \in \CA(Q, e)$ if and only if $\mu
+\in \Ad$, $p_Q, e \in L_\mu$, and $\mu \in \Lim \CA(Q, e')$ for every predecessor $e'$ of $e$ at $\mu$. A limit $\alpha
+> \omega$ is \emph{recursively inaccessible of degree $\delta_\alpha$} if $\alpha \in \CA(Q, e)$ for every eligible pair
+$(Q,e)$ at $\alpha$ [A, Definition 2.2]. We write $D$ for the class of these ordinals.
+
+\subsection{The finite Mahlo classes}
+
+$\Mh(\xi)$ is as in [E, Section 3.1]: $\Mh(0)$ is the class of limits above $\omega$, $\Mh(\xi+1)$ is the class of
+ordinals $\Pi_2$-reflecting on $\Mh(\xi)$, and $\Mh(\lambda) = \bigcap_{\xi<\lambda} \Mh(\xi)$ at limits. So $\Mh(1) =
+\Ad$, and $\Mh(2)$ is the class of \emph{recursively Mahlo} ordinals. As in [A], the members of $\Mh(3)$ are called
+\emph{recursively 1-Mahlo}, just as ``1-inaccessible'' is one step above ``inaccessible''; in general the members of
+$\Mh(k+2)$ are \emph{recursively $k$-Mahlo}, and recursively 0-Mahlo means recursively Mahlo.
+
+\begin{center}\begin{tabular}{p{0.14\linewidth}p{0.76\linewidth}}
+\toprule
+Ordinal & Definition \\
+\midrule
+$m_\omega$ & the least element of $\Mh(\omega)$ \\
+$\tau_\omega$ & the least admissible ordinal that is a limit of $\Mh(k)$ for every $k < \omega$ \\
+$K_2$ & the least $\Pi_3$-reflecting ordinal \\
+$\xi^*$ & the least ordinal that is $\Pi_m$-reflecting for every $m$ \\
+\bottomrule
+\end{tabular}\\[0.4em]Table 1. Ordinals used below.\end{center}
+
+\begin{statement}\head{Lemma 2.1} (a) $\Mh(k+1) \subseteq \Mh(k)$ and $\Mh(k+1) \subseteq \Lim \Mh(k)$ for every $k <
+\omega$; in particular $\Mh(k) \subseteq \Lim \Ad$ for $k \ge 2$.
+(b) $K_2 \in \Mh(\omega+1)$. Hence $m_\omega$ and $\tau_\omega$ exist, and $\tau_\omega \le m_\omega < K_2 \le
+\xi^*$.
+\end{statement}
+
+\begin{proof}
+(a) By induction on $k$, since $\Pi_2$-reflection on a class implies it on every larger class; the second inclusion
+follows by reflecting the sentence ``$y$ exists'' for each $y < \mu$.
+
+(b) By [A, Theorem 4.3] with $n = 2$, $K_2$ lies in [E]'s class $C(Q, e)$ [E, Definition 3.1] for every eligible pair
+$(Q,e)$ at $K_2$. For the set relation $\in$ on $\omega+2$ and its node $\omega+1$, of rank $\omega+1$, this class is
+$\Mh(\omega+1)$ [E, Example 3.2(1)]. So $K_2$ is $\Pi_2$-reflecting on $\Mh(\omega)$, and reflecting a trivial sentence
+gives an element of $\Mh(\omega)$ below $K_2$. The ordinal $m_\omega$ is admissible and, by (a), a limit of every
+$\Mh(k)$, so $\tau_\omega \le m_\omega$. Finally $\xi^*$ is $\Pi_3$-reflecting, so $K_2 \le \xi^*$.
+\end{proof}
+
+\section{\texorpdfstring{Degrees above $\delta_\alpha$}{Degrees above delta alpha}}
+
+\subsection{One further step}
+
+\begin{statement}\head{Definition 3.1} Let $X$ be a class of ordinals and $Q$ a presentation. By recursion on $\mu$,
+$\mu \in \In_X(Q, e)$ if and only if $\mu \in \Ad \cap \Lim X$, $p_Q, e \in L_\mu$, and $\mu \in \Lim \In_X(Q, e')$ for
+every predecessor $e'$ of $e$ at $\mu$. Let $\up X$ be the class of limits $\mu > \omega$ with $\mu \in \In_X(Q, e)$ for
+every eligible pair $(Q, e)$ at $\mu$.
+
+An ordinal $\alpha$ is \emph{recursively inaccessible of degree $\delta_\alpha + 1$} if $\alpha \in \Ad \cap \Lim D$, and
+\emph{of degree $\delta_\alpha \cdot 2$} if $\alpha \in \up D$.
+\end{statement}
+
+The class $\In_X(Q,e)$ is $\CA(Q,e)$ with ``$\mu \in \Lim X$'' added, so $\up X$ is $\delta_\alpha$ further steps of
+``admissible limit of'' over $X$. Every class $\In_X(Q,e)$ is contained in $\Ad \cap \Lim X$, and so is $\up X$: the
+$\Delta_0$ presentation with parameter $\emptyset$ and no edges gives an eligible pair whose class is $\Ad \cap \Lim X$.
+
+\subsection{Class terms}
+
+The exponent of a degree is a node of the chain $\omega + 1$: let $P_\omega$ be the $\Delta_0$ presentation ``$x \in y
+\wedge y \in z$'' with parameter $\omega+1$, whose node $b \le \omega$ has the ordinals $c < b$ as predecessors at every
+level containing $\omega + 1$.
+
+\emph{Example.} Over a base class $X$, the class $X[1]$ is $\up X$, and $X[2]$ is defined as follows. For an eligible
+pair $(Q, e)$ let $H_{X,1}(Q, e)$ be the class of the $\mu \in \Ad \cap \Lim X$ (with $p_Q, e \in L_\mu$ and $e \in
+\WF(Q,\mu)$) that lie in $\up H_{X,1}(Q, e')$ for every predecessor $e'$ of $e$ at $\mu$; so $H_{X,1}(Q, \cdot)$
+iterates $Y \mapsto \up Y$ along $Q$, starting from $\Ad \cap \Lim X$ at the nodes without predecessors. Then $X[2]$
+consists of the $\mu \in \up X$ that lie in $H_{X,1}(Q,e)$ for every eligible pair $(Q,e)$ at $\mu$. In general $X[b]$
+asks, for each $c < b$ and each eligible pair $(Q,e)$, for membership in the iteration $H_{X,c}(Q, \cdot)$ of $Y \mapsto
+Y[c]$ along $Q$. Since $\up$ itself quantifies over all eligible pairs, the classes are named by finite expressions and
+defined by one simultaneous recursion.
+
+\begin{statement}\head{Definition 3.2 (class terms)} \emph{Terms} are built by three rules: $\Ad$ is a term; if $X$ is a
+term and $b \le \omega$, then $X[b]$ is a term; if $X$ is a term, $c < \omega$, $Q = (\rho_Q, p_Q)$ is a $\Sigma_1$
+presentation and $e$ is a set, then $H_{X,c}(Q, e)$ is a term. In the last two, $X$ is the \emph{base term}. Membership
+of an ordinal $\mu$ in a term is defined by recursion on $\mu$:
+\begin{itemize}
+\item $\mu \in \Ad$ if $\mu$ is admissible and above $\omega$;
+\item $\mu \in X[b]$ if and only if $\mu \in \Ad \cap \Lim X$ and $\mu \in H_{X,c}(Q, e)$ for every $c < b$ and every
+  eligible pair $(Q,e)$ at $\mu$;
+\item $\mu \in H_{X,c}(Q, e)$ if and only if $\mu \in \Ad \cap \Lim X$, $p_Q, e \in L_\mu$, $e \in \WF(Q, \mu)$, and
+  $\mu \in H_{X,c}(Q, e')[c]$ for every predecessor $e'$ of $e$ at $\mu$.
+\end{itemize}
+The \emph{constants} of a term are the parameters $p_Q$ and nodes $e$ in it, together with the constants of its base
+term. Its \emph{code} $t_X$ is $\langle 0\rangle$ for $\Ad$, $\langle 1, t_X, b\rangle$ for $X[b]$, and $\langle 2, t_X,
+c, \rho_Q, p_Q, e\rangle$ for $H_{X,c}(Q,e)$.
+\end{statement}
+
+A set is a \emph{term code} if some finite sequence ending with it starts with $\langle 0\rangle$ and forms each later
+entry from an earlier one by the second or third rule, the formula codes being codes of $\Sigma_1$ formulas. The
+entries are codes of subterms, so for a limit $\lambda$ and a code in $L_\lambda$ such a sequence lies in $L_\lambda$;
+being a term code is therefore a bounded condition on a certificate through $\lambda$, with the search bounded by
+$\Lv_\lambda$.
+
+\begin{statement}\head{Lemma 3.3} (a) The clauses of Definition 3.2 determine the membership of every ordinal in every
+term. (b) Every term is a subclass of $\Ad$, and if $\mu \in X$ then every constant of $X$, and the code $t_X$, lies
+in $L_\mu$.
+\end{statement}
+
+\begin{proof}
+(a) By recursion on $\mu$, for all terms at once; assume membership at every $\mu' < \mu$ is determined, so that $\Lim Y$
+at $\mu$ is determined for every term $Y$. A statement $\mu \in H_{Y,c}(Q,e)$ whose guards fail is false. Otherwise
+give ``$\mu \in Y[b]$'' the measure $(b, 0, 0)$ and ``$\mu \in H_{Y,c}(Q,e)$'' the measure $(c, 1,
+\mathrm{rank}_\mu(e))$, ordered lexicographically. The clause of $Y[b]$ refers, besides $\Lim Y$, to statements with
+first coordinate $c < b$, and the clause of $H_{Y,c}(Q,e)$ refers, besides $\Lim Y$, to statements $\mu \in Y'[c]$ with
+measure $(c, 0, 0)$. So recursion on the measure determines membership at $\mu$.
+
+(b) Every clause requires $\mu \in \Ad$. For the constants, induction on the term: the clause of $H_{X,c}(Q,e)$ requires
+$p_Q, e \in L_\mu$, and $\mu \in \Lim X$ gives some $\eta < \mu$ in $X$, whose constants are in $L_\eta \subseteq L_\mu$.
+Formula codes and $b, c \le \omega$ are in $L_\mu$, and $L_\mu$ is closed under finite tuples.
+\end{proof}
+
+\begin{statement}\head{Definition 3.4} For $0 \le k < \omega$, an ordinal $\alpha$ is \emph{recursively inaccessible of
+degree $\delta_\alpha^{k+1}$} if $\alpha \in \Ad[k+1]$, and \emph{of degree $\delta_\alpha^\omega$} if $\alpha \in
+\Ad[\omega]$.
+\end{statement}
+
+\begin{statement}\head{Lemma 3.5} Let $X$ be a term and $Q$ a $\Sigma_1$ presentation.
+\begin{itemize}
+\item[(a)] If $p_Q, e \in L_\mu$ and $e \in \WF(Q, \mu)$, then $\mu \in H_{X,0}(Q,e)$ if and only if $\mu \in
+  \In_X(Q,e)$.
+\item[(b)] $X[1] = \up X$.
+\item[(c)] $\Ad[1] = D$: an ordinal is recursively inaccessible of degree $\delta_\alpha^1$ exactly when it is
+  recursively inaccessible of degree $\delta_\alpha$.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+(a) For every term $Y$, $Y[0] = \Ad \cap \Lim Y$, since $0$ has no predecessors. Hence $\mu \in H_{X,0}(Q,e)$ if and only
+if $\mu \in \Ad \cap \Lim X$, $p_Q, e \in L_\mu$, and $\mu \in \Lim H_{X,0}(Q,e')$ for every predecessor $e'$ of $e$ at
+$\mu$. This is the clause of $\In_X(Q,e)$ with $H_{X,0}(Q,e')$ in place of $\In_X(Q,e')$. By induction on $\mu$ the two
+classes agree: at a level $\mu' < \mu$ with $p_Q, e' \in L_{\mu'}$, $e' \in \WF(Q, \mu')$ by (C5), so the induction
+hypothesis applies at $\mu'$, and levels not containing $e'$ are in neither class.
+
+(b) The only predecessor of $1$ is $0$, so by (a) $\mu \in X[1]$ if and only if $\mu \in \Ad \cap \Lim X$ and $\mu \in
+\In_X(Q,e)$ for every eligible pair $(Q,e)$ at $\mu$. Since every class $\In_X(Q,e)$ is contained in $\Ad \cap \Lim X$,
+this is $\mu \in \up X$.
+
+(c) By (b), $\Ad[1] = \up \Ad$. By induction on $\mu$, $\In_\Ad(Q,e) \subseteq \CA(Q,e)$, so $\up \Ad \subseteq D$. For
+the converse let $Q^+$ be the presentation with the same parameter whose nodes are the pairs $\hat x = (0, x)$ and
+$\bot = (1, 0)$, with edges $(\hat x, \hat y)$ for the edges $(x, y)$ of $Q$ and $(\bot, \hat y)$ for every $y$. It is
+$\Sigma_1$, and $\hat e \in \WF(Q^+, \mu)$ whenever $e \in \WF(Q,\mu)$. The class $\CA(Q^+, \bot)$ is $\Ad$ restricted to
+the levels containing $p_Q$, so by induction on $\mu$, $\CA(Q^+, \hat e) = \In_\Ad(Q, e)$. Hence every member of $D$ is
+in $\up \Ad$.
+\end{proof}
+
+By Lemma 3.5, $D = \Ad[1]$ is a term and the class of degree $\delta_\alpha \cdot 2$ is $D[1]$. The class $\Ad[0] = \Ad
+\cap \Lim \Ad$ consists of the recursively inaccessible ordinals.
+
+\begin{center}\begin{tabular}{p{0.22\linewidth}p{0.68\linewidth}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$\In_X(Q,e)$, $\up X$ & iteration of ``admissible limit of'' over $X$ along $e$; along all eligible pairs (Def.\ 3.1) \\
+$D$ & the ordinals recursively inaccessible of degree $\delta_\alpha$ (Section 2.2); $D = \Ad[1]$ \\
+$X[b]$ & degree $\delta^b$ over the base term $X$, for $b \le \omega$ (Def.\ 3.2) \\
+$H_{X,c}(Q,e)$ & iteration of $Y \mapsto Y[c]$ along $e$, over $X$ (Def.\ 3.2) \\
+$t_X$ & the code of the term $X$ \\
+\bottomrule
+\end{tabular}\\[0.4em]Table 2. Classes of Section 3.\end{center}
+
+\section{Bounded tests one admissible level up}
+
+Membership in a term at $\nu$ quantifies over the well-founded part at $\nu$, which is not decided inside $L_\nu$. This
+section shows that it is decided by a bounded test on a certificate through $\nu^+$, uniformly in the code of the term
+(Lemma 4.4), and gives a bounded test for the classes $\Mh(k)$ uniform in $k$ (Lemma 4.1).
+
+\begin{statement}\head{Lemma 4.1} There is a $\Delta_0$ formula $\chi(W, \nu, k)$ without parameters such that for all
+ordinals $\nu$, all $k < \omega$ and every certificate $W$ through $\nu$: $\chi(W,\nu,k)$ holds if and only if $\nu \in
+\Mh(k)$.
+\end{statement}
+
+\begin{proof}
+Let $F_0$ be the sentence ``$\omega$ exists and every ordinal has a successor''; for every ordinal $\eta$, $L_\eta
+\models F_0$ if and only if $\eta$ is a limit above $\omega$. Let
+\[ \begin{aligned} F_{k+1} = {} & F_0 \wedge G \wedge \forall \varphi\, \forall q\, [\, \neg\Sat_2(\varphi, q) \vee
+   \exists \eta\, \exists W' (\Cert(W', \eta) \wedge q \in \Lv_\eta \\ & \wedge (\varphi, \langle q\rangle) \in
+   \mathrm{Tr}_\eta \wedge (\ulcorner F_k\urcorner, \langle \emptyset\rangle) \in \mathrm{Tr}_\eta)\, ], \end{aligned} \]
+where $\ulcorner F_k\urcorner$ is named by a parameter-free $\Delta_0$ definition of that hereditarily finite set. The
+map $k \mapsto \ulcorner F_k\urcorner$ is primitive recursive, so its graph is defined over $L_\omega$ by a fixed formula
+$\sigma$. Put
+\[ \chi(W, \nu, k) = \omega \le \nu \wedge \exists f \in \Lv_\omega\, [(\sigma, \langle k, f\rangle) \in
+   \mathrm{Tr}_\omega \wedge (f, \langle \emptyset\rangle) \in \mathrm{Tr}_\nu]. \]
+It is bounded. By (C1) it says that $L_\nu \models F_k$, so it suffices to show, by induction on $k$, that $L_\nu
+\models F_k$ if and only if $\nu \in \Mh(k)$. The complexity of $F_k$ plays no role, since its truth is read from the
+truth table.
+
+For $k = 0$ this is the property of $F_0$. Suppose it holds for $k$. If $L_\nu \models F_{k+1}$, then $\nu$ is a limit
+above $\omega$ and $L_\nu \models G$. Let $\varphi(q)$ be a $\Pi_2$ sentence true in $L_\nu$, in the form $\forall u\,
+\exists v\, \theta$. By (C4), $L_\nu \models \Sat_2(\varphi, q)$, so there are $\eta < \nu$ and a certificate $W' \in
+L_\nu$ through $\eta$, true by (C1), with $q \in L_\eta$, $L_\eta \models \varphi(q)$ and $L_\eta \models F_k$, that is,
+$\eta \in \Mh(k)$. So $\nu \in \Mh(k+1)$. Conversely let $\nu \in \Mh(k+1)$. Then $\nu$ is $\Pi_2$-reflecting, hence
+admissible (Richter--Aczel 1.8), so $L_\nu \models F_0 \wedge G$ by (C3). If $L_\nu \models \Sat_2(\varphi, q)$, then
+$\varphi(q)$ is a $\Pi_2$ sentence true in $L_\nu$ (C4), so some $\eta \in \Mh(k) \cap \nu$ has $q \in L_\eta$ and
+$L_\eta \models \varphi(q)$; also $L_\eta \models F_k$, and a certificate through $\eta$ is in $L_\nu$ by (C2).
+\end{proof}
+
+For a certificate $V$ through $\eta$ and $\kappa \le \eta$ write $\Adm(V, \kappa)$ for $\chi(V{\restriction}(\kappa+1),
+\kappa, 1)$; by Lemma 4.1 it says that $\kappa \in \Ad$. ``$\kappa = \nu^+$ according to $V$'' is the bounded condition
+$\nu < \kappa \wedge \Adm(V,\kappa)$ ${}\wedge \forall \kappa' < \kappa\, (\nu < \kappa' \rightarrow \neg\Adm(V,\kappa'))$,
+and ``$\nu^+ \le \eta$ according to $V$'' is $\exists \kappa \le \eta\, (\nu < \kappa \wedge \Adm(V,\kappa))$. The
+ordinal $\eta$ through which $V$ is a certificate is read off from $V$ (its largest row index), so it is not a separate
+argument of the formulas below.
+
+\begin{statement}\head{Lemma 4.2 (well-foundedness one level up)} Let $\lambda > \omega$ be a limit, $Q = (\rho_Q, p_Q)$
+a presentation with $p_Q \in L_\lambda$, $e \in L_\lambda$, and $V$ a certificate through some $\eta \ge \lambda^+$.
+Let $\WF_V(Q, \lambda, e)$ be the condition: there are $\kappa \le \eta$ with $\kappa = \lambda^+$ according to $V$,
+and $Z, g \in \Lv_\kappa$ with $e \in Z \subseteq \Lv_\lambda$, $g$ a function from $Z$ to ordinals, and for all $a \in
+Z$ and $e' \in \Lv_\lambda$ with $(\rho_Q, \langle e', a, p_Q\rangle) \in \mathrm{Tr}_\lambda$: $e' \in Z$ and $g(e')
+< g(a)$. Then $\WF_V(Q,\lambda,e)$ is $\Delta_0$ in $V, p_Q, e$, and it holds if and only if $e \in \WF(Q, \lambda)$.
+\end{statement}
+
+\begin{proof}
+By (C1) $V$ is the true certificate, so $\Lv_\kappa = L_{\lambda^+}$ and the edges read from $\mathrm{Tr}_\lambda$ are
+the edges of $Q$ at $\lambda$.
+
+\emph{Sufficiency.} An infinite descending sequence from $e$ stays in $Z$, and $g$ would map it to a strictly
+decreasing sequence of ordinals.
+
+\emph{Necessity.} The edge relation $E = \{(e', a) : L_\lambda \models \rho_Q(e', a, p_Q)\}$ is definable over
+$L_\lambda$, and $L_\lambda$ is closed under pairs, so $E \in L_{\lambda+1} \subseteq L_{\lambda^+}$. Call $(Z, g)$
+\emph{good for $a$} if $a \in Z \subseteq L_\lambda$, $Z$ is closed under $E$-predecessors, and $g$ is the exact rank
+function on $Z$: $g(x) = \sup\{g(y) + 1 : y \mathrel{E} x\}$ for $x \in Z$, the empty supremum being $0$. Given $E$, $Z$
+and $g$ this is a bounded condition. Two good pairs agree on the intersection of their domains, which is closed under
+predecessors and contained in $\WF(Q,\lambda)$, because exact rank functions on such a set are unique. We show by
+induction along $E$ on $\WF(Q, \lambda)$, in the universe, that every $a \in \WF(Q,\lambda)$ has a good pair in
+$L_{\lambda^+}$. All predecessors of $a$ are in $\WF(Q,\lambda)$, and the set of them is in $L_{\lambda^+}$ by
+$\Delta_0$-separation. By the induction hypothesis, $L_{\lambda^+}$ satisfies ``every predecessor of $a$ has a good
+pair'', so $\Delta_0$-collection in the admissible $L_{\lambda^+}$ gives a set of good pairs covering the predecessors.
+Their union is a function, by agreement, on a set closed under predecessors; adding $a$ with the supremum of $g(e') + 1$
+over its predecessors $e'$ gives a good pair for $a$. An exact rank function decreases along edges, so a good pair for
+$e$ satisfies the condition.
+\end{proof}
+
+\textbf{The test at one level.} Fix an admissible $\lambda$, the function $\Tb$ on $\lambda$ with $\Tb(\eta) = \{t \in
+L_\eta : t \text{ is a term code and } \eta \in t\}$ (the \emph{table of terms below $\lambda$}), and a certificate $V$
+through some $\eta \ge \lambda^+$. The clause of Definition 3.2 for a term $t$ at $\lambda$ consists of conditions on
+$\lambda$ alone and of membership of $\lambda$ in further terms, the terms it \emph{requires}. The test below unfolds the
+clause along every finite chain of required terms. For a term code $t$ define, with all quantifiers bounded in $V$, $\Tb$ and $\lambda$ (including
+$\Lv_{\lambda^+}$ for the witnesses of Lemma 4.2):
+\begin{itemize}
+\item $\mathrm{Loc}(t)$: for $t = \Ad$, $\Adm(V,\lambda)$. For $t = X[b]$: $\Adm(V, \lambda)$ and $t_X \in \Tb(\eta)$ for
+  cofinally many $\eta < \lambda$. For $t = H_{X,c}(Q,e)$: the same, together with $p_Q, e \in \Lv_\lambda$ and
+  $\WF_V(Q,\lambda,e)$.
+\item $\mathrm{Req}(t)$: $\Ad$ requires nothing. $X[b]$ requires the codes of $H_{X,c}(Q,e)$ with $c < b$, $\rho_Q$ the
+  code of a $\Sigma_1$ formula, $p_Q, e \in \Lv_\lambda$, and $\WF_V(Q, \lambda, e)$ (the clause asks only for
+  well-founded $e$). $H_{X,c}(Q,e)$ requires the codes of $H_{X,c}(Q,e')[c]$ with $e' \in \Lv_\lambda$ and $(\rho_Q,
+  \langle e', e, p_Q\rangle) \in \mathrm{Tr}_\lambda$.
+\item $\mathrm{Path}(t)$: $t \in \Lv_\lambda$ (otherwise the next condition would hold vacuously), and for every finite
+  sequence $(t_0, \dots, t_n) \in \Lv_\lambda$ with $t_0 = t$ and $t_{i+1} \in \mathrm{Req}(t_i)$ for $i < n$,
+  $\mathrm{Loc}(t_n)$ holds ($n = 0$ included).
+\end{itemize}
+
+\begin{statement}\head{Lemma 4.3} Let $\lambda$, $\Tb$ and $V$ be as above. For every term code $t$, $\mathrm{Path}(t)$
+holds if and only if $\lambda \in t$.
+\end{statement}
+
+\begin{proof}
+If $t \notin L_\lambda$, both sides fail, by Lemma 3.3(b). Let $t \in L_\lambda$. Since $\lambda$ is a limit, a finite
+sequence starting with $t$ and continuing with a required $t'$ is in $L_\lambda$ exactly when its tail starting with
+$t'$ is, and the required codes are in $L_\lambda$; so
+\[ \mathrm{Path}(t) \iff \mathrm{Loc}(t) \wedge \forall t' \in \mathrm{Req}(t)\ \mathrm{Path}(t'). \]
+By (C1), Lemma 4.2 and the choice of $\Tb$ (a member of a term at $\eta$ contains its code in $L_\eta$, Lemma 3.3(b)),
+$\mathrm{Loc}(t)$ is the conjunction of the conditions of the clause of $t$ on $\lambda$ alone, and $\mathrm{Req}(t)$
+is the set of terms the clause requires. So the clause reads $\lambda \in t \iff \mathrm{Loc}(t) \wedge \forall t' \in
+\mathrm{Req}(t)\, (\lambda \in t')$.
+
+If $t = H_{X,c}(Q,e)$ with $e \notin \WF(Q,\lambda)$, $\mathrm{Loc}(t)$ fails and both sides are false. Otherwise $t$ has
+the measure of Lemma 3.3 at $\lambda$, and each required term has a smaller one: $H_{X,c}(Q,e)$ required by $X[b]$ has
+$c < b$ and $e$ well-founded, so its measure $(c, 1, \mathrm{rank}\, e)$ is below $(b, 0, 0)$; $H_{X,c}(Q,e')[c]$
+required by $H_{X,c}(Q,e)$ has measure $(c, 0, 0) < (c, 1, \mathrm{rank}\, e)$. Induction on the measure gives the
+equivalence.
+\end{proof}
+
+\begin{statement}\head{Lemma 4.4 (terms are decided one admissible level up)} There is a $\Delta_0$ formula $\Phi(t,
+\nu, V)$ without parameters such that for every term code $t$, every ordinal $\nu$ and every certificate $V$ through an
+ordinal $\eta \ge \nu^+$: $\Phi(t, \nu, V)$ holds if and only if $\nu \in t$.
+\end{statement}
+
+\begin{proof}
+\emph{The formula.} $\Phi(t,\nu,V)$ says: $\Adm(V,\nu)$, and there are $\kappa \le \eta$ with $\kappa = \nu^+$
+according to $V$ and $\Tb \in \Lv^V_\kappa$ such that $\Tb$ is a function on $\nu$; for every $\lambda < \nu$ with
+$\Adm(V,\lambda)$, $\Tb(\lambda)$ is the set of term codes $t' \in \Lv_\lambda$ with $\mathrm{Path}(t')$ evaluated at
+$\lambda$ with the table $\Tb{\restriction}\lambda$ and the certificate $V$; for every $\lambda < \nu$ without
+$\Adm(V,\lambda)$, $\Tb(\lambda) = \emptyset$ (set explicitly, since at such $\lambda$ the path of length $0$ need not
+lie in $\Lv_\lambda$); and $\mathrm{Path}(t)$ holds at $\nu$ with the table $\Tb$ and $V$. All quantifiers are bounded.
+
+\emph{Soundness.} Suppose $\Phi(t,\nu,V)$. By (C1) $V$ is the true certificate. By induction on $\lambda < \nu$,
+$\Tb(\lambda)$ is the table's true row: at non-admissible $\lambda$ both are empty, since terms are subclasses of
+$\Ad$; at admissible $\lambda$, $\lambda^+ \le \nu$, so $V$ supplies the data through $\lambda^+$, and Lemma 4.3 at
+$\lambda$ applies, the earlier rows being true. Lemma 4.3 at $\nu$ then gives $\nu \in t$.
+
+\emph{The table is in $L_{\nu^+}$.} Let $\nu \in \Ad$ and let $W \in L_{\nu^+}$ be the certificate through $\nu$ (C2).
+For admissible $\lambda < \nu$, $\lambda^+ \le \nu$, so $W$ supplies the data for the test at $\lambda$. Inside
+$L_{\nu^+}$, $\Sigma$-recursion on $\lambda < \nu$, with each row formed by $\Delta_0$-separation from $\Lv_\lambda$
+(and empty at non-admissible $\lambda$), produces a function on $\nu$; by Lemma 4.3 and induction on $\lambda$ it is the
+table of terms below $\nu$.
+
+\emph{Completeness.} If $\nu \in t$, then $\nu$ is admissible and $t \in L_\nu$ (Lemma 3.3), $\kappa = \nu^+ \le
+\eta$, the table is in $L_{\nu^+} = \Lv^V_\kappa$, and Lemma 4.3 at $\nu$ gives $\mathrm{Path}(t)$. If $\nu$ is not
+admissible, $\nu \notin t$ and $\Adm(V,\nu)$ fails.
+\end{proof}
+
+\begin{statement}\head{Lemma 4.5 (unboundedness)} For a term $X$ let $U_X$ be the sentence
+\[ \forall y\, \exists \nu, \eta, V\, [\neg\mathrm{Ord}(y) \vee (y \in \nu \wedge \Cert(V, \eta) \wedge \nu^+ \le \eta
+   \text{ according to } V \wedge \Phi(t_X, \nu, V))], \]
+with the constant $t_X$; it is $\Pi_2$. (a) If $t_X \in L_\beta$, $\beta > 0$ and $L_\beta \models U_X$, then $\beta \in
+\Lim X$. (b) If $\mu$ is admissible and $\mu \in \Lim X$, then $t_X \in L_\mu$ and $L_\mu \models U_X$.
+\end{statement}
+
+\begin{proof}
+(a) For each ordinal $y < \beta$, $L_\beta$ contains $\nu > y$ and a certificate $V$, true by (C1), with $\Phi(t_X, \nu,
+V)$, so $\nu \in X$ by Lemma 4.4. Hence $X \cap \beta$ is unbounded in $\beta$, and $\beta$ is a limit.
+(b) Some member of $X$ is below $\mu$, so $t_X \in L_\mu$ by Lemma 3.3(b). Given an ordinal $y < \mu$, take $\nu <
+\nu'$ in $X \cap (y, \mu)$; $\nu'$ is admissible, so $\nu^+ \le \nu' < \mu$, a certificate $V$ through $\nu^+$ is in
+$L_\mu$ by (C2), and $\Phi(t_X, \nu, V)$ holds by Lemma 4.4.
+\end{proof}
+
+\section{Upper bounds}
+
+\begin{statement}\head{Lemma 5.1} Let $X$ be a term, and let $\mu$ be an admissible ordinal in $\Lim X$ that is
+$\Pi_2$-reflecting on a class $Y$. Then $\mu$ is $\Pi_2$-reflecting on $Y \cap \Lim X$.
+\end{statement}
+
+\begin{proof}
+Let $\varphi(q)$ be a $\Pi_2$ sentence true in $L_\mu$. By Lemma 4.5(b), $\varphi(q) \wedge U_X$ is a $\Pi_2$
+sentence, with constants $q, t_X \in L_\mu$, true in $L_\mu$. A target $\beta \in Y \cap \mu$ with $q, t_X \in L_\beta$
+satisfies $\varphi(q)$ and $U_X$, so $\beta \in \Lim X$ by Lemma 4.5(a).
+\end{proof}
+
+\begin{statement}\head{Theorem 5.2} Let $X$ be a term, $\mu$ an ordinal, $c, d < \omega$, and $(Q, e)$ an eligible pair
+at $\mu$.
+\begin{itemize}
+\item[(A)] If $\mu \in \Mh(c+1) \cap \Lim X$, then $\mu \in X[c]$.
+\item[(B)] If $\mu$ is $\Pi_2$-reflecting on $\Mh(d+1) \cap \Lim X$, then $\mu \in H_{X,d}(Q, e)$ and $\mu \in \Lim
+  H_{X,d}(Q, e)$.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+\emph{The induction.} Give (A) at $(\mu, c)$ the measure $(\mu, 2c, 0)$ and (B) at $(\mu, d, e)$ the measure $(\mu, 2d +
+1, \mathrm{rank}_\mu(e))$, ordered lexicographically, and prove both for all terms $X$ by induction on the measure. Each
+appeal below is to a smaller measure: (A) at $(\mu, c)$ appeals to (B) at $(\mu, d, e)$ with $d < c$, and $2d + 1 < 2c$;
+(B) at $(\mu, d, e)$ appeals to (B) at $(\mu, d, e')$ for predecessors $e'$ of $e$ (third coordinate), to (A) at $(\mu,
+d)$ (second coordinate) and to (A) at levels $\beta < \mu$ (first coordinate). The measure does not involve the base
+term, so the appeals may change it.
+
+\emph{(A).} $\mu \in \Mh(c+1) \subseteq \Ad$. Let $d < c$. Then $\mu$ is $\Pi_2$-reflecting on $\Mh(c) \subseteq
+\Mh(d+1)$ (Lemma 2.1(a)), and by Lemma 5.1 on $\Mh(d+1) \cap \Lim X$. By (B) at $(\mu, d, e)$, $\mu \in H_{X,d}(Q, e)$
+for every eligible pair $(Q,e)$. With $\mu \in \Ad \cap \Lim X$ this is the clause of $X[c]$.
+
+\emph{(B).} $\mu$ is $\Pi_2$-reflecting on $\Mh(d+1)$, so $\mu \in \Mh(d+2) \subseteq \Mh(d+1)$, and $\mu$ is
+admissible. Reflecting ``$y$ exists'' for each $y < \mu$ gives members of $\Lim X$ cofinal in $\mu$, so $\mu \in \Lim
+X$. Write $H(e') = H_{X,d}(Q, e')$.
+
+\emph{Membership.} Let $e'$ be a predecessor of $e$ at $\mu$. By (B) at $(\mu, d, e')$, $\mu \in \Lim H(e')$, so by (A)
+at $(\mu, d)$ with base term $H(e')$, $\mu \in H(e')[d]$. With $\mu \in \Ad \cap \Lim X$ and $p_Q, e \in L_\mu$, $\mu \in
+H(e)$.
+
+\emph{Limit.} Write $\rho_Q = \exists i\, \rho_{Q,0}$ with $\rho_{Q,0} \in \Delta_0$, and let $\Theta$ be the sentence
+\[ \begin{aligned} & \forall e', z, i\ \exists \nu, \eta, V, t\, [\, \neg\mathrm{Ord}(z) \vee \neg\rho_{Q,0}(e', e,
+   p_Q, i) \vee (z \in \nu \wedge \Cert(V,\eta) \\ & \qquad \wedge \nu^+ \le \eta \text{ according to } V \wedge t =
+   t_{H(e')} \wedge \Phi(t, \nu, V))\,], \end{aligned} \]
+where $t_{H(e')}$ is the code of $H(e')$, formed from $e'$ and the constants by tuple formation. It is $\Pi_2$, with
+constants $e, p_Q, t_X \in L_\mu$. It holds in $L_\mu$: for a predecessor $e'$ of $e$ and $z < \mu$, take $\nu < \nu'$
+in $H(e') \cap (z, \mu)$, which exist because $\mu \in \Lim H(e')$; $\nu'$ is admissible, so $\nu^+ < \mu$, (C2) gives a
+certificate through $\nu^+$ in $L_\mu$, and Lemma 4.4 gives $\Phi$. Given an ordinal $y < \mu$, reflect $\Theta$, with
+$y$ added to its constants, onto $\Mh(d+1) \cap \Lim X$: some $\beta$ with $y < \beta < \mu$ is in $\Mh(d+1) \cap \Lim
+X$ and $L_\beta \models \Theta$. Then $\beta$ is admissible, and $e \in \WF(Q, \beta)$ by (C5). For a predecessor $e'$
+of $e$ at $\beta$, $\Theta$ in $L_\beta$, (C1) and Lemma 4.4 give members of $H(e')$ cofinal in $\beta$, so $\beta \in
+\Lim H(e')$, and (A) at $(\beta, d)$ gives $\beta \in H(e')[d]$. Hence $\beta \in H(e)$, and $\mu \in \Lim H(e)$.
+\end{proof}
+
+\begin{statement}\head{Lemma 5.3} Let $X$ be a term and $\gamma$ an admissible ordinal.
+\begin{itemize}
+\item[(a)] If $c < \omega$ and $\gamma \in \Lim(\Mh(c+2) \cap \Lim X)$, then $\gamma \in H_{X,c}(Q, e)$ for every
+  eligible pair $(Q,e)$ at $\gamma$.
+\item[(b)] If $k < \omega$ and $\gamma \in \Lim(\Mh(k+1) \cap \Lim X)$, then $\gamma \in X[k]$.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+In both parts $\gamma \in \Lim X$, since a limit of members of $\Lim X$ is in $\Lim X$. We prove (b) by induction on
+$k$, together with (a) for every $c < k$.
+
+(b) for $k = 0$: $X[0] = \Ad \cap \Lim X$.
+
+(a) for $c$, assuming (b) for $c$ and every term. $\gamma \in \Ad \cap \Lim X$ and $p_Q, e \in L_\gamma$. Let $e'$ be a
+predecessor of $e$ at $\gamma$ and write $H(e') = H_{X,c}(Q,e')$. Points $\mu \in \Mh(c+2) \cap \Lim X$ below $\gamma$
+with $p_Q, e' \in L_\mu$ are cofinal in $\gamma$, and for each of them $(Q, e')$ is an eligible pair at $\mu$ by (C5).
+Such a $\mu$ is admissible and $\Pi_2$-reflecting on $\Mh(c+1)$, hence, by Lemma 5.1, on $\Mh(c+1) \cap \Lim X$;
+Theorem 5.2(B) gives $\mu \in H(e') \cap \Lim H(e')$, and $\mu \in \Mh(c+1)$ by Lemma 2.1(a). So $\gamma \in
+\Lim(\Mh(c+1) \cap \Lim H(e'))$, and (b) for $c$ with base term $H(e')$ gives $\gamma \in H(e')[c]$. Hence $\gamma \in
+H_{X,c}(Q,e)$.
+
+(b) for $k+1$, assuming (b) for every $k' \le k$. $\gamma \in \Ad \cap \Lim X$. Let $c \le k$. Since $\Mh(k+2) \subseteq
+\Mh(c+2)$, $\gamma \in \Lim(\Mh(c+2) \cap \Lim X)$, and (a) for $c$ gives $\gamma \in H_{X,c}(Q,e)$ for every eligible
+pair. So $\gamma \in X[k+1]$.
+\end{proof}
+
+\section{The lower bound}
+
+The search tree is that of [A, Definition 5.3] with two changes: a positive answer must lie in $\Mh(k+1)$ rather than in
+$\Ad$, and each record carries a point of $X$, so that a branch has its supremum in $\Lim X$.
+
+\begin{statement}\head{Definition 6.1 (the tree $S$)} Fix $k < \omega$, a term $X$ and an ordinal $\ell$.
+
+\emph{Tasks.} Task $0$ is empty. For $m \ge 1$ write $m = 2^i(2n+1)$; task $m$ is $\mathrm{Refl}(i, n)$. Each pair $(i,
+n)$ is task $m$ for exactly one $m$, and then $i < m$.
+
+\emph{Nodes.} A node of depth $m \ge 0$ is a sequence of records $r_0, \dots, r_m$. Record $r_0$ is an ordinal $a_0 >
+\max(\ell, \omega)$. For $1 \le j \le m$, record $r_j$ is a tuple $(a_j, f_{j-1}, z_j, x_j)$ with:
+\begin{itemize}
+\item an ordinal $a_j > a_{j-1}$, and a surjection $f_{j-1} \in L_{a_j}$ from $\omega$ onto $L_{a_{j-1}}$;
+\item a point $z_j \in X$ with $a_{j-1} < z_j$ and $z_j^+ < a_j$;
+\item the answer $x_j \in L_{a_j}$ to task $j-1$.
+\end{itemize}
+The ordinals $a_j$ are the \emph{stages} of the node. Task $j - 1 = \mathrm{Refl}(i,n)$ has $i < j - 1$, so $f_i$ is in
+the node. If $f_i(n)$ is a pair $(\psi, q)$ with $\psi$ the code of a $\Pi_2$ formula $\forall u\, \exists v\,
+\theta(q,u,v)$, the task is \emph{about} $(\psi, q)$, and its answer is $(+, b)$ with $b \in \Mh(k+1)$, $b < a_j$, $q \in
+L_b$ and $L_b \models \psi(q)$, or $(-, u)$, a \emph{promise} that $\forall v\, \neg\theta(q, u, v)$. Otherwise the
+task is empty and its answer is $\emptyset$. \emph{Node condition:} every promise $(-, u)$ of a node of depth $m$
+satisfies $\neg\theta(q, u, v)$ for all $v \in L_{a_m}$.
+
+\emph{Edges.} $S$ has the parameter $(\ell, k, t_X)$. The predecessors of a node of depth $m$ are its \emph{children},
+the nodes of depth $m+1$ extending it, and the root $r = \emptyset$ has the nodes of depth $0$ as predecessors. The
+\emph{next task} of a node of depth $m$ is task $m$, answered in record $r_{m+1}$ of a child.
+\end{statement}
+
+For example, a node of depth 1 is $(a_0, (a_1, f_0, z_1, \emptyset))$, since task $0$ is empty; its next task is task
+$1 = \mathrm{Refl}(0,0)$, about $f_0(0)$ if that is a pair of the right form. Along an infinite branch the $f_j$
+enumerate $L_\lambda$ for $\lambda = \sup_j a_j$, every $\Pi_2$ sentence with constant in $L_\lambda$ is eventually
+answered, and the points $z_j$ make $\lambda$ a limit of $X$ (Lemma 6.3).
+
+\begin{statement}\head{Lemma 6.2} $S$ is a $\Sigma_1$ presentation. At every limit $\mu > \omega$ containing its
+parameter, its edges are edges of the tree of Definition 6.1, and at admissible $\mu$ containing the parameter every edge $(s', s)$
+of that tree with $s' \in L_\mu$ is an edge at $\mu$. For $\max(\ell,\omega) < a_0 < \mu$, the node $(a_0)$ is a predecessor of $r$
+at every limit $\mu > a_0$ containing the parameter.
+\end{statement}
+
+\begin{proof}
+The edge formula is the disjunction of a root-edge clause and a positive-depth clause. The root-edge clause, ``$s =
+r$ and $s' = (a_0)$ with $a_0$ an ordinal above $\max(\ell, \omega)$'', is bounded. The positive-depth clause, ``$s'$
+is a node extending $s$ by one record'', is $\exists V\, [\Cert(V, a) \wedge B]$, where $a$ is the last stage of $s'$ and
+$B$ is bounded: $b \in \Mh(k+1)$ is $\chi(V{\restriction}(b+1), b, k+1)$ (Lemma 4.1); $z_j^+ < a_j$ is $\exists
+\kappa < a_j\, (z_j < \kappa \wedge \Adm(V, \kappa))$; given this, $V{\restriction}(a_j+1)$ is a certificate through an
+ordinal $\ge z_j^+$, so $z_j \in X$ is $\Phi(t_X, z_j, V{\restriction}(a_j+1))$ (Lemma 4.4); $L_b \models \psi(q)$
+and the node condition are read from $\mathrm{Tr}_b$ and $\mathrm{Tr}_{a_m}$, and the tasks from $\mathrm{Tr}_\omega$.
+So the edge relation is $\Sigma_1$, with prefix $\exists V$. By (C1) any such $V$ is true, so edges at $\mu$ are edges
+of the tree; at admissible $\mu$, (C2) supplies $V$ for an edge with $s' \in L_\mu$. The root-edge clause holds at every limit $\mu > a_0$ containing the parameter, with no certificate, which gives
+the last assertion.
+\end{proof}
+
+\begin{statement}\head{Lemma 6.3 (branches)} If the root is not in $\WF(S, \mu)$ at a limit $\mu > \omega$ containing the
+parameter, then some $\lambda \in (\ell, \mu]$ lies in $\Mh(k+2) \cap \Lim X$.
+\end{statement}
+
+\begin{proof}
+Take an infinite sequence $r, s_0, s_1, \dots$ with each term a predecessor of the previous one at $\mu$; by Lemma 6.2,
+$s_m$ is a node of depth $m$ and the $s_m$ extend one another. Their stages $a_0 < a_1 < \cdots$ are below $\mu$; let
+$\lambda = \sup_j a_j$, a limit above $\omega$ with $\ell < \lambda \le \mu$. Since $a_{j-1} < z_j < a_j$ with $z_j \in
+X$, $\lambda \in \Lim X$, and $L_\lambda$ is the union of the ranges of the $f_j$. Let $\psi(q) = \forall u\, \exists
+v\, \theta$ with $q \in L_\lambda$ be true in $L_\lambda$. Then $(\psi, q) = f_i(n)$ for some $i, n$, and
+$\mathrm{Refl}(i,n)$ is task $m$ for some $m > i$, answered by $x_{m+1} \in L_{a_{m+1}}$. A promise $(-, u)$ would have
+$u \in L_{a_{m+1}}$, and the node conditions of the $s_{m'}$, $m' \ge m+1$, would give $\neg\theta(q, u, v)$ for every
+$v \in L_\lambda$, so $\psi(q)$ would be false in $L_\lambda$. So the answer is $(+, b)$ with $b \in \Mh(k+1) \cap
+\lambda$, $q \in L_b$ and $L_b \models \psi(q)$. By block contraction at $\lambda$ and at $b$, $\lambda$ is
+$\Pi_2$-reflecting on $\Mh(k+1)$, that is, $\lambda \in \Mh(k+2)$.
+\end{proof}
+
+For $\beta \in \Mh(k+1) \cap \Lim X$ with $\ell < \beta \le \xi^*$ and the parameter in $L_\beta$, and a node $s \in
+L_\beta$: $s$ is \emph{correct at $\beta$} if each of its promises holds in $L_\beta$ (these are $\Pi_1$ statements). A
+task about $(\psi, q)$ is \emph{bad at $\beta$} if $L_\beta \models \psi(q)$ and $L_b \nvDash \psi(q)$ for every $b \in
+\Mh(k+1) \cap \beta$ with $q \in L_b$.
+
+\begin{statement}\head{Lemma 6.4 (extension)} Let $\beta$ be as above and $s \in L_\beta$ a node of depth $m$, correct
+at $\beta$, whose next task is not bad at $\beta$. Then $s$ has a child $s' \in L_\beta$ that is a predecessor of $s$ at
+$\beta$ and correct at $\beta$, and there is $w \in L_\beta$ with this property: for every $\beta' < \beta$ in
+$\Mh(k+1) \cap \Lim X$ with $s', w \in L_{\beta'}$, the node $s'$ is correct at $\beta'$ and its next task is not bad
+at $\beta'$.
+\end{statement}
+
+The set $w$ records how the next task of $s'$ is settled at $\beta$, so that it stays settled at smaller levels that
+contain $w$.
+
+\begin{proof}
+\emph{The answer.} Let task $m$ be about $(\psi, q)$, $q \in L_{a_m}$. Answer $\emptyset$ if it is empty; $(-, u)$ with
+$u \in L_\beta$ and $L_\beta \models \forall v\, \neg\theta(q, u, v)$ if $\psi(q)$ is false in $L_\beta$; and $(+, b)$
+with $b \in \Mh(k+1) \cap \beta$, $q \in L_b$ and $L_b \models \psi(q)$ if it is true, which exists because the task is
+not bad.
+
+\emph{The new record.} $L_{a_m}$ is countable in $L_\beta$, since $\beta$ is admissible and $\beta \le \xi^*$, which gives
+$f_m \in L_\beta$. Since $\beta \in \Lim X$, there are $z_{m+1} < z'$ in $X \cap (a_m, \beta)$; $z'$ is admissible, so
+$z_{m+1}^+ \le z' < \beta$. Choose $a_{m+1} < \beta$ above $z_{m+1}^+$ with $f_m$ and the answer in $L_{a_{m+1}}$. The
+promises of $s$ and the new one hold in $L_\beta$, hence in $L_{a_{m+1}}$, since $\Pi_1$ sentences pass to transitive
+subsets containing their constants. So $s'$ is a child of $s$; it is a predecessor of $s$ at $\beta$ by Lemma 6.2, and
+correct at $\beta$.
+
+\emph{The set $w$.} Task $m+1$ is empty or about some $(\psi', q')$ with $q' \in L_{a_m}$; write $\psi' = \forall u\,
+\exists v\, \theta'$. Let $w$ be $u$ with $L_\beta \models \forall v\, \neg\theta'(q', u, v)$ if $\psi'(q')$ is false in
+$L_\beta$; $b \in \Mh(k+1) \cap \beta$ with $q' \in L_b$ and $L_b \models \psi'(q')$ if it is true and not bad; and
+$\emptyset$ otherwise.
+
+\emph{Passing down.} Let $\beta' < \beta$ be in $\Mh(k+1) \cap \Lim X$ with $s', w \in L_{\beta'}$. Then $\ell < a_0 <
+\beta'$, $\beta' \le \xi^*$, and the parameter is in $L_{\beta'}$ ($t_X$ by Lemma 3.3(b), since $\beta' \in \Lim X$), so
+correctness and badness are defined at $\beta'$. The promises of $s'$ are $\Pi_1$ with constants in $L_{\beta'}$, so
+$s'$ is correct at $\beta'$. Task $m+1$ is not bad at $\beta'$: if it is empty there is nothing to show; if $\psi'(q')$
+was false at $\beta$ with witness $u \in L_{\beta'}$, it is false at $\beta'$; if it was true and not bad, the witness $b
+< \beta'$ shows it is not bad at $\beta'$; if it was bad at $\beta$, then $\beta'$ is an element of $\Mh(k+1) \cap
+\beta$ with $q' \in L_{\beta'}$, so $\psi'(q')$ is false at $\beta'$.
+\end{proof}
+
+\begin{statement}\head{Theorem 6.5 (lower bound)} Let $k < \omega$, $X$ a term and $R = \Mh(k+1) \cap \Lim X$. For
+every admissible $\gamma \le \xi^*$, if $\gamma \in X[k]$, then $\gamma \in R \cup \Lim R$.
+\end{statement}
+
+\begin{proof}
+Induction on $k$, for all terms $X$ at once.
+
+\emph{$k = 0$.} $X[0] = \Ad \cap \Lim X = \Mh(1) \cap \Lim X$, so $\gamma \in R$.
+
+\emph{From $k$ to $k+1$.} Let $\gamma \le \xi^*$ be admissible with $\gamma \in X[k+1]$, let $\ell < \gamma$, and
+suppose that no point of $R' = \Mh(k+2) \cap \Lim X$ lies in $(\ell, \gamma]$. Let $S = S^{k,X}_\ell$ be the tree of
+Definition 6.1; its parameter is in $L_\gamma$, since $\gamma \in \Lim X$ (Lemma 3.3(b)). For a node $s$ write $H(s) =
+H_{X,k}(S, s)$; each $H(s)$ is a term, and $H(s) \subseteq \Lim X$ by its clause.
+
+\emph{The root.} By Lemma 6.3 and the assumption, the root $r$ is in $\WF(S, \gamma)$. As $k < k+1$ and $(S, r)$ is an
+eligible pair at $\gamma$, $\gamma \in H(r)$. The assumption on $(\ell, \gamma]$ is used only here. The rest of the
+proof descends from $\gamma$ through smaller members of the classes $H(s)$, using the induction hypothesis to keep each
+level in $\Mh(k+1)$.
+
+\emph{Claim.} Let $\beta \in \Mh(k+1) \cap \Lim X$ with $\ell < \beta \le \xi^*$ and the parameter in $L_\beta$, and let
+$s \in L_\beta$ be a node correct at $\beta$ whose next task is not bad at $\beta$. Then $\beta \notin \Lim H(s)$.
+
+Suppose not, and let $\beta$ be least, with such an $s$.
+\begin{itemize}
+\item Lemma 6.4 gives a child $s' \in L_\beta$ of $s$ and a set $w \in L_\beta$.
+\item Since $\beta \in \Lim H(s)$, some $\beta_0 < \beta$ in $H(s)$ has $s', w \in L_{\beta_0}$. Then $\beta_0$ is
+  admissible, so $s'$ is a predecessor of $s$ at $\beta_0$ by Lemma 6.2. The clause of $H(s)$ at $\beta_0$ gives $s \in
+  \WF(S, \beta_0)$, hence $s' \in \WF(S, \beta_0)$, and $\beta_0 \in H(s')[k]$.
+\item The induction hypothesis, applied to the term $H(s')$ at the admissible $\beta_0 \le \xi^*$, gives $\beta_0 \in
+  R_{s'} \cup \Lim R_{s'}$ with $R_{s'} = \Mh(k+1) \cap \Lim H(s')$. Let $\beta_1 = \beta_0$ if $\beta_0 \in R_{s'}$, and
+  otherwise let $\beta_1 < \beta_0$ be in $R_{s'}$ with $s', w \in L_{\beta_1}$.
+\item Then $\beta_1 \in \Mh(k+1)$, and $\beta_1 \in \Lim H(s') \subseteq \Lim X$. By Lemma 6.4, applied with $\beta' =
+  \beta_1$, $s'$ is correct at $\beta_1$ and its next task is not bad at $\beta_1$; and $\ell < \beta_1 < \beta$, with
+  the parameter in $L_{\beta_1}$.
+\item So $(\beta_1, s')$ satisfies the hypotheses of the claim, and $\beta_1 \in \Lim H(s')$, contradicting the
+  minimality of $\beta$.
+\end{itemize}
+
+\emph{Conclusion.} Choose $a_0$ with $\max(\ell, \omega) < a_0 < \gamma$ and let $s_0 = (a_0)$, a predecessor of $r$ at
+$\gamma$ (Lemma 6.2). The clause of $H(r)$ at $\gamma$ gives $\gamma \in H(s_0)[k]$, and the induction hypothesis gives
+some $\beta_1 \in \Mh(k+1) \cap \Lim H(s_0)$ with $a_0 < \beta_1 \le \gamma$. Then $\beta_1 \in \Lim X$, $\ell < \beta_1
+\le \xi^*$, the parameter and $s_0$ are in $L_{\beta_1}$, $s_0$ has no promises, and its next task, task $0$, is empty.
+The claim gives $\beta_1 \notin \Lim H(s_0)$, a contradiction. So every $\ell < \gamma$ has a point of $R'$ in $(\ell,
+\gamma]$, that is, $\gamma \in R' \cup \Lim R'$.
+\end{proof}
+
+\section{Results}
+
+\begin{statement}\head{Theorem 7.1} Let $k < \omega$, $X$ a term and $R = \Mh(k+1) \cap \Lim X$. An admissible $\gamma
+\le \xi^*$ is in $X[k]$ if and only if $\gamma \in R \cup \Lim R$.
+\end{statement}
+
+\begin{proof}
+The forward direction is Theorem 6.5. Conversely, $R \subseteq X[k]$ by Theorem 5.2(A), and an admissible $\gamma \in
+\Lim R$ is in $X[k]$ by Lemma 5.3(b).
+\end{proof}
+
+\begin{statement}\head{Theorem 7.2 (main theorem)} Let $k \ge 0$. An admissible ordinal $\gamma \le \xi^*$ is
+recursively inaccessible of degree $\delta_\gamma^{k+1}$ if and only if $\gamma \in \Mh(k+2)$ or $\gamma$ is a limit of
+$\Mh(k+2)$, that is, $\gamma$ is recursively $k$-Mahlo or a limit of recursively $k$-Mahlo ordinals. The least ordinal
+$\alpha$ that is recursively inaccessible of degree $\delta_\alpha^{k+1}$ is the least recursively $k$-Mahlo ordinal.
+\end{statement}
+
+\begin{proof}
+Take $X = \Ad$ and $k + 1$ in place of $k$ in Theorem 7.1. Since $\Mh(k+2) \subseteq \Lim \Ad$ (Lemma 2.1), $R =
+\Mh(k+2)$. By Lemma 2.1(b) the least element of $\Mh(k+2)$ exists and is below $K_2 \le \xi^*$, so it is in
+$\Ad[k+1]$. Every member of $\Ad[k+1]$ is admissible, and one that is at most $\xi^*$ is in $\Mh(k+2) \cup \Lim
+\Mh(k+2)$, so it is at least the least element of $\Mh(k+2)$.
+\end{proof}
+
+\begin{statement}\head{Corollary 7.3 (degrees $\delta_\alpha + 1$ and $\delta_\alpha \cdot 2$)}
+\begin{itemize}
+\item[(a)] The least ordinal recursively inaccessible of degree $\delta_\alpha + 1$ is the least admissible limit of
+  recursively Mahlo ordinals.
+\item[(b)] The least ordinal recursively inaccessible of degree $\delta_\alpha \cdot 2$ is the least recursively Mahlo
+  limit of recursively Mahlo ordinals, and it is below the least recursively 1-Mahlo ordinal.
+\end{itemize}
+\end{statement}
+
+\begin{proof}
+For $\mu \le \xi^*$, $D \cap \mu = (\Mh(2) \cup (\Ad \cap \Lim \Mh(2))) \cap \mu$ [A, Corollary 5.9], so $\mu \in \Lim D$
+if and only if $\mu \in \Lim \Mh(2)$. By [A, Corollary 5.9 and its proof], the least admissible limit of $\Mh(2)$ and a
+recursively Mahlo limit of recursively Mahlo ordinals exist below the least recursively 1-Mahlo ordinal, which is
+below $K_2 \le \xi^*$ (Lemma 2.1).
+
+(a) follows, since the ordinals of degree $\delta_\alpha + 1$ are those in $\Ad \cap \Lim D$.
+
+(b) The class of degree $\delta_\alpha \cdot 2$ is $D[1]$ (Lemma 3.5). By Theorem 7.1 with $k = 1$ and $X = D$, an
+admissible $\gamma \le \xi^*$ is in it if and only if $\gamma \in R \cup \Lim R$ with $R = \Mh(2) \cap \Lim D$, and by
+the first paragraph $R \cap (\xi^*+1)$ ${}= \Mh(2) \cap \Lim \Mh(2) \cap (\xi^*+1)$. Every element of $\Lim R$ is above an
+element of $R$, so the least element of $D[1]$ is the least element of $\Mh(2) \cap \Lim \Mh(2)$.
+\end{proof}
+
+\begin{statement}\head{Proposition 7.4 (degree $\delta_\alpha^\omega$)} An admissible $\gamma \le \xi^*$ is recursively
+inaccessible of degree $\delta_\gamma^\omega$ if and only if $\gamma$ is a limit of $\Mh(k)$ for every $k < \omega$.
+The least ordinal of degree $\delta_\alpha^\omega$ is $\tau_\omega$, and $\tau_\omega < m_\omega$.
+\end{statement}
+
+\begin{proof}
+\emph{Necessity.} If $\gamma \in \Ad[\omega]$ then $\gamma \in \Ad[k+1]$ for every $k < \omega$: the clause of
+$\Ad[\omega]$ asks for the classes $H_{\Ad,c}(Q,e)$ with $c < \omega$, and that of $\Ad[k+1]$ for those with $c \le k$.
+By Theorem 7.2, $\gamma \in \Mh(k+2) \cup \Lim \Mh(k+2)$, which is contained in $\Lim \Mh(k+1)$ by Lemma 2.1(a). So
+$\gamma$ is a limit of every $\Mh(k)$.
+
+\emph{Sufficiency} (for every admissible $\gamma$). $\gamma \in \Ad \cap \Lim \Ad$. For $c < \omega$, $\gamma \in \Lim
+\Mh(c+2)$ ${}= \Lim(\Mh(c+2) \cap \Lim \Ad)$, so Lemma 5.3(a) gives $\gamma \in H_{\Ad,c}(Q,e)$ for every eligible pair
+$(Q,e)$. So $\gamma \in \Ad[\omega]$.
+
+\emph{The least element.} $\tau_\omega \le m_\omega < \xi^*$ (Lemma 2.1), so $\tau_\omega$ has the degree, and every
+smaller admissible ordinal fails the characterisation.
+
+\emph{$\tau_\omega < m_\omega$.} Let $\Psi$ be the sentence
+\[ G \wedge \forall k\, \forall y\, \exists \nu\, \exists W\, [\neg(k \in \omega) \vee \neg\mathrm{Ord}(y) \vee (y \in
+   \nu \wedge \Cert(W, \nu) \wedge \chi(W, \nu, k))], \]
+with $\chi$ from Lemma 4.1 and the constant $\omega$. Merging the blocks of $G$, it is $\Pi_2$. It holds in
+$L_{m_\omega}$: $m_\omega$ is a limit of every $\Mh(k)$ (Lemma 2.1), and (C2) supplies the certificates. As $m_\omega \in
+\Mh(2)$, it reflects $\Psi$ onto $\Ad$: some admissible $\beta < m_\omega$ has $L_\beta \models \Psi$. For each $k <
+\omega$ and $y < \beta$, $L_\beta$ contains $\nu > y$ and a certificate through $\nu$, true by (C1), with $\chi(W, \nu,
+k)$, so $\nu \in \Mh(k)$ by Lemma 4.1. So $\beta$ is an admissible limit of every $\Mh(k)$, and $\tau_\omega \le \beta <
+m_\omega$.
+\end{proof}
+
+\section{Where the statements fail, and open questions}
+
+\begin{itemize}
+\item \emph{Exponent $0$.} The pattern of Theorem 7.2 does not extend to exponent $0$: $\Ad[0] = \Ad \cap \Lim \Ad$,
+  whose least element is the least recursively inaccessible ordinal, while the matching class $\Mh(1) = \Ad$ has least
+  element $\omega_1^{CK}$, which is not a limit of admissible ordinals. Theorem 7.1 holds at $k = 0$, with $R = \Ad \cap
+  \Lim X$.
+\item \emph{Degree $\delta_\alpha \cdot 2$.} It does not give recursive 1-Mahloness (Corollary 7.3(b)). By Theorem 7.1
+  with $k = 1$ and Lemma 3.5(b), $\delta_\alpha$ steps of ``admissible limit of'' over a base term $X$ give,
+  at admissible levels up to $\xi^*$, the class $R \cup \Lim R$ with $R = \Mh(2) \cap \Lim X$, and so use $X$ only through $\Lim X$; exponent $2$ iterates $Y \mapsto Y[1]$, and its least point is
+  the least element of $\Mh(3)$ by Theorem 7.2.
+\item \emph{Exponent $\omega$.} ``Degree $\delta_\alpha^\xi$ has the least element of $\Mh(1+\xi)$'' holds for $1 \le
+  \xi < \omega$ and fails at $\xi = \omega$: the least element of degree $\delta_\alpha^\omega$ is $\tau_\omega <
+  m_\omega$ (Proposition 7.4). At exponent $\omega$ the conditions ``in $\Mh(k)$ or a limit of $\Mh(k)$'' are
+  intersected over $k$, while $\Mh(\omega)$ intersects the conditions ``in $\Mh(k)$''.
+\item \emph{Parameters.} Theorem 5.2 reflects sentences that mention the tests of Lemmas 4.1 and 4.4, and Lemma 6.2
+  uses the fixed tests in the edge formula of a $\Sigma_1$ presentation with parameter $(\ell, k, t_X)$, so the constants of these tests must lie in the levels
+  concerned; this holds because the tests have no parameters and the constants of a term lie below its members (Lemma
+  3.3(b)). If the class $\Ad$ in Definition 3.1 is replaced by a class tested only with a constant outside the level,
+  the upper bound fails: for the least recursively Mahlo ordinal $\mu$, take the class consisting of $\mu$ and an
+  $\omega$-sequence of admissible ordinals cofinal in $\mu$, chosen outside $L_\mu$ so that every true $\Pi_2$ sentence
+  of $L_\mu$ holds at one of them; then $\mu$ is $\Pi_2$-reflecting on this class, but no member below $\mu$ is a limit
+  of the class, so two steps of ``in the class and a limit of'' already exclude $\mu$.
+\end{itemize}
+
+\textbf{Open questions.}
+\begin{enumerate}
+\item Allowing every $\Sigma_1$ presentation in place of $P_\omega$ to supply the exponent in Definition 3.2 defines,
+  at limits $\alpha > \omega$, degree $\delta_\alpha^{\delta_\alpha}$. Is its least element the least $\Pi_3$-reflecting ordinal $K_2$, as the third
+  question of [A] asks? We do not treat this degree here.
+\item What are the least elements for the exponent $\omega + 1$ and for exponents given by other nodes of $\Sigma_1$
+  presentations?
+\item Does the forward direction of Theorem 7.2 hold above $\xi^*$? The proof uses $\gamma \le \xi^*$ only for the
+  countability in Lemma 6.4.
+\end{enumerate}
+
+\section{Verification status}
+
+\begin{center}\begin{tabular}{p{0.24\linewidth}p{0.70\linewidth}}
+\toprule
+Part & Status \\
+\midrule
+All numbered results & Written proofs, not checked by a person. The upper bound (Theorem 5.2) adapts known arguments. \\
+AI check & A referee from a different model family checked the written arguments in Sections 2--8. \\
+Lean & None. \\
+References & Results of [A] and [E] are used as stated there. Richter--Aczel is cited from the 1973 Oslo preprint. The
+  locators in Arai's Lectures (arXiv v1, Section 4) and in Rathjen's 1993 preprint (Remark 4.9) were checked against
+  those texts. \\
+\bottomrule
+\end{tabular}\end{center}
+
+\textbf{Novelty.} Not established; Section 1 compares the nearest results.
+
+The passages a specialist is most likely to question are the bounded test of Lemmas 4.3 and 4.4, in particular that the
+table of terms lies in $L_{\nu^+}$ itself; the claim in the proof of Theorem 6.5, in particular the choice of
+$\beta_1$ that keeps $s'$ and $w$ and lies in $\Mh(k+1)$; and the extension step of Lemma 6.4, with the point
+$z_{m+1}$ and the bound $z_{m+1}^+ < a_{m+1}$.
+
+\section*{Appendix A: which result uses which}
+
+\begin{center}\begin{tabular}{p{0.26\linewidth}p{0.68\linewidth}}
+\toprule
+Result & Uses \\
+\midrule
+Lemma 2.1 & [A, Theorem 4.3]; [E, Definition 3.1, Example 3.2(1)] \\
+Lemmas 3.3, 3.5 & Definitions 3.1--3.4; [E, (C5)] \\
+Lemma 4.1 & [E, (C1)--(C4)]; Richter--Aczel 1.8 \\
+Lemmas 4.2--4.4 & Lemma 3.3; [E, (C1), (C2)]; $\Sigma$-recursion, $\Delta_0$-separation and $\Delta_0$-collection \\
+Lemma 4.5 & Lemmas 3.3, 4.4; [E, (C1), (C2)] \\
+Lemma 5.1 & Lemma 4.5 \\
+Theorem 5.2 & Lemmas 2.1, 4.4, 5.1; [E, (C1), (C2), (C5)] \\
+Lemma 5.3 & Theorem 5.2; Lemmas 2.1, 5.1; [E, (C5)] \\
+Lemmas 6.2--6.4 & Lemmas 3.3, 4.1, 4.4; [E, (C1), (C2)]; [E, Lemma 7.2] for the countability in Lemma 6.4 \\
+Theorem 6.5 & Lemmas 3.3, 6.2--6.4 \\
+Theorems 7.1, 7.2 & Theorem 6.5, Theorem 5.2, Lemmas 2.1, 5.3 \\
+Corollary 7.3 & Theorem 7.1, Lemmas 2.1, 3.5; [A, Corollary 5.9] \\
+Proposition 7.4 & Theorem 7.2, Lemmas 2.1, 4.1, 5.3; [E, (C1), (C2)] \\
+\bottomrule
+\end{tabular}\end{center}
+
+\section*{References}
+
+\begin{itemize}
+\item $[A]$ \href{https://waffle3z.github.io/math/degree-reflection.html}{The least ordinal that is $\Pi_n$-reflecting of
+  degree $\delta_\alpha$ is the least $\Pi_{n+1}$-reflecting ordinal}, waffle3z.github.io/math.
+\item $[E]$ \href{https://waffle3z.github.io/math/greatly-mahlo-pi3.html}{The least $\alpha^+$-recursively Mahlo ordinal
+  is the least $\Pi_3$-reflecting ordinal}, waffle3z.github.io/math.
+\item J. P. Aguilera, The order of reflection, arXiv:1906.11769 (Section 2).
+\item T. Arai, Iterating the recursively Mahlo operations, arXiv:1005.1987 (Sections 2--3).
+\item T. Arai, Lectures on Ordinal Analysis, arXiv:2304.00246v1 (Section 4).
+\item J. Barwise, \emph{Admissible Sets and Structures}, Springer, 1975 (Corollary I.8.6, Theorem I.6.4).
+\item M. Rathjen, Proof theory of reflection, preprint, 1993 (Remark 4.9); published in \emph{Annals of Pure and Applied
+  Logic} 68 (1994), 181--224.
+\item W. Richter and P. Aczel, Inductive definitions and reflecting properties of admissible ordinals, in
+  \emph{Generalized Recursion Theory}, North-Holland, 1974, 301--381 (Oslo preprint, 1973: Theorems 1.8--1.11).
+\end{itemize}
+
+\end{document}

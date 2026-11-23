@@ -88,6 +88,7 @@ td:first-child { white-space: nowrap; padding-right: 1.2rem; }
 .chip.lean { --c: var(--lean); }
 .chip.ai { --c: var(--ai); }
 .chip.human { --c: var(--human); }
+.chip.cited { --c: var(--muted); }
 .chip.open { --c: transparent; }
 .chip.open::before { border: 2px solid var(--open); }
 
@@ -102,9 +103,9 @@ td:first-child { white-space: nowrap; padding-right: 1.2rem; }
 .small { font-size: 0.85rem; color: var(--muted); }
 
 .card { border-top: 1px solid var(--rule); padding: 1.4rem 0 0.6rem; }
-.card h2 { border: 0; padding: 0; margin: 0 0 0.5rem; font-size: 1.3rem; text-wrap: balance; }
-.card h2 a { color: inherit; text-decoration: none; }
-.card h2 a:hover { text-decoration: underline; }
+.card h3 { border: 0; padding: 0; margin: 0 0 0.5rem; font-size: 1.3rem; text-wrap: balance; }
+.card h3 a { color: inherit; text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
 .legend dt { font-family: var(--sans); margin-top: 0.7rem; }
 .legend dd { margin: 0.3rem 0 0; font-size: 1rem; }
 .lede { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
@@ -147,3 +148,16 @@ footer:empty { display: none; }
 /* "Open all proofs" only where it stays in view: in the fixed contents column on wide screens */
 button#toggle-proofs { display: none; }
 @media (min-width: 84rem) { button#toggle-proofs:not([hidden]) { display: inline-block; } }
+
+/* front page: results listed by ordinal */
+.fact-group h3 { margin-top: 2rem; }
+ol.facts { list-style: none; padding: 0; margin: 0; }
+ol.facts > li { padding: 0.65rem 0; border-top: 1px solid var(--rule); }
+ol.facts > li:first-child { border-top: 0; }
+.fact-text { margin: 0 0 0.35rem; }
+.fact-src { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; }
+.fact-src .chip { font-size: 0.75rem; padding: 0.1rem 0.55rem 0.1rem 0.45rem; }
+.fact-src .paper { color: var(--muted); }
+dl.notation dt { font-weight: 600; margin-top: 0.9rem; }
+dl.notation dd { margin: 0.2rem 0 0; }
+dl.notation dd a, dl.notation dd .paper { font-family: var(--sans); font-size: 0.85rem; }

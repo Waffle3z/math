@@ -1,0 +1,1349 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\input{macros}
+\title{Where the parameter-free $\delta$ first exceeds Girard's $\Xi_1$}
+% The date is stated here once; the PDF and the web page both take it from this line.
+\newcommand{\paperversion}{2026-11-22}
+\date{\paperversion}
+\begin{document}
+\maketitle
+\newcommand{\Xo}{\Xi_1}
+\newcommand{\Xp}{\Xi'_1}
+\newcommand{\PR}{\mathrm{PAD}_{\mathcal R}}
+\newcommand{\PRp}{\mathrm{PAD}'_{\mathcal R}}
+\newcommand{\dz}[1]{\delta^0_{#1}}
+\newcommand{\nx}{\operatorname{nx}}
+\newcommand{\Pre}{\mathrm{Pre}}
+\newcommand{\Dil}{\mathrm{Dil}}
+\newcommand{\tl}{\triangleleft}
+\newcommand{\E}{\mathrel{E}}
+
+\begin{frontnote}\head{Abstract} For an infinite ordinal $\alpha$ let $\Xo(\alpha)$ be the supremum of the ordinals
+$D(\alpha)$ over all recursive dilators $D$; it is the least ordinal above $\alpha$ that is closed under every
+recursive dilator. Let $\Xp(\alpha)$ be the same supremum over all recursive predilators that are well-ordered at
+$\alpha$. The notation $\Xi_1$ is Girard's; Ressayre (1982) writes $\mathrm{PAD}$ and $\mathrm{PAD}'$.
+$\Xp(\alpha)$ is also the supremum of the well-orderings
+that are $\Sigma_1$-definable over $L_{\alpha}$ without parameters. Ressayre showed that
+$\Xo(\alpha) < \Xp(\alpha)$ can happen. We determine where it first happens. Let $u$ be the least ordinal that is
+uncountable in the next admissible set $L_{u^+}$, and let $\mu_0$ be the least ordinal that is not
+$\Sigma_1$-definable from $u$ in $L_{u^+}$. Then $\Xp(d) = \Xo(d)$ for every infinite $d < \mu_0$, while
+$\Xo(x) < \Xp(x) = \Xo(\Xo(x)) < \mu_0^+$ for every $x$ with $\mu_0 \le x < \Xo(\mu_0)$. We give a criterion for
+$\Xp(\alpha) = \Xo(\alpha)$ at an arbitrary $\alpha$, and characterise $\mu_0$ as the least ordinal that shares all
+its $\Sigma^1_1$ properties with a larger ordinal. As an application we show that a $\Sigma^1_1$ condition on a
+family of partial operations makes the least ordinal closed under the family equal to $\Xo(\alpha)$, and we record,
+partly from cited results, where the next admissible ordinal, the supremum $\delta_{\alpha}$ of the well-orderings $\Delta_1$-definable over
+$L_{\alpha}$ with parameters, and the parameter-free $\Sigma_1$ form stop being equal to $\Xo(\alpha)$.
+\end{frontnote}
+
+\begin{frontnote}\head{Provenance} The proofs were found and written by an AI system. No human specialist has
+reviewed them, and novelty is not established. Section 12 states what has been checked and how.
+\end{frontnote}
+
+\section{Introduction}
+
+Girard's dilators are the functors on the category of linear orders that preserve direct limits and pullbacks and
+send well-orders to well-orders; a predilator need not send well-orders to well-orders (Section 2.1). For an
+infinite ordinal $\alpha$ put
+\begin{align*}
+\Xo(\alpha) &= \sup\{|D(\alpha)| : D \text{ a recursive dilator}\}, \\
+\Xp(\alpha) &= \sup\{|P(\alpha)| : P \text{ a recursive predilator, } P(\alpha) \text{ well-ordered}\},
+\end{align*}
+where $|W|$ is the order type of a well-order $W$. The notation is Girard's: in Volume 2 of his book (Corollary 11.B.7) $\Xi_1$ is the sum of all
+recursive dilators, whose value at $\alpha$ is $\Xo(\alpha)$, and $\Xi'_1$ follows his Exercise 11.B.12. Ressayre
+(1982) writes $\mathrm{PAD}$ and $\mathrm{PAD}'$. He defines the two ordinals
+with a slightly different class of functors, the primitive recursive functors on the finite ordinals extended by
+direct limits; we write $\PR(\alpha)$ and $\PRp(\alpha)$ for his ordinals, and Corollary 5 shows that
+$\PR(\alpha) = \Xo(\alpha)$ and $\PRp(\alpha) = \Xp(\alpha)$ for infinite $\alpha$. At a finite argument $n$ both
+of Ressayre's ordinals are $\omega$, because his functors have finite values at $n$ and the constant functors are
+among them; so only infinite arguments are considered.
+
+Throughout, $\alpha^+$ is the least admissible ordinal above $\alpha$. Girard proved that
+$\Xo(\alpha) = \alpha^+$ for many ordinals $\alpha$, among them every infinite $\alpha$ below the ordinal $\sigma$
+defined in Section 1.1 (Girard's book, Volume 2, Theorem 11.B.6 and Corollary 11.B.7). Ressayre gave a new proof and asked how $\Xo(\alpha)$, $\Xp(\alpha)$ and $\alpha^+$ can be
+related. He showed $\Xo(\alpha) \le \Xp(\alpha) \le \alpha^+$, proved equality of the first two in several cases,
+and gave the first example of inequality (his Theorem IV.7): if $\lambda$ is the least ordinal that is not
+countable in $L_{\lambda^+}$, and $\mu$ is the least ordinal above $\lambda$ that is not $\Sigma_1$-definable from
+$\lambda$ in $L_{\lambda^+}$, then
+\[ \PR(\lambda) = \PR(\mu) < \PRp(\mu) < \mu^+ . \]
+In the proof he writes $\mu = \lambda + p_0$, where $p_0 < \lambda$ is the least ordinal that is not
+$\Sigma_1$-definable from $\lambda$ in $L_{\lambda^+}$; he does not evaluate the two functions at $p_0$.
+
+This paper determines the least ordinal at which the two functions differ. It is $p_0$, which we call $\mu_0$.
+
+\subsection{Results}
+
+\emph{Definability.} A set is \emph{$\Sigma_1$-definable from $p$ in $L_{\rho}$} if it is the only element $x$ of
+$L_{\rho}$ with $L_{\rho} \models \psi(x, p)$, for some $\Sigma_1$ formula $\psi$. A \emph{$\Sigma^1_1$ class} is a
+class of ordinals of the form $\{\beta : (\beta, <) \models \exists \vec R\, \theta(\vec R)\}$ with $\theta$
+first-order. Following Ressayre, an ordinal is \emph{$\beta^-$-definable} if it is the least element of a
+$\Sigma^1_1$ class, and \emph{$\beta$-definable} if it is the only element of one. An infinite ordinal is
+$\beta^-$-definable exactly when it is the least ordinal at which some recursive predilator is not well-ordered
+(Lemma 3.4).
+
+\emph{Four ordinals.} All four are countable.
+\begin{itemize}
+\item $\boldsymbol{\sigma}$ is the least ordinal that is not $\beta$-definable. By Ressayre (III.10) it is the least
+  $\Sigma^1_1$-reflecting ordinal; we use only the definition just given.
+\item $\boldsymbol{u}$ is the least ordinal $\alpha$ that is uncountable in $L_{\alpha^+}$. This is Ressayre's
+  $\lambda$; Section 2.4 mentions related ordinals from the literature.
+\item $\boldsymbol{\mu_0}$ is the least ordinal that is not $\Sigma_1$-definable from $u$ in $L_{u^+}$. This is
+  Ressayre's $p_0$. It satisfies $\mu_0 < u$, and it is the image of $u$ when the set $H$ of all elements of
+  $L_{u^+}$ that are $\Sigma_1$-definable from $u$ is collapsed to a transitive set.
+\item $\boldsymbol{\gamma}$ is the order type of the set of ordinals in $H$. The transitive collapse of $H$ is
+  $L_{\gamma}$, and $\gamma$ is the least ordinal such that $\mu_0$ is countable in $L_{\gamma+1}$ (Lemma 2.6).
+\end{itemize}
+They are ordered as follows (Lemmas 2.5 and 2.6, Theorem 1, Proposition 6):
+\[ \omega < \sigma < \sigma + \omega < \mu_0 < \gamma = \Xo(\mu_0) < \Xo(\gamma) < \mu_0^+ < u < u^+ . \]
+
+\emph{Closure points and definable well-orderings.} An ordinal $\kappa$ is a \emph{closure point of the recursive dilators}
+if $|D(\beta)| < \kappa$ for every $\beta < \kappa$ and every recursive dilator $D$; $\Xo(\alpha)$ is the least
+closure point above $\alpha$ (Lemma 2.1). For an infinite ordinal $\alpha$:
+\begin{itemize}
+\item $\delta_{\alpha}$ is the supremum of the order types of the well-orderings of subsets of $L_{\alpha}$ that
+  are $\Delta_1$-definable over $L_{\alpha}$ with parameters from $L_{\alpha}$. The definition is modelled on Aguilera's
+  $\delta_{\alpha}$ for admissible $\alpha$ (The order of reflection, Section 2), the supremum of the order types of
+  the $\alpha$-recursive well-orderings of subsets of $\alpha$; there $\alpha$ is called Gandy when
+  $\delta_{\alpha} = \alpha^+$. We use the definition above at every infinite $\alpha$, admissible or not, and no
+  result about Aguilera's $\delta_{\alpha}$.
+\item $\dz{\alpha}$ is the supremum of the order types of the well-orderings of subsets of $L_{\alpha}$ that are
+  $\Sigma_1$-definable over $L_{\alpha}$ without parameters.
+\end{itemize}
+The two definitions differ in two respects: $\dz{\alpha}$ allows no parameters, and it allows $\Sigma_1$ in place of
+$\Delta_1$ definitions. The first difference is the one that matters in this paper. The second is made because the
+$\Sigma_1$ form is the one we can identify with $\Xp(\alpha)$ at every infinite $\alpha$; at limit $\alpha$ the
+parameter-free $\Delta_1$ form gives the same ordinal (remark after Lemma 6.1).
+
+\begin{statement}\head{Theorem 1} (i) $\Xp(d) = \Xo(d)$ for every infinite ordinal $d < \mu_0$.
+
+(ii) $\mu_0$ is a closure point of the recursive dilators, $\Xo(\mu_0) = \gamma$, and for every $x$ with
+$\mu_0 \le x < \gamma$,
+\[ \Xo(x) = \gamma < \Xp(x) = \Xo(\gamma) < \mu_0^+ . \]
+
+(iii) $\Xp(\gamma) = \Xo(\gamma)$.
+\end{statement}
+
+So $\mu_0$ is the least infinite ordinal at which the two functions differ, they differ on the whole interval
+$[\mu_0, \gamma)$, and there $\Xp(x) = \Xo(\Xo(x))$: exactly one closure point, $\gamma$, lies between $x$ and
+$\Xp(x)$. At $\gamma$ itself the functions agree again.
+
+\begin{statement}\head{Theorem 2} (criterion) Let $\alpha$ be an infinite ordinal.
+
+(a) Let $F$ be a recursive predilator with $F(\alpha)$ well-ordered. Then $|F(\alpha)| < \Xo(\alpha)$ if and only if
+there is a $\Sigma^1_1$ class $X$ with $\alpha \in X$ such that $F(\beta)$ is well-ordered for every $\beta \in X$.
+
+(b) $\Xp(\alpha) = \Xo(\alpha)$ if and only if either no $\beta^-$-definable ordinal is greater than $\alpha$, or
+some $\Sigma^1_1$ class containing $\alpha$ has all its elements below the least $\beta^-$-definable ordinal greater
+than $\alpha$.
+\end{statement}
+
+\begin{statement}\head{Theorem 3} (characterisations of $\mu_0$) (a) Every $\Sigma^1_1$ class that contains $\mu_0$
+contains $u$.
+
+(b) $\mu_0$ is the least ordinal $d$ such that every $\Sigma^1_1$ class containing $d$ has an element $\ge u$.
+
+(c) $\mu_0$ is the least ordinal $d$ for which there is an ordinal $y > d$ that belongs to every $\Sigma^1_1$ class
+containing $d$.
+\end{statement}
+
+Theorem 3 (a) is the reason for the failure at $\mu_0$: a predilator that first fails at $u$ is well-ordered at
+$\mu_0$, but by Theorem 2 (a) no recursive dilator bounds it there.
+
+\subsection{The next closure point}
+
+Girard's theorem identifies the next admissible ordinal $\alpha^+$ with the least closure point of the recursive
+dilators above $\alpha$, for $\alpha < \sigma$. Ordinal collapsing functions are built over a sequence of such
+``next'' ordinals, each closed under the operations available below it, and the question behind this paper is
+which function of $\alpha$ gives the least closure point above $\alpha$ in general. Besides $\Xo(\alpha)$ itself,
+three functions are candidates: $\alpha^+$, the ordinal $\delta_{\alpha}$ modelled on Aguilera's $\delta_{\alpha}$, and its
+parameter-free form $\dz{\alpha} = \Xp(\alpha)$. This paper does not define a collapsing function. It records where
+each candidate stops being the least closure point (table below), and first gives a result that explains the outcome.
+
+Suppose that for each infinite $\beta$ a set $\mathcal O_\beta$ of recursive predilators
+well-ordered at $\beta$ is given, the operations \emph{permitted at} $\beta$. Let $f_{\mathcal O}(\alpha)$ be the
+least $\kappa > \alpha$ such that $|P(\beta)| < \kappa$ whenever $\omega \le \beta < \kappa$ and
+$P \in \mathcal O_\beta$.
+
+\begin{statement}\head{Theorem 4} (a) Suppose that every recursive dilator belongs to every $\mathcal O_\beta$, and
+that every $P \in \mathcal O_\beta$ is well-ordered at every element of some $\Sigma^1_1$ class containing $\beta$.
+Then $f_{\mathcal O}(\alpha) = \Xo(\alpha)$ for every infinite $\alpha$.
+
+(b) Let $\mathcal O^*_\beta$ be the set of all recursive predilators that are well-ordered at $\beta$. Then
+$\mathcal O^*$ satisfies the first hypothesis of (a), and it satisfies the second with ``$\Pi^1_1$ class'' in
+place of ``$\Sigma^1_1$ class''. For it, $f_{\mathcal O^*}(\alpha) = \Xo(\alpha)$ for all infinite
+$\alpha < \mu_0$, and $f_{\mathcal O^*}(\mu_0) > \Xo(\mu_0)$.
+\end{statement}
+
+Part (a) says that $\Xo$ results whenever each partial operation is permitted at $\beta$ only together with a
+$\Sigma^1_1$ property of $\beta$ that guarantees it is well-ordered. Part (b) says that the $\Sigma^1_1$ condition
+cannot be dropped or replaced by a $\Pi^1_1$ one; $f_{\mathcal O^*}(\alpha)$ is the least ordinal above $\alpha$
+closed under $\beta \mapsto \dz{\beta}$.
+
+The other two results compare the candidates with $\Xo$.
+
+\begin{statement}\head{Corollary 5} For every infinite ordinal $\alpha$,
+\[ \Xo(\alpha) = \PR(\alpha), \qquad \Xp(\alpha) = \PRp(\alpha) = \dz{\alpha} . \]
+Hence the least infinite $\alpha$ with $\PR(\alpha) \ne \PRp(\alpha)$ is Ressayre's $p_0$, with
+$\PRp(p_0) = \PR(\PR(p_0)) < p_0^+$; and the least infinite $\alpha$ at which
+$\dz{\alpha}$ is not the least closure point of the recursive dilators above $\alpha$ is $\mu_0$.
+\end{statement}
+
+\begin{statement}\head{Proposition 6} Let $\sigma$ be the least ordinal that is not $\beta$-definable. Then
+$\sigma < \mu_0$ and
+\[ \dz{\sigma + \omega} = \Xo(\sigma) < \sigma^+ = \delta_{\sigma + \omega} , \]
+while $\sigma < \sigma + \omega < \delta_{\sigma} < \sigma^+$. In particular $\delta_{\alpha}$ is not constant on
+$[\sigma, \delta_{\sigma})$.
+\end{statement}
+
+Since $\Xo(\sigma + \omega) = \Xo(\sigma)$ by Lemma 2.1, the proposition gives
+$\delta_{\sigma + \omega} > \Xo(\sigma + \omega)$: with parameters, $\delta_{\alpha}$ exceeds the least closure point
+already at $\sigma + \omega$. A function that sends $\alpha$ to the least element above $\alpha$ of a fixed class of
+ordinals is constant on $[\alpha, f(\alpha))$, so $\alpha \mapsto \delta_{\alpha}$ is not such a function either.
+\begin{center}\begin{tabular}{p{0.13\linewidth}p{0.42\linewidth}p{0.33\linewidth}}
+\toprule
+Candidate & First infinite $\alpha$ where it is not $\Xo(\alpha)$ & Basis \\
+\midrule
+$\alpha^+$ & $\sigma$, where $\Xo(\sigma) < \sigma^+$ & cited (Ressayre, I.6 and IV.6) \\
+$\delta_{\alpha}$ & at most $\sigma + \omega$ & Proposition 6 (cited results and a construction) \\
+$\dz{\alpha}$ & $\mu_0$, where $\dz{\mu_0} = \Xo(\Xo(\mu_0))$ & Theorem 1, Corollary 5 \\
+\bottomrule
+\end{tabular}\end{center}
+
+\subsection{Overview of the proofs}
+
+\emph{The criterion.} A $\Sigma^1_1$ condition on a well-order $b$ is the existence of an infinite branch through a
+tree whose nodes carry finitely many labels from $b$ and whose membership test reads only the order pattern of the
+labels. The nodes of such a tree, in the Kleene--Brouwer order (Section 3.1), form a recursive predilator in $b$
+(Lemma 3.1). If the nodes also follow a relation $\tl$ that the guessed structure defines, the rank of the tree is
+at least the height of $\tl$, that is, its rank as a well-founded relation (Lemma 3.2). For Theorem 2 (a), right to
+left, the guessed structure is a witness for $\beta \in X$ and $\tl$ is the order of $F(\beta)$: the tree is
+well-founded at every ordinal because $F$ is well-ordered on $X$, so it gives a recursive dilator, and its value
+at $\alpha$ exceeds $|F(\alpha)|$. This is the argument of Ressayre's Theorem IV.6, which he credits in its
+essential step to Harrington, with a weaker hypothesis and with trees in place of models of set theory. Left to
+right is immediate: if a dilator $D$ bounds $F$ at $\alpha$, the class of $\beta$ at which $F(\beta)$ embeds in
+$D(\beta)$ is $\Sigma^1_1$.
+
+\emph{Failure at $\mu_0$.} The collapse of $H$ sends $u$ to $\mu_0$ and every $\Sigma_1$ fact about $u$ in
+$L_{u^+}$ to a true fact about $\mu_0$. Since $\Sigma^1_1$ properties of a countable ordinal $\beta$ are $\Pi_1$
+properties of $\beta$ in $L_{\beta^+}$, every $\Sigma^1_1$ class containing $\mu_0$ contains $u$ (Lemma 8.3). So
+by Theorem 2 (a) a recursive predilator $F_0$ that first fails at $u$ has $|F_0(\mu_0)| \ge \Xo(\mu_0)$.
+
+\emph{Agreement below $\mu_0$.} Let $d < \mu_0$ and let $r$ be the least $\beta^-$-definable ordinal above $d$; then
+$r \le u$. The set $Z_d$ of indices of recursive predilators whose value at $d$ is a well-order of type below
+$\Xo(d)$ contains every index of a recursive dilator, and it is $\Sigma_1$-definable from $r$ in $L_{r^+}$. A
+self-referential sentence then produces an index in $Z_d$ of a predilator that is well-ordered exactly below $r$
+(Lemma 7.3). By Theorem 2 (a) that predilator is well-ordered on a $\Sigma^1_1$ class containing $d$, which
+therefore lies below $r$, and Theorem 2 (b) gives equality. The lemma needs $r$ to be $\beta$-definable; for
+$r < u$ this is Lemma 7.1, and for $r = u$ it is a remark of Ressayre (Lemma 7.2).
+
+\emph{The values.} $\Xo(\mu_0) = \gamma$ because the isomorphisms between the orders $D(u)$ and their order types
+lie in $H$ and collapse to isomorphisms for $D(\mu_0)$ (Lemma 8.4). On $[\mu_0, u)$ the predilators that are
+well-ordered do not depend on the argument, since no $\beta^-$-definable ordinal lies in that interval (Lemma 8.6).
+Composition with $F_0$ gives $\Xp(\mu_0) \ge \Xp(\gamma)$, an explicit $\Sigma^1_1$ class containing $\gamma$ and
+bounded by $u$ gives $\Xp(\gamma) = \Xo(\gamma)$, and a collection argument gives $\Xo(\gamma) < \mu_0^+$
+(Lemma 8.5).
+
+\begin{center}\begin{tabular}{p{0.30\linewidth}p{0.64\linewidth}}
+\toprule
+Result & Uses \\
+\midrule
+Lemmas 2.1--2.6 & Facts (L1)--(L3); Ressayre, Remark IV.5 \\
+Lemmas 3.1--3.4 & Sections 2.1 and 2.2 \\
+Theorem 2 & Lemmas 3.1--3.4 \\
+Lemmas 5.1, 5.2, Corollary 5.3 & Lemmas 2.2, 3.1--3.3; (L1), (L3), (L4) \\
+Lemmas 6.1, B.1, B.2 & Lemmas 3.1--3.3 \\
+Corollary 5 & Lemmas 2.1, 6.1, B.2; Theorem 1 for the last sentence \\
+Lemma 7.1 & Lemmas 2.3, 3.3 (C), 3.4, 5.1; (L3) \\
+Lemma 7.2 & Lemma 2.4, Corollary 5.3 (d); (L1) \\
+Lemma 7.3 & Lemmas 3.1, 3.3 (C), Corollary 5.3 (d) \\
+Lemmas 8.1--8.6 & Theorem 2; Lemmas 2.4--2.6, 3.4, 7.2, 7.3; Corollary 5.3; (L3), (L5) \\
+Theorem 1 & Theorem 2; Lemmas 2.1, 2.3--2.6, 3.3 (L), 7.1--7.3, 8.1--8.6 \\
+Theorem 3 & Lemmas 2.3--2.6, 8.2, 8.3; Corollary 5.3 (d) \\
+Theorem 4 & Theorems 1 and 2; Lemmas 2.1, 3.4 \\
+Proposition 6 & Theorem 1, Corollary 5, Lemmas 2.1, 2.5; (L2), (L5); Ressayre I.6, III.6 (a), III.10, the example
+after IV.6; Sacks \\
+\bottomrule
+\end{tabular}\end{center}
+
+\subsection{Relation to the literature}
+
+\emph{Ressayre (1982).} The ordinals $u$ and $\mu_0$ are defined there; he shows that $u$ is $\beta$-definable,
+that $\mu_0 < u$, and Theorem IV.7 as quoted above (Remark IV.5, Theorem IV.7). He also shows that the two
+functions agree at every $\beta$-definable ordinal, at every ordinal that is the last element of a $\Sigma^1_1$
+class, and at every ordinal above the least stable ordinal (the least $\alpha$ such that $L_{\alpha}$ is a
+$\Sigma_1$-elementary substructure of $L$), and that they differ cofinally often below it (IV.3, IV.6, IV.8). We
+did not find in that paper the values of the two functions at $p_0$, the question of the least ordinal at which
+they differ, Theorem 2 (b) as a criterion, or Theorem 3. Theorem 2 (a), right to left, is the proof of his IV.6
+with the hypothesis ``$\alpha$ is the last element of a $\Sigma^1_1$ class'' replaced by ``$F$ is well-ordered on a
+$\Sigma^1_1$ class containing $\alpha$''. The self-referential sentence in Lemma 7.3 follows the method of his
+proof of Girard's theorem, which he attributes to Harrington.
+
+\emph{Other sources.} Gostanian, and Aguilera in a sharper form, determine when an admissible
+$\alpha$ is Gandy, that is, when Aguilera's $\delta_{\alpha}$ equals $\alpha^+$; we do not use their results.
+Gostanian calls such $\alpha$ good. His method for proving an ordinal good (his Proposition 2.1) lifts Gandy's
+theorem on recursive linear orderings that are not well-ordered but have no hyperarithmetic descending sequence
+(Gandy 1960) from $\omega$ to every admissible $\alpha$. The name Gandy, introduced by Abramson and Sacks (1976),
+refers to that theorem. Aguilera and Pakhomov use recursive predilators to relate parameter-free
+$\Sigma^1_1$-reflection to the $\Pi^1_2$ consequences of theories; we know of no comparison there between
+$\dz{\alpha}$ and closure points of dilators. Exercise 11.B.12 of Volume 2 of Girard's book compares
+$\Xi_1(\sigma)$ with the corresponding sum $\Xi'_1(\sigma)$ over the predilators well-ordered at $\sigma$, quoting
+Ressayre for their equality. Girard calls the ordinals
+of Lemma 3.4 weakly $\beta$-definable (Remark 11.B.5). We found no comparison of the two functions above $\sigma$
+in Annexes 11.B and 11.C. We have not read Girard and Ressayre (1985), the rest of Girard's book, or the later
+literature on dilators with this question in mind.
+Novelty of Theorems 1, 3 and 4 is not established.
+
+\section{Preliminaries}
+
+Ordinals are denoted by $\alpha, \beta, \eta, \xi, \rho, \zeta, \kappa$; $d$, $x$ and $y$ are also used for ordinals
+where stated. In Ressayre's terms ``$\beta$-definable'' and ``$\beta^-$-definable'' the letter $\beta$ is part of the
+name and is not a variable. \emph{Countable} means finite or countably infinite.
+
+\subsection{Recursive predilators and dilators}
+
+We use Girard's normal form (Girard 1981, Theorem 2.3.12 and Remarks 2.3.13). The \emph{order pattern} of two finite tuples $s, s'$ from a
+linear order is the total preorder that the order induces on their positions; for given lengths there are finitely
+many order patterns. A \emph{recursive predilator} $P$ is given by a recursive set $\mathrm{Tr} \subseteq \omega$ of
+\emph{traces}, a recursive function $\mathrm{ar} : \mathrm{Tr} \to \omega$, the \emph{arity}, and a recursive
+\emph{comparison}, which assigns one of $<$, $=$, $>$ to two traces $z, z'$ together with an order pattern of an
+increasing $\mathrm{ar}(z)$-tuple and an increasing $\mathrm{ar}(z')$-tuple. For a linear order $b$, $P(b)$ is the
+set of pairs $(z, s)$ with $z \in \mathrm{Tr}$ and $s$ an increasing $\mathrm{ar}(z)$-tuple from $b$, compared by the
+comparison applied to $z$, $z'$ and the order pattern of $s$ and $s'$. It is required that $P(b)$ is a strict linear
+order for every $b$, and that $P(f)(w) \le P(g)(w)$ for all $w \in P(b)$ whenever $f, g : b \to b'$ are embeddings
+with $f \le g$ pointwise, where $P(f)(z, s) = (z, f \circ s)$. The second requirement is part of Girard's
+definition of a predilator (Girard 1981, Definition 4.4.1(iii)); it is verified in Lemma 3.1 so that the functors built there are predilators in his sense, and it is
+not used otherwise. A recursive predilator is a functor on linear orders that preserves direct limits and
+pullbacks, and $P(n)$ may be infinite for finite $n$. A \emph{recursive dilator} is a recursive predilator $D$ such
+that $D(b)$ is a well-order for every well-order $b$. Sums and compositions of recursive predilators are recursive
+predilators, with indices computed primitive recursively.
+
+For example, let $P(b)$ be a copy of the negative integers followed by $b$: the traces are one trace of arity $0$
+for each negative integer and one trace of arity $1$. This is a recursive predilator and $P(b)$ is never a
+well-order. Lemma 3.4 gives recursive predilators that are well-ordered at some ordinals and not at others.
+
+$\Pre$ is the set of all numbers $e$ that code a recursive predilator $P_e$ through indices for its three
+components, and $\Dil$ is the set of all $e \in \Pre$ such that $P_e$ is a dilator. Neither set selects one index
+for each functor. The set $\Pre$ is arithmetical, because $P(b)$ is a linear order for every $b$ as soon as it
+is one for every finite $b$; so $\Pre \in L_{\omega + \omega}$.
+
+If $b \subseteq b'$ then $P(b)$ is a suborder of $P(b')$. So for a recursive predilator $P$ the ordinals $b$ with
+$P(b)$ well-ordered form an initial segment of the ordinals, and $|P(\beta)| \le |P(\beta')|$ when
+$\beta \le \beta'$ are in it. We say that $P$ \emph{first fails at} $r$ if $r$ is the least ordinal with $P(r)$
+not well-ordered. Since $P(n)$ can be infinite and even ill-founded for finite $n$, some statements below speak of
+the least \emph{infinite} ordinal with a property; this is deliberate.
+
+For an infinite ordinal $\alpha$, $\Xo(\alpha)$ and $\Xp(\alpha)$ are defined at the start of Section 1. Neither supremum
+is attained, since $P + 1$ is a recursive predilator. Every recursive dilator is a recursive predilator
+well-ordered at $\alpha$, so $\Xo(\alpha) \le \Xp(\alpha)$.
+
+\begin{statement}\head{Lemma 2.1} $\Xo(\alpha)$ is the least closure point of the recursive dilators above $\alpha$.
+Hence $\Xo$ is nondecreasing, and $\Xo(\beta) = \Xo(\alpha)$ whenever $\alpha \le \beta < \Xo(\alpha)$.
+\end{statement}
+
+\begin{proof} $\Xo(\alpha) > \alpha$ by the identity dilator. Let $\beta < \Xo(\alpha)$ and $D_2 \in \Dil$. Pick
+$D_1 \in \Dil$ with $\beta < |D_1(\alpha)|$. Then $|D_2(\beta)| \le |(D_2 \circ D_1)(\alpha)| < \Xo(\alpha)$. So
+$\Xo(\alpha)$ is a closure point. If $\kappa > \alpha$ is a closure point then $|D(\alpha)| < \kappa$ for every
+$D \in \Dil$, so $\Xo(\alpha) \le \kappa$. The rest follows.
+\end{proof}
+
+\subsection{$\Sigma^1_1$ classes}
+
+A $\Sigma^1_1$ class is defined in Section 1.1; we say that the first-order sentence $\theta$ \emph{defines} it, and
+that an \emph{expansion} of a linear order $A$ is a structure $(A, <, \vec R)$. The language of $\theta$ is finite.
+Constants and function symbols may occur in $\theta$; they stand for relation symbols together with the axioms saying
+that these are graphs of functions. The empty order counts as a structure, so $\{0\}$ is the $\Sigma^1_1$ class
+defined by $\forall x\, (x \ne x)$, and every finite ordinal is the only element of a $\Sigma^1_1$ class. An order of type $\beta$ has an
+expansion satisfying $\theta$ if and only if $\beta$ is in the class. $\Sigma^1_1$ classes are closed under finite
+unions and intersections, and the class of all infinite ordinals is $\Sigma^1_1$. A \emph{$\Pi^1_1$ class} is the
+complement of a $\Sigma^1_1$ class. The terms $\beta$-definable and $\beta^-$-definable are Ressayre's (1982,
+pp.\ 253 and 266). For an infinite ordinal $\alpha$, $r(\alpha)$ denotes the least $\beta^-$-definable ordinal
+greater than $\alpha$, if there is one.
+
+\subsection{The constructible hierarchy}
+
+An ordinal $\rho > \omega$ is admissible if $L_{\rho}$ is a model of Kripke--Platek set theory KP, and $<_L$ is the
+canonical well-ordering of $L$. Kripke--Platek set theory and admissible sets are treated in Barwise (1975).
+$\Sigma_1$-definability from a parameter is defined in Section 1.1. We use the following facts.
+\begin{itemize}
+\item[(L1)] There are a $\Sigma_1$ formula and a $\Pi_1$ formula that both define the relation $z = L_a$ in every
+  admissible $L_{\rho}$, and likewise for $<_L$. If $y \in L_a$ and $x <_L y$ then $x \in L_a$. For a limit $\delta$,
+  the elements of $L_{\delta}$ that are $\Sigma_1$-definable from $p$ form a $\Sigma_1$-elementary substructure, and
+  every $\Sigma_1$-elementary substructure of $L_{\delta}$ is isomorphic to exactly one $L_{\gamma}$ (Barwise,
+  Sections II.5 and II.6; Devlin, Chapter II).
+\item[(L2)] (Kripke, Platek) Every element of $L_{\alpha^+}$ is $\Sigma_1$-definable in $L_{\alpha^+}$ from finitely
+  many ordinals $\le \alpha$ (Ressayre, III.2 and III.3, who cites Barwise).
+\item[(L3)] If a well-order belongs to an admissible set, so do its order type and the isomorphism onto it
+  (Barwise, Chapter I, by $\Sigma$-recursion). Hence $\Xp(\alpha) \le \alpha^+$, since $P(\alpha) \in L_{\alpha^+}$.
+\item[(L4)] (Truncation lemma) The well-founded part of a model of KP is admissible or is the whole model
+  (Barwise, II.8.4).
+\item[(L5)] For every $\Sigma^1_1$ class $X$ there is a $\Pi_1$ formula $\varphi$ such that for every countable
+  infinite $\beta$: $\beta \in X$ if and only if $L_{\beta^+} \models \varphi(\beta)$ (Ressayre, Lemma III.5, by the
+  Barwise completeness theorem; compare Barwise, Gandy and Moschovakis, Theorem 3.1, and the uniform form stated
+  by Gostanian, p. 189).
+\end{itemize}
+
+A \emph{term} $t$ is given by a $\Delta_0$ formula $\tau_t(w, v, z)$, written $\tau$ when $t$ is fixed. For an
+infinite ordinal $\beta$, $t(\beta)$ \emph{is defined}
+if some pair $(w, v) \in L_{\beta^+}$ satisfies $\tau(w, v, \beta)$, and then $t(\beta)$ is the second component of
+the $<_L$-least such pair. By (L1) the sets $\Sigma_1$-definable from $\beta$ in $L_{\beta^+}$ are exactly the
+values $t(\beta)$ (Ressayre, III.1). In a model $M$ of KP + $V = L$ we write $t^M(z)$ for the second component of
+the $<_L^M$-least pair of $M$ that satisfies $\tau(w, v, z)$ in $M$.
+
+\begin{statement}\head{Lemma 2.2} For every $P \in \Pre$ there is a term $t_P$ such that for every infinite
+$\beta$: $t_P(\beta)$ is defined if and only if $P(\beta)$ is a well-order, and then $t_P(\beta) = |P(\beta)|$.
+\end{statement}
+
+\begin{proof} $P(\beta) \in L_{\beta^+}$, and $P(\beta)$ is a well-order if and only if $L_{\beta^+}$ contains an
+isomorphism of it onto an ordinal, by (L3). Let $\tau(w, v, z)$ say that $w$ is such an isomorphism of $P(z)$ onto
+the ordinal $v$, with $P(z)$ computed inside $w$.
+\end{proof}
+
+\begin{statement}\head{Lemma 2.3} An infinite ordinal $\alpha$ is countable in $L_{\alpha^+}$ if and only if every
+ordinal below $\alpha$ is $\Sigma_1$-definable from $\alpha$ in $L_{\alpha^+}$. In that case every element of
+$L_{\alpha^+}$ is $\Sigma_1$-definable from $\alpha$ in $L_{\alpha^+}$.
+\end{statement}
+
+\begin{proof} If $\alpha$ is countable in $L_{\alpha^+}$, the $<_L$-least surjection $f : \omega \to \alpha$ is
+$\Sigma_1$-definable from $\alpha$, and so is each $f(n)$; the last sentence then follows from (L2). Conversely,
+suppose every $\xi < \alpha$ is $\Sigma_1$-definable from $\alpha$, so every $\xi < \alpha$ is $t(\alpha)$ for a
+term $t$. For a term $t$ and $a < \alpha^+$ let $t_a(\alpha)$ be the second component of the $<_L$-least pair
+$(w, v) \in L_a$ with $\tau_t(w, v, \alpha)$, if there is one. By (L1), if $t_a(\alpha)$ exists then
+$t(\alpha) = t_a(\alpha)$, because every pair below a pair in $L_a$ is in $L_a$. The function that sends
+$\xi < \alpha$ to the least $a$ such that $t_a(\alpha) = \xi$ for some term $t$ is total on $\alpha$ and $\Sigma_1$
+over $L_{\alpha^+}$, so by $\Sigma_1$-collection it is bounded by some $a^* < \alpha^+$. Enlarge $a^*$ so that
+$\alpha < a^* < \alpha^+$; least pairs found at earlier levels keep their values by (L1). Then
+$t \mapsto t_{a^*}(\alpha)$, restricted to the terms for which this is an ordinal below $\alpha$, maps a set of
+formulas onto $\alpha$. Its graph is an element of $L_{\alpha^+}$: with $L_{a^*}$ as a parameter, satisfaction of
+$\Delta_0$ formulas in $L_{a^*}$ and the search in $L_{a^*}$ for a least pair are $\Delta_1$ over $L_{\alpha^+}$, so
+$\Delta_1$-separation applies.
+\end{proof}
+
+\subsection{The ordinals $u$, $\mu_0$ and $\gamma$}
+
+Let $u$ be the least ordinal $\alpha$ that is uncountable in $L_{\alpha^+}$. Such ordinals exist (the first
+uncountable cardinal is one), and the least one is countable by the L\"owenheim--Skolem theorem.
+
+\begin{statement}\head{Lemma 2.4} (a) If $\beta < u$ is infinite then $\beta$ is countable in $L_{\beta^+}$ and
+$\beta^+ < u$ (Ressayre, Remark IV.5). So $u$ is a limit of admissible ordinals and every element of $L_u$ is
+countable in $L_u$.
+
+(b) $u$ is admissible, and no ordinal $\beta$ with $u < \beta < u^+$ is admissible.
+
+(c) $|F(x)| < u$ for every $x < u$ and every recursive predilator $F$ with $F(x)$ well-ordered. So $u$ is a
+closure point of the recursive dilators.
+\end{statement}
+
+\begin{proof} (a) The first statement is the minimality of $u$, and the second is proved in the place cited. (b)
+$L_u$ satisfies all axioms of KP except possibly $\Delta_0$-collection, as $u$ is a limit of admissibles. If
+collection failed, there would be $a \in L_u$ and a map $f$ from $a$ cofinally into $u$ that is definable over
+$L_u$, so $f \in L_{u+1}$. Then $a$ and each $f(z)$ are countable in $L_u$, and with the $<_L$-least surjections
+$u$ would be countable in $L_{u^+}$. The second statement holds by the definition of $u^+$. (c) For infinite $x$,
+$|F(x)| < x^+ < u$ by (L3) and (a); for finite $x$, $F(x)$ is a recursive order, so $|F(x)| < \omega^+ < u$.
+\end{proof}
+
+Two related results from the literature are not used in the proofs. Hoole (1986) studies an ordinal defined by
+Slaman through recursion in a type-2 functional, and proves that it starts a gap in the constructible hierarchy
+that lasts exactly up to the next admissible ordinal (Lemma 3 and Theorem 12 there). We expect that ordinal to be
+$u$ but have not verified the identification.
+Schlutzenberg (MathOverflow answer 381041, quoted by Schweber, Section 3.2) considers $\omega_1^{L_\kappa}$ for
+$L_\kappa$ the least model of KP + ``$\omega_1$ exists'' and shows that it is the least ordinal at which a
+pointwise definability property of the levels $L_{\alpha}$ fails. By Lemma 2.4 that model is $L_{u^+}$ and the
+ordinal is $u$. His property concerns definability of the elements of $L_{\alpha}$; Theorem 3 concerns
+$\Sigma^1_1$ classes of ordinals, and its threshold is $\mu_0 < u$.
+
+Let $H$ be the set of elements of $L_{u^+}$ that are $\Sigma_1$-definable from $u$ in $L_{u^+}$, and let $\mu_0$ be
+the least ordinal not in $H$. By (L1), $H$ is a $\Sigma_1$-elementary substructure of $L_{u^+}$ and there are a
+unique ordinal $\gamma$ and a unique isomorphism $\pi : H \cong L_{\gamma}$.
+
+\begin{statement}\head{Lemma 2.5} (a) $\mu_0 < u$, and $H \cap L_u = L_{\mu_0}$. So $\pi$ is the identity on
+$L_{\mu_0}$ and $\pi(u) = \mu_0$.
+
+(b) If $d < \mu_0$ is infinite then $d^+ < \mu_0$. So $\mu_0$ is a limit of admissible ordinals and a closure point
+of the recursive dilators.
+\end{statement}
+
+\begin{proof} (a) $u$ is uncountable in $L_{u^+}$, so $\mu_0 < u$ by Lemma 2.3. Let $z \in H \cap L_u$. By Lemma
+2.4 (a) $z$ is countable in $L_u$, and if $z$ is not empty the $<_L$-least surjection from $\omega$ onto $z$ is $\Sigma_1$-definable
+from $z$, so it and its values lie in $H$. Hence $H \cap L_u$ is transitive, and its ordinals are those below
+$\mu_0$. If $\rho < \mu_0$ then $L_{\rho} \in H$, so $L_{\rho} \subseteq H$. If $z \in H \cap L_u$, the least
+$\rho$ with $z \in L_{\rho + 1}$ is in $H \cap u = \mu_0$. So $H \cap L_u = L_{\mu_0}$; here $\mu_0$ is a limit
+because $H$ is closed under successor. The collapse is the identity on a transitive set and sends $u$ to the order
+type of $H \cap u$. (b) $d^+ < u$ is $\Sigma_1$-definable from $d \in H$, so $d^+ \in H \cap u = \mu_0$; the rest
+is as in Lemma 2.4 (c).
+\end{proof}
+
+\begin{statement}\head{Lemma 2.6} (a) Every element of $L_{\gamma}$ is $\Sigma_1$-definable from $\mu_0$ in
+$L_{\gamma}$, and $\mu_0$ is uncountable in $L_{\gamma}$.
+
+(b) $L_{\gamma + 1}$ contains a map from $\omega$ onto $L_{\gamma}$. So $\gamma$ is the least ordinal such that
+$\mu_0$ is countable in $L_{\gamma + 1}$, and $\mu_0 < \gamma < \mu_0^+$.
+\end{statement}
+
+\begin{proof} (a) Definitions in $H$ are transported by $\pi$. That no surjection from $\omega$ onto $u$ exists is
+a $\Pi_1$ fact of $L_{u^+}$, so it holds in $H$ and, transported, in $L_{\gamma}$. (b) $\gamma$ is a limit ordinal,
+so $\Sigma_1$ satisfaction for $L_{\gamma}$ is definable over $L_{\gamma}$. Sending a $\Sigma_1$ formula to the
+$<_L$-least solution of it with parameter $\mu_0$ in $L_\gamma$ is therefore a map in $L_{\gamma+1}$ from a set of formulas onto $L_{\gamma}$, by (a).
+Since $\mu_0 < u$, $\mu_0$ is countable in $L_{\mu_0^+}$; as it is uncountable in $L_{\gamma}$, $\gamma < \mu_0^+$.
+\end{proof}
+
+\subsection{Definable well-orderings}
+
+The ordinals $\delta_{\alpha}$ and $\dz{\alpha}$ are defined in Section 1.1. Both are at most $\alpha^+$, since a
+relation definable over $L_{\alpha}$, as a set of ordered pairs, lies in $L_{\alpha+3}$ and (L3) applies.
+
+\section{Trees with labels}
+
+\subsection{The Kleene--Brouwer order of a labelled tree}
+
+A \emph{pattern} of length $n$ consists of \emph{rows} $(k_i, m_i)$, $i < n$, with a \emph{tag} $k_i \in \omega$ and a
+number $m_i \in \omega$ of \emph{slots}, together with a total preorder on the set of all slots
+$\{(i, j) : i < n,\ j < m_i\}$. A \emph{pattern set} is a set $\mathcal S$ of patterns that contains the
+empty pattern and is closed under restriction to the first $n'$ rows. For a linear order $b$, $\mathcal S(b)$ is the tree of all finite sequences
+$((k_i, \vec a_i))_{i < n}$ with $\vec a_i \in b^{m_i}$ whose pattern, given by the tags, the lengths and the order
+of the labels $\vec a_i$ in $b$, is in $\mathcal S$. Rows $(k, \vec a)$ are ordered by the code of $(k, m)$ and
+then lexicographically. $P_{\mathcal S}(b)$ is the set of nodes of $\mathcal S(b)$ in the Kleene--Brouwer order:
+$s$ is below $s'$ if $s$ properly extends $s'$, or $s$ has the smaller row at the first place where they differ.
+The rank of a node $s$ is $\sup\{\operatorname{rk}(s') + 1 : s' \text{ a child of } s\}$, and $\infty$ if an infinite
+branch passes through it; $\operatorname{rk} \mathcal S(b)$ is the rank of the root. Turning a tree into a functor of the order
+from which its labels are taken is the standard way to obtain predilators (Girard 1981).
+
+\begin{statement}\head{Lemma 3.1} If $\mathcal S$ is recursive then $P_{\mathcal S}$ is a recursive predilator, with
+an index in $\Pre$ that is primitive recursive in an index of $\mathcal S$. For a well-order $b$, $P_{\mathcal S}(b)$
+is a well-order if and only if $\mathcal S(b)$ has no infinite branch, and then
+$|P_{\mathcal S}(b)| \ge \operatorname{rk} \mathcal S(b) + 1$.
+\end{statement}
+
+\begin{proof} The Kleene--Brouwer order is linear. A trace is a pattern in $\mathcal S$, its arity is the number of
+classes of its preorder, and a node is a trace together with the increasing tuple of its distinct labels. Whether
+one node is below another is determined by the two patterns and the order pattern of the two tuples, recursively.
+An embedding $f$ acts by relabelling, which keeps patterns and the order of rows. If $f \le g$ pointwise and
+$f \circ s \ne g \circ s$, the first row where they differ has the same tag in both and a smaller label in
+$f \circ s$ at the first difference, so $f \circ s$ is below $g \circ s$. A branch gives a descending sequence of
+its initial segments. If $b$ is a well-order and $\mathcal S(b)$ has no infinite branch, the rows are well-ordered
+and the nodes extending a node $s$ form the ordered sum of the corresponding sets for the children of $s$, followed
+by $s$; by induction on the rank this is a well-order of type at least $\operatorname{rk}(s) + 1$.
+\end{proof}
+
+\subsection{The tree of a $\Sigma^1_1$ sentence}
+
+\textbf{Example 3.A.} Let $\theta$ be $\forall x\, \exists y\, (x < y)$, with a further binary relation symbol
+$\tl$ about which $\theta$ says nothing. A node of the tree $\mathcal S(b)$ built below is a finite sequence of
+rows. Row $i$ carries two labels $(x_i, w_i)$ from $b$ and a tag that says which pairs of labels of rows $\le i$
+are in $\tl$. A fixed list schedules, for each $i$, one slot that occurs in a row $< i$ or is the slot of $x_i$,
+and the node is admitted only if $w_i$ is greater than the label in the scheduled slot, the tags agree with each
+other and on equal labels, and, for $i \ge 1$, the tag says $x_i \tl x_{i-1}$. Along an infinite branch every label is scheduled at some later row, which supplies a greater
+label. So the set $A$ of labels of the branch has no greatest element, the relation read off from the tags is a
+structure on $A$ satisfying $\theta$, and $x_0, x_1, \dots$ descends in it. At $b = 5$ there is no branch, since its
+labels would form a nonempty finite set without a greatest element. At $b = \omega$ there is one: take $x_i = 0$
+for all $i$, let $\tl$ hold between all pairs, and let each $w_i$ be the scheduled label plus one. If instead
+$\theta$ also says that $\tl$ is the order $<$, then the tree for that sentence has no branch at $b = \omega$, but
+every true node (in the sense of the proof below, for the structure $(\omega, <)$) whose last first label is $n$
+has rank at least $n$, since it has a true child for each $m < n$; the root has such a child for every $n$, and so
+the rank of the root is at least $\omega$, the height of $<$ on $\omega$. This rank bound is part (ii) of the
+lemma.
+
+\begin{statement}\head{Lemma 3.2} Let $\theta$ be a first-order sentence in a language $\{<, \vec R\}$ and $\tl$ a
+binary relation symbol of $\vec R$. There is a recursive pattern set $\mathcal S = \mathcal S_{\theta, \tl}$, with an
+index primitive recursive in $\theta$, such that for every linear order $b$:
+
+(i) if $\mathcal S(b)$ has an infinite branch, then there are a nonempty $A \subseteq b$ and an expansion
+$\mathfrak A$ of $(A, <)$ satisfying $\theta$ in which $\tl$ has an infinite descending sequence
+$x_0 \mathrel{\triangleright} x_1 \mathrel{\triangleright} \dots$;
+
+(ii) for every nonempty $A \subseteq b$ and every expansion $\mathfrak A$ of $(A, <)$ satisfying $\theta$,
+$\operatorname{rk} \mathcal S(b) \ge \operatorname{ht}(\tl^{\mathfrak A})$, where
+$\operatorname{ht}(\tl^{\mathfrak A}) = \sup\{\operatorname{rk}_{\tl}(x) + 1 : x \in A\}$ and
+$\operatorname{ht} = \infty$ if $\tl^{\mathfrak A}$ is not well-founded.
+\end{statement}
+
+\begin{proof} By Skolem's normal form there is a sentence $\theta' = \forall \vec x\, \exists \vec y\, \theta_0$ in
+a language with further relation symbols, $\theta_0$ quantifier-free, $|\vec x| = p$, $|\vec y| = q$, such that every
+model of $\theta$ expands to a model of $\theta'$ and every model of $\theta'$ is a model of $\theta$. Fix a
+primitive recursive list $(\mathbf v_i)_{i \in \omega}$ of $p$-tuples of slots in which every $p$-tuple occurs infinitely
+often. Row $i$ of a pattern in $\mathcal S$ has $1 + q$ slots, with labels written $(x_i, \vec w_i)$, and its tag
+codes a truth assignment $\Delta_i$ to all atomic formulas, in the relation symbols other than $<$, among the slots of
+rows $\le i$. The pattern is in $\mathcal S$ if for every row $i$:
+\begin{itemize}
+\item[(a)] $\Delta_i$ extends $\Delta_{i-1}$, and gives equal values to atomic formulas that differ only by slots
+  with equal labels;
+\item[(b)] if every slot of $\mathbf v_i$ is the first slot of row $i$ or lies in a row $< i$, then
+  $\theta_0(\mathbf v_i, \vec w_i)$ holds under the order pattern and $\Delta_i$;
+\item[(c)] if $i \ge 1$, $\Delta_i$ makes $x_i \tl x_{i-1}$ true.
+\end{itemize}
+Condition (a) makes the assignments along a branch fit together into one structure on the set of labels. Condition
+(b) tests one instance of $\forall \vec x\, \exists \vec y\, \theta_0$ per row, as soon as the arguments have
+appeared, with the witnesses $\vec w_i$ supplied in the same row; since every tuple of slots is scheduled
+infinitely often, every instance is tested on a branch. Condition (c) makes the first labels $x_0, x_1, \dots$ of
+the rows a $\tl$-descending sequence; the first slot of a row has no other role, and it is this slot that ties the
+rank of the tree to the height of $\tl$.
+
+(i) Given a branch, let $A$ be the set of its labels and define the relations from the $\Delta_i$; by (a) this is
+well defined. Every $p$-tuple from $A$ is the tuple of labels of some $\mathbf v_i$ with $i$ beyond the rows involved,
+and (b) supplies witnesses. So the structure satisfies $\theta'$, hence $\theta$, and by (c) the $x_i$ descend.
+
+(ii) Expand $\mathfrak A$ to $\mathfrak A' \models \theta'$. Call a node \emph{true} if its labels are in $A$ and
+each $\Delta_i$ is the diagram of its slots in $\mathfrak A'$. Let $s$ be a true node, with last label $x$ in the
+first slot of its last row if $s$ is not the root. For each $x' \in A$ with $x' \tl x$ (each $x' \in A$ if $s$ is the
+root) $s$ has a true child whose last row has first label $x'$: its other labels are witnesses for $\mathbf v_i$ in
+$\mathfrak A'$ if (b) asks for them, and arbitrary elements of $A$ otherwise, and its tag is the true diagram. By
+induction along $\tl^{\mathfrak A}$, a true node with last first label $x$ has rank at least
+$\operatorname{rk}_{\tl}(x)$, and the root has rank at least $\sup\{\operatorname{rk}_{\tl}(x) + 1\}$. If
+$\tl^{\mathfrak A}$ has an infinite descending sequence, the true nodes along it form a branch.
+\end{proof}
+
+In (ii) the bound comes from the whole subtree of true nodes: the root has a true child for every $x \in A$, and
+its rank is the supremum over all of them. One branch follows one descending sequence, which may be short.
+
+When no relation
+$\tl$ is given we add a symbol $\tl$ and the axiom $\forall x y\, (x \tl y)$ and write $\mathcal S_\theta$. Then
+$\mathcal S_\theta(b)$ has an infinite branch if and only if some nonempty $A \subseteq b$ has an expansion
+satisfying $\theta$. The suborders of an ordinal $b$ have exactly the order types $\le b$, so:
+\begin{equation}
+P_{\mathcal S_\theta}(b) \text{ is not well-ordered} \iff \text{some } \beta \text{ with } 0 < \beta \le b
+\text{ lies in the class defined by } \theta . \tag{3.1}
+\end{equation}
+
+\subsection{Three codings}
+
+The trees guess a structure on a subset $A$ of $b$ and test only quantifier-free conditions. The next lemma lists
+what can be forced on a well-ordered $A$ by a first-order sentence.
+
+\begin{statement}\head{Lemma 3.3} There are first-order sentences $\theta_c$, $\theta_L$ and, for each recursive
+theory $T$ in the language $\{\in\}$, $\theta_T$, in finite relational languages extending $\{<\}$, with $\theta_L$
+and $\theta_T$ containing $\theta_c$ as a conjunct and having a binary relation symbol $E$, such that for every
+well-order $A$:
+
+(C) $A$ has an expansion satisfying $\theta_c$ if and only if $A$ is infinite. In every such expansion, the elements
+with finitely many predecessors form a copy $N$ of $(\omega, +, \cdot)$, and every finite sequence of elements of $A$ is
+coded by an element of $A$. Hence for each $P \in \Pre$ there are formulas $\operatorname{dom}_P(x)$ and
+$x <_P y$, primitive recursive in the index, and a map from $\{x : \operatorname{dom}_P(x)\}$ onto $P(A)$ such
+that $x <_P y$ if and only if the image of $x$ is below the image of $y$.
+
+(L) $A$ has an expansion satisfying $\theta_L$ if and only if $A$ is infinite, and in every such expansion $(A, E)$
+is isomorphic to $(L_{\beta}, \in)$, where $\beta$ is the order type of $A$.
+
+(K) In every expansion satisfying $\theta_T$, $(A, E) \models T$. Conversely, if $A$ is infinite, every structure
+$(A, E)$ that is a model of $T$ expands to a model of $\theta_T$.
+
+The sentences are primitive recursive in their data.
+\end{statement}
+
+The proof is in Appendix A. In (C), $n'$ is the
+successor of $n \in N$.
+
+
+In what follows, a single formula in the language $\{E\}$ may be conjoined to $\theta_T$ after relativisation, and
+relation symbols of different sentences are kept disjoint.
+
+\subsection{$\beta^-$-definable ordinals}
+
+\begin{statement}\head{Lemma 3.4} (Ressayre, III.7, for predilators) (a) For $P \in \Pre$, the class of infinite
+ordinals $\beta$ with $P(\beta)$ not well-ordered is $\Sigma^1_1$.
+
+(b) For every $\Sigma^1_1$ class $X$ of infinite ordinals with least element $r$ there is $P \in \Pre$ such that,
+for every ordinal $b$, $P(b)$ is well-ordered if and only if $b < r$.
+
+So an infinite ordinal is $\beta^-$-definable if and only if it is the least infinite ordinal at which some
+recursive predilator is not well-ordered.
+\end{statement}
+
+\begin{proof} (a) The class is defined by $\theta_c$ together with a unary function symbol $g$ and the axiom ``$g$ maps $N$ into
+$\{x : \operatorname{dom}_P(x)\}$ and $g(n') <_P g(n)$ for all $n$''. (b) Let $\theta_X$ define $X$ and put
+$P = P_{\mathcal S_\theta}$ for $\theta = \theta_X \wedge \theta_c$. By (3.1), $P(b)$ is not well-ordered if and
+only if some infinite $\beta \le b$ is in $X$.
+\end{proof}
+
+\section{The criterion}
+
+\textbf{Example 4.1.} Let $X = \{\omega\}$ and let $F$ be a recursive predilator that first fails at $\omega + 1$.
+The tree $\mathcal S_\theta(b)$ for a sentence $\theta$ defining $X$ has an infinite branch at $b = \omega + 1$,
+because the suborder $\omega$ of $b$ has type in $X$: trees are monotone in $b$, and no functorial tree has a
+branch exactly when $b \in X$. So a tree that guesses a witness for ``$b \in X$'' together with a descending
+sequence in $F(b)$ is not well-founded at $\omega + 1$, although $F$ is well-ordered on $X$. In the proof below the
+descending sequence is taken in $F(A)$, for the subset $A \subseteq b$ on which the witness lives; this is achieved
+by coding the elements of $F(A)$ as elements of $A$. A descending sequence in $F(b)$ would say nothing here,
+because $F(b)$ can be ill-founded while $F(A)$, for the order $A$ that carries the witness, is a well-order.
+
+\begin{proof}[Proof of Theorem 2 (a)] Left to right. Pick $D \in \Dil$ with $|F(\alpha)| \le |D(\alpha)|$. Let $X$
+be the class defined by $\theta_c$ together with a unary function symbol $g$ and the axiom ``$g$ is a map from $\{x : \operatorname{dom}_F(x)\}$ to
+$\{x : \operatorname{dom}_D(x)\}$ such that $x <_F y$ implies $g(x) <_D g(y)$''. Then $\alpha \in X$: let $g$ send a
+code of $w \in F(\alpha)$ to a chosen code of the image of $w$ under a strictly increasing map $F(\alpha) \to D(\alpha)$;
+that several codes may denote the same element does no harm. If $\beta \in X$, a descending
+sequence in $F(\beta)$ would yield one in the well-order $D(\beta)$. So $F(\beta)$ is well-ordered.
+
+Right to left. Let $\theta_X$ define $X$, and let $\theta$ be
+\[ \theta_X \wedge \theta_c \wedge \forall x y\, (x \tl y \leftrightarrow x <_F y) . \]
+Put $G = P_{\mathcal S_{\theta, \tl}}$, a recursive predilator by Lemma 3.1. If $G(b)$ is not well-ordered for
+some ordinal $b$, Lemma 3.2 (i) gives $A \subseteq b$ with an expansion satisfying $\theta$ and an infinite
+$<_F$-descending sequence. Then $A$ is a well-order, infinite by $\theta_c$, of a type $\beta \in X$, and by Lemma
+3.3 (C) the sequence yields a descending sequence in $F(A) \cong F(\beta)$. This contradicts the hypothesis on $X$.
+So $G \in \Dil$. Since $\alpha \in X$, $(\alpha, <)$ has an expansion satisfying $\theta$, and in it
+$\operatorname{ht}(\tl) \ge |F(\alpha)|$, because every code has the rank of the element of $F(\alpha)$ that it denotes.
+(Equality can fail: if $F(\alpha)$ is empty the height is $1$.) By Lemmas 3.2 (ii) and 3.1, $|G(\alpha)| \ge |F(\alpha)| + 1$. Hence
+$|F(\alpha)| < |G(\alpha)| < \Xo(\alpha)$.
+\end{proof}
+
+The proof applies to every infinite $\alpha$, including $\alpha = \omega$ and uncountable $\alpha$.
+
+\begin{proof}[Proof of Theorem 2 (b)] Suppose first that some $\beta^-$-definable ordinal is greater than $\alpha$,
+and let $r = r(\alpha)$.
+
+Right to left. Let $X$ be a $\Sigma^1_1$ class with $\alpha \in X \subseteq [0, r)$, and let $P \in \Pre$ with
+$P(\alpha)$ well-ordered. If $P$ is well-ordered at every infinite ordinal it is well-ordered on $X$. Otherwise the
+least infinite ordinal at which it is not well-ordered is $\beta^-$-definable by Lemma 3.4 (a) and greater than
+$\alpha$, so it is at least $r$, and again $P$ is well-ordered on $X$. Theorem 2 (a) gives
+$|P(\alpha)| < \Xo(\alpha)$. So $\Xp(\alpha) \le \Xo(\alpha)$.
+
+Left to right. By Lemma 3.4 (b) there is $F \in \Pre$ that is well-ordered exactly below $r$. Then
+$|F(\alpha)| < \Xp(\alpha) = \Xo(\alpha)$, and Theorem 2 (a) gives a $\Sigma^1_1$ class $X$ containing $\alpha$ on
+which $F$ is well-ordered, so $X \subseteq [0, r)$.
+
+If no $\beta^-$-definable ordinal is greater than $\alpha$, every $P \in \Pre$ with $P(\alpha)$ well-ordered is
+well-ordered at every infinite ordinal by Lemma 3.4 (a), and Theorem 2 (a) applies with $X$ the class of all
+infinite ordinals.
+\end{proof}
+
+\section{Terms over the next admissible set}
+
+\begin{statement}\head{Lemma 5.1} Let $M = (A, E)$ be a model of KP + $V = L$ and $c \in A$ such that
+$M \models$ ``$c$ is an ordinal'' and the $E$-predecessors of $c$ are well-ordered by $E$ in an infinite order type
+$\beta$. Identify the well-founded part of $M$ with a transitive set. Then:
+
+(a) $c = \beta$, $L_{\beta^+} \subseteq M$, and every element of $M$ that is in $M$ a member of an element of
+$L_{\beta^+}$ belongs to $L_{\beta^+}$;
+
+(b) every $\Pi_1$ formula with parameters in $L_{\beta^+}$ that holds in $M$ holds in $L_{\beta^+}$;
+
+(c) if $\eta \le \beta$ is infinite and $t$ is a term with $t(\eta)$ defined, then $t^M(\eta) = t(\eta)$.
+\end{statement}
+
+\begin{proof} (a) $c$ is in the well-founded part and is the ordinal $\beta$. By (L4) the ordinals of the
+well-founded part form an admissible ordinal greater than $\beta$, or $M$ is well-founded and isomorphic to an
+admissible $L_\rho$ with $\rho > \beta$. In both cases, for $a < \beta^+$ the set that $M$ takes for $L_a$ is $L_a$,
+by induction on $a$. (b) follows from (a). (c) The $<_L$-least pair $(w, v)$ of $L_{\eta^+}$ with
+$\tau(w, v, \eta)$ lies in $L_{\beta^+}$ and satisfies $\tau$ in $M$, as $\tau$ is $\Delta_0$. The $<_L^M$-least
+such pair of $M$ is not above it, so by (L1) and (a) it lies in the same level $L_a$, $a < \beta^+$, and it
+satisfies $\tau$ in $L_{\beta^+}$. Hence it is $(w, v)$.
+\end{proof}
+
+Without ``$c$ is an ordinal'' the lemma fails: in $L_{\omega^+}$ the set $c = \omega \setminus \{0\}$ has predecessors
+of order type $\omega$, but $c$ is not $\omega$.
+
+Let $\theta_{\mathrm{KP}}$ be the sentence $\theta_T$ of Lemma 3.3 (K) for $T$ = KP + $V = L$, together with a
+constant $c$, a function symbol $\iota$ and the statements that $(A, E) \models$ ``$c$ is an ordinal'' and that
+$\iota$ is an isomorphism of $(A, <)$ onto the set of $E$-predecessors of $c$ ordered by $E$. For an infinite
+ordinal $b$, the \emph{standard expansion} of $(b, <)$, used in Lemma 5.2, Corollary 5.3 and Lemma 7.1, is obtained from $L_{b^+}$ by a bijection with $b$, with
+$c = b$ and true satisfaction; it satisfies $\theta_{\mathrm{KP}}$. Such a bijection exists also for uncountable $b$:
+an elementary substructure of $L_{b^+}$ of the cardinality of $b$ that contains $b \cup \{b\}$ collapses to some
+$L_{\rho}$ with $b < \rho \le b^+$ that satisfies KP, so $\rho = b^+$. In any expansion of a well-order $A$ of type
+$\beta$ satisfying $\theta_{\mathrm{KP}}$, Lemma 5.1 applies to $(A, E)$ and $c$ with this $\beta$.
+
+\begin{statement}\head{Lemma 5.2} Let $t$ be a term and $X$ a $\Sigma^1_1$ class of infinite ordinals. There is
+$P = P_{t, X} \in \Pre$, with an index primitive recursive in $t$ and a sentence defining $X$, such that for every
+ordinal $b$:
+
+(i) if $t(\beta)$ is defined for every $\beta \le b$ with $\beta \in X$, then $P(b)$ is a well-order;
+
+(ii) if $b \in X$, $t(b)$ is defined and is an ordinal, and $P(b)$ is a well-order, then $|P(b)| > t(b)$.
+\end{statement}
+
+\begin{proof} Let $\theta$ be the conjunction of a sentence $\theta_X$ defining $X$, $\theta_{\mathrm{KP}}$, the
+statement that $(A, E) \models$ ``$t(c)$ is defined and is an ordinal'', and
+\[ \forall x y\, \bigl(x \tl y \leftrightarrow x \E y \wedge (A, E) \models \text{``} y \le t(c) \text{''}\bigr), \]
+where $t(c)$ is read as $t^M(c)$. Put $P = P_{\mathcal S_{\theta, \tl}}$. (i) An infinite branch at $b$ gives
+$A \subseteq b$ of a type $\beta \le b$ with $\beta \in X$ and a model $M = (A, E)$ with an infinite $E$-descending
+sequence of $M$-ordinals below $t^M(c)$. By Lemma 5.1 (a) and (c), $t^M(c) = t(\beta)$ is an ordinal of the
+well-founded part of $M$, a contradiction. (ii) In the standard expansion of $(b, <)$ with a witness for $b \in X$,
+$\operatorname{ht}(\tl) = t(b) + 1$. Apply Lemmas 3.2 (ii) and 3.1.
+\end{proof}
+
+\begin{statement}\head{Corollary 5.3} Let $\alpha$ be an infinite ordinal.
+
+(a) $\Xp(\alpha) = \sup\{t(\alpha) : t$ a term with ordinal values that is defined at every infinite
+$\beta \le \alpha\}$.
+
+(b) $\Xo(\alpha) = \sup\{t(\alpha) : t$ a term with ordinal values that is defined at every element of some
+$\Sigma^1_1$ class containing $\alpha\}$.
+
+(c) If $\{\alpha\}$ is a $\Sigma^1_1$ class, then $\Xo(\alpha) = \Xp(\alpha)$ is the supremum of the ordinals that
+are $\Sigma_1$-definable from $\alpha$ in $L_{\alpha^+}$ (Ressayre, IV.3).
+
+(d) For every $\Pi_1$ formula $\varphi$ the class $\{\beta \ge \omega : L_{\beta^+} \models \varphi(\beta)\}$ is
+$\Sigma^1_1$, defined by a sentence that is primitive recursive in $\varphi$ (Ressayre, III.5).
+\end{statement}
+
+\begin{proof} By Lemma 2.2 each value $|P(\alpha)|$ is $t_P(\alpha)$ for a term defined exactly where $P$ is
+well-ordered; this gives $\le$ in (a) and, for $P \in \Dil$, in (b). For $\ge$ in (a) use $P_{t, X}$ with $X$ the
+class of all infinite ordinals: by (i) it is well-ordered at $\alpha$, and by (ii) its value exceeds $t(\alpha)$.
+For $\ge$ in (b), $P_{t, X}$ is well-ordered at every ordinal by (i), so it is a dilator, and (ii) applies at
+$\alpha$. (c) is (b) with $X = \{\alpha\}$, together with $\Xp(\alpha) \le$ the supremum, by Lemma 2.2. (d) The
+class is defined by $\theta_{\mathrm{KP}}$ together with $(A, E) \models \varphi(c)$: if $(\beta, <)$ has such an
+expansion then $L_{\beta^+} \models \varphi(\beta)$ by Lemma 5.1 (b), and conversely the standard expansion
+satisfies the sentence.
+\end{proof}
+
+Part (d) is the converse of (L5): together they say that, on countable infinite ordinals, the $\Sigma^1_1$ classes
+are exactly the classes $\{\beta : L_{\beta^+} \models \varphi(\beta)\}$ with $\varphi$ a $\Pi_1$ formula.
+
+By (a)--(c), $\Xo(\alpha)$, $\Xp(\alpha)$ and the supremum of the ordinals $\Sigma_1$-definable from $\alpha$ in
+$L_{\alpha^+}$ are suprema of the values $t(\alpha)$ over the terms that are defined, respectively, on a
+$\Sigma^1_1$ class containing $\alpha$, on $[\omega, \alpha]$, and at $\alpha$.
+
+\section{Parameter-free definable well-orderings and Ressayre's functors}
+
+\begin{statement}\head{Lemma 6.1} $\dz{\alpha} = \Xp(\alpha)$ for every infinite ordinal $\alpha$.
+\end{statement}
+
+\begin{proof} $\ge$. Let $P \in \Pre$ with $P(\alpha)$ a well-order. Recursive relations on $\omega$ are $\Sigma_1$
+over $L_{\alpha}$, as computations are hereditarily finite. If $\alpha$ is a limit, the elements $(z, s)$ of
+$P(\alpha)$ lie in $L_{\alpha}$, and the order of $P(\alpha)$ is $\Sigma_1$ over $L_{\alpha}$ without parameters. If
+$\alpha = \lambda + n$ with $\lambda$ a limit and $0 < n < \omega$, represent an increasing tuple from $\alpha$ by a
+finite set $s_0 \subseteq \lambda$ and a set $J \subseteq n$ standing for $\{\lambda + j : j \in J\}$. The relation
+``$(z, J, s_0)$ and $(z', J', s_0')$ are such triples, with traces $z, z'$, $s_0 \cup s_0' \subseteq \nu$ for some limit ordinal $\nu$,
+and the first is below the second in $P$, the points of $J$ and $J'$ being taken above $\nu$ in their natural
+order'' is $\Sigma_1$ over $L_{\alpha}$ without parameters, because the limit ordinals in $L_{\lambda + n}$ are
+those $\le \lambda$. It is a well-ordering of type $|P(\alpha)|$. So $\dz{\alpha} \ge |P(\alpha)|$.
+
+$\le$. Let $R$ be a well-ordering defined over $L_{\alpha}$ by a $\Sigma_1$ formula $\varphi$ without parameters.
+Let $\theta$ be $\theta_L \wedge \forall x y\, (x \tl y \leftrightarrow \varphi^E(x, y))$, where $\varphi^E$ is
+$\varphi$ with $\in$ read as $E$, and $P = P_{\mathcal S_{\theta, \tl}}$. If $P(\alpha)$ were not a well-order,
+Lemma 3.2 (i) and Lemma 3.3 (L) would give $\beta \le \alpha$ and an infinite sequence in $L_{\beta}$ that descends
+in the relation defined by $\varphi$ over $L_{\beta}$. As $L_{\beta}$ is a transitive subset of $L_{\alpha}$ and
+$\varphi$ is $\Sigma_1$, the sequence descends in $R$. So $P(\alpha)$ is a well-order. With $L_{\alpha}$ put on
+$\alpha$ by a bijection, Lemmas 3.2 (ii) and 3.1 give $|P(\alpha)| \ge |R| + 1$.
+\end{proof}
+
+The proof of $\le$ uses the upward persistence of $\Sigma_1$ formulas. At limit $\alpha$ the relation used for
+$\ge$ is $\Delta_1$, so there $\dz{\alpha}$ is also the supremum over the $\Delta_1$-definable well-orderings
+without parameters; at successor $\alpha$ we have not determined this.
+
+Ressayre's functors are different objects. Let $\mathcal R$ be the class of functors from the finite ordinals with
+increasing maps to the finite ordinals that are primitive recursive on objects and maps, each extended to all
+linear orders by direct limits (Ressayre, I.1--I.4). For an ordinal $\alpha$, $\PR(\alpha)$ is the supremum of
+$|F(\alpha)|$ over the $F \in \mathcal R$ with $F(b)$ well-ordered for every ordinal $b$, and $\PRp(\alpha)$ is the
+supremum of $|F(\alpha)|$ over the $F \in \mathcal R$ with $F(\alpha)$ well-ordered (Ressayre, I.10 and IV.0). A functor in
+$\mathcal R$ need not preserve pullbacks: the functor with $F(0) = 0$ and $F(n) = 1$ for $n \ge 1$ does not
+preserve the pullback of two disjoint one-element suborders. So the classes differ, and only the suprema are
+compared. Appendix B proves the following (Lemma B.2): for every $F$ in $\mathcal R$ or in $\Pre$ there is a
+$G$ in both such that for every infinite ordinal $b$, $G(b)$ is a well-order if and only if $F(b)$ is, and then
+$|G(b)| > |F(b)|$.
+
+\begin{proof}[Proof of Corollary 5] Let $\alpha$ be infinite. If $F \in \mathcal R$ is well-ordered at every
+ordinal, the $G$ of Lemma B.2 is well-ordered at every infinite ordinal and finite at finite ones, so $G \in \Dil$
+and $|F(\alpha)| < |G(\alpha)|$. If $D \in \Dil$, its $G$ is in $\mathcal R$, well-ordered at every ordinal, and
+$|D(\alpha)| < |G(\alpha)|$. So $\PR (\alpha) = \Xo(\alpha)$. The same argument with ``well-ordered at
+$\alpha$'' gives $\PRp (\alpha) = \Xp(\alpha)$, and Lemma 6.1 gives $\Xp(\alpha) = \dz{\alpha}$. The
+rest restates Theorem 1 with Lemma 2.1; $\mu_0$ is Ressayre's $p_0$ by definition (proof of his Theorem IV.7).
+\end{proof}
+
+\section{$\beta$-definability and a self-referential predilator}
+
+\begin{statement}\head{Lemma 7.1} Let $r$ be an infinite $\beta^-$-definable ordinal that is countable in
+$L_{r^+}$. Then $r$ is $\beta$-definable.
+\end{statement}
+
+This is Ressayre's implication $(0)' \Rightarrow (0)$ of his Theorem IV.4, proved here for recursive predilators.
+
+The proof finds an ordinal $\alpha_0 \le r$ with the same next admissible ordinal as $r$ that is the only element
+of a $\Sigma^1_1$ class, and then defines $r$ from $\alpha_0$ inside $L_{r^+}$. The auxiliary ordinal $\alpha_1$ is
+the left end of the interval of infinite ordinals with next admissible ordinal $r^+$: for infinite
+$v < \alpha_1$ with $F(v)$ well-ordered, (L3) gives $|F(v)| < v^+ \le \alpha_1$, so only the interval $[\alpha_1, r]$ needs an
+argument, and $\alpha_0$ is taken least in it so that Step 1 has no smaller competitor.
+
+\begin{proof} Let $\alpha_1$ be the least infinite ordinal with $\alpha_1^+ = r^+$. If $v < \alpha_1$ is infinite
+then $v^+ \le \alpha_1$: otherwise $v < \alpha_1 < v^+$ and $v^+ = \alpha_1^+ = r^+$. Let $\alpha_0$ be the least
+$\beta^-$-definable ordinal in $[\alpha_1, r]$, and by Lemma 3.4 (b) let $F \in \Pre$ be well-ordered exactly below
+$\alpha_0$. Note $\alpha_0^+ = r^+$.
+
+\emph{Step 1: $|F(v)| < \alpha_0$ for every infinite $v < \alpha_0$.} Otherwise let $y$ be the least infinite
+$v < \alpha_0$ with $|F(v)| \ge \alpha_0$. If $y < \alpha_1$ then $|F(y)| < y^+ \le \alpha_1 \le \alpha_0$ by (L3);
+so $y \ge \alpha_1$. The composition $F \circ F$ is a recursive predilator and $F(F(v)) \cong F(|F(v)|)$. For
+infinite $v < y$ this is a well-order, as $|F(v)| < \alpha_0$; at $y$ it is not, as $|F(y)| \ge \alpha_0$. So $y$
+is the least infinite ordinal at which $F \circ F$ is not well-ordered, and by Lemma 3.4 it is a $\beta^-$-definable
+ordinal in $[\alpha_1, \alpha_0)$. This contradicts the choice of $\alpha_0$.
+
+\emph{Step 2: $\{\alpha_0\}$ is a $\Sigma^1_1$ class.} The class $Y$ consists of the infinite ordinals $\beta$ at
+which $F$ is not well-ordered and such that $F(v)$ embeds in $\beta$ for every infinite $v < \beta$. Formally, $Y$ is
+defined by $\theta_c$ together with a unary function symbol $g$, a binary function symbol $h$ and the axioms
+``$g$ maps $N$ into $\{x : \operatorname{dom}_F(x)\}$ with $g(n') <_F g(n)$ for all $n$'', and ``for every $v$ not
+in $N$, $h(v, \cdot)$ maps $\{x : \operatorname{dom}_F(x),\ x_1, x_2, \dots < v\}$ into $A$ and $x <_F y$ implies
+$h(v, x) < h(v, y)$''. Let $\beta \in Y$. Then $\beta$ is infinite and $F(\beta)$ is not well-ordered, so
+$\beta \ge \alpha_0$. If $\beta > \alpha_0$, the clause for $v = \alpha_0$ maps $F(\alpha_0)$ increasingly into the
+well-order $\beta$, which is impossible. So $\beta = \alpha_0$. And $\alpha_0 \in Y$ by Step 1.
+
+\emph{Step 3: $r = t(\alpha_0)$ for a term $t$.} Since $\alpha_0 \le r$ and $r$ is countable in
+$L_{r^+} = L_{\alpha_0^+}$, $\alpha_0$ is countable in $L_{\alpha_0^+}$. By Lemma 2.3 every element of
+$L_{\alpha_0^+}$, in particular $r$, is $\Sigma_1$-definable from $\alpha_0$ in $L_{\alpha_0^+}$.
+
+\emph{Step 4: $\{r\}$ is a $\Sigma^1_1$ class.} Consider the sentence consisting of $\theta_{\mathrm{KP}}$; a
+constant $c_0$ with $(A, E) \models$ ``$c_0$ is an ordinal, $c_0 \le c$, and $t(c_0) = c$''; and a sentence
+defining $Y$, in new symbols, relativised to the initial segment $\{a : \iota(a) \E c_0\}$ of $A$. Let a well-order
+$A$ of type $\beta$ have such an expansion $M$. By Lemma 5.1 (a), $c = \beta$ and $c_0$ is an ordinal
+$\eta \le \beta$; the initial segment has type $\eta$, so $\eta \in Y$ and $\eta = \alpha_0$. By Lemma 5.1 (c),
+$t^M(\alpha_0) = t(\alpha_0) = r$. So $\beta = r$. Conversely the standard expansion of $(r, <)$ with
+$c_0 = \alpha_0$, and a witness for $\alpha_0 \in Y$ on the initial segment $\alpha_0$ of $r$, satisfies the
+sentence; here $t^M(\alpha_0) = r$ because $L_{r^+} = L_{\alpha_0^+}$.
+\end{proof}
+
+\begin{statement}\head{Lemma 7.2} (Ressayre, Remark IV.5) $u$ is $\beta$-definable.
+\end{statement}
+
+\begin{proof} Let $\varphi(v)$ be the conjunction of: (a) $v$ is an ordinal and there is no surjection from
+$\omega$ onto $v$; (b) $L_v$ is admissible; (c) for every infinite ordinal $v' < v$ and every $z$, if $z = L_\rho$
+for the least admissible $\rho > v'$, then $z$ contains a surjection from $\omega$ onto $v'$. By (L1), and because
+satisfaction in a set is $\Delta_1$, $\varphi$ is equivalent to a $\Pi_1$ formula in every admissible set. Let
+$\beta$ be infinite. If $\beta < u$ then (a) fails in $L_{\beta^+}$. If $\beta = u$ then (a)--(c) hold in
+$L_{u^+}$ by Lemma 2.4. If $u < \beta < u^+$ then (b) fails by Lemma 2.4 (b). If $\beta \ge u^+$ then (c) fails in
+$L_{\beta^+}$ for $v' = u$ and $z = L_{u^+}$. So $\{\beta \ge \omega : L_{\beta^+} \models \varphi(\beta)\} = \{u\}$,
+and Corollary 5.3 (d) applies.
+\end{proof}
+
+\begin{statement}\head{Lemma 7.3} Let $r$ be an infinite $\beta$-definable ordinal, and let $Z \subseteq \omega$ be
+$\Sigma_1$-definable from $r$ in $L_{r^+}$ with $\Dil \subseteq Z$. Then there is $e \in Z \cap \Pre$ such that, for
+every ordinal $b$, $P_e(b)$ is a well-order if and only if $b < r$.
+\end{statement}
+
+\begin{proof} Let $\theta_r$ define $\{r\}$, and let $\chi(z, v)$ be a $\Sigma_1$ formula such that $Z$ is the
+unique $z$ with $L_{r^+} \models \chi(z, r)$. For a $\Sigma_1$ formula $\psi(v)$ let
+\[ Y_\psi = \{\beta \ge \omega : \beta = r \text{ and } L_{\beta^+} \models \neg\psi(\beta)\} . \]
+By Corollary 5.3 (d), $Y_\psi$ is defined by a sentence $\theta_\psi$ that contains $\theta_r \wedge \theta_c$ and is primitive recursive in $\psi$. Let
+$p(\psi) \in \Pre$ be the index of $P_{\mathcal S_{\theta_\psi}}$ given by Lemma 3.1; $p$ is primitive recursive.
+By (3.1):
+\begin{itemize}
+\item if $L_{r^+} \models \psi(r)$, then $Y_\psi = \emptyset$, $P_{p(\psi)}$ is well-ordered at every ordinal, and
+  $p(\psi) \in \Dil$;
+\item if $L_{r^+} \models \neg\psi(r)$, then $Y_\psi = \{r\}$ and $P_{p(\psi)}(b)$ is a well-order exactly for
+  $b < r$.
+\end{itemize}
+The graph of $p$ is $\Sigma_1$ over $L_{\omega}$, so by the diagonal lemma there is a $\Sigma_1$ formula $\psi$ such
+that in every admissible set
+\[ \psi(v) \iff \exists z\, \bigl(\chi(z, v) \wedge p(\ulcorner\psi\urcorner) \notin z\bigr) . \]
+If $L_{r^+} \models \psi(r)$, then $p(\psi) \notin Z$ and $p(\psi) \in \Dil$, contradicting $\Dil \subseteq Z$. So
+$L_{r^+} \models \neg\psi(r)$. Since $Z$ satisfies $\chi$, $p(\psi) \in Z$, and $e = p(\psi)$ is as required.
+\end{proof}
+
+The lemma uses that $\Dil$ contains every index of a recursive dilator: the hypothesis is applied to the particular
+index $p(\psi)$.
+
+\section{Agreement below $\mu_0$ and the values at $\mu_0$}
+
+For an infinite ordinal $d$ let
+\[ Z_d = \{e \in \Pre : P_e(d) \text{ is a well-order of type} < \Xo(d)\} . \]
+
+\begin{statement}\head{Lemma 8.1} $\Dil \subseteq Z_d \in L_{d^+ + 1}$, and if $\Xo(d) < d^+$ then
+$Z_d \in L_{d^+}$.
+\end{statement}
+
+\begin{proof} $\Dil \subseteq Z_d$ because the supremum $\Xo(d)$ is not attained. If $\Xo(d) = d^+$, then by (L3)
+$Z_d$ is the set of $e \in \Pre$ such that $L_{d^+}$ contains an isomorphism of $P_e(d)$ onto an ordinal, which is
+definable over $L_{d^+}$. Let $\zeta = \Xo(d) < d^+$. Define by $\Sigma$-recursion in $L_{d^+}$, for $e \in \Pre$
+and $\xi \le \zeta$: $\nx(e, \xi)$ is the least element of $P_e(d)$ that is not among the $\nx(e, \xi')$, $\xi' < \xi$,
+if there is a least one, and a fixed marker otherwise. The restriction of $\nx$ to $\Pre \times (\zeta + 1)$ is an
+element of $L_{d^+}$, and $e \in Z_d$ if and only if for some $\xi < \zeta$ no marker occurs below $\xi$ and the
+values $\nx(e, \xi')$, $\xi' < \xi$, exhaust $P_e(d)$. So $Z_d \in L_{d^+}$ by $\Delta_0$-separation.
+\end{proof}
+
+\begin{statement}\head{Lemma 8.2} Every infinite ordinal $d < \mu_0$ belongs to a $\Sigma^1_1$ class all of whose
+elements are below $u$.
+\end{statement}
+
+\begin{proof} By Lemmas 8.1 and 2.5, $Z_d \in L_{d^+ + 1} \subseteq L_{\mu_0} \subseteq H$, so $Z_d$ is
+$\Sigma_1$-definable from $u$ in $L_{u^+}$. By Lemmas 7.2 and 7.3 there is $e \in Z_d$ such that $P_e$ is
+well-ordered exactly below $u$. Since $|P_e(d)| < \Xo(d)$, Theorem 2 (a) gives a $\Sigma^1_1$ class containing $d$
+on which $P_e$ is well-ordered.
+\end{proof}
+
+\begin{proof}[Proof of Theorem 1 (i)] Let $d < \mu_0$ be infinite. By Lemmas 7.2 and 2.5, $u$ is a
+$\beta^-$-definable ordinal above $d$, so $r = r(d)$ exists and $r \le u$. If $r = u$, Lemma 8.2 and Theorem 2 (b)
+give $\Xp(d) = \Xo(d)$. Let $r < u$. If $\Xo(d) = d^+$ then $\Xp(d) = \Xo(d)$ by (L3). Otherwise
+$Z_d \in L_{d^+} \subseteq L_{r^+}$ by Lemma 8.1. By Lemma 2.4 (a), $r$ is countable in $L_{r^+}$. So $r$ is
+$\beta$-definable by Lemma 7.1, and $Z_d$ is $\Sigma_1$-definable from $r$ in $L_{r^+}$ by Lemma 2.3. Lemma 7.3
+gives $e \in Z_d$ such that $P_e$ is well-ordered exactly below $r$, Theorem 2 (a) gives a $\Sigma^1_1$ class
+containing $d$ and contained in $[0, r)$, and Theorem 2 (b) gives $\Xp(d) = \Xo(d)$.
+\end{proof}
+
+\begin{statement}\head{Lemma 8.3} Every $\Sigma^1_1$ class that contains $\mu_0$ contains $u$. Consequently, if
+$F_0 \in \Pre$ first fails at $u$, then $|F_0(\mu_0)| \ge \Xo(\mu_0)$, and $\Xp(\mu_0) > \Xo(\mu_0)$.
+\end{statement}
+
+\begin{proof} Let $X$ be a $\Sigma^1_1$ class and $\varphi$ a $\Pi_1$ formula for it as in (L5); $\mu_0$ and $u$
+are countable. Suppose $u \notin X$. Then $L_{u^+} \models \exists w\, \chi(w, u)$ for a $\Delta_0$ formula $\chi$
+equivalent to the matrix of $\neg\varphi$. There is such a $w$ in $H$, and $L_{\gamma} \models \chi(\pi(w), \mu_0)$.
+Since $L_{\gamma}$ is transitive and $\gamma < \mu_0^+$ (Lemma 2.6), $L_{\mu_0^+} \models \neg\varphi(\mu_0)$, so
+$\mu_0 \notin X$. For the second statement, $F_0(\mu_0)$ is well-ordered because $\mu_0 < u$. If
+$|F_0(\mu_0)| < \Xo(\mu_0)$, Theorem 2 (a) gives a $\Sigma^1_1$ class containing $\mu_0$ on which $F_0$ is
+well-ordered; it contains $u$, where $F_0$ is not well-ordered. Finally $\Xp(\mu_0) > |F_0(\mu_0)|$. Such an $F_0$
+exists by Lemmas 7.2 and 3.4 (b).
+\end{proof}
+
+\begin{statement}\head{Lemma 8.4} $\Xo(\mu_0) = \gamma$.
+\end{statement}
+
+\begin{proof} $\le$. Let $D \in \Dil$. The order $D(u)$, its order type $\xi_D < u^+$ and the isomorphism
+$f_D : D(u) \cong \xi_D$ are $\Sigma_1$-definable from $u$ in $L_{u^+}$ by (L3), so they lie in $H$. The statement
+``$f$ is an isomorphism of $D(v)$ onto the ordinal $\xi$'' is $\Delta_0$ in a transitive set containing the
+computation of $D(v)$, so $\pi(f_D)$ is an isomorphism of $D(\mu_0)$ onto $\pi(\xi_D) < \gamma$. Hence
+$|D(\mu_0)| = \pi(\xi_D) < \gamma$.
+
+$\ge$. Let $\eta < \gamma$, and let $\eta^* \in H$ be the ordinal with $\pi(\eta^*) = \eta$. Then
+$\eta^* = t(u)$ for a term $t$. By Lemma 7.2, $\{u\}$ is a $\Sigma^1_1$ class, and $t$ is defined on it. By
+Corollary 5.3 (b) there is $D \in \Dil$ with $|D(u)| > \eta^*$, and then $|D(\mu_0)| = \pi(\xi_D) > \eta$, as $\pi$
+preserves the order of the ordinals in $H$.
+\end{proof}
+
+\begin{statement}\head{Lemma 8.5} Let $d$ be an infinite ordinal with $\Xo(d) < d^+$, and let $x \ge d$ be such that
+every $\Sigma^1_1$ class containing $d$ has an element $\ge x$. Then $\Xo(x) < x^+$.
+\end{statement}
+
+\begin{proof} By Lemma 8.1, $Z_d \in L_{d^+} \subseteq L_{x^+}$. Let $e \in Z_d$. Since $|P_e(d)| < \Xo(d)$, by
+Theorem 2 (a) there is a $\Sigma^1_1$ class containing $d$ on which $P_e$ is well-ordered.
+It has an element $x' \ge x$, and $P_e(x)$ is a suborder of $P_e(x')$. So $P_e(x)$ is a well-order for every
+$e \in Z_d$, and by (L3) its order type is in $L_{x^+}$. The map $e \mapsto |P_e(x)|$ on $Z_d$ is $\Sigma_1$ over
+$L_{x^+}$, so by $\Sigma$-collection its values are bounded below $x^+$. Since $\Dil \subseteq Z_d$, the bound
+applies to $\Xo(x)$.
+\end{proof}
+
+\begin{statement}\head{Lemma 8.6} No $\beta^-$-definable ordinal lies in $[\mu_0, u)$. Hence $r(x) = u$ for every
+$x \in [\mu_0, u)$, the recursive predilators that are well-ordered at $x$ are those that are well-ordered at every
+ordinal below $u$, and $\Xp$ is nondecreasing on $[\mu_0, u)$.
+\end{statement}
+
+\begin{proof} Let $r < u$ be infinite and $\beta^-$-definable, and by Lemma 3.4 let $P \in \Pre$ first fail at $r$.
+For $\beta < u$, $P(\beta)$ is a well-order if and only if $L_{\beta^+}$ contains an isomorphism of it onto an
+ordinal, and $L_{\beta^+} \in L_u$. So $r$ is the least infinite $\beta$ such that $L_{\beta^+}$ contains no such
+isomorphism, which is a $\Sigma_1$ definition of $r$ in $L_{u^+}$. Hence $r \in H \cap u = \mu_0$. The rest follows
+from Lemma 7.2 and Section 2.1.
+\end{proof}
+
+\begin{proof}[Proof of Theorem 1 (ii) and (iii)] $\mu_0$ is a closure point by Lemma 2.5, and $\Xo(\mu_0) = \gamma$
+by Lemma 8.4; so $\Xo(x) = \gamma$ for $\mu_0 \le x < \gamma$ by Lemma 2.1. Recall $\mu_0 < \gamma < \mu_0^+ < u$.
+
+\emph{$\Xp(\mu_0) \ge \Xp(\gamma)$.} Let $F_0$ be as in Lemma 8.3, so $|F_0(\mu_0)| \ge \gamma$. Let $P \in \Pre$ be
+well-ordered at $\gamma$. By Lemma 8.6, $P$ is well-ordered below $u$. The composition $P \circ F_0$ is a recursive
+predilator, and for $x < u$ it is well-ordered at $x$, since $|F_0(x)| < u$ by Lemma 2.4 (c). So
+$\Xp(\mu_0) > |P(F_0(\mu_0))|$ ${}= |P(|F_0(\mu_0)|)| \ge |P(\gamma)|$.
+
+\emph{$\Xp(\gamma) = \Xo(\gamma)$.} We need a $\Sigma^1_1$ class that contains $\gamma$ and no ordinal $\ge u$. The
+class $X$ below says that every infinite $\alpha' \le \alpha$ is countable early: by level $\alpha + 3$ at the
+latest, and already in its own next admissible set whenever that set lies below $\alpha$. The shift by $3$ leaves
+room for the surjections onto the ordinals in $[\mu_0, \gamma]$, which first appear just above $L_{\gamma}$. The
+clause about $\alpha'^+$ excludes the ordinals $\alpha \ge u^+$, for which $L_{\alpha+3}$ does contain a surjection
+onto $u$.
+
+Let $X$ be the class of infinite $\alpha$ such that for every infinite
+$\alpha' \le \alpha$ there is a surjection $f$ from $\omega$ onto $\alpha'$ in $L_{\alpha + 3}$, and
+$f \in L_{\alpha'^+}$ if $\alpha'^+ \le \alpha$. This class is $\Sigma^1_1$: for an infinite well-order $(A, <)$ of
+type $\alpha$, moving its first three elements to the top gives a definable well-order of type $\alpha + 3$, to which
+Lemma 3.3 (L) applies. The condition is first-order in the resulting expansion: the level predicate $B_a$ and the
+satisfaction predicate of Appendix A are correct for every positive index used here, the indices are matched with the ordinals
+of the copy by an order isomorphism, ``$L_{\rho}$ is admissible'' is tested by checking the recursive list of axioms
+of KP in the satisfaction predicate for $B_\rho$, and the second clause requires $B_\rho(f)$ for the least admissible
+$\rho$ with $\alpha' < \rho \le \alpha$. No $\alpha \ge u$
+is in $X$: take $\alpha' = u$; if $u^+ \le \alpha$ there is no surjection in $L_{u^+}$, and otherwise
+$L_{\alpha+3} \subseteq L_{u^+}$. And $\gamma \in X$: for $\alpha' < \mu_0$ use Lemma 2.4 (a) and
+$\alpha'^+ < \mu_0$; for $\mu_0 \le \alpha' \le \gamma$, Lemma 2.6 (b) gives a surjection in $L_{\gamma+2}$, and
+$\alpha'^+ = \mu_0^+ > \gamma$. So $\gamma \in X \subseteq [0, u)$ and $r(\gamma) = u$, and Theorem 2 (b) applies.
+
+\emph{$\Xo(\gamma) < \mu_0^+$.} Apply Lemma 8.5 with $d = \mu_0$ and $x = \gamma$: $\Xo(\mu_0) = \gamma < \mu_0^+$,
+and every $\Sigma^1_1$ class containing $\mu_0$ contains $u > \gamma$ by Lemma 8.3. So
+$\Xo(\gamma) < \gamma^+ = \mu_0^+$.
+
+For $\mu_0 \le x < \gamma$, Lemma 8.6 now gives
+$\Xo(\gamma) = \Xp(\gamma) \le \Xp(\mu_0)$ ${}\le \Xp(x) \le \Xp(\gamma)$, and $\gamma < \Xo(\gamma)$.
+\end{proof}
+
+\section{Characterisations of $\mu_0$}
+
+\begin{proof}[Proof of Theorem 3] (a) is Lemma 8.3. (b) By (a), $\mu_0$ has the property. A finite $d$ is the only
+element of a $\Sigma^1_1$ class, and an infinite $d < \mu_0$ does not have the property by Lemma 8.2. (c) By (a),
+$\mu_0$ has the property with $y = u$. Let $d < y$ be such that $y$ belongs to every $\Sigma^1_1$ class containing
+$d$; then $d$ is infinite. We show $d \ge \mu_0$.
+
+By Corollary 5.3 (d), every $\Pi_1$ formula true of $d$ in $L_{d^+}$ is true of $y$ in $L_{y^+}$. So every
+$\Sigma_1$ formula true of $y$ in $L_{y^+}$ is true of $d$ in $L_{d^+}$. Let $H_y$ be the set of elements of
+$L_{y^+}$ that are $\Sigma_1$-definable from $y$, and $\pi_y : H_y \cong L_{\gamma_y}$ its collapse. The elements
+of $H_y$ are the values $t(y)$ of terms. Put $j(t(y)) = t(d)$. Each of the statements ``$t(y)$ is
+defined'', $t(y) = t'(y)$, $t(y) \ne t'(y)$, $t(y) \in t'(y)$, $t(y) \notin t'(y)$ and ``$t(y)$ is an ordinal'',
+when true, is a $\Sigma_1$ fact about $y$ in $L_{y^+}$: it says that there are least pairs for the terms
+involved whose second components are so related. Hence it holds of $d$. So $t(d)$ is defined whenever $t(y)$ is;
+$j$ is well defined by the case of $=$ and injective by the case of $\ne$; it preserves $\in$ and $\notin$; and it
+maps ordinals to ordinals. So $j$ is strictly increasing on the ordinals of $H_y$, and
+$j \circ \pi_y^{-1}$ is a strictly increasing map from $\gamma_y$ into the ordinals, and
+$d = j(y) \ge \pi_y(y)$.
+
+If $y < u$, then $y$ is countable in $L_{y^+}$, so $y \subseteq H_y$ by Lemma 2.3 and $\pi_y(y) = y > d$, a
+contradiction. So $y \ge u$. Then $u \in H_y$: if $y < u^+$, $u$ is the greatest admissible ordinal $\le y$ by Lemma
+2.4 (b); if $y \ge u^+$, $u$ is the least ordinal $\alpha$ such that $L_{\alpha^+}$ has no surjection from $\omega$
+onto $\alpha$, a $\Sigma_1$ definition in $L_{y^+}$. In both cases $L_{u^+}$ is $L_{y^+}$ or an element of $H_y$, so
+every ordinal below $\mu_0$, being $\Sigma_1$-definable from $u$ in $L_{u^+}$, is in $H_y$. Now $\pi_y(u)$ is the order type of the set of ordinals of $H_y$ below $u$, which contains every
+ordinal below $\mu_0$, and $u \le y$. Hence $\pi_y(y) \ge \pi_y(u) \ge \mu_0$.
+\end{proof}
+
+\section{The next closure point: four candidates}
+
+\begin{proof}[Proof of Theorem 4] (a) Let $\alpha$ be infinite. By the first hypothesis $f_{\mathcal O}(\alpha)$ is a
+closure point of the recursive dilators above $\alpha$: for finite $\beta$, $|D(\beta)| \le |D(\omega)|$. So
+$f_{\mathcal O}(\alpha) \ge \Xo(\alpha)$. Let $\omega \le \beta < \Xo(\alpha)$ and $P \in \mathcal O_\beta$. By the
+second hypothesis and Theorem 2 (a), $|P(\beta)| < \Xo(\beta) \le \Xo(\alpha)$, using Lemma 2.1. So $\Xo(\alpha)$
+has the defining property of $f_{\mathcal O}(\alpha)$.
+
+(b) Every recursive dilator is in every $\mathcal O^*_\beta$. By the definition of $\Xp$,
+$f_{\mathcal O^*}(\alpha)$ is the least $\kappa > \alpha$ with $\Xp(\beta) \le \kappa$ for all infinite
+$\beta < \kappa$. For infinite $\alpha < \mu_0$, $\Xo(\alpha) \le \mu_0$ since $\mu_0$ is a closure point, so for
+infinite $\beta < \Xo(\alpha)$ Theorem 1 (i) gives $\Xp(\beta) = \Xo(\beta) \le \Xo(\alpha)$, and
+$f_{\mathcal O^*}(\alpha) = \Xo(\alpha)$. And $f_{\mathcal O^*}(\mu_0) \ge \Xp(\mu_0) > \Xo(\mu_0)$ by Theorem 1 (ii).
+Finally, every $P \in \Pre$ well-ordered at an infinite $\beta$ is well-ordered on the class of infinite ordinals at
+which $P$ is well-ordered, which contains $\beta$ and is $\Pi^1_1$ by Lemma 3.4 (a). So the $\Pi^1_1$ form of the
+second hypothesis holds for $\mathcal O^*$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition 6] We use the following cited results. (1) $\Xo(\alpha) = \alpha^+$ for every
+infinite $\alpha < \sigma$: every ordinal $\le \alpha$ is $\beta$-definable by the definition of $\sigma$, so
+Girard's theorem in the form of Ressayre's Theorem I.6 applies; Corollary 5 translates it to $\Xo$. (2)
+$\Xp(\sigma) = \Xo(\sigma) < \sigma^+$ (Ressayre, the example after IV.6), and $\sigma$ is a limit of admissible
+ordinals (Ressayre, proof of III.10). (3) For a real $y$, the supremum $\omega_1^y$ of the order types of the
+well-orderings recursive in $y$ is an admissible ordinal (the relativised form of the admissibility of
+the least non-recursive ordinal; Sacks).
+
+\emph{$\sigma < \mu_0$.} By (1) and Theorem 1 (ii), $\sigma \le \mu_0$, as $\Xo(\mu_0) = \gamma < \mu_0^+$. By (2)
+and Theorem 1 (ii), $\sigma \ne \mu_0$. So $\sigma + \omega < \mu_0$ by Lemma 2.5 (b).
+
+\emph{$\dz{\sigma + \omega} = \Xo(\sigma) < \sigma^+$.} The recursive dilator $b \mapsto b + \omega + 1$ shows
+$\sigma + \omega < \Xo(\sigma)$, so $\Xo(\sigma + \omega) = \Xo(\sigma)$ by Lemma 2.1. Now use Corollary 5, Theorem 1 (i) and (2).
+
+\emph{$\delta_{\sigma + \omega} = \sigma^+$.} Every infinite $\alpha < \sigma$ is the only element of a $\Sigma^1_1$
+class. By (L5), $\alpha$ is then the only countable infinite $\beta$ with $L_{\beta^+} \models \varphi(\beta)$, for
+some $\Pi_1$ formula $\varphi$, and $L_{\alpha^+} \in L_{\sigma}$ by (2). Satisfaction in $L_{\beta^+}$ for
+$\beta < \sigma$ is computed in a larger admissible level below $\sigma$, so the map that sends $\varphi$ to the
+least infinite $\beta < \sigma$ with $L_{\beta^+} \models \varphi(\beta)$, where there is one, is definable over
+$L_{\sigma}$; its range is $[\omega, \sigma)$. Together with separate codes for the finite ordinals this gives a map
+in $L_{\sigma + 1}$ from a set of natural numbers onto $\sigma$. Comparing two codes by their values gives a
+prewellordering $y$ of a set of natural numbers, of type $\sigma$, with $y \in L_{\sigma + 2}$. Its restriction to
+the least code in each class is a well-ordering of type $\sigma$ that is recursive in $y$. Every well-ordering recursive in
+$y$ is $\Delta_1$-definable over $L_{\sigma + \omega}$ with the parameter $y$, so
+$\delta_{\sigma + \omega} \ge \omega_1^y$. By (3), $\omega_1^y$ is an admissible ordinal greater than $\sigma$, so
+$\omega_1^y \ge \sigma^+$. And $\delta_{\sigma + \omega} \le (\sigma + \omega)^+ = \sigma^+$.
+
+Finally $\sigma + \omega < \delta_{\sigma}$: the order of the set $(\{0\} \times \sigma) \cup (\{1\} \times \omega) \cup \{(2, 0)\}$
+by first and then second coordinates has type $\sigma + \omega + 1$ and is $\Delta_1$-definable over $L_{\sigma}$. 
+\emph{$\delta_{\sigma} < \sigma^+$.} We eliminate parameters. Each infinite $\beta < \sigma$ is the only element of
+a $\Sigma^1_1$ class, so by (L5) it is the only countable infinite ordinal with
+$L_{\beta^+} \models \varphi(\beta)$ for some $\Pi_1$ formula $\varphi$. Hence $\beta$ is $\Sigma_1$-definable
+over $L_{\sigma}$ without parameters, as the ordinal for which some set is the next admissible level $L_{\beta^+}$
+and satisfies $\varphi(\beta)$; that this set is $L_{\beta^+}$ is certified in a larger admissible level below
+$\sigma$ (compare Ressayre, III.6 (a)). Finite ordinals are definable outright. Now let $p \in L_{\sigma}$, and
+choose an infinite $\eta < \sigma$ with $p \in L_{\eta^+}$. By (L2), $p$ is $\Sigma_1$-definable in $L_{\eta^+}$
+from ordinals $\le \eta$; substituting the definitions of these ordinals and of $\eta$, and certifying
+$L_{\eta^+}$ in the same way, shows that $p$ is $\Sigma_1$-definable over $L_{\sigma}$ without parameters. So a
+well-ordering that is $\Delta_1$-definable over $L_{\sigma}$ with the parameter $p$ is $\Sigma_1$-definable over
+$L_{\sigma}$ without parameters: quantify existentially over the set defined by the definition of $p$. Hence
+$\delta_{\sigma} \le \dz{\sigma} = \Xp(\sigma) < \sigma^+$ by Corollary 5 and (2).
+\end{proof}
+
+By (1) and (2) in this proof, $\alpha^+$ is the least closure point above $\alpha$ for every infinite
+$\alpha < \sigma$ and not for $\alpha = \sigma$; this is the first row of the table in Section 1.2. We do not
+determine the least infinite $\alpha$ with $\delta_{\alpha} \ne \Xo(\alpha)$.
+
+\section{Remarks and questions}
+
+\begin{enumerate}
+\item \textbf{An embedding.} Let $\hat u$ be the supremum of the ordinals in $H$. Then $\Xo(u) = \hat u$ by Lemma
+  7.2 and Corollary 5.3 (c), and $H$ is a $\Sigma_1$-elementary substructure of $L_{\hat u}$, because
+  $H \subseteq L_{\hat u} \subseteq L_{u^+}$. So $\pi^{-1} : L_{\Xo(\mu_0)} \to L_{\Xo(u)}$ is a cofinal
+  $\Sigma_1$-elementary embedding with critical point $\mu_0$ that sends $\mu_0$ to $u$. Moreover $L_{\mu_0}$ is
+  an elementary substructure of $L_u$: if $L_u \models \exists z\, \varphi(z, q)$ with $q \in L_{\mu_0}$, the
+  $<_L$-least such $z$ in $L_u$ is $\Sigma_1$-definable in $L_{u^+}$ from $q$ and $L_u$, which are in $H$, so it
+  lies in $H \cap L_u = L_{\mu_0}$. These are standard facts about $\Sigma_1$ hulls; only the identification of the
+  two heights with values of $\Xo$ uses this paper.
+\item \textbf{$\mu_0$ is not the least ordinal with $L_{\alpha} \prec L_u$.} That ordinal is $\Sigma_1$-definable
+  from $u$ in $L_{u^+}$, hence below $\mu_0$.
+\item \textbf{Nearby statements that fail.} $\Xp = \Xo$ does not hold at every closure point of the recursive
+  dilators ($\mu_0$), nor at every $\alpha$ for which $r(\alpha)$ is $\beta$-definable ($\mu_0$ again, by Lemma
+  7.2). It does not fail only at $\mu_0$ below $u$: it fails on $[\mu_0, \gamma)$, and by Ressayre's Theorem IV.8
+  (c) it fails cofinally often below the least stable ordinal (Section 1.4).
+\item \textbf{Question.} Is $\Xp(\alpha) \le \Xo(\Xo(\alpha))$ for every infinite $\alpha$? Theorem 1 gives
+  equality on $[\mu_0, \gamma)$.
+\item \textbf{Question.} What is the least ordinal above $\gamma$ at which $\Xp \ne \Xo$? Lemma 7.3 does not
+  apply to sets $Z$ that need a parameter from $L_u$ outside $H$.
+\item \textbf{Question.} Theorem 3 (c) determines the least ordinal that shares all its $\Sigma^1_1$ properties
+  with a larger one. What is the corresponding ordinal for other classes of properties, for instance the
+  first-order properties of $L_{\alpha}$?
+\end{enumerate}
+
+\section{Verification status}
+
+\begin{center}\begin{tabular}{p{0.24\linewidth}p{0.70\linewidth}}
+\toprule
+Part & Status \\
+\midrule
+All results & Written proofs, not checked by a person. AI systems checked the arguments;
+that is not specialist review. The argument for $\delta_{\sigma} < \sigma^+$ in Proposition 6 was proposed by the AI
+checker and has not been independently checked. \\
+Formalisation & No end-to-end Lean formalisation. Two auxiliary facts are formalised in Lean: upward persistence of
+$\Sigma_1$ formulas between transitive sets, used in Lemma 6.1, and $\dz{\alpha} \le \alpha^+$. \\
+Imports & (L1)--(L4): Barwise and Devlin; the locators were not checked against the books. (L5), Theorem I.6
+(used only for $\alpha < \sigma$), III.10, Remark IV.5 and the example after IV.6: Ressayre, read in a scanned copy
+with gaps. Ressayre III.6 (a) is cited for comparison only. Girard's normal form and definition of a predilator: Girard (1981), Theorem 2.3.12 and
+Definition 4.4.1. Admissibility of $\omega_1^y$: Sacks, no locator. \\
+Other references & Hoole's paper is cited for its gap theorem only. Schlutzenberg's result is quoted from Schweber.
+Of Aguilera's paper only Section 2 was read, and of Volume 2 of Girard's book only Annexes 11.B and 11.C;
+Aguilera and Pakhomov and Girard and Ressayre were not read. \\
+Novelty & Not established (Section 1.4). \\
+\bottomrule
+\end{tabular}\end{center}
+
+No human specialist has reviewed the proofs. The passages a specialist is most likely to question are:
+\begin{itemize}
+\item the rank bound in Lemma 3.2 (ii) and its use in Theorem 2 (a);
+\item the coding of $L_{\beta}$ in Lemma 3.3 (L);
+\item Lemma 5.1 (c), where a model that is not well-founded computes a term correctly;
+\item the diagonal sentence in Lemma 7.3, and the proof of Theorem 1 (i) for $r(d) < u$, which applies that lemma
+  at $r(d)$ and uses that $Z_d$ is $\Sigma_1$-definable from $r(d)$;
+\item Lemma 7.1, in particular the hypothesis ``countable in $L_{r^+}$'' as used in Step 3, and Step 1, where
+  $F \circ F$ is considered on classes of infinite ordinals only;
+\item the $\Sigma^1_1$ class used for $\Xp(\gamma) = \Xo(\gamma)$ in the proof of Theorem 1;
+\item the elimination of parameters in the proof of Proposition 6.
+\end{itemize}
+
+\section*{Appendix A. Proof of Lemma 3.3}
+
+\begin{proof}[Proof of Lemma 3.3] (C) The symbols are ternary $\mathrm{Pl}$, $\mathrm{Ti}$, $\mathrm{ent}$ and binary $\mathrm{len}$.
+Let $N(x)$ say that every $y \le x$ is least or has an immediate predecessor; $N$ also denotes the set of these $x$, and let $x'$ be the successor of $x$.
+$\theta_c$ is the conjunction of the following.
+\begin{itemize}
+\item[N1.] $N$ has no greatest element.
+\item[N2.] $\mathrm{Pl}$ and $\mathrm{Ti}$ are graphs of binary functions on $N$ satisfying $x + 0 = x$,
+  $x + y' = (x + y)'$, $x \cdot 0 = 0$, $x \cdot y' = x \cdot y + x$.
+\item[N3.] $\mathrm{len}$ is a partial function into $N$; $\mathrm{ent}(s, i, a)$ implies $i < \mathrm{len}(s)$; and
+  for each $i < \mathrm{len}(s)$ there is exactly one $a$ with $\mathrm{ent}(s, i, a)$, written $s_i$.
+\item[N4.] Some $s$ has $\mathrm{len}(s) = 0$.
+\item[N5.] For every $s$ in the domain of $\mathrm{len}$ and every $a$ there is $s^+$ with
+  $\mathrm{len}(s^+) = \mathrm{len}(s)'$, $s^+_i = s_i$ for $i < \mathrm{len}(s)$, and last entry $a$.
+\end{itemize}
+In a well-order, $N$ is an initial segment whose nonzero elements are successors, so it has type $\le \omega$, and
+type $\omega$ by N1. So a finite $A$ has no expansion. By N2 and induction $\mathrm{Pl}$ and $\mathrm{Ti}$ are the
+true operations, so an arithmetical formula relativised to $N$ has its true meaning, and a recursive relation is
+given by its $\Sigma_1$ definition. By N4, N5 and induction on the length, every finite sequence from $A$ is
+$(s_0, \dots, s_{k-1})$ for some $s$ with $\mathrm{len}(s) = k$. Let $\operatorname{dom}_P(x)$ say that
+$x_0 \in N$ is a trace, $\mathrm{len}(x) = 1 + \mathrm{ar}(x_0)$ and $x_1 < x_2 < \dots$; and let $x <_P y$ say
+that both satisfy $\operatorname{dom}_P$ and the comparison of $P$ gives $<$ on $x_0$, $y_0$ and the order pattern
+of the two tuples, which is coded by a number. The map is $x \mapsto (x_0, (x_1, x_2, \dots))$. Conversely, an
+infinite well-order $A$ admits an injection of its finite sequences into $A$.
+
+(L) Fix a primitive recursive coding of the formulas of $\{\in\}$ in variables $v_0, v_1, \dots$ in which the
+index of every variable of a formula and the code of every subformula are at most the code of the formula. The further
+symbols are binary $E$, $\mathrm{Lev}$ and ternary $\mathrm{Sat}$. Let $\bar 0$ be the least element of $A$ and let
+$B_a(y)$ stand for $\exists a' < a\ \mathrm{Lev}(a', y)$. An \emph{$a$-assignment for $n$} is a code $s$ with
+$\mathrm{len}(s) > n$ all of whose entries satisfy $B_a$; $s[i{:=}y]$ is $s$ with entry $i$ replaced by $y$, and a statement about $s[i{:=}y]$ is read as a statement about
+every code of that sequence. Let
+$\mathrm{Df}(a, n, s, y)$ stand for $B_a(y) \wedge \mathrm{Sat}(a, n, s[0{:=}y])$. $\theta_L$ is $\theta_c$ together with:
+\begin{itemize}
+\item[S1.] $E$ is extensional.
+\item[S2.] $\mathrm{Lev}(\bar 0, x)$ if and only if $x$ has no $E$-predecessor, and such an $x$ exists.
+\item[S3.] For $a > \bar 0$, a formula code $n \in N$ and an $a$-assignment $s$ for $n$: $\mathrm{Sat}(a, n, s)$
+  obeys Tarski's clauses for the structure $(\{y : B_a(y)\}, E)$; in particular, for the code $n$ of
+  $\exists v_i\, \varphi$, $\mathrm{Sat}(a, n, s)$ holds if and only if there is $y$ with $B_a(y)$ and
+  $\mathrm{Sat}(a, \ulcorner\varphi\urcorner, s[i{:=}y])$.
+\item[S4.] For $a > \bar 0$: $\mathrm{Lev}(a, x)$ if and only if there are $n$ and an $a$-assignment $s$ for $n$
+  with $\forall y\, (y \E x \leftrightarrow \mathrm{Df}(a, n, s, y))$.
+\item[S5.] For $a > \bar 0$ and $n$, $s$ as in S4 there is $x$ with $\forall y\, (y \E x \leftrightarrow \mathrm{Df}(a, n, s, y))$.
+\item[S6.] Every $x$ satisfies $\mathrm{Lev}(a, x)$ for some $a$.
+\end{itemize}
+Let $A$ be a well-order with such an expansion, and write $\bar a$ for the order type of $\{a' : a' < a\}$. If
+$\mathrm{Lev}(a, x)$ and $y \E x$ then $\mathrm{Lev}(a', y)$ for some $a' < a$, by S2 and S4. So the least $a$ with
+$\mathrm{Lev}(a, x)$, which exists by S6, decreases along $E$. Hence $E$ is well-founded, each set
+$B_a = \{y : B_a(y)\}$ is closed under $E$-predecessors, and by S1 the transitive collapse $\varpi$ of $(A, E)$ is
+injective. We show $\varpi[B_a] = L_{\bar a}$ by induction on $a$; the induction hypothesis is
+$\varpi[B_{a'}] = L_{\bar a'}$ for all $a' < a$. Let $a' < a$. If $a' = \bar 0$, then $\varpi$
+maps $\{x : \mathrm{Lev}(\bar 0, x)\}$ onto $\{\emptyset\} = L_1$ by S2. If $a' > \bar 0$, induction on the formula
+shows that $\mathrm{Sat}(a', n, s)$ holds if and only if $(B_{a'}, E)$ satisfies the formula with code $n$ under
+$s$, by S3; here every $s[i{:=}y]$ has a code. So by S4 and S5, $\varpi$ maps $\{x : \mathrm{Lev}(a', x)\}$ onto the
+set of definable subsets of $L_{\bar a'}$, which is $L_{\bar a' + 1}$. The union over $a' < a$ is $L_{\bar a}$. The
+same union over all of $A$ gives $\varpi[A] = L_{\beta}$. Conversely, for infinite $\beta$ pull back $\in$, the
+levels and satisfaction along a bijection between $\beta$ and $L_{\beta}$.
+
+(K) The further symbols are $E$ and a binary $\mathrm{Sat}'$. $\theta_T$ is $\theta_c$, Tarski's clauses for
+$\mathrm{Sat}'$ over the whole structure $(A, E)$, and the statement that $\mathrm{Sat}'(n, s)$ holds for every
+code $n \in N$ of an axiom of $T$ and every sufficiently long code $s$. As in (L), $\mathrm{Sat}'$ is true
+satisfaction on the codes in $N$, which are standard. The converse takes true satisfaction.
+\end{proof}
+
+\section*{Appendix B. Ressayre's class of functors}
+
+\begin{statement}\head{Lemma B.1} For every recursive pattern set $\mathcal S$ there is a primitive recursive
+pattern set $\mathcal S^c$ such that $\mathcal S^c(n)$ is finite for finite $n$, the functor
+$n \mapsto P_{\mathcal S^c}(n)$ is primitive recursive on objects and maps, and
+$\operatorname{rk} \mathcal S^c(b) = \operatorname{rk} \mathcal S(b)$ for every infinite well-order $b$.
+\end{statement}
+
+The tree $\mathcal S(n)$ can be infinite for finite $n$, because the depth of nodes and the data in a row can be
+unbounded; a row without slots that may be repeated gives infinite depth already at $n = 0$. Also, membership in
+$\mathcal S$ is only recursive. In $\mathcal S^c$ each row therefore carries a computation that verifies membership,
+which makes the test primitive recursive,
+and a block of \emph{extra slots}, at least as many as the size of what the row contains, whose labels must all be
+different. A finite order runs out of labels, and this bounds every node.
+
+\begin{proof} A row of a pattern in $\mathcal S^c$ is a row of a pattern in $\mathcal S$ whose tag is extended by
+a halting computation showing that the pattern up to this row is in $\mathcal S$, followed by a block of extra
+slots whose number exceeds the code of the extended tag and the number of original slots. It is required that the
+labels in the extra slots of a node strictly increase in their order of occurrence through the whole node; the
+order between extra labels and original labels is not restricted. On a finite order $n$ a node has at most $n$
+extra labels, so the number of its rows and the codes of its tags are bounded by $n$, each row has at most $2n$ slots, and
+membership is a bounded test.
+
+Let $b$ be an infinite well-order. Deleting the computations and the extra labels maps each node of
+$\mathcal S^c(b)$ to a node of $\mathcal S(b)$ and each child to a child. So by induction on the rank, the rank of
+a node of $\mathcal S^c(b)$ is at most the rank of its image, and
+$\operatorname{rk} \mathcal S^c(b) \le \operatorname{rk} \mathcal S(b)$; an infinite branch is mapped to an
+infinite branch. Conversely, call a node of $\mathcal S^c(b)$ \emph{low} if its extra labels are among the first
+$\omega$ elements of $b$. If $s^c$ is a low node with image $s$ and $s'$ is a child of $s$ in $\mathcal S(b)$, then
+$s^c$ has a low child with image $s'$: extend the tag of the last row of $s'$ by the computation, which exists
+because the pattern of $s'$ is in $\mathcal S$, and take the finitely many extra labels among the first $\omega$
+elements of $b$ above the extra labels of $s^c$. The root is low. So by induction on the rank of $s$, a low node
+with image $s$ has rank at least the rank of $s$, and an infinite branch of $\mathcal S(b)$ lifts to one of
+$\mathcal S^c(b)$. Hence $\operatorname{rk} \mathcal S^c(b) \ge \operatorname{rk} \mathcal S(b)$.
+\end{proof}
+
+\begin{statement}\head{Lemma B.2} Let $F \in \mathcal R$ or $F \in \Pre$. There is $G \in \Pre$ that also belongs
+to $\mathcal R$ such that for every infinite ordinal $b$: $G(b)$ is a well-order if and only if $F(b)$ is, and then
+$|G(b)| > |F(b)|$.
+\end{statement}
+
+\begin{proof} A \emph{representative} over $b$ is a triple $(n, z, \vec a)$ with $z \in F(n)$, or $z$ a trace of
+arity $n$ if $F \in \Pre$, and $\vec a$ an increasing $n$-tuple from $b$; it denotes the image of $z$ in $F(b)$
+under the embedding $\vec a$. Every element of $F(b)$ has a representative, and two representatives are compared
+inside $F(k)$ for $k$ the number of elements of $\vec a \cup \vec a'$, by a test that reads only the order pattern.
+Let $\mathcal S$ consist of the patterns with tags $(n, z)$ and $n$ slots in each row such that the denoted
+elements strictly descend. An infinite branch of $\mathcal S(b)$ is a descending sequence in $F(b)$, and if $F(b)$
+is a well-order then by induction a node whose last row denotes an element of rank $\xi$ in $F(b)$ has rank at
+least $\xi$. So $\operatorname{rk} \mathcal S(b) \ge |F(b)|$. Put $G = P_{\mathcal S^c}$ and apply Lemmas 3.1 and
+B.1. $G(n)$ is a finite linear order, primitive recursively in $n$, and $G$ commutes with direct limits, so
+$G \in \mathcal R$ after each $G(n)$ is identified with its order type.
+\end{proof}
+
+\section*{References}
+
+\begin{itemize}
+\item J. P. Aguilera, The order of reflection, arXiv:1906.11769 (Section 2).
+\item J. P. Aguilera and F. Pakhomov, The $\Pi^1_2$ consequences of a theory, arXiv:2109.11652.
+\item J. Barwise, \emph{Admissible Sets and Structures}, Springer, 1975.
+\item J. Barwise, R. O. Gandy and Y. N. Moschovakis, The next admissible set, \emph{Journal of Symbolic Logic} 36 (1971), 108--120.
+\item K. J. Devlin, \emph{Constructibility}, Springer, 1984.
+\item J.-Y. Girard, $\Pi^1_2$-logic, Part 1: Dilators, \emph{Annals of Mathematical Logic} 21 (1981), 75--219.
+\item J.-Y. Girard, \emph{Proof Theory and Logical Complexity}, Volume 1, Bibliopolis, 1987; Volume 2, unpublished
+  manuscript, of which Part III (Chapters 8--12) is on the author's web page.
+\item J.-Y. Girard and J.-P. Ressayre, \'El\'ements de logique $\Pi^1_n$, in \emph{Recursion Theory}, Proceedings
+  of Symposia in Pure Mathematics 42, American Mathematical Society, 1985, 389--445.
+\item F. G. Abramson and G. E. Sacks, Uncountable Gandy ordinals, \emph{Journal of the London Mathematical Society} (2) 14 (1976), 387--392.
+\item R. O. Gandy, Proof of Mostowski's conjecture, \emph{Bulletin de l'Acad\'emie Polonaise des Sciences} 8 (1960), 571--575.
+\item R. Gostanian, The next admissible ordinal, \emph{Annals of Mathematical Logic} 17 (1979), 171--203.
+\item M. R. R. Hoole, The least $\alpha$ for which $E(\alpha)$ is inadmissible, \emph{Journal of the Australian
+  Mathematical Society (Series A)} 41 (1986), 143--151.
+\item J.-P. Ressayre, Bounding generalized recursive functions of ordinals by effective functors; a complement to
+  the Girard theorem, in \emph{Proceedings of the Herbrand Symposium (Logic Colloquium '81)}, J. Stern (ed.),
+  North-Holland, 1982, pp.\ 251 ff. (Theorem I.6; III.1--III.10; IV.0--IV.8.)
+\item G. E. Sacks, \emph{Higher Recursion Theory}, Springer, 1990.
+\item F. Schlutzenberg, answer 381041 on MathOverflow, 2021.
+\item N. Schweber, Clarifying ordinals, arXiv:2408.10367 (Section 3.2).
+\end{itemize}
+
+\end{document}

@@ -6,9 +6,9 @@
 \newunicodechar{ξ}{\ensuremath{\xi}}\newunicodechar{ζ}{\ensuremath{\zeta}}
 \newunicodechar{∣}{\ensuremath{\mid}}\newunicodechar{≠}{\ensuremath{\neq}}
 \title{The least ordinal that is $\Pi_n$-reflecting of degree $\delta_\alpha$ is the least $\Pi_{n+1}$-reflecting ordinal}
-% The version date is stated here once; the PDF and the web page both take it from this line.
+% The date is stated here once; the PDF and the web page both take it from this line.
 \newcommand{\paperversion}{2026-11-22}
-\date{Version of \paperversion}
+\date{\paperversion}
 \begin{document}
 % Local notation (kept here so that the web build, which reads only the body, sees it too).
 \newcommand{\Ad}{\mathrm{Ad}}
@@ -49,7 +49,7 @@ a formula with a parameter, read as a predecessor relation on $L_\mu$ at each le
 the universe; and $\mu \in C_n(P,a)$ when $\mu$ is $\Pi_n$-reflecting on $C_n(P,c)$ for every predecessor $c$ of $a$
 in $L_\mu$, the relation being evaluated afresh at each level (Definition 2.1). For $n = 2$ this is the main theorem of
 the earlier paper $[E]$, \emph{The least $\alpha^+$-recursively Mahlo ordinal is the least $\Pi_3$-reflecting
-ordinal}, version of 2026-11-22, cited as [E, Theorem B]; we use its conventions and cite its items as [E, Lemma 4.1].
+ordinal}, cited as [E, Theorem B]; we use its conventions and cite its items as [E, Lemma 4.1].
 That $K_n$ has the property is the known upper-bound argument (Theorem 4.3). The step beyond $[E]$ is the lower bound
 for $n \ge 3$ (Section 4.3): the search tree of $[E]$ must now keep promises with more than two quantifier blocks, and does so by
 nesting them. For $n = 1$ the lower bound is elementary (Section 4.2).
@@ -339,7 +339,7 @@ admissible $L_{\alpha^+}$ computes its rank function by $\Sigma$-recursion, so i
 countable, locally countable admissible $\alpha$, $\delta_\alpha$ is Aguilera's supremum of $\alpha$-recursive
 well-orderings, since $<_L$ enumerates $L_\alpha$ in order type $\alpha$ by a $\Delta_1(L_\alpha)$ map [E, Section 8].
 
-\begin{statement}\head{Theorem 3.2 (Gostanian; cited from Aguilera, Sections 1--2)} For every countable, locally
+\begin{statement}\head{Theorem 3.2 (Gostanian, Section 2, application (viii), and Corollary 3.2)} For every countable, locally
 countable admissible $\alpha < \sigma^1_1$, $\delta_\alpha = \alpha^+$. At $\alpha = \sigma^1_1$, $\delta_\alpha <
 \alpha^+$.
 \end{statement}
@@ -1112,8 +1112,8 @@ are versions of known arguments; the case $n = 2$ is $[E]$. \\
 Lean & No numbered result is formalised as stated. Lean 4 with Mathlib checks abstract facts behind Lemma 5.1,
   Corollary 4.6 and Theorem 3.1 (Appendix B), with only Lean's standard axioms; Lemma 4.12 is the descent lemma of
   $[E]$, checked in Lean there. \\
-References & Richter--Aczel is cited from the 1973 Oslo preprint. Theorem 3.2 is cited through Aguilera; Gostanian's
-paper was not consulted. The relativised Kripke--Platek theorem is cited without a checked locator. Results of $[E]$ are used as stated there. \\
+References & Richter--Aczel is cited from the 1973 Oslo preprint. Theorem 3.2 is cited from Gostanian's paper, where
+$\alpha$ is called good when $\delta_\alpha = \alpha^+$. The relativised Kripke--Platek theorem is cited without a checked locator. Results of $[E]$ are used as stated there. \\
 \bottomrule
 \end{tabular}\end{center}
 
@@ -1249,7 +1249,7 @@ before it, that it is $\Delta_1$, and the bound by $\delta_\alpha$.
 \section*{References}
 
 \begin{itemize}
-\item $[E]$ \href{https://waffle3z.github.io/math/greatly-mahlo-pi3.html}{The least α⁺-recursively Mahlo ordinal is the least Π₃-reflecting ordinal}, version of 2026-11-22,
+\item $[E]$ \href{https://waffle3z.github.io/math/greatly-mahlo-pi3.html}{The least α⁺-recursively Mahlo ordinal is the least Π₃-reflecting ordinal},
   waffle3z.github.io/math.
 \item J. P. Aguilera, The order of reflection, arXiv:1906.11769 (Sections 1 and 2).
 \item T. Arai, Iterating the recursively Mahlo operations, arXiv:1005.1987 (Definition 1.1, Lemma 1.2, Theorem 1.3).
