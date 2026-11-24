@@ -32,7 +32,7 @@ ordinal that is $\Pi_m$-reflecting for every $m$, the admissible ordinals of deg
 recursively $k$-Mahlo ordinals and their admissible limits. The correspondence stops at the first limit: the least ordinal of
 degree $\delta_\alpha^\omega$ is the least admissible ordinal that is a limit of the recursively $k$-Mahlo ordinals for
 every finite $k$, which is below the
-least ordinal that is recursively $k$-Mahlo for every $k$. The lower bound is a descent along a $\Sigma_1$ search tree,
+least recursively $\omega$-Mahlo ordinal, that is, the least ordinal that is recursively $k$-Mahlo for every $k$. The lower bound is a descent along a $\Sigma_1$ search tree,
 by induction on $k$ for all base classes at once; it rests on a bounded test, one admissible level up, for membership in
 the iterated classes.
 \end{frontnote}
@@ -74,7 +74,7 @@ X$.
   recursively 1-Mahlo ordinal.
 \item \emph{Degree $\delta_\alpha^\omega$} (Proposition 7.4). For admissible $\gamma \le \xi^*$, degree
   $\delta_\gamma^\omega$ holds exactly when $\gamma$ is a limit of $\Mh(k)$ for every $k < \omega$. Its least element
-  $\tau_\omega$ is below the least element of $\Mh(\omega)$.
+  $\tau_\omega$ is below the least recursively $\omega$-Mahlo ordinal, the least element of $\Mh(\omega)$.
 \end{itemize}
 Section 8 says where the statements fail: at exponent $0$, at degree $\delta_\alpha \cdot 2$, at exponent $\omega$, and
 for step classes tested with a parameter.
@@ -167,13 +167,14 @@ $\Mh(\xi)$ is as in [E, Section 3.1]: $\Mh(0)$ is the class of limits above $\om
 ordinals $\Pi_2$-reflecting on $\Mh(\xi)$, and $\Mh(\lambda) = \bigcap_{\xi<\lambda} \Mh(\xi)$ at limits. So $\Mh(1) =
 \Ad$, and $\Mh(2)$ is the class of \emph{recursively Mahlo} ordinals. As in [A], the members of $\Mh(3)$ are called
 \emph{recursively 1-Mahlo}, just as ``1-inaccessible'' is one step above ``inaccessible''; in general the members of
-$\Mh(k+2)$ are \emph{recursively $k$-Mahlo}, and recursively 0-Mahlo means recursively Mahlo.
+$\Mh(k+2)$ are \emph{recursively $k$-Mahlo}, and recursively 0-Mahlo means recursively Mahlo. The members of
+$\Mh(\omega)$, the ordinals that are recursively $k$-Mahlo for every $k$, are \emph{recursively $\omega$-Mahlo}.
 
 \begin{center}\begin{tabular}{p{0.14\linewidth}p{0.76\linewidth}}
 \toprule
 Ordinal & Definition \\
 \midrule
-$m_\omega$ & the least element of $\Mh(\omega)$ \\
+$m_\omega$ & the least element of $\Mh(\omega)$, the least recursively $\omega$-Mahlo ordinal \\
 $\tau_\omega$ & the least admissible ordinal that is a limit of $\Mh(k)$ for every $k < \omega$ \\
 $K_2$ & the least $\Pi_3$-reflecting ordinal \\
 $\xi^*$ & the least ordinal that is $\Pi_m$-reflecting for every $m$ \\
@@ -764,7 +765,8 @@ element of $R$, so the least element of $D[1]$ is the least element of $\Mh(2) \
 
 \begin{statement}\head{Proposition 7.4 (degree $\delta_\alpha^\omega$)} An admissible $\gamma \le \xi^*$ is recursively
 inaccessible of degree $\delta_\gamma^\omega$ if and only if $\gamma$ is a limit of $\Mh(k)$ for every $k < \omega$.
-The least ordinal of degree $\delta_\alpha^\omega$ is $\tau_\omega$, and $\tau_\omega < m_\omega$.
+The least ordinal of degree $\delta_\alpha^\omega$ is $\tau_\omega$, the least admissible ordinal that is a limit
+of $\Mh(k)$ for every $k < \omega$, and $\tau_\omega < m_\omega$, the least recursively $\omega$-Mahlo ordinal.
 \end{statement}
 
 \begin{proof}
