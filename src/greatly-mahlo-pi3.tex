@@ -8,17 +8,17 @@
 \begin{document}
 \maketitle
 
-\begin{frontnote}\head{Abstract} Let $\Mh(\xi)$ be the $\xi$-th iterate of the recursively Mahlo operation along the
-ordinals: $\Mh(\xi+1)$ is the class of ordinals that are $\Pi_2$-reflecting on $\Mh(\xi)$, with intersections at
-limits. For an admissible ordinal $\alpha > \omega$ this iteration is defined at degree $\alpha$, but
-$\alpha \notin \Mh(\alpha+1)$. We study higher degrees through
+\begin{frontnote}\head{Abstract} The recursively $\xi$-Mahlo ordinals iterate the recursively Mahlo operation,
+$\Pi_2$-reflection on the previous class, along the ordinals, with intersections at limits. This is defined for
+every $\xi$, but no ordinal $\alpha$ is recursively $(\alpha+1)$-Mahlo. We study higher degrees through
 presentations: definable relations on $L_{\alpha}$, evaluated at smaller levels. Call $\alpha$
-\emph{$\alpha^+$-recursively Mahlo} (\RM{}) if it lies in the Mahlo class of every node in the externally
-well-founded part of each $\Sigma_1$ presentation at $\alpha$. We show that the least \RM{} ordinal is the least
-$\Pi_3$-reflecting ordinal $K$, and that an admissible ordinal up to a certain bound is \RM{} exactly when it is
-$\Pi_3$-reflecting or $\Pi_2$-reflecting on the $\Pi_3$-reflecting ordinals. Hence the first \RM{} ordinal that is not
-$\Pi_3$-reflecting is the least ordinal $\gamma_1$ that is $\Pi_2$-reflecting on the $\Pi_3$-reflecting ordinals.
-Restricting to $\Sigma_1$ linear orderings gives the same notion.
+\emph{$\alpha^+$-recursively Mahlo} if it lies in the Mahlo class of every node in the externally
+well-founded part of each $\Sigma_1$ presentation at $\alpha$. We show that the least such ordinal is $\pi_3$, the
+least $\Pi_3$-reflecting ordinal, and that an admissible ordinal up to a certain bound is $\alpha^+$-recursively
+Mahlo exactly when it is $\Pi_3$-reflecting or $\Pi_2$-reflecting on the $\Pi_3$-reflecting ordinals. Hence the
+first $\alpha^+$-recursively Mahlo ordinal that is not $\Pi_3$-reflecting is $\pi_2(\Pi_3)$, the least ordinal
+$\Pi_2$-reflecting on the $\Pi_3$-reflecting ordinals. Restricting to $\Sigma_1$ linear orderings gives the same
+notion.
 \end{frontnote}
 
 \begin{frontnote}\head{Provenance} The proofs were found and written by an AI system. No human specialist has
@@ -26,6 +26,7 @@ reviewed them, and novelty is unconfirmed. Section 10 states what has been check
 \end{frontnote}
 
 \section{Introduction}
+% key-steps: Theorem M, Lemma 6.3
 
 A cardinal $\kappa$ is greatly Mahlo if it is Mahlo of every degree below $\kappa^+$, the degrees at or above $\kappa$
 being defined through canonical functions (Baumgartner, Taylor and Wagon). Below a weakly compact cardinal there are
@@ -45,30 +46,34 @@ set-theoretic question that corresponds to Arai's reduction: which is the least 
 which is the first one that is not $\Pi_3$-reflecting. We did not find Theorems B and C or Proposition D in the
 sources we read; see Section 10.
 
-Throughout, $\boldsymbol{A}$ is the class of $\Pi_3$-reflecting ordinals, $\boldsymbol{K}$ $= \min\, A$, and
-$\boldsymbol{\gamma_1}$ is the least ordinal that is $\Pi_2$-reflecting on $A$. \RM{} is defined in 3.3.
+Throughout, $\boldsymbol{\Pi_3}$ is the class of $\Pi_3$-reflecting ordinals and $\boldsymbol{\pi_3}$ its least
+element. For a class $X$ of ordinals, $\pi_m(X)$ denotes the least ordinal that is $\Pi_m$-reflecting on $X$,
+whenever such an ordinal exists. Thus $\boldsymbol{\pi_2(\Pi_3)}$ is the least ordinal that is $\Pi_2$-reflecting
+on $\Pi_3$. The notion
+$\alpha^+$-recursively Mahlo is defined in 3.3.
 
-\begin{statement}\head{Theorem A} Every $\Pi_3$-reflecting ordinal is \RM{}.
+\begin{statement}\head{Theorem A} Every $\Pi_3$-reflecting ordinal is $\alpha^+$-recursively Mahlo.
 \end{statement}
 
-\begin{statement}\head{Theorem B} No ordinal below $K$ is \RM{}. Hence the least \RM{} ordinal is $K$.
+\begin{statement}\head{Theorem B} No ordinal below $\pi_3$ is $\alpha^+$-recursively Mahlo. Hence the least $\alpha^+$-recursively Mahlo ordinal is $\pi_3$.
 \end{statement}
 
-\begin{statement}\head{Theorem C} An admissible ordinal $\gamma$ with $\omega < \gamma \le \gamma_1$ is \RM{} if and
-only if $\gamma \in A$ or $\gamma$ is $\Pi_2$-reflecting on $A$. Hence the least \RM{} ordinal that is not
-$\Pi_3$-reflecting is $\gamma_1$.
+\begin{statement}\head{Theorem C} An admissible ordinal $\gamma$ with $\omega < \gamma \le \pi_2(\Pi_3)$ is $\alpha^+$-recursively Mahlo if and
+only if $\gamma \in \Pi_3$ or $\gamma$ is $\Pi_2$-reflecting on $\Pi_3$. Hence the least $\alpha^+$-recursively Mahlo ordinal that is not
+$\Pi_3$-reflecting is $\pi_2(\Pi_3)$.
 \end{statement}
 
-\begin{statement}\head{Proposition D} For admissible $\alpha > \omega$, the definition of \RM{} is unchanged if only
+\begin{statement}\head{Proposition D} For admissible $\alpha > \omega$, the definition of $\alpha^+$-recursively Mahlo is unchanged if only
 $\Sigma_1$ presentations that define linear orderings of $L_{\alpha}$ are allowed.
 \end{statement}
 
-So \RM{} and $\Pi_3$-reflection have the same least element but are different classes.
+So the $\alpha^+$-recursively Mahlo ordinals and the $\Pi_3$-reflecting ordinals have the same least element but
+form different classes.
 
 \textbf{Overview of the proofs.} \emph{Why $\alpha^+$.} A node in the well-founded part of a $\Sigma_1$ relation on $L_{\alpha}$ has rank below
 $\alpha^+$. The ranks that occur are exactly the order types of well-orderings that are $\Delta_1$-definable over
-$L_{\alpha}$, and for every admissible $\alpha$ with $\omega < \alpha \le \gamma_1$ these fill all of
-$\alpha^+$ (remark after Definition 3.3). \RM{} asks for membership in the Mahlo
+$L_{\alpha}$, and for every admissible $\alpha$ with $\omega < \alpha \le \pi_2(\Pi_3)$ these fill all of
+$\alpha^+$ (remark after Definition 3.3). Being $\alpha^+$-recursively Mahlo asks for membership in the Mahlo
 class of every such node, as a greatly Mahlo cardinal $\kappa$ is Mahlo of every degree below $\kappa^+$. The class
 of a node is not fixed by its rank: the relation is evaluated again at each smaller level (Definition 3.1, Examples
 3.2).
@@ -84,7 +89,7 @@ handles one task: it supplies a witness for $\varphi_0(q_0)$, or it decides one 
 $\forall u\, \exists v\, \forall w\, \theta$ with constants already enumerated, either positively, by naming an
 earlier limit level in which it holds, or negatively, by naming $u$ and promising $\forall v\, \exists w\, \neg\theta$;
 later steps supply the witnesses $w$ that keep the promise. An infinite branch builds a $\Pi_3$-reflecting level
-satisfying $\varphi_0(q_0)$ (Lemma 6.1). Below $K$, with $\varphi_0$ trivial, there is no such level, so the root is
+satisfying $\varphi_0(q_0)$ (Lemma 6.1). Below $\pi_3$, with $\varphi_0$ trivial, there is no such level, so the root is
 in the well-founded part; ordinals that are not admissible are excluded by Example 3.2(1). To see that $\gamma$ is not in the class of the root, follow nodes whose promises are true
 in $L_{\gamma}$. A promise is $\Pi_2$, so ``this node's promises are true'' is a $\Pi_2$ sentence that reflects down
 together with the node, and the descent lemma (Lemma 4.1) turns this into non-membership in the class (Theorem M).
@@ -95,8 +100,8 @@ preceding selected level by $\omega$; Lemma 7.2 supplies these enumerations for 
 of Theorems B and C.
 
 \emph{Theorem C.} The same tree is used with $\varphi_0(q_0)$ a $\Pi_2$ sentence that witnesses the failure of
-$\Pi_2$-reflection on $A$ (Lemma 7.3). The converse direction applies Theorem A at the elements of $A$ to which
-sentences are reflected (Lemma 7.4). Lemma 7.1 shows that $\gamma_1$ exists and Lemma 7.5 that it is not
+$\Pi_2$-reflection on $\Pi_3$ (Lemma 7.3). The converse direction applies Theorem A at the elements of $\Pi_3$ to which
+sentences are reflected (Lemma 7.4). Lemma 7.1 shows that $\pi_2(\Pi_3)$ exists and Lemma 7.5 that it is not
 $\Pi_3$-reflecting.
 
 \emph{Proposition D.} A $\Sigma_1$ presentation is replaced by the Kleene--Brouwer ordering of its finite descending
@@ -128,9 +133,9 @@ well-foundedness of the Kleene--Brouwer ordering of a well-founded tree \\
 \bottomrule
 \end{tabular}\end{center}
 
-\textbf{What to scrutinise.} \RM{} is a statement about \emph{presentations}: a definable relation is evaluated at
-every smaller level, and its class depends on that evaluation and not only on its rank. \RM{} is therefore a
-presentation-based iteration of recursive Mahloness. We do not prove that it corresponds to a recursive form of the
+\textbf{What to scrutinise.} Being $\alpha^+$-recursively Mahlo is a statement about \emph{presentations}: a
+definable relation is evaluated at every smaller level, and its class depends on that evaluation and not only on its
+rank. The notion is therefore a presentation-based iteration of recursive Mahloness. We do not prove that it corresponds to a recursive form of the
 canonical-function or normal-ideal definition of greatly Mahlo cardinals, and the name ``recursively greatly Mahlo''
 should be read with that reservation (Question 3 of Section 9). In particular Theorem B does not conflict with the
 stationary-set theorem for cardinals quoted above: its proof enumerates each earlier level by $\omega$ inside the
@@ -356,21 +361,29 @@ containing its entries; this is why sentences are written $\varphi(q)$ with a si
 must keep at its target, whether or not it occurs in the sentence, is kept by conjoining its self-equality, as in
 Lemmas 5.1 and 6.4.
 
-\section{Presentations and the notion \RM{}}
+\section{Presentations and \texorpdfstring{$\alpha^+$}{alpha+}-recursively Mahlo ordinals}
 
 \subsection{Iterating along the ordinals}
 
-Let $\Mh(0)$ be the class of limit ordinals above $\omega$, $\Mh(\xi+1)$ the class of ordinals that are
-$\Pi_2$-reflecting on $\Mh(\xi)$, and $\Mh(\lambda)$ the intersection of the earlier classes for limit $\lambda$. The
-operation of $\Pi_2$-reflection on a class is monotone under inclusion, and its first iterate here is contained in
-$\Mh(0)$; so by induction, taking intersections at limits, $\Mh(\zeta) \subseteq \Mh(\xi)$ for $\xi \le \zeta$. Then
-$\Mh(1)$ is the class of admissible ordinals above $\omega$: by Richter--Aczel, Theorem 1.8, a limit
-$\alpha > \omega$ is admissible if and only if it is $\Pi_2$-reflecting; reflection onto $\Mh(0)$ is in particular
-$\Pi_2$-reflection; and conversely an admissible $\alpha > \omega$ reflects $\varphi(q) \wedge G$ to a level that is a
-limit above $\omega$ by (C3). And $\Mh(2)$ is the class of recursively Mahlo ordinals. Here
-$\Mh(\xi)$ depends only on the ordinal $\xi$, not on a relation that presents it.
-This iteration is defined for all $\xi$, but no $\mu$ is in $\Mh(\mu+1)$: if $\mu$ were the least such ordinal,
-it would be $\Pi_2$-reflecting on $\Mh(\mu)$, and reflecting a tautology would give $\beta < \mu$ in $\Mh(\mu) \subseteq \Mh(\beta+1)$. To express higher degrees
+Start from the class of limit ordinals above $\omega$ and apply $\Pi_2$-reflection on the previous class
+repeatedly, taking intersections at limits. The ordinals that are $\Pi_2$-reflecting on the limit ordinals
+above $\omega$ are exactly the admissible ordinals above $\omega$: by Richter--Aczel, Theorem 1.8, a limit
+$\alpha > \omega$ is admissible if and only if it is $\Pi_2$-reflecting; reflection onto the limit ordinals above
+$\omega$ is in particular $\Pi_2$-reflection; and conversely an admissible $\alpha > \omega$ reflects
+$\varphi(q) \wedge G$ to a level that is a limit above $\omega$ by (C3). The next iterate, the ordinals
+$\Pi_2$-reflecting on the admissible ordinals, is the class of recursively Mahlo ordinals. Continuing, an ordinal is
+\emph{recursively $(\xi+1)$-Mahlo} if it is $\Pi_2$-reflecting on the recursively $\xi$-Mahlo ordinals, and
+\emph{recursively $\lambda$-Mahlo}, for limit $\lambda$, if it is recursively $\xi$-Mahlo for every $\xi < \lambda$;
+the recursively $0$-Mahlo ordinals are the recursively Mahlo ones. So, counted by the number of reflection steps
+from the limit ordinals, the $0$-th iterate is the class of limit ordinals above $\omega$, the first the admissible
+ordinals above $\omega$, the second the recursively Mahlo ordinals, and the $(2+\xi)$-th the recursively
+$\xi$-Mahlo ordinals; for infinite $\eta$, the $\eta$-th iterate is the class of recursively $\eta$-Mahlo ordinals.
+The operation of $\Pi_2$-reflection on a class is monotone under inclusion, and the first iterate is contained in
+the $0$-th; so by induction, taking intersections at limits, a later iterate is contained in every earlier one. Each
+iterate depends only on its ordinal index, not on a relation that presents it.
+These classes are defined for all $\xi$, but no $\mu$ is recursively $(\mu+1)$-Mahlo: if $\mu$ were the least such
+ordinal, it would be $\Pi_2$-reflecting on the recursively $\mu$-Mahlo ordinals, and reflecting a tautology would
+give a recursively $\mu$-Mahlo $\beta < \mu$, which is recursively $(\beta+1)$-Mahlo. To express higher degrees
 at $\mu$ one has to say how a degree is evaluated at smaller levels.
 
 \subsection{Presentations and their classes}
@@ -397,14 +410,17 @@ defined by recursion as the supremum of the ordinals (rank of $c$)$\,+\,1$ over 
 notions refer to the relation at a given ordinal $\mu$.
 
 \begin{statement}\head{Examples 3.2} (1) If $r$ is a well-founded relation that is a set and $\rho$ says
-$(x, y) \in z$ with $p = r$, then $C(P, a)$ is $\Mh($rank of $a)$ restricted to the $\mu$ with $r, a \in L_{\mu}$. In
+$(x, y) \in z$ with $p = r$, then $C(P, a)$ is the iterate of Section 3.1 whose index is the rank of $a$,
+restricted to the $\mu$ with $r, a \in L_{\mu}$: the limit ordinals above $\omega$ at rank $0$, the admissible
+ordinals above $\omega$ at rank $1$, the recursively Mahlo ordinals at rank $2$, and the recursively $\xi$-Mahlo
+ordinals at rank $2+\xi$. In
 particular the relation $\{(0, 1)\}$ gives a node whose class is the class of admissible ordinals above $\omega$. (2)
 Let $t = \{\{\emptyset\}\}$, which is not an ordinal, let $p = t$, and let $\rho(x, y, z)$ be the $\Delta_0$ formula
 ``$x$ is an ordinal, and either $y = z$ or $y$ is an ordinal with $x \in y$''. At every limit $\mu > \omega$, $t \in
 L_{\mu}$ and the predecessors of $t$
 are the ordinals below $\mu$, and each ordinal has the smaller ordinals as predecessors. As in (1), for an ordinal
-$\xi$ the class $C(P, \xi)$ is $\Mh(\xi)$ restricted to the $\mu > \xi$, so $C(P, t)$ is the class of $\mu$ with
-$\mu \in \Mh(\mu)$. The relation at $\mu$ is well-founded and $t$ has rank $\mu$ in it, so the rank of a node depends
+$\xi$ the class $C(P, \xi)$ is the iterate with index $\xi$ restricted to the $\mu > \xi$, so $C(P, t)$ is the
+class of the ordinals $\mu$ that are recursively $\mu$-Mahlo. The relation at $\mu$ is well-founded and $t$ has rank $\mu$ in it, so the rank of a node depends
 on the ordinal at which the presentation is evaluated.
 \end{statement}
 
@@ -412,22 +428,23 @@ In (1), by transitivity the predecessors of a node $a$ are the same at every $\m
 identity is proved by induction on the rank of $a$. A node without predecessors imposes only the domain conditions:
 $\mu$ is a limit above $\omega$ with $r, a \in L_{\mu}$. For a predecessor $c$ of $a$, a test can be required to keep
 $r$ and $c$ at its target by appending them as constants, so $\mu$ is $\Pi_2$-reflecting on $C(P, c)$ exactly when it
-is $\Pi_2$-reflecting on $\Mh(\text{rank of } c)$, that is, when $\mu \in \Mh((\text{rank of } c) + 1)$. Over all
-predecessors this gives the intersection of these classes, which is $\Mh(\text{rank of } a)$ because the iteration
-is decreasing, at successor and at limit ranks alike. In (2) the same induction works with the predecessor ordinal
-$\eta$ appended to each test, which forces the target above $\eta$; for $t$ the intersection over all $\eta < \mu$ is
-the condition $\mu \in \Mh(\mu)$.
+is $\Pi_2$-reflecting on the iterate indexed by the rank of $c$, that is, when $\mu$ is in the iterate indexed by
+that rank plus one. Over all predecessors this gives the intersection of these classes, which is the iterate indexed
+by the rank of $a$ because the iteration is decreasing, at successor and at limit ranks alike. In (2) the same
+induction works with the predecessor ordinal $\eta$ appended to each test, which forces the target above $\eta$; for
+$t$ the intersection over all $\eta < \mu$ is the condition that $\mu$ is in the iterate indexed by $\mu$, that is,
+that $\mu$ is recursively $\mu$-Mahlo.
 
 \subsection{The notion}
 
-\begin{statement}\head{Definition 3.3} A limit ordinal $\alpha > \omega$ is \emph{$\alpha^+$-recursively Mahlo}
-(\RM{}) if $\alpha \in C(P, a)$ for every $\Sigma_1$ presentation $P$ with $p \in L_{\alpha}$ and every node
+\begin{statement}\head{Definition 3.3} A limit ordinal $\alpha > \omega$ is \emph{$\alpha^+$-recursively Mahlo} if $\alpha \in C(P, a)$ for every $\Sigma_1$ presentation $P$ with $p \in L_{\alpha}$ and every node
 $a \in L_{\alpha}$ in the well-founded part of the relation defined by $P$ at $\alpha$. Here the well-founded part of
 a relation is the set of nodes below which it has no infinite descending sequence, taken in the universe and not
 inside $L_{\alpha}$.
 \end{statement}
 
-By Example 3.2(1) every \RM{} ordinal is admissible. For admissible $\alpha$ let $\delta_{\alpha}$ be the supremum
+The name is a fixed phrase: an ordinal $\gamma$ is called $\alpha^+$-recursively Mahlo if it satisfies the
+definition with $\gamma$ in place of $\alpha$. By Example 3.2(1) every $\alpha^+$-recursively Mahlo ordinal is admissible. For admissible $\alpha$ let $\delta_{\alpha}$ be the supremum
 of the order types of well-orderings with field contained in $L_{\alpha}$ that are $\Delta_1$-definable over
 $L_{\alpha}$ with parameters. A node in the well-founded part at $\alpha$ has rank below $\delta_{\alpha}$: the ordering
 $Q$ of Section 8, built from the node's histories, is such a well-ordering, and the rank of the node is at most the
@@ -443,9 +460,9 @@ $\delta_{\alpha}$: send each element of $L_{\alpha}$ to its position in the cano
 8). Its predecessors there form a set in an earlier level, so $\Sigma$-recursion computes the position below $\alpha$,
 and this map is a $\Delta_1$-definable injection of $L_{\alpha}$ into $\alpha$; it carries a $\Delta_1$ well-ordering
 with field contained in $L_{\alpha}$ to one of the same type on a subset of $\alpha$. For admissible
-$\omega < \alpha \le \gamma_1$, Lemma 7.1 gives external countability (its proof bounds $\gamma_1$ by a countable
+$\omega < \alpha \le \pi_2(\Pi_3)$, Lemma 7.1 gives external countability (its proof bounds $\pi_2(\Pi_3)$ by a countable
 ordinal), Lemma 7.2 gives local countability, and
-Lemmas 7.1 and 7.5 give $\gamma_1 < \sigma$, since $\sigma$ is $\Pi_n$-reflecting for every $n$. Thus Gostanian's
+Lemmas 7.1 and 7.5 give $\pi_2(\Pi_3) < \sigma$, since $\sigma$ is $\Pi_n$-reflecting for every $n$. Thus Gostanian's
 theorem gives $\delta_{\alpha} = \alpha^+$ on this range. At other admissible $\alpha$ the definition measures degrees
 below $\delta_{\alpha}$, which can be smaller than $\alpha^+$, as at $\sigma$. The rank of a node bounds what the node
 presents; it does not determine its class.
@@ -455,7 +472,7 @@ presents; it does not determine its class.
 By (C5), edges of a $\Sigma_1$ presentation at $\mu$ are edges at every $\gamma > \mu$. So a node in the well-founded
 part at $\gamma$ is in the well-founded part at every smaller $\mu$ with the node in $L_{\mu}$. For a $\Pi_2$ presentation this
 fails. Two statements about other complexity classes are not proved in this paper and are not used in it: that the
-analogue of \RM{} for $\Pi_2$ presentations is equivalent to $\Pi_3$-reflection (a $\Pi_3$ sentence that fails to reflect can
+analogue of being $\alpha^+$-recursively Mahlo for $\Pi_2$ presentations is equivalent to $\Pi_3$-reflection (a $\Pi_3$ sentence that fails to reflect can
 be used to construct an obstruction of rank 2), and that Theorem A fails for $\Sigma_4$ presentations.
 
 \section{A descent lemma}
@@ -541,7 +558,7 @@ an element of $L_{\alpha}$ and has $c \in D(\mu)$. So the last disjunct holds in
 
 \begin{statement}\head{Theorem A} Let $\kappa$ be $\Pi_3$-reflecting, $P$ a $\Sigma_1$ presentation with
 $p \in L_{\kappa}$, and $a$ a node in the well-founded part of the relation defined by $P$ at $\kappa$. Then
-$\kappa \in C(P, a)$. Hence $\kappa$ is \RM{}.
+$\kappa \in C(P, a)$. Hence $\kappa$ is $\alpha^+$-recursively Mahlo.
 \end{statement}
 
 \begin{proof}
@@ -741,7 +758,7 @@ earlier limit level, and by Lemma 6.3 such a sentence cannot be an obstacle agai
 \begin{statement}\head{Theorem M} Let $\beta$ be an ordinal with $q_0 \in L_{\beta}$ and $L_{\beta} \models \chi$. Then
 $\beta \notin C(T, r)$. If moreover there is no $\Pi_3$-reflecting $\lambda \le \beta$ with $q_0 \in L_{\lambda}$ and
 $L_{\lambda} \models \varphi_0(q_0)$, then the root is in the well-founded part of the relation defined by $T$ at
-$\beta$, and so $\beta$ is not \RM{}.
+$\beta$, and so $\beta$ is not $\alpha^+$-recursively Mahlo.
 \end{statement}
 
 \begin{proof}
@@ -772,13 +789,13 @@ Lemma 6.3 applies. So $(\beta', d) \in Z$.
 Lemma 4.1 gives $\beta \notin C(T, s)$ for all $(\beta, s) \in Z$, in particular $\beta \notin C(T, r)$. For the
 second statement, if the root were not in the well-founded part at $\beta$, Lemma 6.1 would give a $\lambda$ excluded
 by the hypothesis; so the root is in the well-founded part at $\beta$ and $\beta \notin C(T, r)$, and $\beta$ is not
-\RM{} by Definition 3.3.
+$\alpha^+$-recursively Mahlo by Definition 3.3.
 \end{proof}
 
 \section{Theorems B and C}
 
-\begin{statement}\head{Lemma 7.1} Every $\Pi_4$-reflecting ordinal is $\Pi_2$-reflecting on $A$ and belongs to $A$.
-Such ordinals exist; in particular $\gamma_1$ exists.
+\begin{statement}\head{Lemma 7.1} Every $\Pi_4$-reflecting ordinal is $\Pi_2$-reflecting on $\Pi_3$ and belongs to $\Pi_3$.
+Such ordinals exist; in particular $\pi_2(\Pi_3)$ exists.
 \end{statement}
 
 \begin{proof}
@@ -810,8 +827,8 @@ $\Sigma_1$-elementary substructure of $L$, proved by the same L\"owenheim--Skole
 Lemmas II.5.10 and II.5.11).
 
 \begin{statement}\head{Lemma 7.2} Let $\gamma > \omega$ be admissible and suppose some $L_a$ with $a < \gamma$ is not countable in $L_{\gamma}$.
-Then some $\xi_0 < \gamma$ is $\Pi_n$-reflecting for every $n$. Hence, for every admissible $\gamma$ with $\omega < \gamma < K$ and for every admissible $\gamma$ with
-$\omega < \gamma \le \gamma_1$, every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$.
+Then some $\xi_0 < \gamma$ is $\Pi_n$-reflecting for every $n$. Hence, for every admissible $\gamma$ with $\omega < \gamma < \pi_3$ and for every admissible $\gamma$ with
+$\omega < \gamma \le \pi_2(\Pi_3)$, every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$.
 \end{statement}
 
 \begin{proof}
@@ -830,8 +847,8 @@ before the lemma; it is written out in the self-contained proof below.
 ``some limit level of height above $\omega$ containing $q$ satisfies $\varphi(q)$'', witnessed by $\xi_0$ through a
 certificate (the condition on the height is bounded in the certificate). So $L_{\xi_0}$ satisfies it, giving such a
 level below $\xi_0$.
-Thus $\xi_0$ is $\Pi_n$-reflecting for every $n$. In particular $K \le \xi_0 < \gamma$, and by Lemma 7.1 $\xi_0$ is
-$\Pi_2$-reflecting on $A$, so $\gamma_1 \le \xi_0 < \gamma$.
+Thus $\xi_0$ is $\Pi_n$-reflecting for every $n$. In particular $\pi_3 \le \xi_0 < \gamma$, and by Lemma 7.1 $\xi_0$ is
+$\Pi_2$-reflecting on $\Pi_3$, so $\pi_2(\Pi_3) \le \xi_0 < \gamma$.
 \end{proof}
 
 \begin{proof}[Self-contained proof of the elementary substructure step]
@@ -850,86 +867,86 @@ $L_{\gamma}$; so $\bar{\eta} < \xi_0$, and $L_{\bar{\eta}} \models \exists z\, \
 $L_{\xi_0}$.
 \end{proof}
 
-\begin{statement}\head{Theorem B} No ordinal below $K$ is \RM{}. Together with Theorem A, the least \RM{} ordinal is
-$K$.
+\begin{statement}\head{Theorem B} No ordinal below $\pi_3$ is $\alpha^+$-recursively Mahlo. Together with Theorem A, the least $\alpha^+$-recursively Mahlo ordinal is
+$\pi_3$.
 \end{statement}
 
 \begin{proof}
-Let $\gamma < K$ be a limit above $\omega$. If $\gamma$ is not admissible, it is not \RM{} by Example 3.2(1). Let
+Let $\gamma < \pi_3$ be a limit above $\omega$. If $\gamma$ is not admissible, it is not $\alpha^+$-recursively Mahlo by Example 3.2(1). Let
 $\gamma$ be admissible. Take for $\varphi_0$ the sentence $\forall x\, \exists y\, (y = x)$ with
 $q_0 = \emptyset$. Then $L_{\gamma} \models \chi$: $G$ and the clause ``every ordinal is smaller than some limit ordinal'' hold at admissible levels above $\omega$,
 and every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$ by Lemma 7.2. There is no $\Pi_3$-reflecting $\lambda \le \gamma$. By Theorem M, $\gamma$ is
-not \RM{}.
+not $\alpha^+$-recursively Mahlo.
 \end{proof}
 
 \begin{statement}\head{Lemma 7.3} Let $\gamma > \omega$ be admissible such that every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$, and
-suppose $\gamma$ is \RM{} and not $\Pi_3$-reflecting. Then $\gamma$ is $\Pi_2$-reflecting on $A$.
+suppose $\gamma$ is $\alpha^+$-recursively Mahlo and not $\Pi_3$-reflecting. Then $\gamma$ is $\Pi_2$-reflecting on $\Pi_3$.
 \end{statement}
 
 \begin{proof}
 Otherwise some $\Pi_2$ sentence $\varphi_0(q_0)$ is true in $L_{\gamma}$ and false in $L_{\lambda}$ for every
-$\lambda \in A \cap \gamma$ with $q_0 \in L_{\lambda}$. Then $L_{\gamma} \models \chi$, and no $\Pi_3$-reflecting
+$\lambda \in \Pi_3 \cap \gamma$ with $q_0 \in L_{\lambda}$. Then $L_{\gamma} \models \chi$, and no $\Pi_3$-reflecting
 $\lambda \le \gamma$ with $q_0 \in L_{\lambda}$ satisfies $\varphi_0(q_0)$: the case $\lambda = \gamma$ is excluded because
-$\gamma \notin A$. By Theorem M, $\gamma$ is not \RM{}.
+$\gamma \notin \Pi_3$. By Theorem M, $\gamma$ is not $\alpha^+$-recursively Mahlo.
 \end{proof}
 
-\begin{statement}\head{Lemma 7.4} Every ordinal that is $\Pi_2$-reflecting on $A$ is \RM{}.
+\begin{statement}\head{Lemma 7.4} Every ordinal that is $\Pi_2$-reflecting on $\Pi_3$ is $\alpha^+$-recursively Mahlo.
 \end{statement}
 
 \begin{proof}
 Let $\gamma$ be such an ordinal; it is a limit above $\omega$. Let $P$ be a $\Sigma_1$ presentation with
 $p \in L_{\gamma}$, $a$ a node in the well-founded part at $\gamma$, and $c$ a predecessor of $a$ at $\gamma$. Then $c$
-is in the well-founded part at $\gamma$. Let $\lambda \in A \cap \gamma$ with $p, c \in L_{\lambda}$. By (C5) a descending
+is in the well-founded part at $\gamma$. Let $\lambda \in \Pi_3 \cap \gamma$ with $p, c \in L_{\lambda}$. By (C5) a descending
 sequence from $c$ at $\lambda$ would be one at $\gamma$, so $c$ is in the well-founded part at $\lambda$, and
 $\lambda \in C(P, c)$ by Theorem A. Given a $\Pi_2$ sentence true in $L_{\gamma}$, adjoin the constants $p$ and $c$ and
-reflect onto $A$: the resulting ordinal lies in $C(P, c)$. So $\gamma$ is $\Pi_2$-reflecting on $C(P, c)$ for every
+reflect onto $\Pi_3$: the resulting ordinal lies in $C(P, c)$. So $\gamma$ is $\Pi_2$-reflecting on $C(P, c)$ for every
 predecessor $c$ of $a$, and $\gamma \in C(P, a)$.
 \end{proof}
 
-\begin{statement}\head{Lemma 7.5} $\gamma_1$ is not $\Pi_3$-reflecting.
+\begin{statement}\head{Lemma 7.5} $\pi_2(\Pi_3)$ is not $\Pi_3$-reflecting.
 \end{statement}
 
 \begin{proof}
-$\gamma_1$ is $\Pi_2$-reflecting, hence admissible above $\omega$. Let $S$ be the conjunction of $G$ with
-$\forall\varphi\, \forall q\, [\, \neg\Sat_2(\varphi, q) \vee \exists\mu\, (\, q \in L_{\mu} \wedge$ ``$\mu \in A$''
-$\wedge L_{\mu} \models \varphi(q)\, )\, ]$, where ``$\mu \in A$'' is expressed positively through a certificate through
+$\pi_2(\Pi_3)$ is $\Pi_2$-reflecting, hence admissible above $\omega$. Let $S$ be the conjunction of $G$ with
+$\forall\varphi\, \forall q\, [\, \neg\Sat_2(\varphi, q) \vee \exists\mu\, (\, q \in L_{\mu} \wedge$ ``$\mu \in \Pi_3$''
+$\wedge L_{\mu} \models \varphi(q)\, )\, ]$, where ``$\mu \in \Pi_3$'' is expressed positively through a certificate through
 $\mu$: given the satisfaction relations of the levels up to $\mu$, the following statement is bounded: $\mu$ is a
 limit above $\omega$, and every sentence $\forall u\, \exists v\, \forall w\, \theta$ true in $L_{\mu}$ is true in
-$L_b$ for some limit $b$ with $\omega < b < \mu$ whose level $L_b$ contains the constant of the sentence. For such $\mu$ this is equivalent to $\mu \in A$ (reflect
+$L_b$ for some limit $b$ with $\omega < b < \mu$ whose level $L_b$ contains the constant of the sentence. For such $\mu$ this is equivalent to $\mu \in \Pi_3$ (reflect
 $\psi(q) \wedge G$ for one direction). $S$ is $\Pi_3$, by the computation of Step 4 in the proof of Lemma 5.1:
 $\neg\Sat_2$ has the form $\exists j\, \forall k$ and the last disjunct the form $\exists h$, each followed by a
 bounded formula, so the second conjunct of $S$ is logically equivalent to a formula with prefix
 $\forall \varphi, q\, \exists j, h\, \forall k$ and bounded matrix, and so is its conjunction with $G$. $S$ is true
-in $L_{\gamma_1}$, since $\gamma_1$ is $\Pi_2$-reflecting on $A$ and certificates through every $\mu < \gamma_1$ are
-elements of $L_{\gamma_1}$, and by (C1) and (C4) any level satisfying it is $\Pi_2$-reflecting on $A$. If $\gamma_1$
-were $\Pi_3$-reflecting, a smaller ordinal would satisfy $S$, contradicting the minimality of $\gamma_1$.
+in $L_{\pi_2(\Pi_3)}$, since $\pi_2(\Pi_3)$ is $\Pi_2$-reflecting on $\Pi_3$ and certificates through every $\mu < \pi_2(\Pi_3)$ are
+elements of $L_{\pi_2(\Pi_3)}$, and by (C1) and (C4) any level satisfying it is $\Pi_2$-reflecting on $\Pi_3$. If $\pi_2(\Pi_3)$
+were $\Pi_3$-reflecting, a smaller ordinal would satisfy $S$, contradicting the minimality of $\pi_2(\Pi_3)$.
 \end{proof}
 
 \begin{statement}\head{Theorem C} Let $\gamma > \omega$ be admissible such that every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$; this
-includes every admissible $\gamma$ with $\omega < \gamma \le \gamma_1$. Then $\gamma$ is \RM{} if and only if
-$\gamma \in A$ or $\gamma$ is $\Pi_2$-reflecting on $A$. Consequently the least \RM{} ordinal that is not
-$\Pi_3$-reflecting is $\gamma_1$.
+includes every admissible $\gamma$ with $\omega < \gamma \le \pi_2(\Pi_3)$. Then $\gamma$ is $\alpha^+$-recursively Mahlo if and only if
+$\gamma \in \Pi_3$ or $\gamma$ is $\Pi_2$-reflecting on $\Pi_3$. Consequently the least $\alpha^+$-recursively Mahlo ordinal that is not
+$\Pi_3$-reflecting is $\pi_2(\Pi_3)$.
 \end{statement}
 
 \begin{proof}
 The equivalence is Theorem A, Lemma 7.3 and Lemma 7.4, with Lemma 7.2 for the range. By Lemmas 7.4 and 7.5,
-$\gamma_1$ is \RM{} and not in $A$. An \RM{} ordinal $\gamma < \gamma_1$ that is not in $A$ is admissible, and by Lemma 7.2 every $L_a$ with
-$a < \gamma$ is countable in $L_{\gamma}$; so $\gamma$ would be $\Pi_2$-reflecting on $A$ by Lemma 7.3, contradicting
-the minimality of $\gamma_1$.
+$\pi_2(\Pi_3)$ is $\alpha^+$-recursively Mahlo and not in $\Pi_3$. An $\alpha^+$-recursively Mahlo ordinal $\gamma < \pi_2(\Pi_3)$ that is not in $\Pi_3$ is admissible, and by Lemma 7.2 every $L_a$ with
+$a < \gamma$ is countable in $L_{\gamma}$; so $\gamma$ would be $\Pi_2$-reflecting on $\Pi_3$ by Lemma 7.3, contradicting
+the minimality of $\pi_2(\Pi_3)$.
 \end{proof}
 
-\begin{statement}\head{Corollary 7.6} Let $\kappa_1$ be the least element of $A$ that is a limit of elements of $A$,
-and $\kappa_2$ the least element of $A$ that is $\Pi_2$-reflecting on $A$. Then $K < \kappa_1 < \gamma_1 < \kappa_2$,
-and every \RM{} ordinal below $\gamma_1$ is $\Pi_3$-reflecting.
+\begin{statement}\head{Corollary 7.6} Let $\kappa_1$ be the least element of $\Pi_3$ that is a limit of elements of $\Pi_3$,
+and $\kappa_2$ the least element of $\Pi_3$ that is $\Pi_2$-reflecting on $\Pi_3$. Then $\pi_3 < \kappa_1 < \pi_2(\Pi_3) < \kappa_2$,
+and every $\alpha^+$-recursively Mahlo ordinal below $\pi_2(\Pi_3)$ is $\Pi_3$-reflecting.
 \end{statement}
 
 \begin{proof}
-$A \cap \gamma_1$ is unbounded in $\gamma_1$: reflect a trivial sentence with an arbitrary ordinal $\delta < \gamma_1$
-as a constant onto $A$. So the $\Pi_2$ sentence ``for every ordinal $\delta$ there is $\nu > \delta$ with
-$\nu \in A$'' (certified as in Lemma 7.5, with $G$) is true in $L_{\gamma_1}$. Reflecting it onto $A$ gives an element
-of $A$ below $\gamma_1$ that is a limit of elements of $A$, so $\kappa_1 < \gamma_1$. By Lemma 7.1 a
-$\Pi_4$-reflecting ordinal is in $A$ and $\Pi_2$-reflecting on $A$, so $\kappa_2$ exists; $\gamma_1 \le \kappa_2$ by
-minimality, and $\gamma_1 \ne \kappa_2$ by Lemma 7.5. The last statement is Theorem C.
+$\Pi_3 \cap \pi_2(\Pi_3)$ is unbounded in $\pi_2(\Pi_3)$: reflect a trivial sentence with an arbitrary ordinal $\delta < \pi_2(\Pi_3)$
+as a constant onto $\Pi_3$. So the $\Pi_2$ sentence ``for every ordinal $\delta$ there is $\nu > \delta$ with
+$\nu \in \Pi_3$'' (certified as in Lemma 7.5, with $G$) is true in $L_{\pi_2(\Pi_3)}$. Reflecting it onto $\Pi_3$ gives an element
+of $\Pi_3$ below $\pi_2(\Pi_3)$ that is a limit of elements of $\Pi_3$, so $\kappa_1 < \pi_2(\Pi_3)$. By Lemma 7.1 a
+$\Pi_4$-reflecting ordinal is in $\Pi_3$ and $\Pi_2$-reflecting on $\Pi_3$, so $\kappa_2$ exists; $\pi_2(\Pi_3) \le \kappa_2$ by
+minimality, and $\pi_2(\Pi_3) \ne \kappa_2$ by Lemma 7.5. The last statement is Theorem C.
 \end{proof}
 
 \section{Linear orderings}
@@ -965,7 +982,7 @@ giving a comparison is $\Sigma_1$, it gives the true comparison when present, an
 one direction, for any two distinct sets.
 \end{proof}
 
-\begin{statement}\head{Proposition D} Let $\alpha > \omega$ be admissible. Then $\alpha$ is \RM{} if and only if
+\begin{statement}\head{Proposition D} Let $\alpha > \omega$ be admissible. Then $\alpha$ is $\alpha^+$-recursively Mahlo if and only if
 $\alpha \in C(Q, x)$ for every $\Sigma_1$ presentation $Q$ that defines a linear ordering of $L_{\alpha}$ at $\alpha$
 and every node $x$ in the well-founded part of that ordering.
 \end{statement}
@@ -1023,23 +1040,23 @@ coherence requirements would be a different notion, to which this proposition do
 \begin{enumerate}
 \item \textbf{The method stops at $\Pi_3$.} In the analogous tree for $\Pi_4$-reflection, the promise left by a
   negative answer is $\Pi_3$, so $\mathrm{corr}(s)$ is $\Pi_3$ and $\tau$ is no longer $\Pi_2$; the classes of
-  Definition 3.1 only reflect $\Pi_2$ sentences. The argument must fail there: $K$ is \RM{} but is not
+  Definition 3.1 only reflect $\Pi_2$ sentences. The argument must fail there: $\pi_3$ is $\alpha^+$-recursively Mahlo but is not
   $\Pi_2$-reflecting on the $\Pi_4$-reflecting ordinals.
 \item \textbf{A related result.} Richter and Aczel show that the supremum of the closure ordinals of effective
-  $\Pi^0_2$ operators on subsets of $\omega$ (non-monotone operators allowed, with accumulating iteration) is $K$.
+  $\Pi^0_2$ operators on subsets of $\omega$ (non-monotone operators allowed, with accumulating iteration) is $\pi_3$.
   We expect a second proof of the lower bound in Theorem B from a tree that guesses the closed stage of a universal
   $\Pi^0_2$ inductive definition; this paper does not give that proof. The proof given here uses Theorem M.
-\item \textbf{Question.} Is \RM{} equivalent to a recursive form of the canonical-function or normal-ideal definition
+\item \textbf{Question.} Is being $\alpha^+$-recursively Mahlo equivalent to a recursive form of the canonical-function or normal-ideal definition
   of greatly Mahlo cardinals, with suitable coherence requirements on the presentations? (See the end of Section 8.)
   For cardinals, Arai relates his Mahlo classes of degree $\sigma^+$ to the greatly Mahlo cardinals of Baumgartner,
   Taylor and Wagon (Proof theory of weak compactness, Proposition 2.10); that would be the place to start.
 \item \textbf{Question.} Theorem C assumes that every $L_a$ with $a < \gamma$ is countable in $L_{\gamma}$, which fails at
-  sufficiently large admissible $\gamma$. What is \RM{} there?
+  sufficiently large admissible $\gamma$. Which of them are $\alpha^+$-recursively Mahlo?
 \item \textbf{Question.} One level down, with ``admissible limit of'' in place of ``$\Pi_2$-reflecting on'' and
   recursively Mahlo in place of $\Pi_3$-reflecting, the analogous statements appear to hold by the analogous argument.
   We have only sketched this. The provision ``limit of limit ordinals'' used for making room in Lemma 6.2 has no
   analogue two levels down.
-\item \textbf{Question.} By the remark after Definition 3.3, \RM{} only concerns degrees below $\alpha^+$. Nothing in
+\item \textbf{Question.} By the remark after Definition 3.3, being $\alpha^+$-recursively Mahlo only concerns degrees below $\alpha^+$. Nothing in
   this paper addresses degrees from $\alpha^+$ on. They would need presentations defined over levels above
   $L_{\alpha}$, and we do not know whether a natural notion of that kind matches a stronger reflection property or a
   stability property.

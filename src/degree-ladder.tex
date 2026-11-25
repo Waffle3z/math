@@ -16,7 +16,7 @@ $\Pi_3$-reflecting ordinal}
 \newcommand{\WF}{\mathrm{WF}}
 \newcommand{\Adm}{\mathrm{Adm}}
 \newcommand{\rank}{\mathrm{rank}}
-\newcommand{\PhiMh}{\Phi_{\mathrm{Mh}}}
+\newcommand{\PhiMh}{\Phi_{\Pi_2}}
 \newcommand{\Nt}{\mathcal{N}}
 \newcommand{\Fld}{\mathrm{Fld}}
 \maketitle
@@ -25,8 +25,7 @@ $\Pi_3$-reflecting ordinal}
 limit of'' along the well-founded nodes of $\Sigma_1$-definable relations, read afresh at each constructible level, and
 then along finite exponents and the first limit exponent $\omega$. Here a well-founded node of any $\Sigma_1$ relation may serve as the
 exponent: a limit $\gamma > \omega$ has degree $\delta_\gamma^{\delta_\gamma}$ if it lies in the iterated class for
-every such exponent. We show that, at or below the least ordinal $\xi^*$ that is $\Pi_m$-reflecting for every $m$, the
-admissible ordinals of degree $\delta_\gamma^{\delta_\gamma}$ are exactly the $\Pi_3$-reflecting ordinals and their admissible limits; so the least such ordinal is the least $\Pi_3$-reflecting ordinal. Along recursive well-orderings, degree $\delta^{\xi+1}$ corresponds to recursive
+every such exponent. We show that, at or below the least (+1)-stable ordinal, the admissible ordinals of degree $\delta_\gamma^{\delta_\gamma}$ are exactly the $\Pi_3$-reflecting ordinals and their admissible limits; so the least such ordinal is the least $\Pi_3$-reflecting ordinal. Along recursive well-orderings, degree $\delta^{\xi+1}$ corresponds to recursive
 $\xi$-Mahloness, where the recursively $(\xi+1)$-Mahlo ordinals are those $\Pi_2$-reflecting on the recursively
 $\xi$-Mahlo ones; at a limit $\lambda$, the least ordinal of degree $\delta^\lambda$ lies strictly below the least
 recursively $\lambda$-Mahlo ordinal.
@@ -58,10 +57,11 @@ well-ordering (Definition 3.3; by Lemma 3.4 the well-ordering does not matter).
 
 The main result is the following.
 
-\begin{statement}\head{Theorem 6.9 (main theorem)} An admissible $\gamma \le \xi^*$ is recursively inaccessible of degree
+\begin{statement}\head{Theorem 6.9 (main theorem)} An admissible $\gamma$ at or below the least (+1)-stable ordinal is
+recursively inaccessible of degree
 $\delta_\gamma^{\delta_\gamma}$ if and only if $\gamma$ is $\Pi_3$-reflecting or a limit of $\Pi_3$-reflecting
 ordinals. The least ordinal $\alpha$ of degree $\delta_\alpha^{\delta_\alpha}$ is the least $\Pi_3$-reflecting ordinal
-$K_2$.
+$\pi_3$.
 \end{statement}
 
 This answers the third question of [A, Section 6] and the first question of
@@ -70,12 +70,14 @@ operation $M_2$ (\emph{Iterating the recursively Mahlo operations}, Theorem 1.3,
 related Mahlo classes of cardinals (\emph{Proof theory of reflection}, Remark 4.9 of the 1993 preprint); see [B,
 Section 1] for the comparison. Here the basic operation is ``admissible limit of''. By [A, Theorem 5.8], iterating it
 along every eligible node gives the least recursively Mahlo ordinal; Theorem 6.9 lets eligible nodes supply the outer
-exponent as well, and identifies the least ordinal of the resulting degree with $K_2$.
+exponent as well, and identifies the least ordinal of the resulting degree with $\pi_3$.
 
-We call the members of $\Mh(2+\xi)$ \emph{recursively $\xi$-Mahlo}, extending the usage of [A] and [B] (Section 2.3).
+An ordinal is \emph{recursively $(\xi+1)$-Mahlo} if it is $\Pi_2$-reflecting on the recursively $\xi$-Mahlo ordinals,
+extending the usage of [A] and [B] (Section 2.3).
 Along recursive well-orderings the degrees are the following.
 
-\begin{statement}\head{Theorem 5.6 (recursive exponents)} Let $\gamma \le \xi^*$ be admissible and $a$ a node of a
+\begin{statement}\head{Theorem 5.6 (recursive exponents)} Let $\gamma$ be admissible, at or below the least
+(+1)-stable ordinal, and $a$ a node of a
 recursive well-ordering.
 \begin{itemize}
 \item[(a)] If $|a| = 0$, then $\gamma \in \Ad[a]$ if and only if $\gamma$ is recursively inaccessible.
@@ -87,8 +89,9 @@ recursive well-ordering.
 \end{statement}
 
 By Corollary 5.7 the least ordinal of degree $\delta^\lambda$ lies below the least recursively
-$\lambda$-Mahlo ordinal, so the pattern ``degree $\delta^\xi$ has the least element of $\Mh(1+\xi)$'', noted in [B,
-Section 8] to fail at $\omega$, fails at every infinite recursive $\xi$; among recursive exponents, $\omega+1$ is the
+$\lambda$-Mahlo ordinal, so the pattern of [B, Section 8], which for finite $k$ matches degree $\delta^{k+1}$ with the least recursively
+$k$-Mahlo ordinal by an index shifted by one, and which [B] notes fails at $\omega$, fails at every infinite recursive
+exponent; among recursive exponents, $\omega+1$ is the
 only one whose least element is the least recursively $\omega$-Mahlo ordinal.
 
 Sufficiency is the reflection argument of [B, Theorem 5.2] (Theorems 5.1, 6.3). Necessity is a least-counterexample
@@ -113,8 +116,10 @@ Oslo preprint). In limit
 levels every $\Pi_2$ sentence has a \emph{normalized} form $\forall u\, \exists v\, \theta$ with $\theta$ bounded.
 $\Lim Y$ is the class of limits $\mu$ with $Y \cap \mu$ unbounded in $\mu$, $\Ad$ the class of admissible ordinals above
 $\omega$, $\mu^+$ the least admissible above $\mu$, and the recursively inaccessible ordinals form $\Ad \cap \Lim \Ad$.
-$A_2$ is the class of $\Pi_3$-reflecting ordinals and $K_2 = \min A_2$; $\xi^*$ is the least ordinal
-$\Pi_m$-reflecting for every $m$.
+$\Pi_3$ denotes the class of $\Pi_3$-reflecting ordinals and $\pi_3 = \min \Pi_3$ the least of them; an ordinal $\alpha$ is \emph{(+1)-stable} if
+$L_\alpha \prec_{\Sigma_1} L_{\alpha+1}$; equivalently, $\alpha$ is $\Pi_n$-reflecting for every finite $n$
+(Richter--Aczel, Theorem 1.18 of the 1973 Oslo preprint). The least (+1)-stable ordinal exists by [C, proof of Lemma
+7.1].
 
 \emph{Certificates} [C, Section 2]. $\Cert(V)$ is a $\Delta_0$ formula saying that $V$ is a certificate: it holds
 \emph{syntax data} ($\omega$ and the graphs of the fixed primitive recursive functions used to decode and classify formula codes) and, for each $\nu \le \hgt(V)$,
@@ -131,7 +136,7 @@ from $\mathrm{Tr}_\omega$ [A, Section 2.1]. [B, Lemma 4.1] gives a $\Delta_0$ fo
 $\kappa \le \hgt(V)$, says $\kappa \in \Ad$; from it, ``$\kappa = \nu^+$'', ``$\nu^+ \le x$'' and ``$\nu^+ < x$''
 \emph{according to $V$} are bounded conditions. By [C, Lemma 7.2], if some $L_\eta$ with $\eta < \gamma$ is not
 countable in an admissible $L_\gamma$, then some ordinal below $\gamma$ is $\Pi_m$-reflecting for every $m$; so for
-admissible $\gamma \le \xi^*$ every $L_\eta$, $\eta < \gamma$, is countable in $L_\gamma$. We use $\Delta_0$ absoluteness and $\Sigma$-recursion,
+admissible $\gamma$ at or below the least (+1)-stable ordinal every $L_\eta$, $\eta < \gamma$, is countable in $L_\gamma$. We use $\Delta_0$ absoluteness and $\Sigma$-recursion,
 $\Delta_0$-separation and $\Delta_0$-collection in admissible levels (Barwise, Corollary I.8.6 and Theorem I.6.4).
 
 \subsection{Presentations}
@@ -161,42 +166,53 @@ a limit, so at every such level its nodes are eligible, with the smaller nodes a
 
 \subsection{Mahlo classes}
 
-$\Mh(0)$ is the class of limits above $\omega$, $\Mh(\zeta+1)$ the class of ordinals $\Pi_2$-reflecting on $\Mh(\zeta)$,
-and $\Mh(\lambda) = \bigcap_{\zeta<\lambda}\Mh(\zeta)$ [C, Section 3.1]. The classes decrease, $\Mh(\zeta+1)
-\subseteq \Lim \Mh(\zeta)$, $\Mh(1) = \Ad$, and $\Mh(2)$ is the class of recursively Mahlo ordinals. The members of
-$\Mh(2+\xi)$ are the \emph{recursively $\xi$-Mahlo} ordinals: recursively $0$-Mahlo is recursively Mahlo, recursively
-$(\xi+1)$-Mahlo is $\Pi_2$-reflecting on the recursively $\xi$-Mahlo ordinals, and at a limit $\lambda$ recursively
-$\lambda$-Mahlo is recursively $\xi$-Mahlo for every $\xi < \lambda$. This extends [A] and [B], where the members of
-$\Mh(k+2)$ are recursively $k$-Mahlo and those of $\Mh(\omega)$ recursively $\omega$-Mahlo. Let $m_\xi$ be the least
+The \emph{recursively Mahlo} ordinals are those $\Pi_2$-reflecting on $\Ad$; they are also called recursively
+$0$-Mahlo. An ordinal is \emph{recursively $(\xi+1)$-Mahlo} if it is $\Pi_2$-reflecting on the recursively $\xi$-Mahlo
+ordinals, and, for a limit $\lambda$, \emph{recursively $\lambda$-Mahlo} if it is recursively $\xi$-Mahlo for every $\xi
+< \lambda$. These classes decrease with $\xi$, and every recursively $(\xi+1)$-Mahlo ordinal is a limit of recursively
+$\xi$-Mahlo ordinals [C, Section 3.1]. This extends [A] and [B], which name the cases $\xi = k$ finite and $\xi =
+\omega$; [C, Section 3.1] indexes the same hierarchy from the limits above $\omega$, so its index is $2+\xi$. Let $m_\xi$ be the least
 recursively $\xi$-Mahlo ordinal and, for a limit $\lambda$, $\tau_\lambda$ the least admissible ordinal that is a limit of
 recursively $\xi$-Mahlo ordinals for every $\xi < \lambda$.
 
-The class at an exponent $i$ that is zero or a successor is $M_0 = \Ad$ or $M_{\xi+1} = \Mh(2+\xi)$; there is no $M_i$
-for limit $i$. For a class or term $X$, $R_i(X) = M_i \cap \Lim X$. For an ordinal $\zeta$ let $I(\zeta) = \{\zeta\}$ if
+In formulas and proofs we use the $\Pi_2$-iterates. For a class $X$, $\Pi_2(X)$ is the class of ordinals
+$\Pi_2$-reflecting on $X$, and $\Pi_2$ alone is the class of $\Pi_2$-reflecting ordinals, that is, $\Ad$. Let $\Pi_2^0$ be the class of limit ordinals above $\omega$. Put
+$\Pi_2^{\eta+1} = \Pi_2(\Pi_2^\eta)$ and, for nonzero limit $\lambda$, $\Pi_2^\lambda = \bigcap_{\eta<\lambda} \Pi_2^\eta$.
+Thus $\Pi_2^1 = \Pi_2 = \Ad$. So
+$\Pi_2^2$ is the class of recursively Mahlo ordinals and $\Pi_2^{2+\xi}$ that of the recursively $\xi$-Mahlo ordinals;
+for infinite $\xi$, $2+\xi = \xi$. For an exponent $i$ that is zero or a successor let $e(0) = 1$ and $e(\xi+1) =
+2+\xi$; the class matched with exponent $i$ is $\Pi_2^{e(i)}$, and there is none at a limit exponent. For a class or term $X$, $R_i(X) = \Pi_2^{e(i)} \cap \Lim X$. For an ordinal $\zeta$ let $I(\zeta) = \{\zeta\}$ if
 $\zeta$ is zero or a successor, and the set of zero and successor ordinals below $\zeta$ if $\zeta$ is a limit; for a
 node $k$ of a set well-order, $I(k)$ is the set of nodes $j$ with $|j| \in I(|k|)$.
 
 \begin{center}\begin{tabular}{p{0.2\linewidth}p{0.7\linewidth}}
 \toprule
-$M_i$ & the class at exponent $i$: $M_0 = \Ad$, $M_{\xi+1} = \Mh(2+\xi)$, the recursively $\xi$-Mahlo ordinals \\
-$R_i(X)$ & $M_i \cap \Lim X$ \\
+$\Pi_2^\eta$ & $\Pi_2^1 = \Ad$, $\Pi_2^{\eta+1}$ the ordinals $\Pi_2$-reflecting on $\Pi_2^\eta$, intersections at
+limits; $\Pi_2^{2+\xi}$ is the class of recursively $\xi$-Mahlo ordinals \\
+$e(i)$ & the iterate matched with exponent $i$: $e(0) = 1$, $e(\xi+1) = 2+\xi$ \\
+$R_i(X)$ & $\Pi_2^{e(i)} \cap \Lim X$ \\
 $I(\zeta)$ & $\{\zeta\}$, or the zero and successor ordinals below a limit $\zeta$ \\
-offset & at a successor position $\xi+1$, the least ordinal of degree $\delta^{\xi+1}$ is $m_\xi = \min M_{\xi+1} = \min \Mh(2+\xi)$ (Corollary 5.7) \\
 \bottomrule
 \end{tabular}\end{center}
 
-\begin{statement}\head{Lemma 2.1} (a) For every ordinal $\zeta$, $M_{\zeta+1}$ is the class of ordinals
-$\Pi_2$-reflecting on $M_i$ for every $i \in I(\zeta)$. (b) For every $\zeta < K_2$, $K_2 \in \Mh(\zeta+1)$ and
-$\Mh(\zeta)$ has an element below $K_2$. So for $\xi < K_2$, $m_\xi$ exists and $m_\xi < K_2 \le \xi^*$, and for a limit
-$\lambda < K_2$, $\tau_\lambda$ exists and $\tau_\lambda \le m_\lambda$.
+\begin{statement}\head{Lemma 2.1} (a) For every ordinal $\zeta$, $\Pi_2^{2+\zeta}$ is the class of ordinals
+$\Pi_2$-reflecting on $\Pi_2^{e(i)}$ for every $i \in I(\zeta)$. (b) $\pi_3$ is admissible and recursively Mahlo, and some
+limit above $\omega$ and some admissible ordinal lie below $\pi_3$; for every $\xi < \pi_3$, $\pi_3$ is recursively
+$(\xi+1)$-Mahlo and some recursively $\xi$-Mahlo ordinal lies below $\pi_3$. So for $\xi < \pi_3$, $m_\xi$ exists and
+$m_\xi < \pi_3$, which is at or below the least (+1)-stable ordinal, and for a limit $\lambda < \pi_3$ the least
+admissible ordinal that is a limit of recursively $\xi$-Mahlo ordinals for every $\xi < \lambda$ exists and is at most
+$m_\lambda$.
 \end{statement}
 
 \begin{proof}
-(a) For $\zeta = 0$ and successor $\zeta$ this is the definition, as $2 + (\xi+1) = (2+\xi)+1$. For a limit $\zeta$, the
-class of ordinals $\Pi_2$-reflecting on $M_i$ is $\Mh(2+i)$; the indices $2+i$, $i \in I(\zeta)$, are cofinal in
-$\zeta$, so the intersection is $\Mh(\zeta) = \Mh(2+\zeta) = M_{\zeta+1}$. (b) As [B, Lemma 2.1(b)]: [A, Theorem 4.3]
-puts $K_2$ in the class $C_2$ of the node $\zeta+1$ of $\in$ on $\zeta+2$, which is $\Mh(\zeta+1)$ [C, Example 3.2(1)];
-reflect a trivial sentence. $m_\lambda$ is admissible and a limit of every $\Mh(\zeta)$, $\zeta < \lambda$.
+(a) For $\zeta = 0$ and successor $\zeta$ this is the definition. For a limit $\zeta$, the class of ordinals
+$\Pi_2$-reflecting on $\Pi_2^{e(i)}$ is $\Pi_2^{2+i}$; as $i$ ranges over $I(\zeta)$ these are the recursively $\eta$-Mahlo ordinals
+for cofinally many $\eta < \zeta$, so, the classes decreasing, the intersection is the class of recursively
+$\zeta$-Mahlo ordinals, $\Pi_2^{2+\zeta}$. (b) As [B, Lemma 2.1(b)]: [A, Theorem 4.3] puts $\pi_3$ in the class $C_2$ of
+the node $2+\xi+1$ of $\in$ on $2+\xi+2$, which is the class of recursively $(\xi+1)$-Mahlo ordinals [C, Example
+3.2(1)]; reflect a trivial sentence. The first assertion follows from the case $\xi = 0$, as $\omega \cdot 2$ and
+$\omega_1^{CK}$ lie below $\pi_3$. $m_\lambda$ is admissible and a limit of recursively $\xi$-Mahlo ordinals for every
+$\xi < \lambda$.
 \end{proof}
 
 \section{Exponents from presentations}
@@ -242,7 +258,8 @@ a\rangle_P$ for every eligible pair $(P,a)$ at $\alpha$.
 For $1 \le \zeta \le \omega$ these are the degrees of [B, Definition 3.4]. $\Ad[a]$ with $|a| = 0$ is $\Ad \cap \Lim \Ad$,
 which is not called a degree [B, Section 8]. For example, for $\in$ on $3$: $X[0] = \Ad \cap \Lim X$; $H_{X,0}(Q,\cdot)$
 iterates ``admissible limit of'' along $Q$, and $X[1]$ asks for all these iterations [B, Lemma 3.5(b)]; $H_{X,1}(Q,\cdot)$
-iterates $Y \mapsto Y[1]$, and $X[2]$ asks for both families; by Theorem 5.5 they are governed by $M_1 = \Mh(2)$ and $M_2 = \Mh(3)$.
+iterates $Y \mapsto Y[1]$, and $X[2]$ asks for both families; by Theorem 5.5 they are governed by $\Pi_2^2$, the recursively Mahlo ordinals, and $\Pi_2^3$, the
+recursively $1$-Mahlo ordinals.
 
 \begin{statement}\head{Lemma 3.4 (independence of the well-ordering)} Let $\lhd, \lhd'$ be recursive well-orderings,
 with classes $X[a]$, $H_{X,c}(Q,e)$ and $X[a]'$, $H'_{X,c}(Q,e)$. If $X \cap \mu = X' \cap \mu$, then $\mu \in X[a]$
@@ -287,7 +304,7 @@ of terms below $\nu$ is built in $L_{\nu^+}$ exactly as in [B, Lemma 4.4].
 \begin{statement}\head{Lemma 4.2 (Mahlo classes along a well-ordering)} There is a $\Delta_0$ formula $\PhiMh(V, \nu,
 \lhd, j)$ without parameters such that for every set well-order $\lhd$, set $j$, ordinal $\nu$ and certificate $V$
 with $\hgt(V) \ge \nu^+$: $\PhiMh(V,\nu,\lhd,j)$ holds if and only if $\lhd \in L_\nu$, $j$ is a node, $|j|$ is zero
-or a successor, and $\nu \in M_{|j|}$. Moreover ``$j$ is a node'', ``$|j| = 0$'', ``$|j| = |k|+1$'' and ``$j \in
+or a successor, and $\nu \in \Pi_2^{e(|j|)}$. Moreover ``$j$ is a node'', ``$|j| = 0$'', ``$|j| = |k|+1$'' and ``$j \in
 I(k)$'' are $\Delta_0$ conditions in $\lhd, j, k$.
 \end{statement}
 
@@ -310,12 +327,12 @@ according to $V$ and some $\Nt \in \Lv_\kappa$ have $\mathrm{Rows}(V,\nu,\lhd,\N
 quantifiers are bounded.
 
 \emph{Soundness.} By (C1) $V$ is true. By induction on $\eta \le \nu$, a table with $\mathrm{Rows}$ has $\Nt(\eta) =
-\{j : |j|$ zero or a successor, $\lhd \in L_\eta$, $\eta \in M_{|j|}\}$. If $\lhd \notin L_\eta$ or $\eta \notin \Ad$,
-both are empty, as $M_i \subseteq \Ad$. A node at position $0$ is in both, as $M_0 = \Ad$. If $\mathrm{Imm}(k,j)$, the
-hypothesis makes $\mathrm{Rf}$ say that $\eta$ is $\Pi_2$-reflecting on $\{\eta' \in M_{|j'|} : \lhd \in
-L_{\eta'}\}$ for each $j' \in I(k)$; as $\lhd \in L_\eta$, this is $\Pi_2$-reflection on $M_{|j'|}$ (add $\lhd$ to the
+\{j : |j|$ zero or a successor, $\lhd \in L_\eta$, $\eta \in \Pi_2^{e(|j|)}\}$. If $\lhd \notin L_\eta$ or $\eta \notin \Ad$,
+both are empty, as $\Pi_2^{e(i)} \subseteq \Ad$. A node at position $0$ is in both, as $\Pi_2 = \Ad$. If $\mathrm{Imm}(k,j)$, the
+hypothesis makes $\mathrm{Rf}$ say that $\eta$ is $\Pi_2$-reflecting on $\{\eta' \in \Pi_2^{e(|j'|)} : \lhd \in
+L_{\eta'}\}$ for each $j' \in I(k)$; as $\lhd \in L_\eta$, this is $\Pi_2$-reflection on $\Pi_2^{e(|j'|)}$ (add $\lhd$ to the
 test), so by
-Lemma 2.1(a), $j \in \Nt(\eta)$ if and only if $\eta \in M_{|j|}$. Nodes at limit positions are in neither set.
+Lemma 2.1(a), $j \in \Nt(\eta)$ if and only if $\eta \in \Pi_2^{e(|j|)}$. Nodes at limit positions are in neither set.
 
 \emph{Completeness.} Suppose the right side holds. Then $\nu \in \Ad$, $\lhd \in L_\nu$, some $\kappa \le \hgt(V)$ is
 $\nu^+$ according to $V$, and $\Lv_\kappa = L_{\nu^+}$. The admissible $L_{\nu^+}$ contains a certificate of height
@@ -334,8 +351,8 @@ table $\Nt \in L_{\nu^+}$ with $\mathrm{Rows}$. By soundness $j \in \Nt(\nu)$.
   R_{|j|}(Y)$; if $\mu$ is admissible, $\lhd \in L_\mu$ and $\mu \in \Lim R_{|j|}(Y)$, then $L_\mu \models U_{j,Y}$.
 \item[(c)] For a node $a$ at a limit position, the $\Pi_2$ sentence $\Psi_a$, ``for every node $j \in I(a)$ and ordinal
   $y$, some $\nu > y$ and certificate $V$ with $\nu^+ \le \hgt(V)$ have $\PhiMh(V,\nu,\lhd,j)$'', with constants $\lhd,
-  a$, holds in $L_\beta$ with $\lhd, a \in L_\beta$ only if $\beta \in \Lim M_{|j|}$ for every $j \in I(a)$, and holds in
-  every admissible $L_\mu$ with $\lhd, a \in L_\mu$ that lies in $\Lim M_{|j|}$ for every $j \in I(a)$.
+  a$, holds in $L_\beta$ with $\lhd, a \in L_\beta$ only if $\beta \in \Lim \Pi_2^{e(|j|)}$ for every $j \in I(a)$, and holds in
+  every admissible $L_\mu$ with $\lhd, a \in L_\mu$ that lies in $\Lim \Pi_2^{e(|j|)}$ for every $j \in I(a)$.
 \item[(d)] [B, Lemma 5.1] An admissible $\mu \in \Lim Y$ that is $\Pi_2$-reflecting on a class $Z$ is
   $\Pi_2$-reflecting on $Z \cap \Lim Y$.
 \end{itemize}
@@ -343,7 +360,7 @@ table $\Nt \in L_{\nu^+}$ with $\mathrm{Rows}$. By soundness $j \in \Nt(\nu)$.
 
 \begin{proof}
 (a) and (d) are [B, Lemmas 4.5 and 5.1], with $\Phi$ from Lemma 4.1. For (b), soundness: each witness $\nu$ is in
-$M_{|j|}$ by Lemma 4.2, hence admissible, so $u^+ \le \nu$ for $u < \nu$ and Lemma 4.1 gives $\nu \in \Lim Y$.
+$\Pi_2^{e(|j|)}$ by Lemma 4.2, hence admissible, so $u^+ \le \nu$ for $u < \nu$ and Lemma 4.1 gives $\nu \in \Lim Y$.
 Completeness: given $y < \mu$, take $\nu < \nu'$ in $R_{|j|}(Y) \cap (y, \mu)$ with $\lhd \in L_\nu$; then $\nu^+ \le
 \nu' < \mu$, and (C2) gives a certificate of height $\nu^+$ in $L_\mu$. (c) is the same argument without $Y$.
 \end{proof}
@@ -375,11 +392,11 @@ By induction on positions for all terms: (a) or (b) at $\zeta$ uses (c) and (d) 
 use (a) or (b) at $\zeta$.
 
 \emph{(a), (b).} $X[0] = \Ad \cap \Lim X$. Otherwise $\gamma \in \Ad \cap \Lim X$. For $\zeta' < \zeta$ and eligible
-$(Q,e)$: if $\zeta$ is a successor, then $M_\zeta \subseteq M_{\zeta'+1}$ and (c) or (d) at $\zeta'$ applies; if $\zeta$
+$(Q,e)$: if $\zeta$ is a successor, then $\Pi_2^{e(\zeta)} \subseteq \Pi_2^{2+\zeta'}$ and (c) or (d) at $\zeta'$ applies; if $\zeta$
 is a limit, then $\zeta'+1 \in I(\zeta)$ and (d) at $\zeta'$ applies.
 
-\emph{(c), (d).} These are [B, Theorem 5.2(B)] and [B, Lemma 5.3(a)] with the single class $\Mh(d+1)$ replaced by the
-family $M_i$, $i \in I(\zeta)$. By Lemma 2.1(a) and Lemma 4.3(d), $\mu$ is $\Pi_2$-reflecting on each $R_i(X)$. By
+\emph{(c), (d).} These are [B, Theorem 5.2(B)] and [B, Lemma 5.3(a)] with [B]'s single target class replaced by the
+family $\Pi_2^{e(i)}$, $i \in I(\zeta)$. By Lemma 2.1(a) and Lemma 4.3(d), $\mu$ is $\Pi_2$-reflecting on each $R_i(X)$. By
 induction on $\rank^Q_\mu(e)$, every predecessor $e'$ gives $\mu \in \Lim R_i(H_{X,\zeta}(Q,e'))$ for all $i \in
 I(\zeta)$, and (a) or (b) at $\zeta$ gives $\mu \in H_{X,\zeta}(Q,e')[\zeta]$; so $\mu \in H_{X,\zeta}(Q,e)$. For $\mu
 \in \Lim H_{X,\zeta}(Q,e)$ we reflect the sentence $\Theta$ that, for all $e', w, i$ with $\rho_{Q,0}(e',e,p_Q,w)$ and
@@ -396,8 +413,8 @@ $\gamma \in H_{X,\zeta}(Q,e)$.
 
 \subsection{Necessity}
 
-\begin{statement}\head{Lemma 5.2 (extraction)} Suppose Theorem 5.4 holds at $\zeta$ for every term. If $\eta \le \xi^*$
-is admissible, $\eta \in Y[\zeta]$, $i \in I(\zeta)$ and $p \in L_\eta$, then some $\beta_1 \le \eta$ in $R_i(Y)$ has
+\begin{statement}\head{Lemma 5.2 (extraction)} Suppose Theorem 5.4 holds at $\zeta$ for every term. If $\eta$ is
+admissible, at or below the least (+1)-stable ordinal, $\eta \in Y[\zeta]$, $i \in I(\zeta)$ and $p \in L_\eta$, then some $\beta_1 \le \eta$ in $R_i(Y)$ has
 $p \in L_{\beta_1}$.
 \end{statement}
 
@@ -407,7 +424,7 @@ $\eta \in \Lim R_i(Y)$. Take $\eta$ or a high enough member below it.
 \end{proof}
 
 \textbf{The search tree.} For $\zeta+1$ a position, a term $X$ and an ordinal $\ell$, the tree $S = S^{\zeta,X}_\ell$
-has parameter $\pi = (\lhd, \zeta, t_X, \ell)$. As in [B, Definition 6.1], a node of depth $m$ is a sequence of $m+1$
+has parameter $\varpi = (\lhd, \zeta, t_X, \ell)$. As in [B, Definition 6.1], a node of depth $m$ is a sequence of $m+1$
 \emph{records}. Record $0$ is an ordinal $\alpha_0 > \max(\ell,\omega)$. Record $j \ge 1$ holds a \emph{stage}
 $\alpha_j > \alpha_{j-1}$, a surjection $f_{j-1} \in L_{\alpha_j}$ from $\omega$ onto $L_{\alpha_{j-1}}$, a point $z_j
 \in X$ with $\alpha_{j-1} < z_j$ and $z_j^+ < \alpha_j$, and the answer $x_j \in L_{\alpha_j}$ to \emph{task} $j-1$. Task $0$ is empty; task
@@ -418,26 +435,26 @@ are its predecessors; the root $r$ has the nodes of depth $0$ as predecessors. A
 task, $(+,b)$ for a positive answer, or $(-,u)$, a \emph{promise} that $\forall v\, \neg\theta(q,u,v)$; at every node of depth $m$, each promise $(-,u)$ in its records must satisfy $\neg\theta(q,u,v)$ for every $v \in L_{\alpha_m}$, so a promise is checked at its answering stage and at every later stage (the \emph{node condition}). The changes from [B] are three. (1) Tasks are indexed: $f_{m_1}(m_2)$
 gives a task when it is a triple $(i, \psi, q)$ with $i \in I(\zeta)$ and $\psi$ coding a normalized $\Pi_2$ formula
 $\forall u\, \exists v\, \theta$; its \emph{index} is $i$, and otherwise the task is empty. (2) A positive answer
-requires $b \in M_i$, $\lhd, q \in L_b$, $L_b \models \psi(q)$, and $b^+$ below the answering stage, so that Lemma 4.2
-can test it. (3) Record $0$ requires $\pi \in L_{\alpha_0}$, so that the supremum of a branch contains $\pi$ and every
+requires $b \in \Pi_2^{e(i)}$, $\lhd, q \in L_b$, $L_b \models \psi(q)$, and $b^+$ below the answering stage, so that Lemma 4.2
+can test it. (3) Record $0$ requires $\varpi \in L_{\alpha_0}$, so that the supremum of a branch contains $\varpi$ and every
 index is inspected; the root edge checks this with a certificate of height $\alpha_0$, and so is visible at admissible
-levels by (C2). For an admissible $\beta$ with $\pi \in L_\beta$, a node in $L_\beta$ is
+levels by (C2). For an admissible $\beta$ with $\varpi \in L_\beta$, a node in $L_\beta$ is
 \emph{correct} at $\beta$ if its promises hold in $L_\beta$, and a task about $(i,\psi,q)$ is \emph{bad} at $\beta$ if
-$L_\beta \models \psi(q)$ but $L_b \nvDash \psi(q)$ for every $b \in M_i \cap \beta$ with $\lhd, q \in L_b$; empty tasks
+$L_\beta \models \psi(q)$ but $L_b \nvDash \psi(q)$ for every $b \in \Pi_2^{e(i)} \cap \beta$ with $\lhd, q \in L_b$; empty tasks
 are never bad.
 
 \begin{statement}\head{Lemma 5.3 (the tree)}
 \begin{itemize}
-\item[(a)] $S$ is a $\Sigma_1$ presentation; its edges at limits containing $\pi$ are tree edges, and at admissible
-  levels containing $\pi$ every tree edge whose child lies in the level is an edge.
-\item[(b)] If $\mu > \omega$ is a limit with $\pi \in L_\mu$ and the root is not in $\WF(S,\mu)$, some $\sigma \in
+\item[(a)] $S$ is a $\Sigma_1$ presentation; its edges at limits containing $\varpi$ are tree edges, and at admissible
+  levels containing $\varpi$ every tree edge whose child lies in the level is an edge.
+\item[(b)] If $\mu > \omega$ is a limit with $\varpi \in L_\mu$ and the root is not in $\WF(S,\mu)$, some $\sigma \in
   (\ell, \mu]$ lies in $R_{\zeta+1}(X)$.
-\item[(c)] If $\beta \le \xi^*$ is admissible, $\ell < \beta$, $\beta \in \Lim X$, $\pi \in L_\beta$, and $s \in
+\item[(c)] If $\beta$ is admissible, at or below the least (+1)-stable ordinal, $\ell < \beta$, $\beta \in \Lim X$, $\varpi \in L_\beta$, and $s \in
   L_\beta$ is a node correct at $\beta$ whose next task is not bad at $\beta$, then $s$ has a child $s' \in L_\beta$,
   a predecessor of $s$ at $\beta$, correct at $\beta$.
-\item[(d)] If $\beta$ is admissible with $\pi \in L_\beta$ and $s' \in L_\beta$ is a node correct at $\beta$, there is
+\item[(d)] If $\beta$ is admissible with $\varpi \in L_\beta$ and $s' \in L_\beta$ is a node correct at $\beta$, there is
   $g \in L_\beta$ such that $s'$ is correct and its next task is not bad at every admissible $\beta' < \beta$ in $\Lim
-  X$ with $s', g \in L_{\beta'}$ and with $\beta' \in M_i$ if that task has index $i$.
+  X$ with $s', g \in L_{\beta'}$ and with $\beta' \in \Pi_2^{e(i)}$ if that task has index $i$.
 \end{itemize}
 \end{statement}
 
@@ -447,15 +464,16 @@ stage; a positive answer is tested by $\PhiMh$ and ``$b^+ < \alpha_j$ according 
 ``$i \in I(\zeta)$'' by Lemma 4.2. (b) Along a branch, $\sigma = \sup_j \alpha_j \le \mu$ is a limit of $X$ (as
 $\alpha_{j-1} < z_j < \alpha_j$), the $f_j$ enumerate $L_\sigma$, and a promise would make its test false in
 $L_\sigma$; so every pair of an index $i \in I(\zeta)$ and a true test at $\sigma$ is answered positively, $\sigma$ is
-$\Pi_2$-reflecting on each $M_i$, and $\sigma \in M_{\zeta+1}$ by Lemma 2.1(a). (c) Answer an empty task by
+$\Pi_2$-reflecting on each $\Pi_2^{e(i)}$, and $\sigma \in \Pi_2^{2+\zeta}$ by Lemma 2.1(a). (c) Answer an empty task by
 $\emptyset$; for a false test choose a witness to falsity in $L_\beta$; for a true test, non-badness gives a positive
-target $b \in M_i \cap \beta$, cofinality of $X \subseteq \Ad$ gives $b^+ < \beta$, and the next stage is chosen above
-it; [C, Lemma 7.2] supplies the surjection for $\beta \le \xi^*$. (d) $g$ records how the next task is settled at $\beta$: a witness to
-falsity, a positive target, or $\emptyset$ if the task is bad at $\beta$; in the last case a level $\beta' \in M_i$
+target $b \in \Pi_2^{e(i)} \cap \beta$, cofinality of $X \subseteq \Ad$ gives $b^+ < \beta$, and the next stage is chosen above
+it; [C, Lemma 7.2] supplies the surjection for such $\beta$. (d) $g$ records how the next task is settled at $\beta$: a witness to
+falsity, a positive target, or $\emptyset$ if the task is bad at $\beta$; in the last case a level $\beta' \in \Pi_2^{e(i)}$
 containing the data would itself be a target, so the test is false there.
 \end{proof}
 
-\begin{statement}\head{Theorem 5.4 (necessity)} Let $X$ be a term and $\gamma \le \xi^*$ admissible with $\gamma \in
+\begin{statement}\head{Theorem 5.4 (necessity)} Let $X$ be a term and $\gamma$ admissible, at or below the least
+(+1)-stable ordinal, with $\gamma \in
 X[\zeta]$. If $\zeta$ is zero or a successor, then $\gamma \in R_\zeta(X) \cup \Lim R_\zeta(X)$; if $\zeta$ is a limit,
 then $\gamma \in \Lim R_i(X)$ for every $i \in I(\zeta)$.
 \end{statement}
@@ -463,15 +481,15 @@ then $\gamma \in \Lim R_i(X)$ for every $i \in I(\zeta)$.
 \begin{proof}
 Induction on $\zeta$, for all terms. $X[0] = R_0(X)$. At a limit $\zeta$ and $i \in I(\zeta)$: $i+1 < \zeta$, and the
 clause of $X[i+1]$ asks for a subset of the classes that the clause of $X[\zeta]$ asks for, so $X[\zeta] \subseteq
-X[i+1]$ and $\gamma \in R_{i+1}(X) \cup \Lim R_{i+1}(X)$, and each point of $R_{i+1}(X)$ is $\Pi_2$-reflecting on $M_i$, hence on
+X[i+1]$ and $\gamma \in R_{i+1}(X) \cup \Lim R_{i+1}(X)$, and each point of $R_{i+1}(X)$ is $\Pi_2$-reflecting on $\Pi_2^{e(i)}$, hence on
 $R_i(X)$ (Lemma 4.3(d)), so a limit of it; hence $\gamma \in \Lim R_i(X)$.
 
 \emph{From $\zeta$ to $\zeta+1$.} Let $\ell < \gamma$ and suppose that no point of $R_{\zeta+1}(X)$ lies in $(\ell,
-\gamma]$. Let $S = S^{\zeta,X}_\ell$; $\pi \in L_\gamma$ by Lemma 3.2(b). For a node $s$ write $Y_s =
+\gamma]$. Let $S = S^{\zeta,X}_\ell$; $\varpi \in L_\gamma$ by Lemma 3.2(b). For a node $s$ write $Y_s =
 H_{X,\zeta}(S,s)$; each $Y_s \subseteq \Lim X$. By Lemma 5.3(b) the root $r$ is in $\WF(S,\gamma)$, so $\gamma \in
 Y_r$.
 
-\emph{Claim.} Let $\beta \le \gamma$ be admissible with $\ell < \beta$, $\beta \in \Lim X$ and $\pi \in L_\beta$, and
+\emph{Claim.} Let $\beta \le \gamma$ be admissible with $\ell < \beta$, $\beta \in \Lim X$ and $\varpi \in L_\beta$, and
 let $s \in L_\beta$ be a node, not the root, correct at $\beta$, whose next task is not bad at $\beta$. Then $\beta
 \notin \Lim Y_s$.
 
@@ -479,19 +497,19 @@ Suppose not, and let $\beta$ be least, with such an $s$.
 \begin{itemize}
 \item Lemma 5.3(c) gives a child $s' \in L_\beta$ of $s$, correct at $\beta$, and Lemma 5.3(d) a set $g \in L_\beta$.
 \item Since $\beta \in \Lim Y_s$, some $\beta_0 < \beta$ in $Y_s$ has $s', g \in L_{\beta_0}$. It is admissible and
-  contains $\pi$, so $s'$ is a predecessor of $s$ at $\beta_0$ (Lemma 5.3(a)), and the clause of $Y_s$ gives $\beta_0
+  contains $\varpi$, so $s'$ is a predecessor of $s$ at $\beta_0$ (Lemma 5.3(a)), and the clause of $Y_s$ gives $\beta_0
   \in Y_{s'}[\zeta]$.
 \item Let $i$ be the index of the next task of $s'$, or any element of $I(\zeta)$ if that task is empty. Lemma 5.2, with
   the induction hypothesis at $\zeta$, the term $Y_{s'}$ and $p = (s',g)$, gives $\beta_1 \le \beta_0$ in
   $R_i(Y_{s'})$ with $s', g \in L_{\beta_1}$.
-\item Then $\beta_1 \in M_i$ is admissible, $\beta_1 \in \Lim Y_{s'} \subseteq \Lim X$, $\ell < \alpha_0 < \beta_1$,
-  $\pi \in L_{\beta_1}$ and $\beta_1 < \beta$. By Lemma 5.3(d) with $\beta' = \beta_1$, $s'$ is correct at $\beta_1$ and
+\item Then $\beta_1 \in \Pi_2^{e(i)}$ is admissible, $\beta_1 \in \Lim Y_{s'} \subseteq \Lim X$, $\ell < \alpha_0 < \beta_1$,
+  $\varpi \in L_{\beta_1}$ and $\beta_1 < \beta$. By Lemma 5.3(d) with $\beta' = \beta_1$, $s'$ is correct at $\beta_1$ and
   its next task is not bad there.
 \item So $(\beta_1, s')$ satisfies the hypotheses of the claim, and $\beta_1 \in \Lim Y_{s'}$, contradicting the
   minimality of $\beta$.
 \end{itemize}
 
-\emph{Conclusion.} Choose $\alpha_0 \in (\max(\ell,\omega), \gamma)$ with $\pi \in L_{\alpha_0}$ and let $s_0 =
+\emph{Conclusion.} Choose $\alpha_0 \in (\max(\ell,\omega), \gamma)$ with $\varpi \in L_{\alpha_0}$ and let $s_0 =
 (\alpha_0)$. By (C2) a certificate of height $\alpha_0$ is in $L_\gamma$, so $s_0$ is a predecessor of $r$ at $\gamma$,
 and the clause of $Y_r$ gives $\gamma \in Y_{s_0}[\zeta]$, hence $\gamma \in \Lim Y_{s_0}$. The node $s_0$ has no
 promises and its next task is empty, so the claim at $\beta = \gamma$ gives a contradiction. So every $\ell < \gamma$
@@ -500,7 +518,8 @@ has a point of $R_{\zeta+1}(X)$ in $(\ell, \gamma]$, that is, $\gamma \in R_{\ze
 
 \subsection{Results}
 
-\begin{statement}\head{Theorem 5.5} Let $X$ be a term, $\zeta$ a position and $\gamma \le \xi^*$ admissible. If $\zeta$
+\begin{statement}\head{Theorem 5.5} Let $X$ be a term, $\zeta$ a position and $\gamma$ admissible, at or below the
+least (+1)-stable ordinal. If $\zeta$
 is zero or a successor, $\gamma \in X[\zeta]$ if and only if $\gamma$ is in $R_\zeta(X)$ or a limit of it, where
 $R_{\xi+1}(X)$ consists of the recursively $\xi$-Mahlo ordinals in $\Lim X$. If $\zeta$ is a limit, $\gamma \in
 X[\zeta]$ if and only if $\gamma$ is a limit of $R_i(X)$ for every zero or successor $i < \zeta$. The implications from
@@ -511,7 +530,8 @@ right to left hold for every admissible $\gamma$.
 Theorems 5.1 and 5.4.
 \end{proof}
 
-\begin{statement}\head{Theorem 5.6 (recursive exponents)} Let $\gamma \le \xi^*$ be admissible and $a$ a node of a
+\begin{statement}\head{Theorem 5.6 (recursive exponents)} Let $\gamma$ be admissible, at or below the least
+(+1)-stable ordinal, and $a$ a node of a
 recursive well-ordering.
 \begin{itemize}
 \item[(a)] If $|a| = 0$, then $\gamma \in \Ad[a]$ if and only if $\gamma$ is recursively inaccessible.
@@ -523,22 +543,23 @@ recursive well-ordering.
 \end{statement}
 
 \begin{proof}
-Take $X = \Ad$ in Theorem 5.5. Recursively $\xi$-Mahlo ordinals lie in $\Lim \Ad$, so $R_{\xi+1}(\Ad) = M_{\xi+1}$;
+Take $X = \Ad$ in Theorem 5.5. Recursively $\xi$-Mahlo ordinals lie in $\Lim \Ad$, so $R_{\xi+1}(\Ad) = \Pi_2^{2+\xi}$;
 $R_0(\Ad)$ is the class of recursively inaccessible ordinals, closed under admissible limits; and in (c) the condition
 at $i = 0$ follows from that at $i = 1$.
 \end{proof}
 
 \begin{statement}\head{Corollary 5.7 (least elements)} For a node $a$ of a recursive well-ordering, the least element of
-$\Ad[a]$ is the least recursively inaccessible ordinal if $|a| = 0$; $m_\xi$ if $|a| = \xi+1$; and $\tau_\lambda$ if $|a|
-= \lambda$ is a limit, and then $\tau_\lambda < m_\lambda$. These least elements depend only on $|a|$ and increase
+$\Ad[a]$ is the least recursively inaccessible ordinal if $|a| = 0$; $m_\xi$ if $|a| = \xi+1$; and, if $|a| = \lambda$ is a
+limit, the least admissible ordinal that is a limit of recursively $\xi$-Mahlo ordinals for every $\xi < \lambda$,
+which is below $m_\lambda$. These least elements depend only on $|a|$ and increase
 strictly with it.
 \end{statement}
 
 \begin{proof}
-Positions are recursive, so by Lemma 2.1(b) the named ordinals exist below $K_2 \le \xi^*$, and Theorem 5.6 identifies
-the least elements. For $\tau_\lambda < m_\lambda$: $m_\lambda \in \Mh(\lambda)$ is a limit of every $M_i$, $i \in
-I(\lambda)$, so $L_{m_\lambda} \models \Psi_a$ (Lemma 4.3(c)); as $m_\lambda \in \Mh(2)$, reflecting $\Psi_a$ onto
-$\Ad$ gives an admissible $\beta < m_\lambda$ that is a limit of every $M_i$, so $\tau_\lambda \le \beta$. For strict
+Positions are recursive, so by Lemma 2.1(b) the named ordinals exist below $\pi_3$, hence below the least (+1)-stable ordinal, and Theorem 5.6 identifies
+the least elements. For $\tau_\lambda < m_\lambda$: $m_\lambda$ is recursively $\lambda$-Mahlo, hence a limit of every $\Pi_2^{e(i)}$, $i \in
+I(\lambda)$, so $L_{m_\lambda} \models \Psi_a$ (Lemma 4.3(c)); as $m_\lambda$ is recursively Mahlo, reflecting $\Psi_a$ onto
+$\Ad$ gives an admissible $\beta < m_\lambda$ that is a limit of every $\Pi_2^{e(i)}$, so $\tau_\lambda \le \beta$. For strict
 increase, write $n(\zeta)$ for the least element at $\zeta$, a function of $\zeta$ alone. For $\zeta$ zero or a
 successor, $n(\zeta) = \min R_\zeta(\Ad)$ and $R_{\zeta+1}(\Ad) \subseteq \Lim R_\zeta(\Ad)$ by Lemma 4.3(d), so
 $n(\zeta) < n(\zeta+1)$; for a limit $\lambda$, $n(\lambda) = \tau_\lambda < m_\lambda = n(\lambda+1)$, and $\tau_\lambda
@@ -546,19 +567,20 @@ $n(\zeta) < n(\zeta+1)$; for a limit $\lambda$, $n(\lambda) = \tau_\lambda < m_\
 two recursive ordinals are positions of one recursive well-ordering.
 \end{proof}
 
-\textbf{Remark 5.8.} Let $D_\omega$ be the class of admissible limits of every $\Mh(n)$, $n < \omega$, which by Theorem
-5.6(c) is the class of degree $\delta^\omega$ up to $\xi^*$, and $\iota$ the least ordinal $\Pi_2$-reflecting on
+\textbf{Remark 5.8.} Let $D_\omega$ be the class of admissible ordinals that are limits of recursively $k$-Mahlo ordinals for
+every $k < \omega$, which by Theorem
+5.6(c) is the class of degree $\delta^\omega$ up to and including the least (+1)-stable ordinal, and $\iota$ the least ordinal $\Pi_2$-reflecting on
 $D_\omega$. For $\lhd = {\in}$ on $\omega+1$ and $a = \omega$, an admissible $\beta$ satisfies $\Psi_a$ exactly when
-$\beta \in D_\omega$ (Lemma 4.3(c)); so the ordinals $\Pi_2$-reflecting on $D_\omega$ are those in $\Mh(2) \cap
-D_\omega$, a class containing $M_{\omega+1} = \Mh(\omega)$, and $m_\omega \in \Mh(3) \cap D_\omega$ reflects $\Psi_a$
-onto $\Mh(2)$. As $\iota$ is a limit of $D_\omega$, $\tau_\omega < \iota < m_\omega$. So, in the search tree at $\zeta =
-\omega$, asking every positive target $b$ to lie in $D_\omega$ instead of in the indexed $M_i$ would yield only $\Pi_2$-reflection on
-$D_\omega$, a strictly weaker condition than membership in $M_{\omega+1}$; its least instance lies strictly below
+$\beta \in D_\omega$ (Lemma 4.3(c)); so the ordinals $\Pi_2$-reflecting on $D_\omega$ are the recursively Mahlo members of $D_\omega$, a class containing $\Pi_2^{\omega}$, the recursively $\omega$-Mahlo
+ordinals; and $m_\omega$, a recursively $1$-Mahlo member of $D_\omega$, reflects $\Psi_a$ onto the recursively Mahlo
+ordinals. As $\iota$ is a limit of $D_\omega$, $\tau_\omega < \iota < m_\omega$. So, in the search tree at $\zeta =
+\omega$, asking every positive target $b$ to lie in $D_\omega$ instead of in the indexed $\Pi_2^{e(i)}$ would yield only $\Pi_2$-reflection on
+$D_\omega$, a strictly weaker condition than membership in $\Pi_2^{\omega}$; its least instance lies strictly below
 $m_\omega$, the least ordinal of degree $\delta^{\omega+1}$.
 
-In the limit case of Theorem 5.5 the base must stay inside $R_i(X) = M_i \cap \Lim X$: for a node $a$ at position
-$\omega$ and $X = \Ad[a]$, $\iota$ is a limit of $X$ and of every $M_i$, $i < \omega$, yet $\iota \notin X[a]$, since
-membership would give a smaller point of $M_1 \cap \Lim X$, which lies in $\Mh(2) \cap D_\omega$.
+In the limit case of Theorem 5.5 the base must stay inside $R_i(X) = \Pi_2^{e(i)} \cap \Lim X$: for a node $a$ at position
+$\omega$ and $X = \Ad[a]$, $\iota$ is a limit of $X$ and of every $\Pi_2^{e(i)}$, $i < \omega$, yet $\iota \notin X[a]$, since
+membership would give a smaller point of $\Pi_2^2 \cap \Lim X$, which is a recursively Mahlo member of $D_\omega$.
 
 \section{\texorpdfstring{Every $\Sigma_1$ presentation as exponent}{Every Sigma\_1 presentation as exponent}}
 
@@ -590,7 +612,7 @@ $\Pi_2$-reflecting on $\widehat R_c(X)$, then $\mu$ is in $H^P_{X,c}(Q,e)$ and i
 \end{statement}
 
 \begin{proof}
-As [B, Theorem 5.2], with $\widehat C_c$ in place of $\Mh(d+1)$ as in Theorem 5.1(c), by induction on the measure
+As [B, Theorem 5.2], with $\widehat C_c$ in place of [B]'s target class as in Theorem 5.1(c), by induction on the measure
 $(\mu, \rank^P_\mu(a), 0, 0)$ for (a) and $(\mu, \rank^P_\mu(c), 1, \rank^Q_\mu(e))$ for (b). In (a), $\mu$ is admissible
 by Lemma 6.2(b) and $\Pi_2$-reflecting on each $\widehat R_c(X)$ by Lemma 4.3(d), and (b) at smaller rank applies. In
 (b), $\mu \in \widehat C_c$ by Lemma 6.2(d); membership follows from (b) at the predecessors $e'$ and (a) with base
@@ -618,9 +640,9 @@ inaccessible of degree $\delta_\mu^{\delta_\mu}$.
 \end{statement}
 
 \begin{proof}
-For eligible $(P,a)$, $(P^\bot,\hat a)$ is eligible, so $\mu \in \widehat C_a$; the node $2$ of $\in$ on $3$ puts $\mu
-\in \Mh(2) \subseteq \Lim \Ad$ [C, Example 3.2(1)]; Theorem 6.3(a) gives $\mu \in \Ad\langle a\rangle_P$. [A, Theorem
-4.3] covers $\Pi_3$-reflecting ordinals. At an admissible limit $\gamma$ of $A_2$, cofinally many members of $A_2$
+For eligible $(P,a)$, $(P^\bot,\hat a)$ is eligible, so $\mu \in \widehat C_a$; the node $2$ of $\in$ on $3$ makes $\mu$
+recursively Mahlo, hence a limit of admissible ordinals [C, Example 3.2(1)]; Theorem 6.3(a) gives $\mu \in \Ad\langle a\rangle_P$. [A, Theorem
+4.3] covers $\Pi_3$-reflecting ordinals. At an admissible limit $\gamma$ of $\Pi_3$, cofinally many members of $\Pi_3$
 contain $p_P, a$ and see $(P,a)$ as eligible, so lie in $\Ad\langle a\rangle_P$; Lemma 6.4 gives $\gamma \in \Ad\langle
 a\rangle_P$.
 \end{proof}
@@ -652,7 +674,7 @@ For example, for the set relation with the single edge $(d,a)$, $E_P$ is the cha
 with its transitive edges, such as $d^- \prec a^-$.
 
 \textbf{The search tree for $\widehat C_a$.} For a $\Sigma_1$ presentation $P$, a set $a$, a term $X$ and an ordinal
-$\ell$, the tree $S^{P,a,X}_\ell$ is that of Section 5.2 with parameter $\pi = (\ulcorner\rho_P\urcorner, p_P, a, t_X,
+$\ell$, the tree $S^{P,a,X}_\ell$ is that of Section 5.2 with parameter $\varpi = (\ulcorner\rho_P\urcorner, p_P, a, t_X,
 \ell)$, except for its tasks. In both kinds below, $\psi$ must code a normalized $\Pi_2$ formula. A tuple
 $(0,\psi,q)$ gives a \emph{default task}, whose positive answers are limits above $\omega$; a tuple $(1,d,w,\psi,q)$
 with $\rho_{P,0}(d,a,p_P,w)$ gives an \emph{edge task}, whose positive answers lie in $\widehat C_d$; all other values
@@ -663,8 +685,8 @@ table listing, at each level up to $b$, the nodes $x$ of $P^\bot$ whose class $C
 each row checked by the bounded clause $\Phi_2$ following [A, Lemma 2.3], which implements [A, Definition 2.1].
 
 \begin{statement}\head{Lemma 6.7} (a) $S^{P,a,X}_\ell$ satisfies Lemma 5.3(a). (b) If $\mu > \omega$ is a limit with
-$\pi \in L_\mu$ and the root is not in $\WF(S,\mu)$, some $\sigma \in (\ell,\mu]$ lies in $\widehat R_a(X)$. (c) Lemma 5.3(c), (d) hold with the condition ``$\beta' \in
-M_i$'' replaced by ``$\beta' \in \widehat C_d$ if the next task is an edge task about $d$''.
+$\varpi \in L_\mu$ and the root is not in $\WF(S,\mu)$, some $\sigma \in (\ell,\mu]$ lies in $\widehat R_a(X)$. (c) Lemma 5.3(c), (d) hold with the condition ``$\beta' \in
+\Pi_2^{e(i)}$'' replaced by ``$\beta' \in \widehat C_d$ if the next task is an edge task about $d$''.
 \end{statement}
 
 \begin{proof}
@@ -678,25 +700,26 @@ the edge witness is part of the task, valid at every level containing it, and th
 contains every admissible level.
 \end{proof}
 
-\begin{statement}\head{Theorem 6.8 (necessity)} Let $\gamma \le \xi^*$ be admissible, $(P,a)$ eligible at $\gamma$ and
+\begin{statement}\head{Theorem 6.8 (necessity)} Let $\gamma$ be admissible, at or below the least (+1)-stable
+ordinal, $(P,a)$ eligible at $\gamma$ and
 $X$ a term. If $\gamma \in X\langle a^+\rangle_{E_P}$, then $\gamma$ is in $\widehat R_a(X)$ or a limit of it.
 \end{statement}
 
 \begin{proof}
 Induction on $\gamma$, for all $P$, $a$, $X$. Let $\ell < \gamma$ and suppose no point of $\widehat R_a(X)$ lies in
-$(\ell, \gamma]$. Let $S = S^{P,a,X}_\ell$; its parameter $\pi$ is in $L_\gamma$. By Lemma 6.7(b) the root $r$ is in
+$(\ell, \gamma]$. Let $S = S^{P,a,X}_\ell$; its parameter $\varpi$ is in $L_\gamma$. By Lemma 6.7(b) the root $r$ is in
 $\WF(S,\gamma)$. Write $Y_s = H^{E_P}_{X,a^-}(S,s)$. As $a^-$ is a predecessor of $a^+$, $\gamma \in Y_r$. The
 iteration along the tree is indexed by $a^-$, not $a^+$, so that at an edge task about $d$ the clause $Y_{s'}\langle
 a^-\rangle$ yields, by Lemma 6.6(c), the hypothesis $Y_{s'}\langle d^+\rangle$ of the same theorem for $d$.
 
-\emph{Claim.} Let $\beta \le \gamma$ be admissible with $\ell < \beta$, $\beta \in \Lim X$ and $\pi \in L_\beta$, and
+\emph{Claim.} Let $\beta \le \gamma$ be admissible with $\ell < \beta$, $\beta \in \Lim X$ and $\varpi \in L_\beta$, and
 let $s \in L_\beta$ be a node, not the root, correct at $\beta$, whose next task is not bad at $\beta$. Then $\beta
 \notin \Lim Y_s$.
 
 Suppose not, and let $\beta$ be least, with such an $s$.
 \begin{itemize}
 \item Lemma 6.7(c) gives a child $s' \in L_\beta$ of $s$, correct at $\beta$, and a set $g \in L_\beta$.
-\item Some $\eta < \beta$ in $Y_s$ has $s', g \in L_\eta$. It is admissible and contains $\pi$, so $s'$ is a
+\item Some $\eta < \beta$ in $Y_s$ has $s', g \in L_\eta$. It is admissible and contains $\varpi$, so $s'$ is a
   predecessor of $s$ at $\eta$, and the clause of $Y_s$ gives $\eta \in Y_{s'}\langle a^-\rangle_{E_P}$.
 \item If the next task of $s'$ is empty or a default task, let $\beta_1 = \eta$; then $\beta_1 \in \Ad \cap \Lim
   Y_{s'}$.
@@ -706,12 +729,12 @@ Suppose not, and let $\beta$ be least, with such an $s$.
   $\eta$, for $(P,d)$ and the term $Y_{s'}$, puts $\eta$ in $\widehat R_d(Y_{s'})$ or among its limits. Let $\beta_1 =
   \eta$ in the first case, and otherwise let $\beta_1 < \eta$ be in $\widehat R_d(Y_{s'})$ with $s', g \in L_{\beta_1}$.
 \item In all cases $\beta_1 < \beta$ is admissible, $\beta_1 \in \Lim Y_{s'} \subseteq \Lim X$, $s', g \in
-  L_{\beta_1}$, so $\ell < \beta_1$ and $\pi \in L_{\beta_1}$, and $\beta_1$ satisfies the condition of Lemma 6.7(c).
+  L_{\beta_1}$, so $\ell < \beta_1$ and $\varpi \in L_{\beta_1}$, and $\beta_1$ satisfies the condition of Lemma 6.7(c).
   So $s'$ is correct at $\beta_1$, its next task is not bad there, and $\beta_1 \in \Lim Y_{s'}$, contradicting the
   minimality of $\beta$.
 \end{itemize}
 
-\emph{Conclusion.} Choose $\alpha_0 \in (\max(\ell,\omega), \gamma)$ with $\pi \in L_{\alpha_0}$ and let $s_0 =
+\emph{Conclusion.} Choose $\alpha_0 \in (\max(\ell,\omega), \gamma)$ with $\varpi \in L_{\alpha_0}$ and let $s_0 =
 (\alpha_0)$. By (C2) a certificate of height $\alpha_0$ is in $L_\gamma$, so $s_0$ is a predecessor of $r$ at $\gamma$,
 and $\gamma \in Y_{s_0}\langle a^-\rangle_{E_P}$, hence $\gamma \in \Lim Y_{s_0}$. The node $s_0$ has no promises and its
 next task is empty, so the claim at $\beta = \gamma$ gives a contradiction. The claim at $\gamma$ uses the induction
@@ -732,29 +755,30 @@ presentation with parameter $q_0$ whose branches search for a $\Pi_3$-reflecting
   r)$, where $r$ is the root.
 \end{itemize}
 
-\begin{statement}\head{Theorem 6.9 (main theorem)} An admissible $\gamma \le \xi^*$ is recursively inaccessible of degree
+\begin{statement}\head{Theorem 6.9 (main theorem)} An admissible $\gamma$ at or below the least (+1)-stable ordinal is
+recursively inaccessible of degree
 $\delta_\gamma^{\delta_\gamma}$ if and only if $\gamma$ is $\Pi_3$-reflecting or a limit of $\Pi_3$-reflecting
 ordinals. The least ordinal $\alpha$ of degree $\delta_\alpha^{\delta_\alpha}$ is the least $\Pi_3$-reflecting ordinal
-$K_2$.
+$\pi_3$.
 \end{statement}
 
 \begin{proof}
-The direction from right to left, at every admissible $\gamma$, is Corollary 6.5. Conversely let $\gamma \le \xi^*$ be
-admissible of degree $\delta_\gamma^{\delta_\gamma}$, and suppose some $\ell < \gamma$ has $A_2 \cap (\ell, \gamma] =
+The direction from right to left, at every admissible $\gamma$, is Corollary 6.5. Conversely let $\gamma$ be
+admissible, at or below the least (+1)-stable ordinal, of degree $\delta_\gamma^{\delta_\gamma}$, and suppose some $\ell < \gamma$ has $\Pi_3 \cap (\ell, \gamma] =
 \emptyset$. Let $P = T_2$ for $\varphi_0 = \forall x\, \exists y\, (y = x \wedge q_0 = q_0)$ with $q_0 = \ell$, and $r$
-its root. If $r \notin \WF(P,\gamma)$, [A, Lemma 4.14] gives a member of $A_2 \cap (\ell, \gamma]$; so $(P,r)$ is
+its root. If $r \notin \WF(P,\gamma)$, [A, Lemma 4.14] gives a member of $\Pi_3 \cap (\ell, \gamma]$; so $(P,r)$ is
 eligible at $\gamma$.
 
 Let $\beta \in \Ad$ with $\beta \le \gamma$ and $\ell \in L_\beta$. Then $L_\beta \models \chi$: $G$ by (C3), limits
 above every ordinal by admissibility, and for $\eta < \beta$, (C2) gives a certificate of height $\eta$ in $L_\beta$,
-with $f = \emptyset$ if $L_\eta = \emptyset$ and otherwise a surjection from [C, Lemma 7.2], as $\beta \le \xi^*$. Also
+with $f = \emptyset$ if $L_\eta = \emptyset$ and otherwise a surjection from [C, Lemma 7.2], as $\beta \le \gamma$. Also
 $L_\beta \models \varphi_0(q_0)$. By [A, Theorem 4.17], $\beta \notin C_2(P,r)$, so $\beta \notin \widehat C_r$ (Lemma
 6.2(c)). Members of $\widehat C_r$ are admissible and contain $\ell$, so none is at most $\gamma$.
 
 By Lemma 6.6(b), $(E_P, r^+)$ is eligible at $\gamma$, so $\gamma \in \Ad\langle r^+\rangle_{E_P}$, and Theorem 6.8 with
-$X = \Ad$ gives a member of $\widehat C_r$ at or below $\gamma$, which is impossible. So $\gamma \in A_2 \cup \Lim A_2$.
-Finally every ordinal of this degree is admissible (take a presentation with no edges), $K_2 \le \xi^*$ has the degree
-by Corollary 6.5, and no admissible ordinal below $K_2$ is in $A_2$ or a limit of $A_2$.
+$X = \Ad$ gives a member of $\widehat C_r$ at or below $\gamma$, which is impossible. So $\gamma \in \Pi_3 \cup \Lim \Pi_3$.
+Finally every ordinal of this degree is admissible (take a presentation with no edges), $\pi_3$, which is at or below the least (+1)-stable ordinal, has the degree
+by Corollary 6.5, and no admissible ordinal below $\pi_3$ is in $\Pi_3$ or a limit of $\Pi_3$.
 \end{proof}
 
 \section{Open questions}
@@ -764,7 +788,7 @@ by Corollary 6.5, and no admissible ordinal below $K_2$ is in $A_2$ or a limit o
   $(P,a)$ is eligible? There Theorem 6.3(a) gives sufficiency of $\widehat R_a(X)$, and Theorem 6.8 gives a necessary
   condition for the marker $a^+$ of $E_P$; an exact description for the node $a$ itself is open. This is what remains
   of [B, Section 8, question 2].
-\item Do the necessity directions of Theorems 5.5, 5.6 and 6.9 extend above $\xi^*$? Sufficiency holds at every
+\item Do the necessity directions of Theorems 5.5, 5.6 and 6.9 extend above the least (+1)-stable ordinal? Sufficiency holds at every
   admissible level, and Lemma 3.4 gives independence of the recursive well-ordering at every level. The bound enters
   only through countability, in Lemmas 5.3(c) and 6.7(c) and in the verification of $\chi$.
 \end{enumerate}
